@@ -1,0 +1,43 @@
+# node_modules — папка с зависимостями npm
+node_modules/
+
+# логи
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# системные файлы ОС
+.DS_Store
+Thumbs.db
+
+# папка сборки (если есть)
+dist/
+build/
+
+# временные файлы редакторов
+.vscode/
+.idea/
+
+# кэш-папки сборщиков
+.cache/
+.parcel-cache/
+
+# env-файлы с ключами и приватными данными
+.env
+.env.local
+.env.*.local
+
+# файлы тестов и покрытие
+coverage/
+
+# локальные файлы и настройки
+*.local
+*.log
+
+# временные файлы macOS/Linux
+*.swp
+*.swo
+
+# all docs with .map extension will be ignored
+*.map
