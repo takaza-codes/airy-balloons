@@ -1,0 +1,19 @@
+// import files with variables, mixins, media, base
+@import "./variables";
+@import "./mixins";
+@import "./media";
+@import "./base";
+
+// import fonts
+@import "../fonts/fonts";
+
+// link normalize
+@import "./normalize.css";
+
+// common blocks
+
+// link landing page
+// здесь можно еще каждый блок по отдельным файлам записать
+
+// link product page
+@import "./product-page";
