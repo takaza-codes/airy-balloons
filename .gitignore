@@ -1,0 +1,11 @@
+# системные файлы ОС
+.DS_Store
+Thumbs.db
+
+# папка сборки (если есть)
+dist/
+build/
+
+# all docs with .map extension will be ignored
+*.map
+
