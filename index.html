@@ -26,40 +26,31 @@
       <main>
         <div class="container">
           <div class="product-card" id="productCard">
-            <!-- ДИНАМИЧЕСКИ ЗАПОЛНЯЕМЫЙ КОНТЕНТ -->
-            <!-- Галерея изображений товара -->
+
+            <!-- Блок с основным изображением (розовый фон) -->
             <div class="product-images">
               <div class="main-image">
                 <img id="mainImage" src="" alt="Товар" />
-                <div class="arrow arrow-right" id="arrowRight">&#10095;</div>
               </div>
-              <div class="thumbnails" id="thumbnails"></div>
             </div>
 
             <!-- Информация о товаре -->
             <div class="product-info">
               <h1 class="product-title" id="productTitle"></h1>
-              <div class="price-block">
-                <span class="old-price" id="oldPrice"></span>
-                <span class="product-price" id="productPrice"></span>
-                <span class="discount" id="discount"></span>
-              </div>
-              <p class="composition" id="composition"></p>
-              <h2 class="set-number" id="setNumber"></h2>
-              <p class="set-price" id="setPrice"></p>
+              <p class="product-price" id="productPrice"></p>
               <p class="description" id="description"></p>
 
               <button class="btn">В корзину</button>
             </div>
+
           </div>
         </div>
       </main>
     </div>
   </div>
 
-  <!-- Подключаем скрипты -->
+  <!-- Подключаем скрипты (без type="module", т.к. используем глобальную переменную products) -->
   <script src="./assets/scripts/data.js"></script>
-  <script src="./assets/scripts/product-slider.js"></script>
-  <script src="./assets/scripts/main.js"></script>
+  <script src="./assets/scripts/catalog.js"></script>
 </body>
 </html>
