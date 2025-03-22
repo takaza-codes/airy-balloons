@@ -1,0 +1,73 @@
+// миксины для отступов
+@mixin padding-1920 {
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+
+@mixin padding-768 {
+  padding-left: 4%; //32px примерно
+  padding-right: 4%;
+}
+
+@mixin padding-440 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+// Базовый миксин для Montserrat
+@mixin Montserrat-base {
+  font-family: $font-Montserrat;
+  font-style: normal;
+}
+
+// Миксины с разными весами
+@mixin Montserrat-700-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-700;
+}
+
+@mixin Montserrat-600-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-600;
+}
+
+@mixin Montserrat-500-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-500;
+}
+
+@mixin Montserrat-400-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-400;
+}
+
+@mixin Montserrat-300-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-300;
+}
+
+// Миксины для заголовков (h1–h6)
+@mixin h1 {
+  @include Montserrat-700-base;
+  font-size: $font-size-h1;
+}
+
+@mixin h2 {
+  @include Montserrat-700-base;
+  font-size: $font-size-h2;
+}
+
+@mixin h3 {
+  @include Montserrat-600-base;
+  font-size: $font-size-h3;
+}
+
+@mixin h4 {
+  @include Montserrat-500-base;
+  font-size: $font-size-h4;
+}
+
+@mixin h5 {
+  @include Montserrat-400-base;
+  font-size: $font-size-regular;
+}
