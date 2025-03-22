@@ -1,4 +1,4 @@
-/* Пример базового стиля кнопки */
+/* Пример шаблона базового стиля кнопки */
 .btn {
   @include Montserrat-600-base; /* Используем Montserrat с весом 600 (Semibold) */
   font-size: $font-size-regular; 
