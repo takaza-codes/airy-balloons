@@ -1,0 +1,35 @@
+
+/* ---------------------------------
+   Стили для каталога и модального окна
+----------------------------------- */
+
+/* Каталог (простой пример) */
+.catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px; // при желании используйте миксины отступов
+}
+
+/* Карточка в каталоге (мини-версия) */
+.catalog-item {
+  border: 1px solid #ccc;
+  padding: 16px;
+  width: 220px;
+  text-align: center;
+
+  h2 {
+    @include Montserrat-700-base;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .btn {
+    margin-top: 8px;
+    background-color: $red;
+    color: $white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+}
