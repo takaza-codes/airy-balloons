@@ -1,4 +1,5 @@
 //Отображение товаров, добавленных в корзину
+const cartList = document.getElementById('cartList')
 
 // document.addEventListener('DOMContentLoaded', renderCart());
 
@@ -16,7 +17,11 @@
 //             li.innerHTML = `
 //             <div class="itemImage"><img src="${item.images}" alt="Фото товара" class="itemPhoto"></div>
 //                 <p class="itemName">p${item.title}</p>
-//                 <div class="itemNumber">1</div>
+//                 <div class="itemCounter">
+//     <button class="decrement">−</button>
+//     <span class="quantity">1</span>
+//     <button class="increment">+</button>
+//     </div>
 //                 <h4 class="price">${item.price}</h4>
 //                 <button class="removeBtn" data-index="${index}>X</button>`
 //             cartList.appendChild(li);
@@ -28,9 +33,7 @@
 const removeBtns = document.querySelectorAll('.removeBtn');
 removeBtns.forEach(button => {
     button.addEventListener('click', function () {
-        const index = this.dataset.index;
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        document.querySelector('.cartItem').innerHTML = '';
         // location.reload();
     });
 });
@@ -98,31 +101,117 @@ decrementBtn.addEventListener("click", () => {
 
 //Отображение деталей заказа до формы
 
+
+
 //Отображение деталей заказа после формы
 
-//Валидация формы
 
-//Валидация имени (регэкп)
-//Валидация номера тел (регэксп)
+
+//Валидация формы
+const orderForm = document.forms.orderForm;
+const clientName = orderForm.elements.clientName;
+const errorName = document.getElementById('errorName');
+const clientTel = orderForm.elements.clientTel;
+const errorTel = document.getElementById('errorTel');
+const deliveryOption = orderForm.elements.deliveryOption;
+const errorDelivery = document.getElementById('errorDelivery');
+const deliveryAddress = orderForm.elements.deliveryAddress;
+const errorAddress = document.getElementById('errorAddress');
+const policyCheckbox = orderForm.elements.policyCheckbox;
+const policyError = document.getElementById('checkboxError');
+const makeOrderBtn = document.getElementById('makeOrderBtn');
+
+function validateUsername(name) {
+  let regex = /^[а-яА-Я ]+$/;
+  return regex.test(name.trim());
+}
+
+function validateTel(tel) {
+  let regex = /^((\+7|8)+([0-9]){10})$/;
+  return regex.test(tel);
+}
+
+function validateAddress(address) {
+  if((address.value.trim() === '' && (Number(address.value) > 0)) || (address.validity.patternMismatch)) {
+    return false;
+  }
+}
+
+policyCheckbox.addEventListener('change', function () {
+  if (policyCheckbox.checked) {
+      policyError.style.display = 'none';
+      makeOrderBtn.removeAttribute('disabled');
+
+  } else {
+    policyError.textContent = 'Необходимо согласие с условиями';
+    policyError.style.display = 'block';
+    makeOrderBtn.setAttribute('disabled', "");
+  }
+});
+
+orderForm.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+  let hasError = false;
+  errorName.style.display = 'none';
+  errorTel.style.display = 'none';
+  errorAddress.style.display = 'none';
+  policyError.style.display = 'none';
+
+  if ((clientName.value.trim() === '') || (!validateUsername(clientName.value))) {
+    errorName.textContent = 'Укажите Ваше имя';
+    errorName.style.display = 'block';
+    clientName.style.margin = '0';
+    hasError = true;
+  }
+
+  if (!validateTel(clientTel.value)) {
+    errorTel.textContent = 'Укажите Ваш номер телефона';
+    errorTel.style.display = 'block';
+    clientTel.style.margin = '0';
+    hasError = true;
+  }
+
+  if (validateAddress(deliveryAddress)) {
+    errorAddress.textContent = 'Укажите адрес для доставки заказа';
+    errorAddress.style.display = 'block';
+    hasError = true;
+  }
+
+  if (!deliveryOption.value) {
+    errorDelivery.textContent = 'Выберите один из вариантов получения товара'
+    hasError = true;
+  }
+
+  if (!policyCheckbox.checked) {
+        hasError = true;
+    }
+
+  if (!hasError) {
+      const orderInfo = [clientName.value, clientTel.value, deliveryOption.value, deliveryAddress.value];
+      alert('Форма заказа успешно отправлена!');
+      console.log(orderInfo);
+      orderForm.reset();
+      }
+});
+
+
 //Валидация способа получения
-//Валидация чекбокса
-//Разблокирование кнопки
 
 
 
 
 //Очистка/сброс корзины
-const clearCartBtn = document.getElementById(clearCartBtn);
+const clearCartBtn = document.getElementById('clearCartBtn');
 clearCartBtn.addEventListener('click', () => {
+    document.querySelector('.cartItems').innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
     localStorage.setItem('cart') = [];
 });
 
 
 //Отправка формы в мессенджер
-const makeOrderBtn = document.getElementById('makeOrderButton');
-makeOrderBtn.addEventListener('click', () => {
-    validateForm();
-    if (validateForm()){
-        //
-    }
-})
+// makeOrderBtn.addEventListener('click', () => {
+//     validateForm();
+//     if (validateForm()){
+//         //
+//     }
+// })

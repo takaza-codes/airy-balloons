@@ -18,13 +18,17 @@
         <ul id="cartList">
             <li class="cartItem">
                 <div class="itemImage"><img src="/assets/photos/for-man/for-man-01.jpeg" alt="Фото товара" class="itemPhoto"></div>
-                <p class="itemName">Для девочки</p>
-                <div class="itemNumber">1</div>
+                <p class="itemName">Для мужчины</p>
+                <div class="itemCounter">
+                  <button class="decrement">−</button>
+                  <span class="quantity">1</span>
+                  <button class="increment">+</button>
+                </div>
                 <h4 class="price">3450</h4>
                 <button class="removeBtn">X</button>
             </li>
             <li class="cartItem">
-              <div class="itemImage"></div>
+              <div class="itemImage"><img src="/assets/photos/for-girl/for-girl-01.jpeg" alt="Фото товара" class="itemPhoto"></div>
               <p class="itemName">Для девочки</p>
               <div class="itemCounter">
                 <button class="decrement">−</button>
@@ -43,12 +47,12 @@
           <p id="totalSum">10000</p>
         </div>
       </div>
-      <form id="orderForm" action="">
+      <form id="orderForm" name="orderForm" action="" novalidate>
         <label for="clientName">Имя</label>
-        <input type="text" name="clientName" id="clientName" placeholder="Ваше имя">
+        <input type="text" name="clientName" id="clientName" placeholder="Ваше имя" required>
         <span class="validationError" id="errorName"></span>
         <label for="clientTel">Номер телефона</label>
-        <input type="tel" name="clientTel" id="clientTel" placeholder="Контактный номер телефона">
+        <input type="tel" name="clientTel" id="clientTel" placeholder="Контактный номер телефона" required>
         <span class="validationError" id="errorTel"></span>
       <div id="deliveryOptions">
         Получение заказа
@@ -60,7 +64,7 @@
         <span class="validationError" id="errorDelivery"></span>
       </div>
       <label for="deliveryAddress">Адрес доставки</label>
-      <input type="text" name="deliveryAddress" id="deliveryAddress" placeholder="Улица, дом, подъезд">
+      <input type="text" name="deliveryAddress" id="deliveryAddress" placeholder="Улица, дом, подъезд" pattern="^[a-zA-Z0-9,\\.]+$">
       <span class="validationError" id="errorAddress"></span>
       <label for="deliveryDate">Дата и время доставки</label>
       <input type="datetime-local" name="deliveryDate" id="deliveryDate">
@@ -73,16 +77,16 @@
           представленной информации на условиях
           <a href="#">Политики обработки персональных данных.</a></label
         >
-        <span class="validationError" id="checkbockError"></span>
       </div>
+      <div class="validationError" id="checkboxError"></div>
       <div class="orderFinal">
         <h3>Детали заказа</h3>
         <p>Товары</p>
-        <p id="totalItemsSum">3</p>
+        <p id="totalItemsSum">5350</p>
         <p>Стоимость доставки</p>
         <p id="deliveryPrice">300</p>
         <p>Итого</p>
-        <p id="totalOrderSum"></p>
+        <p id="totalOrderSum">5650</p>
       </div>
         <div class="formBtns">
         <button type="submit" class="btn" id="makeOrderBtn" disabled>Оформить заказ</button>

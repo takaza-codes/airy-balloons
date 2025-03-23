@@ -27,6 +27,7 @@ $letter-spacing: 0.03rem;
 
 html {
   font-family: $font-Montserrat;
+  color: $black;
   @include font;
   @include padding-1920;
   @include padding-768;
@@ -41,6 +42,22 @@ html {
 
   h2 {
     font-size: $font-size-h3;
+    font-weight: $font-weight-600;
+  }
+
+  #goBack {
+    @include tablets {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      max-width: 180px;
+    }
+
+    @include phones {
+      font-size: 0.85rem;
+      padding: 0;
+      max-width: 120px;
+      max-height: 46px;
+    }
   }
 }
 
@@ -71,20 +88,30 @@ html {
     .cartItem {
       padding: 10px 0;
       display: grid;
-      grid-template-columns: 1fr 1fr 10% 15% 10%;
+      grid-template-columns: 1fr 1fr 10% 15% 12%;
       align-items: center;
       border-top: 1px solid gray;
       border-bottom: 0.5px solid gray;
 
       @include phones {
         grid-template-columns: 50% 1fr 1fr;
-        grid-template-rows: 150px auto;
+        grid-template-rows: 1rem 90px auto;
         .itemName {
           grid-column: 2 / 4;
           font-size: 1rem;
         }
+
+        .itemImage {
+          grid-row: 1 / 4;
+        }
+
         .itemCounter {
-          justify-self: center;
+          grid-column: 2 / 3;
+        }
+
+        .removeBtn {
+          grid-column: 3 / 4;
+          grid-row: 1 / 2;
         }
       }
 
@@ -114,7 +141,7 @@ html {
         display: flex;
         align-items: center;
         gap: 10px;
-        border: 1px solid black;
+        border: 1px solid $black;
         border-radius: 6px;
         max-width: 80px;
 
@@ -134,12 +161,12 @@ html {
         }
         .increment {
           border-radius: 0 6px 6px 0;
-          border-left: 1px solid black;
+          border-left: 1px solid $black;
         }
 
         .decrement {
           border-radius: 6px 0 0 6px;
-          border-right: 1px solid black;
+          border-right: 1px solid $black;
         }
       }
 
@@ -147,13 +174,14 @@ html {
         @include h4;
         @include pricefont;
         letter-spacing: $letter-spacing;
-        justify-self: center;
+        justify-self: end;
         @include phones {
           justify-self: end;
         }
       }
 
       .removeBtn {
+        // align-self: start;
         border: none;
         background-color: transparent;
         justify-self: right;
@@ -162,26 +190,27 @@ html {
       }
     }
   }
+}
 
-  .orderDetails {
-    align-self: flex-end;
-    padding-right: 2rem;
-    display: grid;
-    grid-template-columns: 70% 5rem;
-    grid-template-rows: repeat(3, 1fr);
+.orderDetails {
+  align-self: flex-end;
+  padding-right: 2rem;
+  display: grid;
+  grid-template-columns: 70% 5rem;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
 
-    h3 {
-      grid-column: 1 / 3;
-      font-weight: $font-weight-600;
-    }
+  h3 {
+    grid-column: 1 / 3;
+    font-weight: $font-weight-600;
+  }
 
-    #totalItems,
-    #totalSum {
-      @include pricefont;
-      justify-self: right;
-      font-size: $font-size-h4;
-      letter-spacing: $letter-spacing;
-    }
+  #totalItems,
+  #totalSum {
+    @include pricefont;
+    justify-self: right;
+    font-size: $font-size-h4;
+    letter-spacing: $letter-spacing;
   }
 }
 
@@ -194,8 +223,9 @@ html {
   input {
     width: 40%;
     height: 2rem;
+    padding: 0.2rem;
     border-radius: 0.5em;
-    border: 2px solid gray;
+    border: 1px solid gray;
     margin-bottom: 1rem;
     @include tablets {
       width: 60%;
@@ -275,6 +305,7 @@ html {
     display: grid;
     grid-template-columns: 70% 5rem;
     grid-template-rows: repeat(3, 4fr);
+    align-items: center;
 
     h3 {
       grid-column: 1 / 3;
@@ -313,9 +344,16 @@ html {
         max-width: 160px;
       }
     }
+    #makeOrderBtn {
+      background-color: $red;
+      color: $white;
+    }
   }
 }
 
 .validationError {
+  padding: 0 0 0.3rem 0;
+  font-size: $font-size-regular;
+  font-weight: $font-weight-400;
   color: $red;
 }
