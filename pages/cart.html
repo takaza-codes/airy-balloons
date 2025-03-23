@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/cart.css">
+    <title>Корзина</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="topContainer">
+        <h2>Корзина</h2>
+        <button id="goBack" onclick="history.back()">Закрыть</button>
+      </div>
+      <div class="cartItems">
+        <div id="emptyMsg">В корзине пусто!</div>
+        <ul id="cartList">
+            <li class="cartItem">
+                <div class="itemImage"></div>
+                <p class="itemName">Для девочки</p>
+                <div class="itemNumber">1</div>
+                <h4 class="price">3450</h4>
+                <button class="removeBtn">X</button>
+            </li>
+            <li class="cartItem">
+              <div class="itemImage"></div>
+              <p class="itemName">Для девочки</p>
+              <div class="itemNumber">1</div>
+              <h4 class="price">3450</h4>
+              <button class="removeBtn">X</button>
+          </li>
+        </ul>
+        <div class="orderDetails">
+          <h3>Детали заказа</h3>
+          <p>Количество</p>
+          <p id="totalItems">3</p>
+          <p>Сумма</p>
+          <p id="totalSum">10000</p>
+        </div>
+      </div>
+      <form id="orderForm" action="">
+        <label for="clientName">Имя</label>
+        <input type="text" name="clientName" id="clientName" placeholder="Ваше имя">
+        <label for="clientTel">Номер телефона</label>
+        <input type="tel" name="clientTel" id="clientTel" placeholder="Контактный номер телефона">
+      <div id="deliveryOptions">
+        Получение заказа
+        <!-- <input type="checkbox" name="pickup" id="pickup">
+        <label for="pickup">Самовывоз (ул. Свердлова, 33)</label>
+        <input type="checkbox" name="delivery" id="delivery">
+        <label for="delivery">Доставка по городу</label> -->
+        <label><input type="radio" name="deliveryOption" value="pickup">Самовывоз (ул. Свердлова, 33)</label>
+        <label><input type="radio" name="deliveryOption" value="delivery">Доставка по городу</label>
+      </div>
+      <label for="deliveryAddress">Адрес доставки</label>
+      <input type="text" name="deliveryAddress" id="deliveryAddress" placeholder="Улица, дом, подъезд">
+      <label for="deliveryDate">Дата и время доставки</label>
+      <input type="datetime-local" name="deliveryDate" id="deliveryDate">
+      <label for="orderComment">Комментарий к заказу</label>
+      <input type="text" name="orderComment" id="orderComment">
+      <div class="agreePolicy">
+        <input type="checkbox" name="policyCheckbox" id="policyCheckbox" />
+        <label for="policyCheckbox"
+          >Я даю согласие на обработку, сбор, хранение и передачу третьим лицам
+          представленной информации на условиях
+          <a href="#">Политики обработки персональных данных.</a></label
+        >
+        </div>
+        <div class="formBtns">
+        <button type="submit" id="makeOrderBtn" disabled>Оформить заказ</button>
+        <button type="reset" id="clearCartBtn">Очистить корзину</button>
+        </div>
+      </form>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="/assets/scripts/cart.js"></script>
+  </body>
+</html>
