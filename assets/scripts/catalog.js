@@ -10,7 +10,7 @@ function renderCatalog() {
     const itemEl = document.createElement('div');
     itemEl.classList.add('catalog-item');
 
-    // Вместо кнопки «Подробнее», используем ссылку <a>, ведущую на product.html?id=...
+    // Вместо кнопки «Подробнее», используем ссылку <a>, ведущую на product-page.html?id=...
     // Чтобы вставить картинку, проверяем: если images есть и не пуст, берём [0], иначе заглушку
     itemEl.innerHTML = `
       <img
@@ -22,8 +22,8 @@ function renderCatalog() {
       />
       <h2>${product.title}</h2>
       <p class="price">${product.price}₽</p>
-      <!-- Ссылка на страницу товара (product.html), с передачей ID в query-параметре -->
-      <a href="product.html?id=${product.id}" class="btn">Подробнее</a>
+      <!-- Ссылка на страницу товара (product-page.html), с передачей ID в query-параметре -->
+      <a href="product-page.html?id=${product.id}" class="btn">Подробнее</a>
     `;
 
     catalogEl.appendChild(itemEl);

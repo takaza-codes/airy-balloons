@@ -178,210 +178,228 @@ h6 {
   background-color: #c70f42; /* затемняем цвет при ховере */
 }
 
-/* Модальное окно (оверлей) */
-.product-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none; /* скрыто по умолчанию */
-  overflow-y: auto;
-  z-index: 9999;
+/***************************************************
+ * 1) Стили для header, footer, контейнеров
+ ***************************************************/
+/* Тестовый хедер */
+.site-header {
+  background-color: rgb(242, 215, 219);
+  padding: 20px 0;
 }
-
-/* Содержимое модалки */
-.modal-content {
-  position: relative;
-  max-width: 1200px;
-  margin: 40px auto;
-  background: rgb(255, 255, 255);
-  border-radius: 8px;
-  padding: 20px;
-}
-
-/* Кнопки внутри модалки */
-.back-to-catalog,
-.close-modal {
-  position: absolute;
-  top: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.back-to-catalog {
-  left: 1rem;
-}
-
-.close-modal {
-  right: 1rem;
-  font-size: 1.5rem;
-}
-
-/* ---------------------------------
-   Стили для карточки товара (product-card)
------------------------------------ */
-/* Основной контейнер (внутри модалки) */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+.site-header .container {
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
 @media screen and (max-width: 768px) {
-  .container {
-    padding-top: 16px;
-    padding-bottom: 16px;
+  .site-header .container {
     padding-left: 4%;
     padding-right: 4%;
   }
 }
 @media screen and (max-width: 440px) {
-  .container {
-    padding-top: 8px;
-    padding-bottom: 8px;
+  .site-header .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.site-header .container h1 {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  color: rgb(30, 26, 26);
+  margin: 0;
+}
+
+/* Тестовый футер */
+.site-footer {
+  background-color: rgb(242, 215, 219);
+  padding: 20px 0;
+  margin-top: 40px;
+}
+.site-footer .container {
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .site-footer .container {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .site-footer .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.site-footer .container p {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgb(30, 26, 26);
+  margin: 0;
+  text-align: center;
+}
+
+/* Основной контейнер для страницы товара */
+.product-page {
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+  margin: 40px auto;
+}
+@media screen and (max-width: 768px) {
+  .product-page {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .product-page {
     padding-left: 16px;
     padding-right: 16px;
   }
 }
 
-/* Секция карточки товара */
+/* Кнопка «Вернуться в каталог» по центру */
+.back-to-catalog-wrap {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Стили для кнопки «Вернуться в каталог» */
+.back-to-catalog-btn {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  text-decoration: none; /* убрать подчеркивание у ссылки */
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.back-to-catalog-btn:hover {
+  background-color: #c70f42;
+}
+
+/***************************************************
+ * 2) Стили для карточки товара (product-card)
+ ***************************************************/
 .product-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 32px;
   align-items: flex-start;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  /* Левая часть (изображение) */
+  /* Правая часть (информация о товаре) */
 }
 @media screen and (max-width: 768px) {
   .product-card {
     grid-template-columns: 1fr;
   }
 }
-
-/* Блок с изображением (убраны стрелки и миниатюры) */
-.product-images {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background-color: rgb(242, 215, 219);
-  border-radius: 8px;
+.product-card .product-images {
+  background-color: #fffdfe;
   padding: 20px;
+  margin-bottom: 48px;
 }
-.product-images .main-image {
+.product-card .product-images .main-image {
   position: relative;
   width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
 }
-.product-images .main-image img {
+.product-card .product-images .main-image img {
   display: block;
-  width: 100%;
-  max-width: 400px;
+  max-width: 100%;
   margin: 0 auto;
   border-radius: 8px;
 }
-@media screen and (max-width: 768px) {
-  .product-images .main-image img {
-    max-width: 300px;
-  }
-}
-@media screen and (max-width: 440px) {
-  .product-images .main-image img {
-    max-width: 100%;
-  }
-}
-
-/* Блок информации о товаре */
-.product-info {
+.product-card .product-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* Заголовок товара */
-  /* Блок цены со старой ценой и скидкой (если он нужен) */
-  /* Состав композиции (при необходимости) */
+  padding: 20px;
+  /* Выделение цены (фон, скруглённые углы) */
+  /* Сюда можно выводить список состава */
+  /* Кнопка «В корзину» */
 }
-.product-info .product-title {
+.product-card .product-info .product-title {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 700;
-  /* Полужирный Montserrat */
-  font-size: 2rem; /* Базовый размер */
-  margin-bottom: 16px;
+  font-size: 56px;
   color: rgb(30, 26, 26);
+  margin-bottom: 16px;
+}
+.product-card .product-info .product-price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(238, 27, 85);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
 }
 @media screen and (max-width: 768px) {
-  .product-info .product-title {
+  .product-card .product-info .product-price {
     font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 440px) {
-  .product-info .product-title {
+  .product-card .product-info .product-price {
     font-size: 1.4rem;
   }
 }
-.product-info .price-block {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-.product-info .price-block .old-price {
+.product-card .product-info .description {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
-  /* Обычный Montserrat */
-  text-decoration: line-through;
+  font-size: 16px;
+  line-height: normal;
   color: rgb(30, 26, 26);
-  opacity: 0.6;
+  margin-bottom: 20px;
 }
-.product-info .price-block .product-price {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  /* Полужирный Montserrat */
-  font-size: 1.8rem;
-  color: rgb(238, 27, 85);
-}
-@media screen and (max-width: 768px) {
-  .product-info .price-block .product-price {
-    font-size: 1.6rem;
-  }
-}
-@media screen and (max-width: 440px) {
-  .product-info .price-block .product-price {
-    font-size: 1.4rem;
-  }
-}
-.product-info .price-block .discount {
+.product-card .product-info .btn {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 600;
-  /* Чуть менее жирный Montserrat */
-  color: rgb(238, 27, 85);
-  font-size: 1rem;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
-.product-info .composition {
+.product-card .product-info .btn:hover {
+  background-color: #c70f42;
+}
+
+/***************************************************
+ * 3) Стили для списков состава (если нужно)
+ ***************************************************/
+.composition-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.composition-list li {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
-  /* Обычный Montserrat */
-  margin-top: 16px;
-  font-size: 1rem;
-  line-height: 1.4;
-}
-.product-info .composition span {
-  font-weight: bold;
-}
-@media screen and (max-width: 768px) {
-  .product-info .composition {
-    font-size: 0.95rem;
-  }
-}
-@media screen and (max-width: 440px) {
-  .product-info .composition {
-    font-size: 0.9rem;
-  }
+  font-size: 16px;
+  color: rgb(30, 26, 26);
+  margin-bottom: 4px;
 }
