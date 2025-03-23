@@ -1,0 +1,202 @@
+/***************************************************
+ * 1) Стили для header, footer, контейнеров
+ ***************************************************/
+
+/* Тестовый хедер */
+.site-header {
+  background-color: $pink;
+  padding: 20px 0;
+
+  .container {
+    @include padding-1920;
+
+    @include tablets {
+      @include padding-768;
+    }
+    @include phones {
+      @include padding-440;
+    }
+
+    h1 {
+      @include h2; 
+      color: $black;
+      margin: 0;
+    }
+  }
+}
+
+/* Тестовый футер */
+.site-footer {
+  background-color: $pink;
+  padding: 20px 0;
+  margin-top: 40px;
+
+  .container {
+    @include padding-1920;
+
+    @include tablets {
+      @include padding-768;
+    }
+    @include phones {
+      @include padding-440;
+    }
+
+    p {
+      @include Montserrat-400-base;
+      font-size: $font-size-regular;
+      color: $black;
+      margin: 0;
+      text-align: center;
+    }
+  }
+}
+
+/* Основной контейнер для страницы товара */
+.product-page {
+  @include padding-1920;
+  margin: 40px auto;
+
+  @include tablets {
+    @include padding-768;
+  }
+  @include phones {
+    @include padding-440;
+  }
+}
+
+/* Кнопка «Вернуться в каталог» по центру */
+.back-to-catalog-wrap {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Стили для кнопки «Вернуться в каталог» */
+.back-to-catalog-btn {
+  @include Montserrat-600-base;
+  background-color: $red;
+  color: $white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: $font-size-regular;
+  text-decoration: none; /* убрать подчеркивание у ссылки */
+  display: inline-block;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($red, 10%);
+  }
+}
+
+/***************************************************
+ * 2) Стили для карточки товара (product-card)
+ ***************************************************/
+
+.product-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: flex-start;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+
+  @include tablets {
+    grid-template-columns: 1fr;
+  }
+
+  /* Левая часть (изображение) */
+  .product-images {
+    background-color: lighten($pink, 10%);
+    padding: 20px;
+
+    .main-image {
+      position: relative;
+      width: 100%;
+
+      img {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  /* Правая часть (информация о товаре) */
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+
+    .product-title {
+      @include h2;
+      color: $black;
+      margin-bottom: 16px;
+    }
+
+    /* Выделение цены (фон, скруглённые углы) */
+    .product-price {
+      @include Montserrat-700-base;
+      font-size: 1.8rem;
+      color: $white;
+      background-color: $red;
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+
+      @include tablets {
+        font-size: 1.6rem;
+      }
+      @include phones {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Сюда можно выводить список состава */
+    .description {
+      @include Montserrat-400-base;
+      font-size: $font-size-regular;
+      line-height: $line-height;
+      color: $black;
+      margin-bottom: 20px;
+    }
+
+    /* Кнопка «В корзину» */
+    .btn {
+      @include Montserrat-600-base;
+      background-color: $red;
+      color: $white;
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-size: $font-size-regular;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($red, 10%);
+      }
+    }
+  }
+}
+
+/***************************************************
+ * 3) Стили для списков состава (если нужно)
+ ***************************************************/
+
+.composition-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+
+  li {
+    @include Montserrat-400-base;
+    font-size: $font-size-regular;
+    color: $black;
+    margin-bottom: 4px;
+  }
+}

@@ -1,22 +1,43 @@
-// Находим контейнер для вывода товара
+// product.js
+
+// Находим контейнер
 const productPageEl = document.getElementById('productPage');
 
-// Считываем параметр "id" из URL, например product.html?id=5
+// Считываем ?id=... из URL
 const urlParams = new URLSearchParams(window.location.search);
-const productId = +urlParams.get('id'); // преобразуем в число
+const productId = +urlParams.get('id');
 
-// Ищем товар в массиве products
+// Ищем товар
 const product = products.find((p) => p.id === productId);
 
 if (!product) {
-  // Если товар не найден, показываем сообщение
   productPageEl.innerHTML = '<p>Товар не найден!</p>';
 } else {
-  // Выводим карточку товара
-  // Если images нет или пуст, ставим заглушку
+  // Разделяем текст description по переводам строк
+  // (или ищем маркеры "•" и делаем из них пункты списка)
+  const lines = product.description
+    .split('\n')            // Разбиваем на строки
+    .map(line => line.trim())
+    .filter(line => line);  // Убираем пустые строки
+
+  // Формируем <li>...</li> для каждого пункта
+  const listItems = lines.map(line => {
+    // Удаляем начальный "• ", если есть
+    if (line.startsWith('• ')) {
+      line = line.substring(2);
+    }
+    return `<li>${line}</li>`;
+  }).join('');
+
+  // Собираем список
+  const compositionHtml = `<ul class="composition-list">${listItems}</ul>`;
+
+  // Генерируем финальный HTML карточки
+  // Обратите внимание, что вместо product.description
+  // выводим переменную compositionHtml (список)
   const mainImage = (product.images && product.images.length > 0)
     ? product.images[0]
-    : 'assets/images/no-image.jpg';
+    : '../assets/images/no-image.jpg';
 
   productPageEl.innerHTML = `
     <div class="product-card">
@@ -29,12 +50,9 @@ if (!product) {
       <div class="product-info">
         <h2 class="product-title">${product.title}</h2>
         <p class="product-price">${product.price}₽</p>
-        <p class="description">${product.description}</p>
+        ${compositionHtml}
         <button class="btn">В корзину</button>
       </div>
     </div>
-
-    <!-- Ссылка вернуться в каталог -->
-    <p><a href="catalog.html">← Вернуться в каталог</a></p>
   `;
 }
