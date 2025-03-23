@@ -12,13 +12,12 @@
     <main>
       <div class="topContainer">
         <h2>Корзина</h2>
-        <button id="goBack" onclick="history.back()">Закрыть</button>
+        <button class="btn" id="goBack" onclick="history.back()">Закрыть</button>
       </div>
       <div class="cartItems">
-        <div id="emptyMsg">В корзине пусто!</div>
         <ul id="cartList">
             <li class="cartItem">
-                <div class="itemImage"></div>
+                <div class="itemImage"><img src="/assets/photos/for-man/for-man-01.jpeg" alt="Фото товара" class="itemPhoto"></div>
                 <p class="itemName">Для девочки</p>
                 <div class="itemNumber">1</div>
                 <h4 class="price">3450</h4>
@@ -27,7 +26,11 @@
             <li class="cartItem">
               <div class="itemImage"></div>
               <p class="itemName">Для девочки</p>
-              <div class="itemNumber">1</div>
+              <div class="itemCounter">
+                <button class="decrement">−</button>
+                <span class="quantity">1</span>
+                <button class="increment">+</button>
+              </div>
               <h4 class="price">3450</h4>
               <button class="removeBtn">X</button>
           </li>
@@ -43,19 +46,22 @@
       <form id="orderForm" action="">
         <label for="clientName">Имя</label>
         <input type="text" name="clientName" id="clientName" placeholder="Ваше имя">
+        <span class="validationError" id="errorName"></span>
         <label for="clientTel">Номер телефона</label>
         <input type="tel" name="clientTel" id="clientTel" placeholder="Контактный номер телефона">
+        <span class="validationError" id="errorTel"></span>
       <div id="deliveryOptions">
         Получение заказа
-        <!-- <input type="checkbox" name="pickup" id="pickup">
-        <label for="pickup">Самовывоз (ул. Свердлова, 33)</label>
-        <input type="checkbox" name="delivery" id="delivery">
-        <label for="delivery">Доставка по городу</label> -->
-        <label><input type="radio" name="deliveryOption" value="pickup">Самовывоз (ул. Свердлова, 33)</label>
-        <label><input type="radio" name="deliveryOption" value="delivery">Доставка по городу</label>
+        <label><input type="radio" name="deliveryOption" value="0">Самовывоз (Тольятти, ул. Свердлова, 23)</label>
+        <label><input type="radio" name="deliveryOption" value="300">Доставка по городу в Автозаводской район 300 руб.</label>
+        <label><input type="radio" name="deliveryOption" value="400">Доставка по городу в Центральный район 400 руб.</label>
+        <label><input type="radio" name="deliveryOption" value="550">Доставка по городу в Комсомольский/Шлюзовой район 550 руб.</label>
+        <label><input type="radio" name="deliveryOption" value="0">Рассчитать удаленную доставку</label>
+        <span class="validationError" id="errorDelivery"></span>
       </div>
       <label for="deliveryAddress">Адрес доставки</label>
       <input type="text" name="deliveryAddress" id="deliveryAddress" placeholder="Улица, дом, подъезд">
+      <span class="validationError" id="errorAddress"></span>
       <label for="deliveryDate">Дата и время доставки</label>
       <input type="datetime-local" name="deliveryDate" id="deliveryDate">
       <label for="orderComment">Комментарий к заказу</label>
@@ -67,15 +73,26 @@
           представленной информации на условиях
           <a href="#">Политики обработки персональных данных.</a></label
         >
-        </div>
+        <span class="validationError" id="checkbockError"></span>
+      </div>
+      <div class="orderFinal">
+        <h3>Детали заказа</h3>
+        <p>Товары</p>
+        <p id="totalItemsSum">3</p>
+        <p>Стоимость доставки</p>
+        <p id="deliveryPrice">300</p>
+        <p>Итого</p>
+        <p id="totalOrderSum"></p>
+      </div>
         <div class="formBtns">
-        <button type="submit" id="makeOrderBtn" disabled>Оформить заказ</button>
-        <button type="reset" id="clearCartBtn">Очистить корзину</button>
+        <button type="submit" class="btn" id="makeOrderBtn" disabled>Оформить заказ</button>
+        <button type="reset" class="btn" id="clearCartBtn">Очистить корзину</button>
         </div>
       </form>
       </div>
     </main>
     <footer></footer>
+    <script src="/assets/scripts/data.js"></script>
     <script src="/assets/scripts/cart.js"></script>
   </body>
 </html>
