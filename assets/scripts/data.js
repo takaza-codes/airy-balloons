@@ -5,6 +5,7 @@ const products = [
   // ———————————————————————————
   {
     id: 1,
+    category: "bachelorette",
     title: "Набор воздушных шаров на девичник №8",
     price: 3050,
     description: `Состав:
@@ -18,6 +19,7 @@ const products = [
   },
   {
     id: 2,
+    category: "bachelorette",
     title: "Шар-бум со сменой фамилии на девичник",
     price: 2650,
     description: `Состав:
@@ -32,6 +34,7 @@ const products = [
   },
   {
     id: 3,
+    category: "bachelorette",
     title: "Набор воздушных шаров на девичник №9",
     price: 3500,
     description: `Состав:
@@ -49,6 +52,7 @@ const products = [
   // ———————————————————————————
   {
     id: 4,
+    category: "boy",
     title: "Набор воздушных шаров для мальчика №16",
     price: 4550,
     description: `Состав:
@@ -63,6 +67,7 @@ const products = [
   },
   {
     id: 5,
+    category: "boy",
     title: "Набор воздушных шаров для мальчика №17",
     price: 2950,
     description: `Состав:
@@ -76,6 +81,7 @@ const products = [
   },
   {
     id: 6,
+    category: "boy",
     title: "Набор воздушных шаров для мальчика №18",
     price: 5150,
     description: `Состав:
@@ -94,6 +100,7 @@ const products = [
   // ———————————————————————————
   {
     id: 7,
+    category: "girl",
     title: "Набор воздушных шаров для девочки №10",
     price: 3150,
     description: `Состав:
@@ -107,6 +114,7 @@ const products = [
   },
   {
     id: 8,
+    category: "girl",
     title: "Набор воздушных шаров для девочки №11",
     price: 6100,
     description: `Состав:
@@ -120,6 +128,7 @@ const products = [
   },
   {
     id: 9,
+    category: "girl",
     title: "Набор воздушных шаров для девочки №12",
     price: 5150,
     description: `Состав:
@@ -137,6 +146,7 @@ const products = [
   // ———————————————————————————
   {
     id: 10,
+    category: "man",
     title: "Набор воздушных шаров для мужчины №19",
     price: 4750,
     description: `Состав:
@@ -150,6 +160,7 @@ const products = [
   },
   {
     id: 11,
+    category: "man",
     title: "Набор воздушных шаров для парня №20",
     price: 4500,
     description: `Состав:
@@ -163,6 +174,7 @@ const products = [
   },
   {
     id: 12,
+    category: "man",
     title: "Набор воздушных шаров для мужчины №21",
     price: 5450,
     description: `Состав:
@@ -181,6 +193,7 @@ const products = [
   // ———————————————————————————
   {
     id: 13,
+    category: "woman",
     title: "Набор воздушных шаров для девушки №13",
     price: 2750,
     description: `Состав:
@@ -194,6 +207,7 @@ const products = [
   },
   {
     id: 14,
+    category: "woman",
     title: "Набор воздушных шаров для девушки №14",
     price: 5850,
     description: `Состав:
@@ -207,6 +221,7 @@ const products = [
   },
   {
     id: 15,
+    category: "woman",
     title: "Набор воздушных шаров для девушки №15",
     price: 2950,
     description: `Состав:
@@ -224,6 +239,7 @@ const products = [
   // ———————————————————————————
   {
     id: 16,
+    category: "gender-party",
     title: "Шар на определение пола ребёнка №23",
     price: 2900,
     description: `Состав:
@@ -238,6 +254,7 @@ const products = [
   },
   {
     id: 17,
+    category: "gender-party",
     title: "Шар на определение пола ребёнка №24",
     price: 2500,
     description: `Состав:
@@ -251,6 +268,7 @@ const products = [
   },
   {
     id: 18,
+    category: "gender-party",
     title: "Набор воздушных шаров для гендер пати №25",
     price: 5150,
     description: `Состав:
@@ -268,6 +286,7 @@ const products = [
   // ———————————————————————————
   {
     id: 19,
+    category: "newborn",
     title: "Набор воздушных шаров на выписку №1",
     price: 4950,
     description: `Состав:
@@ -281,6 +300,7 @@ const products = [
   },
   {
     id: 20,
+    category: "newborn",
     title: "Набор воздушных шаров на выписку №2",
     price: 6500,
     description: `Состав:
@@ -296,6 +316,7 @@ const products = [
   },
   {
     id: 21,
+    category: "newborn",
     title: "Набор воздушных шаров на выпуск №3",
     price: 4450,
     description: `Состав:
@@ -314,6 +335,7 @@ const products = [
   // ———————————————————————————
   {
     id: 22,
+    category: "valentines",
     title: "Набор воздушных сердец №4",
     price: 6750,
     description: `Состав:
@@ -327,6 +349,7 @@ const products = [
   },
   {
     id: 23,
+    category: "valentines",
     title: "Набор воздушных шаров на 14 февраля №5",
     price: 5700,
     description: `Состав:
@@ -340,6 +363,7 @@ const products = [
   },
   {
     id: 24,
+    category: "valentines",
     title: "Набор воздушных шаров сердца №6",
     price: 3500,
     description: `Состав:
