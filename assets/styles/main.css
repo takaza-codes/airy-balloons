@@ -111,33 +111,140 @@ h6 {
   }
 }
 
-/* Пример SCSS-кода с адаптивом, используя миксины tablets и phones */
-/* Основной контейнер */
+/* Каталог (контейнер) */
+.catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Мини-карточка товара в каталоге */
+.catalog-item {
+  background-color: #fff; /* или $white */
+  border: 1px solid #eee;
+  border-radius: 8px;
+  width: 280px; /* Увеличиваем ширину, чтобы кнопка влезала */
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  /* Небольшая картинка (по ширине карточки) */
+  /* Блок с ценой (без слова «Цена») */
+  /* Кнопка */
+}
+.catalog-item .item-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 140px; /* При желании ограничиваем высоту */
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.catalog-item h2 {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или замените на font-family: 'Montserrat'; font-weight: 700; */
+  font-size: 1.2rem;
+  color: #333; /* или $black, если у вас есть переменная */
+  margin-bottom: 8px;
+}
+.catalog-item .price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или font-weight: 700; */
+  font-size: 1.4rem;
+  color: rgb(238, 27, 85); /* Подчеркнуть цифры цветом */
+  margin-bottom: 12px;
+}
+.catalog-item .btn {
+  display: inline-block;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px; /* Уменьшаем горизонтальные отступы */
+  cursor: pointer;
+  font-size: 0.9rem; /* Чуть уменьшаем шрифт */
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или просто font-weight: 700; */
+}
+.catalog-item .btn:hover {
+  background-color: #c70f42; /* затемняем цвет при ховере */
+}
+
+/* Модальное окно (оверлей) */
+.product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* скрыто по умолчанию */
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+/* Содержимое модалки */
+.modal-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Кнопки внутри модалки */
+.back-to-catalog,
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-to-catalog {
+  left: 1rem;
+}
+
+.close-modal {
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
+/* ---------------------------------
+   Стили для карточки товара (product-card)
+----------------------------------- */
+/* Основной контейнер (внутри модалки) */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
 }
 @media screen and (max-width: 768px) {
   .container {
-    padding: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 4%;
+    padding-right: 4%;
   }
 }
 @media screen and (max-width: 440px) {
   .container {
-    padding: 8px;
-  }
-}
-
-.breadcrumbs ul {
-  list-style: none;
-  display: flex;
-  gap: 8px;
-}
-@media screen and (max-width: 440px) {
-  .breadcrumbs ul {
-    flex-direction: column;
-    gap: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -150,32 +257,39 @@ h6 {
 }
 @media screen and (max-width: 768px) {
   .product-card {
-    /* при ширине до 768px всё будет в один столбец */
     grid-template-columns: 1fr;
   }
 }
 
-/* Изображение товара */
+/* Блок с изображением (убраны стрелки и миниатюры) */
 .product-images {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
   background-color: rgb(242, 215, 219);
   border-radius: 8px;
   padding: 20px;
 }
-.product-images img {
+.product-images .main-image {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.product-images .main-image img {
+  display: block;
   width: 100%;
   max-width: 400px;
+  margin: 0 auto;
   border-radius: 8px;
 }
 @media screen and (max-width: 768px) {
-  .product-images img {
+  .product-images .main-image img {
     max-width: 300px;
   }
 }
 @media screen and (max-width: 440px) {
-  .product-images img {
+  .product-images .main-image img {
     max-width: 100%;
   }
 }
@@ -185,14 +299,17 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* Блок цены со старой ценой и скидкой */
-  /* Состав композиции */
-  /* Кнопка */
+  /* Заголовок товара */
+  /* Блок цены со старой ценой и скидкой (если он нужен) */
+  /* Состав композиции (при необходимости) */
 }
 .product-info .product-title {
-  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* Полужирный Montserrat */
+  font-size: 2rem; /* Базовый размер */
   margin-bottom: 16px;
-  font-weight: bold;
   color: rgb(30, 26, 26);
 }
 @media screen and (max-width: 768px) {
@@ -212,14 +329,21 @@ h6 {
   margin-bottom: 8px;
 }
 .product-info .price-block .old-price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* Обычный Montserrat */
   text-decoration: line-through;
   color: rgb(30, 26, 26);
   opacity: 0.6;
 }
 .product-info .price-block .product-price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* Полужирный Montserrat */
   font-size: 1.8rem;
   color: rgb(238, 27, 85);
-  font-weight: bold;
 }
 @media screen and (max-width: 768px) {
   .product-info .price-block .product-price {
@@ -232,11 +356,18 @@ h6 {
   }
 }
 .product-info .price-block .discount {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  /* Чуть менее жирный Montserrat */
   color: rgb(238, 27, 85);
-  font-weight: bold;
   font-size: 1rem;
 }
 .product-info .composition {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* Обычный Montserrat */
   margin-top: 16px;
   font-size: 1rem;
   line-height: 1.4;
@@ -252,34 +383,5 @@ h6 {
 @media screen and (max-width: 440px) {
   .product-info .composition {
     font-size: 0.9rem;
-  }
-}
-.product-info .buy-button {
-  background-color: rgb(238, 27, 85);
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  margin-top: 24px;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  max-width: 200px;
-}
-.product-info .buy-button:hover {
-  background-color: rgb(200, 20, 60);
-}
-@media screen and (max-width: 768px) {
-  .product-info .buy-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-    max-width: 180px;
-  }
-}
-@media screen and (max-width: 440px) {
-  .product-info .buy-button {
-    font-size: 0.85rem;
-    padding: 8px 16px;
-    max-width: 160px;
   }
 }
