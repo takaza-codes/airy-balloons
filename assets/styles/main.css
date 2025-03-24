@@ -111,10 +111,7 @@ h6 {
   }
 }
 
-/* ---------------------------------
-   Стили для каталога и модального окна
------------------------------------ */
-/* Каталог (простой пример) */
+/* Каталог (контейнер) */
 .catalog {
   display: flex;
   flex-wrap: wrap;
@@ -122,27 +119,63 @@ h6 {
   padding: 20px;
 }
 
-/* Карточка в каталоге (мини-версия) */
+/* Мини-карточка товара в каталоге */
 .catalog-item {
-  border: 1px solid #ccc;
+  background-color: #fff; /* или $white */
+  border: 1px solid #eee;
+  border-radius: 8px;
+  width: 280px; /* Увеличиваем ширину, чтобы кнопка влезала */
   padding: 16px;
-  width: 220px;
   text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  /* Небольшая картинка (по ширине карточки) */
+  /* Блок с ценой (без слова «Цена») */
+  /* Кнопка */
+}
+.catalog-item .item-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 140px; /* При желании ограничиваем высоту */
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
 }
 .catalog-item h2 {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 700;
+  /* или замените на font-family: 'Montserrat'; font-weight: 700; */
   font-size: 1.2rem;
+  color: #333; /* или $black, если у вас есть переменная */
   margin-bottom: 8px;
 }
+.catalog-item .price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или font-weight: 700; */
+  font-size: 1.4rem;
+  color: rgb(238, 27, 85); /* Подчеркнуть цифры цветом */
+  margin-bottom: 12px;
+}
 .catalog-item .btn {
-  margin-top: 8px;
+  display: inline-block;
   background-color: rgb(238, 27, 85);
   color: rgb(255, 255, 255);
   border: none;
-  padding: 8px 16px;
+  border-radius: 4px;
+  padding: 8px 12px; /* Уменьшаем горизонтальные отступы */
   cursor: pointer;
+  font-size: 0.9rem; /* Чуть уменьшаем шрифт */
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или просто font-weight: 700; */
+}
+.catalog-item .btn:hover {
+  background-color: #c70f42; /* затемняем цвет при ховере */
 }
 
 /* Модальное окно (оверлей) */
@@ -228,7 +261,7 @@ h6 {
   }
 }
 
-/* Галерея изображений */
+/* Блок с изображением (убраны стрелки и миниатюры) */
 .product-images {
   display: flex;
   flex-direction: column;
@@ -260,39 +293,6 @@ h6 {
     max-width: 100%;
   }
 }
-.product-images .main-image .arrow {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  font-size: 2rem;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-.product-images .main-image .arrow:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.product-images .thumbnails {
-  display: flex;
-  gap: 8px;
-}
-.product-images .thumbnails img {
-  width: 60px;
-  height: 60px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 4px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-}
-.product-images .thumbnails img:hover {
-  border-color: rgb(238, 27, 85);
-}
 
 /* Блок информации о товаре */
 .product-info {
@@ -300,8 +300,8 @@ h6 {
   flex-direction: column;
   justify-content: center;
   /* Заголовок товара */
-  /* Блок цены со старой ценой и скидкой */
-  /* Состав композиции */
+  /* Блок цены со старой ценой и скидкой (если он нужен) */
+  /* Состав композиции (при необходимости) */
 }
 .product-info .product-title {
   font-family: "Montserrat", sans-serif;

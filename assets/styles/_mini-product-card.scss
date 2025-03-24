@@ -1,9 +1,4 @@
-
-/* ---------------------------------
-   Стили для каталога и модального окна
------------------------------------ */
-
-/* Каталог (простой пример) */
+/* Каталог (контейнер) */
 .catalog {
   display: flex;
   flex-wrap: wrap;
@@ -11,25 +6,56 @@
   padding: 20px; // при желании используйте миксины отступов
 }
 
-/* Карточка в каталоге (мини-версия) */
+/* Мини-карточка товара в каталоге */
 .catalog-item {
-  border: 1px solid #ccc;
+  background-color: #fff;  /* или $white */
+  border: 1px solid #eee;
+  border-radius: 8px;
+  width: 280px;            /* Увеличиваем ширину, чтобы кнопка влезала */
   padding: 16px;
-  width: 220px;
   text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 
-  h2 {
-    @include Montserrat-700-base;
-    font-size: 1.2rem;
+  /* Небольшая картинка (по ширине карточки) */
+  .item-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 140px;    /* При желании ограничиваем высоту */
+    object-fit: cover;
+    border-radius: 8px;
     margin-bottom: 8px;
   }
 
+  h2 {
+    @include Montserrat-700-base; /* или замените на font-family: 'Montserrat'; font-weight: 700; */
+    font-size: 1.2rem;
+    color: #333;                  /* или $black, если у вас есть переменная */
+    margin-bottom: 8px;
+  }
+
+  /* Блок с ценой (без слова «Цена») */
+  .price {
+    @include Montserrat-700-base; /* или font-weight: 700; */
+    font-size: 1.4rem;
+    color: $red;                  /* Подчеркнуть цифры цветом */
+    margin-bottom: 12px;
+  }
+
+  /* Кнопка */
   .btn {
-    margin-top: 8px;
+    display: inline-block;
     background-color: $red;
     color: $white;
     border: none;
-    padding: 8px 16px;
+    border-radius: 4px;
+    padding: 8px 12px;           /* Уменьшаем горизонтальные отступы */
     cursor: pointer;
+    font-size: 0.9rem;           /* Чуть уменьшаем шрифт */
+    @include Montserrat-700-base; /* или просто font-weight: 700; */
+
+    &:hover {
+      background-color: darken($red, 10%); /* затемняем цвет при ховере */
+    }
   }
 }
