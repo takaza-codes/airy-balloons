@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/styles/main.css">
+    <!-- <link rel="stylesheet" href="/assets/styles/main.css"> -->
     <link rel="stylesheet" href="/assets/styles/cart.css">
     <title>Корзина</title>
   </head>
@@ -12,11 +12,11 @@
     <main>
       <div class="topContainer">
         <h2>Корзина</h2>
-        <button class="btn" id="goBack" onclick="history.back()">Закрыть</button>
+        <button class="btn" id="goBack" onclick="history.back()"></button>
       </div>
       <div class="cartItems">
         <ul id="cartList">
-            <li class="cartItem">
+            <!-- <li class="cartItem">
                 <div class="itemImage"><img src="/assets/photos/for-man/for-man-01.jpeg" alt="Фото товара" class="itemPhoto"></div>
                 <p class="itemName">Для мужчины</p>
                 <div class="itemCounter">
@@ -25,7 +25,7 @@
                   <button class="increment">+</button>
                 </div>
                 <h4 class="price">3450</h4>
-                <button class="removeBtn">X</button>
+                <button class="removeBtn"></button>
             </li>
             <li class="cartItem">
               <div class="itemImage"><img src="/assets/photos/for-girl/for-girl-01.jpeg" alt="Фото товара" class="itemPhoto"></div>
@@ -36,15 +36,15 @@
                 <button class="increment">+</button>
               </div>
               <h4 class="price">3450</h4>
-              <button class="removeBtn">X</button>
+              <button class="removeBtn"></button> -->
           </li>
         </ul>
         <div class="orderDetails">
           <h3>Детали заказа</h3>
           <p>Количество</p>
-          <p id="totalItems">3</p>
+          <p id="totalItems"></p>
           <p>Сумма</p>
-          <p id="totalSum">10000</p>
+          <p id="totalSum"></p>
         </div>
       </div>
       <form id="orderForm" name="orderForm" action="" novalidate>
@@ -52,7 +52,7 @@
         <input type="text" name="clientName" id="clientName" placeholder="Ваше имя" required>
         <span class="validationError" id="errorName"></span>
         <label for="clientTel">Номер телефона</label>
-        <input type="tel" name="clientTel" id="clientTel" placeholder="Контактный номер телефона" required>
+        <input type="tel" name="clientTel" id="clientTel" placeholder="+7" required>
         <span class="validationError" id="errorTel"></span>
       <div id="deliveryOptions">
         Получение заказа
@@ -69,7 +69,7 @@
       <label for="deliveryDate">Дата и время доставки</label>
       <input type="datetime-local" name="deliveryDate" id="deliveryDate">
       <label for="orderComment">Комментарий к заказу</label>
-      <input type="text" name="orderComment" id="orderComment">
+      <textarea name="textarea" name="orderComment" id="orderComment"></textarea>
       <div class="agreePolicy">
         <input type="checkbox" name="policyCheckbox" id="policyCheckbox" />
         <label for="policyCheckbox"
@@ -82,11 +82,11 @@
       <div class="orderFinal">
         <h3>Детали заказа</h3>
         <p>Товары</p>
-        <p id="totalItemsSum">5350</p>
+        <p id="totalItemsSum"></p>
         <p>Стоимость доставки</p>
-        <p id="deliveryPrice">300</p>
+        <p id="deliveryPrice"></p>
         <p>Итого</p>
-        <p id="totalOrderSum">5650</p>
+        <p id="totalOrderSum"></p>
       </div>
         <div class="formBtns">
         <button type="submit" class="btn" id="makeOrderBtn" disabled>Оформить заказ</button>

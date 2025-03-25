@@ -1,125 +1,128 @@
 //Отображение товаров, добавленных в корзину
-const cartList = document.getElementById('cartList')
+const cartList = document.getElementById('cartList');
+const orderDetails = document.querySelector('.orderDetails');
+const orderFinal = document.querySelector('.orderFinal');
 
-// document.addEventListener('DOMContentLoaded', renderCart());
 
-// function renderCart() {
-//     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-//     const cartList = document.getElementById('cartList');
+document.addEventListener('DOMContentLoaded', renderCart());
 
-//     if (cart.length === 0) {
-//         cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто!</div>';
-//     } else {
-//         cart.forEach((item, index) => {
-//             let item = products[index];
-//             const li = document.createElement('li');
-//             li.classList.add('cartItem');
-//             li.innerHTML = `
-//             <div class="itemImage"><img src="${item.images}" alt="Фото товара" class="itemPhoto"></div>
-//                 <p class="itemName">p${item.title}</p>
-//                 <div class="itemCounter">
-//     <button class="decrement">−</button>
-//     <span class="quantity">1</span>
-//     <button class="increment">+</button>
-//     </div>
-//                 <h4 class="price">${item.price}</h4>
-//                 <button class="removeBtn" data-index="${index}>X</button>`
-//             cartList.appendChild(li);
-//         });
-//     }
-// }
+function renderCart() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart.length === 0) {
+        cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто!</div>';
+        orderDetails.innerHTML = '';
+        orderFinal.innerHTML = '';
+
+    } else {
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.classList.add('cartItem');
+            li.innerHTML = `
+            <div class="itemImage"><img src="${item.images}" alt="Фото товара" class="itemPhoto"></div>
+                <p class="itemName">p${item.title}</p>
+                <div class="itemCounter">
+    <button class="decrement">−</button>
+    <span class="quantity">1</span>
+    <button class="increment">+</button>
+    </div>
+                <h4 class="price">${item.price}</h4>
+                <button class="removeBtn" data-index="${index}></button>`
+            cartList.appendChild(li);
+        });
+    }
+}
+
 
 //Удаление товара из корзины
 const removeBtns = document.querySelectorAll('.removeBtn');
 removeBtns.forEach(button => {
     button.addEventListener('click', function () {
-        document.querySelector('.cartItem').innerHTML = '';
-        // location.reload();
+      const index = this.dataset.index;
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      location.reload();
     });
 });
 
+
+
 //Счетчик количества позиций
+const cartItems = document.querySelectorAll(".cartItem");
+const totalSumDisplay = document.getElementById("totalSum");
+const totalItemsDisplay = document.getElementById("totalItems");
+const totalItemsSum = document.getElementById("totalItemsSum");
 
-// const cartItems = document.querySelectorAll(".cartItem");
+function updateTotal() {
+  let total = 0;
+  let totalItems = 0;
+  document.querySelectorAll(".cartItem").forEach((cartItem) => {
+    const qty = parseInt(cartItem.querySelector(".quantity").textContent);
+    const price = parseInt(cartItem.querySelector(".price").textContent);
+    total += qty * price;
+    totalItems += qty;
+  });
+  totalSumDisplay.textContent = `${total} ₽`;
+  totalItemsSum.textContent = `${total} ₽`;
+  totalItemsDisplay.textContent = totalItems;
+}
 
-// cartItems.forEach((item) => {
-//     const decrementBtn = item.querySelector(".decrement");
-//     const incrementBtn = item.querySelector(".increment");
-//     const quantityDisplay = item.querySelector(".quantity");
-//     const priceDisplay = item.querySelector(".price");
-//     const basePrice = parseInt(priceDisplay.dataset.price); //dataset??
-//     const totalSumDisplay = document.getElementById("totalSum");
+cartItems.forEach((item) => {
+  const decrementBtn = item.querySelector(".decrement");
+  const incrementBtn = item.querySelector(".increment");
+  const quantityDisplay = item.querySelector(".quantity");
+  const priceDisplay = item.querySelector(".price");
+  const basePrice = parseInt(priceDisplay.textContent);
 
-//     function updateTotal() {
-//       let total = 0;
-//       document.querySelectorAll(".cart-item").forEach((cartItem) => {
-//         const qty = parseInt(cartItem.querySelector(".quantity").textContent);
-//         const price = parseInt(cartItem.querySelector(".price").textContent);
-//         total += qty * price;
-//       });
-//       totalSumDisplay.textContent = `${total} ₽`;
-//     }
-
-//     incrementBtn.addEventListener("click", () => {
-//       let quantity = parseInt(quantityDisplay.textContent);
-//       quantity++;
-//       quantityDisplay.textContent = quantity;
-//       priceDisplay.textContent = basePrice * quantity;
-//       updateTotal();
-//     });
-
-//     decrementBtn.addEventListener("click", () => {
-//       let quantity = parseInt(quantityDisplay.textContent);
-//       if (quantity > 1) {
-//         quantity--;
-//         quantityDisplay.textContent = quantity;
-//         priceDisplay.textContent = basePrice * quantity;
-//         updateTotal();
-//       }
-//     });
-
-//     updateTotal();
-//   });
-
-const decrementBtn = document.querySelector(".decrement");
-const incrementBtn = document.querySelector(".increment");
-const quantityDisplay = document.querySelector(".quantity");
-
-incrementBtn.addEventListener("click", () => {
-  let quantity = parseInt(quantityDisplay.textContent);
-  quantity++;
-  quantityDisplay.textContent = quantity;
-});
-decrementBtn.addEventListener("click", () => {
-  let quantity = parseInt(quantityDisplay.textContent);
-  if (quantity > 1) {
-    quantity--;
+  incrementBtn.addEventListener("click", () => {
+    let quantity = parseInt(quantityDisplay.textContent);
+    quantity++;
     quantityDisplay.textContent = quantity;
-  }
+    priceDisplay.textContent = basePrice * quantity;
+    updateTotal();
+  });
+
+  decrementBtn.addEventListener("click", () => {
+    let quantity = parseInt(quantityDisplay.textContent);
+    if (quantity > 1) {
+      quantity--;
+      quantityDisplay.textContent = quantity;
+      priceDisplay.textContent = basePrice * quantity;
+      updateTotal();
+    }
+  });
+  updateTotal();
 });
-
-
-//Отображение деталей заказа до формы
-
-
 
 //Отображение деталей заказа после формы
+const deliveryPrice = document.getElementById("deliveryPrice");
+const totalOrderSum = document.getElementById("totalOrderSum");
 
+function renderOrderFinal() {
+    deliveryCost = Number(deliveryOption.value);
+    deliveryPrice.textContent = `${deliveryCost} ₽`;
+    const totalItemsCost = parseInt(totalItemsSum.textContent.replace(/\D/g, ""));
+    totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
+}
+
+document.getElementById("deliveryOptions").addEventListener('change', renderOrderFinal);
 
 
 //Валидация формы
 const orderForm = document.forms.orderForm;
 const clientName = orderForm.elements.clientName;
-const errorName = document.getElementById('errorName');
+const errorName = document.getElementById("errorName");
 const clientTel = orderForm.elements.clientTel;
-const errorTel = document.getElementById('errorTel');
+const errorTel = document.getElementById("errorTel");
 const deliveryOption = orderForm.elements.deliveryOption;
-const errorDelivery = document.getElementById('errorDelivery');
+const errorDelivery = document.getElementById("errorDelivery");
 const deliveryAddress = orderForm.elements.deliveryAddress;
-const errorAddress = document.getElementById('errorAddress');
+const errorAddress = document.getElementById("errorAddress");
 const policyCheckbox = orderForm.elements.policyCheckbox;
-const policyError = document.getElementById('checkboxError');
-const makeOrderBtn = document.getElementById('makeOrderBtn');
+const policyError = document.getElementById("checkboxError");
+const deliveryDate = document.getElementById("deliveryDate");
+const orderComment = document.getElementById("orderComment");
+const makeOrderBtn = document.getElementById("makeOrderBtn");
 
 function validateUsername(name) {
   let regex = /^[а-яА-Я ]+$/;
@@ -131,11 +134,30 @@ function validateTel(tel) {
   return regex.test(tel);
 }
 
+function enterAddress() {
+  deliveryAddress.addEventListener('change', () => {
+    if (deliveryAddress.length > 5) {
+      errorAddress.display.style = 'none';
+      return true;
+    }
+  })
+}
+
 function validateAddress(address) {
-  if((address.value.trim() === '' && (Number(address.value) > 0)) || (address.validity.patternMismatch)) {
+  if(address.value.trim() === '' && Number(deliveryOption.value) > 0) {
     return false;
   }
+  return true;
 }
+
+deliveryAddress.addEventListener('input', () => {
+  if (validateAddress(deliveryAddress)) {
+    errorAddress.style.display = 'none';
+  } else {
+    errorAddress.textContent = 'Укажите адрес для доставки заказа';
+    errorAddress.style.display = 'block';
+  }
+});
 
 policyCheckbox.addEventListener('change', function () {
   if (policyCheckbox.checked) {
@@ -149,15 +171,18 @@ policyCheckbox.addEventListener('change', function () {
   }
 });
 
+
 orderForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   let hasError = false;
+
   errorName.style.display = 'none';
   errorTel.style.display = 'none';
   errorAddress.style.display = 'none';
+  errorDelivery.style.display = 'none';
   policyError.style.display = 'none';
 
-  if ((clientName.value.trim() === '') || (!validateUsername(clientName.value))) {
+  if (clientName.value.trim() === '' || !validateUsername(clientName.value)) {
     errorName.textContent = 'Укажите Ваше имя';
     errorName.style.display = 'block';
     clientName.style.margin = '0';
@@ -171,47 +196,48 @@ orderForm.addEventListener('submit', function(evt) {
     hasError = true;
   }
 
-  if (validateAddress(deliveryAddress)) {
+  if (!deliveryOption.value) {
+    errorDelivery.textContent = 'Выберите один из вариантов получения товара';
+    errorDelivery.style.display = 'block';
+    hasError = true;
+  }
+
+  if (!validateAddress(deliveryAddress)) {
     errorAddress.textContent = 'Укажите адрес для доставки заказа';
     errorAddress.style.display = 'block';
     hasError = true;
   }
 
-  if (!deliveryOption.value) {
-    errorDelivery.textContent = 'Выберите один из вариантов получения товара'
+  if (!policyCheckbox.checked) {
+    policyError.textContent = 'Необходимо согласие с условиями';
+    policyError.style.display = 'block';
     hasError = true;
   }
 
-  if (!policyCheckbox.checked) {
-        hasError = true;
-    }
-
   if (!hasError) {
-      const orderInfo = [clientName.value, clientTel.value, deliveryOption.value, deliveryAddress.value];
-      alert('Форма заказа успешно отправлена!');
-      console.log(orderInfo);
-      orderForm.reset();
-      }
+    const orderInfo = [
+      clientName.value,
+      clientTel.value,
+      deliveryOption.value,
+      deliveryAddress.value,
+      deliveryDate.value,
+      orderComment.value,
+    ];
+    alert('Форма заказа успешно отправлена!');
+    console.log(orderInfo);
+    orderForm.reset(); 
+  }
 });
-
-
-//Валидация способа получения
-
-
 
 
 //Очистка/сброс корзины
 const clearCartBtn = document.getElementById('clearCartBtn');
 clearCartBtn.addEventListener('click', () => {
-    document.querySelector('.cartItems').innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
+    cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
+    orderDetails.innerHTML = '';
+    orderFinal.innerHTML = '';
     localStorage.setItem('cart') = [];
 });
 
 
 //Отправка формы в мессенджер
-// makeOrderBtn.addEventListener('click', () => {
-//     validateForm();
-//     if (validateForm()){
-//         //
-//     }
-// })
