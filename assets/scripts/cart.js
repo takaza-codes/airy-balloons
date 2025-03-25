@@ -4,7 +4,7 @@ const orderDetails = document.querySelector('.orderDetails');
 const orderFinal = document.querySelector('.orderFinal');
 
 
-document.addEventListener('DOMContentLoaded', renderCart());
+document.addEventListener('DOMContentLoaded', renderCart);
 
 function renderCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -27,7 +27,7 @@ function renderCart() {
     <button class="increment">+</button>
     </div>
                 <h4 class="price">${item.price}</h4>
-                <button class="removeBtn" data-index="${index}></button>`
+                <button class="removeBtn" data-index="${index}"></button>`
             cartList.appendChild(li);
         });
     }
@@ -39,7 +39,7 @@ const removeBtns = document.querySelectorAll('.removeBtn');
 removeBtns.forEach(button => {
     button.addEventListener('click', function () {
       const index = this.dataset.index;
-      cart.splice(index, 1);
+      cart.splice(index, 1); // использование cart (не объявлена глобально)
       localStorage.setItem('cart', JSON.stringify(cart));
       location.reload();
     });
