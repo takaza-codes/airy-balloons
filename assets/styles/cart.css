@@ -32,83 +32,116 @@ h6 {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Bold.woff") format("woff");
+  src: url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Italic.woff") format("woff");
+  src: url("../fonts/Montserrat-Italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Light.woff") format("woff");
+  src: url("../fonts/Montserrat-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Medium.woff") format("woff");
+  src: url("../fonts/Montserrat-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Regular.woff") format("woff");
+  src: url("../fonts/Montserrat-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-SemiBold.woff") format("woff");
+  src: url("../fonts/Montserrat-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
-/* Пример шаблона базового стиля кнопки */
 .btn {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 600;
-  /* Используем Montserrat с весом 600 (Semibold) */
+  font-weight: 500;
   font-size: 16px;
-  width: 240px;
-  height: 60px;
-  background-color: rgb(255, 255, 255); /* Белый фон */
-  color: rgb(238, 27, 85); /* Текст красного цвета */
-  border: 1px solid rgb(238, 27, 85); /* Красная рамка толщиной 1px */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
   border-radius: 8px;
-  padding: 12px 24px;
+  padding: 16px 24px;
+  width: 240px;
+  text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Состояние при наведении */
-  /* Состояние при нажатии/активное */
-  /* Отключённая кнопка */
-  /* Адаптив */
+  /* Модификатор для центрирования */
+  /* Модификатор «ссылка» */
 }
 .btn:hover {
-  background-color: #c70f42; /* затемняем фон на 10% */
-  color: rgb(255, 255, 255); /* делаем текст белым для контраста */
+  background-color: #c70f42;
+  color: rgb(255, 255, 255);
 }
 .btn:active {
   transform: scale(0.98);
 }
 .btn:disabled, .btn.disabled {
   background-color: #f57a9c;
-  border-color: #f57a9c;
   cursor: not-allowed;
   opacity: 0.7;
 }
-@media screen and (max-width: 768px) {
-  .btn {
-    padding: 10px 20px;
-  }
+.btn.btn--center {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
-@media screen and (max-width: 440px) {
-  .btn {
-    padding: 8px 16px;
-  }
+.btn.btn--link {
+  background-color: transparent;
+  color: rgb(30, 26, 26);
+  border: 1px solid rgb(30, 26, 26);
+}
+.btn.btn--link:hover {
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+}
+.btn.btn--link:active {
+  transform: none;
+}
+.btn.btn--transparent {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn.btn--transparent:hover {
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+}
+.btn.btn--white-red {
+  background-color: rgb(255, 255, 255);
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+  /* Стили при наведении */
+}
+.btn.btn--white-red:hover {
+  background-color: white;
+  color: #c70f42;
+  border-color: #c70f42;
+}
+.btn.btn--white-red:active {
+  transform: scale(0.98);
 }
 
 html {
@@ -229,7 +262,7 @@ html {
 }
 @media screen and (max-width: 768px) {
   .cartItems #cartList .cartItem .itemName {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 .cartItems #cartList .cartItem .itemCounter {
@@ -262,7 +295,7 @@ html {
   border-right: 1px solid rgb(30, 26, 26);
 }
 .cartItems #cartList .cartItem .price {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
   justify-self: end;
@@ -300,7 +333,7 @@ html {
 .orderDetails #totalItems,
 .orderDetails #totalSum {
   justify-self: right;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
 }
@@ -409,7 +442,7 @@ html {
 #orderForm .orderFinal #deliveryPrice,
 #orderForm .orderFinal #totalOrderSum {
   justify-self: right;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
 }
@@ -419,6 +452,8 @@ html {
 #orderForm .formBtns {
   margin-top: 1rem;
   align-self: center;
+  display: flex;
+  align-items: center;
 }
 #orderForm .formBtns button {
   margin: 0 0.5rem;
@@ -428,6 +463,7 @@ html {
     font-size: 0.9rem;
     padding: 10px 20px;
     max-width: 180px;
+    height: 3rem;
   }
 }
 @media screen and (max-width: 440px) {
@@ -435,11 +471,17 @@ html {
     font-size: 0.85rem;
     padding: 8px 16px;
     max-width: 160px;
+    height: 3rem;
   }
 }
 #orderForm .formBtns #makeOrderBtn {
   background-color: rgb(238, 27, 85);
   color: rgb(255, 255, 255);
+}
+#orderForm .formBtns #clearCartBtn {
+  background-color: rgb(255, 255, 255);
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
 }
 
 .validationError {
