@@ -1,35 +1,60 @@
-// === Корзина ===
+// ====================== Корзина ======================
+
+// (Изменение №A) Теперь в cart мы храним объекты вида { id, title, price, images, quantity }.
+// При добавлении не плодим дубликаты, а увеличиваем quantity.
 function getCart() {
   const cart = localStorage.getItem("cart");
-  return cart ? JSON.parse(cart) : [];  // возвращается пустой массив, если 'cart' не существует
+  return cart ? JSON.parse(cart) : [];
 }
 
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+// Создаём канал для синхронизации между вкладками/страницами (Изменение №S1)
+const cartChannel = new BroadcastChannel('cartChannel');
+
+function updateCartAcrossTabs() {
+  cartChannel.postMessage('updateCart');
+}
+
+// (Изменение №B) Функция addToCart – если товар уже есть, увеличиваем quantity, иначе добавляем объект с quantity = itemCount.
 function addToCart(productId, itemCount = 1) {
   const cart = getCart();
   const productToAdd = products.find(p => p.id === productId);
-  if (productToAdd) {
-    for (let i = 0; i < itemCount; i++) {
-      cart.push(productToAdd);
-    }
-    saveCart(cart);
-    showToast(`${productToAdd.title} добавлен в корзину`);
+  if (!productToAdd) return;
+
+  const existingItem = cart.find(item => item.id === productId);
+  if (existingItem) {
+    existingItem.quantity += itemCount; // увеличиваем quantity
+  } else {
+    // Добавляем новый объект с полем quantity = itemCount
+    cart.push({ ...productToAdd, quantity: itemCount });
   }
+
+  saveCart(cart);
+  showToast(`${productToAdd.title} добавлен в корзину`);
+  updateCartAcrossTabs(); // отправляем сообщение для обновления в других вкладках
 }
 
+// (Изменение №C) Функция removeFromCart – уменьшает quantity, если >1, иначе удаляет товар.
 function removeFromCart(productId) {
   const cart = getCart();
   const index = cart.findIndex(p => p.id === productId);
   if (index !== -1) {
-    cart.splice(index, 1);
+    if (cart[index].quantity > 1) {
+      cart[index].quantity--; // уменьшаем quantity
+      showToast("Количество уменьшено");
+    } else {
+      cart.splice(index, 1);
+      showToast("Товар удалён из корзины");
+    }
     saveCart(cart);
-    showToast("Товар удалён из корзины");
+    updateCartAcrossTabs(); // уведомляем другие вкладки
   }
 }
 
+// Функция для тостов (без изменений)
 function showToast(message) {
   let toastContainer = document.getElementById('toastContainer');
   if (!toastContainer) {
@@ -65,7 +90,6 @@ function showToast(message) {
       toastContainer.style.transform = 'none';
     }
   }
-  
 
   positionToastContainer(); 
   window.addEventListener('resize', positionToastContainer);
@@ -100,7 +124,7 @@ function showToast(message) {
   }, 3000);
 }
 
-// === Рендер карточки ===
+// ====================== Рендер карточки ======================
 const urlParams = new URLSearchParams(window.location.search);
 const productId = +urlParams.get('id');
 const productPageEl = document.getElementById('productPage');
@@ -139,7 +163,11 @@ if (!product) {
     </div>
   `;
 
+  // -----------------------------
+  // Логика счётчика
+  // -----------------------------
   let quantity = 0;
+  // Объявляем переменные глобально в пределах страницы товара
   const orderControls = document.getElementById("orderControls");
   const orderBtn = document.getElementById("orderBtn");
   const quantityNum = document.querySelector(".quantity-num");
@@ -150,19 +178,36 @@ if (!product) {
     quantityNum.textContent = quantity;
   }
 
+  // (Изменение №1) При загрузке проверяем, есть ли этот товар в cart
+  const cart = getCart();
+  const itemInCart = cart.find(item => item.id === productId);
+  if (itemInCart) {
+    // Если товар уже есть, устанавливаем quantity из LocalStorage
+    quantity = itemInCart.quantity;
+    orderControls.classList.add("active");
+    orderBtn.style.display = 'none';
+  } else {
+    quantity = 0;
+  }
+  updateQuantityDisplay();
+
+  // (Изменение №2) При клике «Заказать» → ставим quantity = 1, скрываем кнопку «Заказать»
   orderBtn.addEventListener("click", () => {
     quantity = 1;
     orderControls.classList.add("active");
     updateQuantityDisplay();
-    addToCart(product.id);
+    orderBtn.style.display = 'none';
+    addToCart(product.id, 1);
   });
 
+  // При клике "+" увеличиваем quantity и вызываем addToCart
   incrementBtn.addEventListener("click", () => {
     quantity++;
     updateQuantityDisplay();
-    addToCart(product.id);
+    addToCart(product.id, 1);
   });
 
+  // При клике "-" уменьшаем quantity и вызываем removeFromCart
   decrementBtn.addEventListener("click", () => {
     if (quantity > 0) {
       quantity--;
@@ -171,11 +216,30 @@ if (!product) {
     }
     if (quantity === 0) {
       orderControls.classList.remove("active");
+      orderBtn.style.display = 'inline-block';
     }
   });
 
   renderSimilarProducts(product);
 }
+
+// (Изменение №S2) Слушаем сообщения канала для обновления страницы товара в реальном времени
+cartChannel.onmessage = (event) => {
+  if (event.data === 'updateCart') {
+    const cart = getCart();
+    const itemInCart = cart.find(item => item.id === productId);
+    if (itemInCart) {
+      quantity = itemInCart.quantity;
+      orderControls.classList.add("active");
+      orderBtn.style.display = 'none';
+    } else {
+      quantity = 0;
+      orderControls.classList.remove("active");
+      orderBtn.style.display = 'inline-block';
+    }
+    updateQuantityDisplay();
+  }
+};
 
 function renderSimilarProducts(currentProduct) {
   const sameCategory = products.filter(
