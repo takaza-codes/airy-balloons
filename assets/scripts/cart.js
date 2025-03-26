@@ -3,7 +3,6 @@ const cartList = document.getElementById('cartList');
 const orderDetails = document.querySelector('.orderDetails');
 const orderFinal = document.querySelector('.orderFinal');
 
-
 document.addEventListener('DOMContentLoaded', renderCart);
 
 function renderCart() {
@@ -13,38 +12,44 @@ function renderCart() {
         cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто!</div>';
         orderDetails.innerHTML = '';
         orderFinal.innerHTML = '';
-
     } else {
         cart.forEach((item, index) => {
             const li = document.createElement('li');
             li.classList.add('cartItem');
             li.innerHTML = `
             <div class="itemImage"><img src="${item.images}" alt="Фото товара" class="itemPhoto"></div>
-                <p class="itemName">p${item.title}</p>
-                <div class="itemCounter">
-    <button class="decrement">−</button>
-    <span class="quantity">1</span>
-    <button class="increment">+</button>
-    </div>
-                <h4 class="price">${item.price}</h4>
-                <button class="removeBtn" data-index="${index}"></button>`
+            <p class="itemName">${item.title}</p>
+            <div class="itemCounter">
+                <button class="decrement">−</button>
+                <span class="quantity">${item.quantity || 1}</span>
+                <button class="increment">+</button>
+            </div>
+            <h4 class="price">${item.price} ₽</h4>
+            <button class="removeBtn" data-index="${index}"></button>
+            `;
             cartList.appendChild(li);
         });
+
+        const removeBtns = document.querySelectorAll('.removeBtn');
+        removeBtns.forEach(button => {
+            button.addEventListener('click', function () {
+                const index = button.getAttribute("data-index");
+                removeItemFromCart(index);
+                renderCart(); 
+            });
+        });
     }
+    updateTotal(); // функция для отображения цены и количества
 }
 
-
-//Удаление товара из корзины
-const removeBtns = document.querySelectorAll('.removeBtn');
-removeBtns.forEach(button => {
-    button.addEventListener('click', function () {
-      const index = this.dataset.index;
-      cart.splice(index, 1); // использование cart (не объявлена глобально)
-      localStorage.setItem('cart', JSON.stringify(cart));
-      location.reload();
-    });
-});
-
+// Удалить отдельный товар из корзины
+function removeItemFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart)); 
+    }
+}
 
 
 //Счетчик количества позиций
@@ -105,6 +110,7 @@ function renderOrderFinal() {
     totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
 }
 
+//Окончательная стоимость заказа меняется динамически с учетом изменения варианта доставки
 document.getElementById("deliveryOptions").addEventListener('change', renderOrderFinal);
 
 
@@ -215,7 +221,7 @@ orderForm.addEventListener('submit', function(evt) {
   }
 
   if (!hasError) {
-    const orderInfo = [
+    const orderInfo = [ //изменить с учетом функционала отправки в телеграм
       clientName.value,
       clientTel.value,
       deliveryOption.value,
@@ -224,20 +230,26 @@ orderForm.addEventListener('submit', function(evt) {
       orderComment.value,
     ];
     alert('Форма заказа успешно отправлена!');
-    console.log(orderInfo);
+    console.log(orderInfo); //для себя и проверки, удалить по окончении тестирования
+    cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>'
+    orderDetails.innerHTML = '';
+    orderFinal.innerHTML = '';
+    localStorage.removeItem('cart');
+    makeOrderBtn.setAttribute('disabled', '');
     orderForm.reset(); 
   }
 });
 
 
 //Очистка/сброс корзины
-const clearCartBtn = document.getElementById('clearCartBtn');
 clearCartBtn.addEventListener('click', () => {
-    cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
-    orderDetails.innerHTML = '';
-    orderFinal.innerHTML = '';
-    localStorage.setItem('cart') = [];
+  localStorage.removeItem('cart');
+  cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
+  orderDetails.innerHTML = '';
+  orderFinal.innerHTML = '';
+  errorName.style.display = 'none';
+  errorTel.style.display = 'none';
+  errorAddress.style.display = 'none';
+  errorDelivery.style.display = 'none';
+  policyError.style.display = 'none';
 });
-
-
-//Отправка формы в мессенджер
