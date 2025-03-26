@@ -199,12 +199,14 @@ orderForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   let hasError = false;
 
+  // Скрываем сообщения об ошибках
   errorName.style.display = 'none';
   errorTel.style.display = 'none';
   errorAddress.style.display = 'none';
   errorDelivery.style.display = 'none';
   policyError.style.display = 'none';
 
+  // Валидация полей
   if (clientName.value.trim() === '' || !validateUsername(clientName.value)) {
     errorName.textContent = 'Укажите Ваше имя';
     errorName.style.display = 'block';
@@ -237,25 +239,46 @@ orderForm.addEventListener('submit', function(evt) {
     hasError = true;
   }
 
+  // Если нет ошибок, отправляем данные на сервер через Netlify Function
   if (!hasError) {
-    const orderInfo = [
-      clientName.value,
-      clientTel.value,
-      deliveryOption.value,
-      deliveryAddress.value,
-      deliveryDate.value,
-      orderComment.value,
-    ];
-    alert('Форма заказа успешно отправлена!');
-    console.log(orderInfo);
-    cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
-    orderDetails.innerHTML = '';
-    orderFinal.innerHTML = '';
-    localStorage.removeItem('cart');
-    makeOrderBtn.setAttribute('disabled', '');
-    orderForm.reset(); 
+    const orderData = {
+      name: clientName.value,
+      phone: clientTel.value,
+      deliveryOption: deliveryOption.value,
+      address: deliveryAddress.value,
+      deliveryDate: deliveryDate.value,
+      comment: orderComment.value,
+    };
+
+    fetch('/.netlify/functions/sendOrder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Ошибка сети');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Ответ от функции:', data);
+        alert('Форма заказа успешно отправлена!');
+        // Очищаем корзину и сбрасываем форму
+        cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
+        orderDetails.innerHTML = '';
+        orderFinal.innerHTML = '';
+        localStorage.removeItem('cart');
+        makeOrderBtn.setAttribute('disabled', '');
+        orderForm.reset();
+      })
+      .catch(error => {
+        console.error('Ошибка при отправке запроса:', error);
+        alert('Произошла ошибка при отправке заказа.');
+      });
   }
 });
+
 
 //Очистка/сброс корзины
 clearCartBtn.addEventListener('click', () => {
