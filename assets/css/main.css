@@ -1,0 +1,562 @@
+@charset "UTF-8";
+@import "./normalize.css";
+@import "./normalize.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+/* Пример шаблона базового стиля кнопки */
+.btn {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  /* Используем Montserrat с весом 600 (Semibold) */
+  font-size: 16px;
+  width: 240px;
+  height: 60px;
+  background-color: rgb(255, 255, 255); /* Белый фон */
+  color: rgb(238, 27, 85); /* Текст красного цвета */
+  border: 1px solid rgb(238, 27, 85); /* Красная рамка толщиной 1px */
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Состояние при наведении */
+  /* Состояние при нажатии/активное */
+  /* Отключённая кнопка */
+  /* Адаптив */
+}
+.btn:hover {
+  background-color: #c70f42; /* затемняем фон на 10% */
+  color: rgb(255, 255, 255); /* делаем текст белым для контраста */
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:disabled, .btn.disabled {
+  background-color: #f57a9c;
+  border-color: #f57a9c;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 10px 20px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .btn {
+    padding: 8px 16px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+/* Пример шаблона базового стиля кнопки */
+.btn {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  /* Используем Montserrat с весом 600 (Semibold) */
+  font-size: 16px;
+  width: 240px;
+  height: 60px;
+  background-color: rgb(255, 255, 255); /* Белый фон */
+  color: rgb(238, 27, 85); /* Текст красного цвета */
+  border: 1px solid rgb(238, 27, 85); /* Красная рамка толщиной 1px */
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Состояние при наведении */
+  /* Состояние при нажатии/активное */
+  /* Отключённая кнопка */
+  /* Адаптив */
+}
+.btn:hover {
+  background-color: #c70f42; /* затемняем фон на 10% */
+  color: rgb(255, 255, 255); /* делаем текст белым для контраста */
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:disabled, .btn.disabled {
+  background-color: #f57a9c;
+  border-color: #f57a9c;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 10px 20px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .btn {
+    padding: 8px 16px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  background-color: rgb(30, 26, 26);
+}
+.footer__contacts, .footer__address {
+  margin-bottom: 20px;
+}
+.footer__title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+}
+.footer__phone {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+}
+.footer__socials {
+  display: flex;
+}
+.footer__socials__social-link {
+  margin-right: 10px;
+}
+.footer__socials__social-link:last-child {
+  margin-right: 0;
+}
+.footer__socials__social-icon {
+  width: 24px;
+  height: 24px;
+}
+.footer__address p {
+  margin: 5px 0;
+  color: rgb(255, 255, 255);
+}
+.footer__policy-link {
+  color: #6c757d;
+  text-decoration: none;
+}
+.footer__policy-link:hover {
+  text-decoration: underline;
+}
+.footer__tax-info {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer__contacts, .footer__address {
+    margin-bottom: 0;
+    flex: 1;
+    margin-right: 20px;
+  }
+  .footer__contacts:last-child, .footer__address:last-child {
+    margin-right: 0;
+  }
+}
+
+/* Каталог (контейнер) */
+.catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Мини-карточка товара в каталоге */
+.catalog-item {
+  background-color: #fff; /* или $white */
+  border: 1px solid #eee;
+  border-radius: 8px;
+  width: 280px; /* Увеличиваем ширину, чтобы кнопка влезала */
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  /* Небольшая картинка (по ширине карточки) */
+  /* Блок с ценой (без слова «Цена») */
+  /* Кнопка */
+}
+.catalog-item .item-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 140px; /* При желании ограничиваем высоту */
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.catalog-item h2 {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или замените на font-family: 'Montserrat'; font-weight: 700; */
+  font-size: 1.2rem;
+  color: #333; /* или $black, если у вас есть переменная */
+  margin-bottom: 8px;
+}
+.catalog-item .price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или font-weight: 700; */
+  font-size: 1.4rem;
+  color: rgb(238, 27, 85); /* Подчеркнуть цифры цветом */
+  margin-bottom: 12px;
+}
+.catalog-item .btn {
+  display: inline-block;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px; /* Уменьшаем горизонтальные отступы */
+  cursor: pointer;
+  font-size: 0.9rem; /* Чуть уменьшаем шрифт */
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* или просто font-weight: 700; */
+}
+.catalog-item .btn:hover {
+  background-color: #c70f42; /* затемняем цвет при ховере */
+}
+
+/* Модальное окно (оверлей) */
+.product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* скрыто по умолчанию */
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+/* Содержимое модалки */
+.modal-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Кнопки внутри модалки */
+.back-to-catalog,
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-to-catalog {
+  left: 1rem;
+}
+
+.close-modal {
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
+/* ---------------------------------
+   Стили для карточки товара (product-card)
+----------------------------------- */
+/* Основной контейнер (внутри модалки) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Секция карточки товара */
+.product-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+@media screen and (max-width: 768px) {
+  .product-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Блок с изображением (убраны стрелки и миниатюры) */
+.product-images {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: rgb(242, 215, 219);
+  border-radius: 8px;
+  padding: 20px;
+}
+.product-images .main-image {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.product-images .main-image img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+@media screen and (max-width: 768px) {
+  .product-images .main-image img {
+    max-width: 300px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .product-images .main-image img {
+    max-width: 100%;
+  }
+}
+
+/* Блок информации о товаре */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Заголовок товара */
+  /* Блок цены со старой ценой и скидкой (если он нужен) */
+  /* Состав композиции (при необходимости) */
+}
+.product-info .product-title {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* Полужирный Montserrat */
+  font-size: 2rem; /* Базовый размер */
+  margin-bottom: 16px;
+  color: rgb(30, 26, 26);
+}
+@media screen and (max-width: 768px) {
+  .product-info .product-title {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 440px) {
+  .product-info .product-title {
+    font-size: 1.4rem;
+  }
+}
+.product-info .price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.product-info .price-block .old-price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* Обычный Montserrat */
+  text-decoration: line-through;
+  color: rgb(30, 26, 26);
+  opacity: 0.6;
+}
+.product-info .price-block .product-price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /* Полужирный Montserrat */
+  font-size: 1.8rem;
+  color: rgb(238, 27, 85);
+}
+@media screen and (max-width: 768px) {
+  .product-info .price-block .product-price {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 440px) {
+  .product-info .price-block .product-price {
+    font-size: 1.4rem;
+  }
+}
+.product-info .price-block .discount {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  /* Чуть менее жирный Montserrat */
+  color: rgb(238, 27, 85);
+  font-size: 1rem;
+}
+.product-info .composition {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* Обычный Montserrat */
+  margin-top: 16px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.product-info .composition span {
+  font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+  .product-info .composition {
+    font-size: 0.95rem;
+  }
+}
+@media screen and (max-width: 440px) {
+  .product-info .composition {
+    font-size: 0.9rem;
+  }
+}/*# sourceMappingURL=main.css.map */
