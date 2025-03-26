@@ -235,19 +235,28 @@ h6 {
 /***************************************************
  * 3) Карточка товара (product-card)
  ***************************************************/
+.product-title {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: rgb(30, 26, 26);
+  margin-bottom: 24px;
+}
+
 .product-card {
   display: flex;
   align-items: stretch;
   gap: 32px;
-  background-color: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
   margin-bottom: 40px;
 }
 .product-card .product-images {
   display: flex;
   flex: 1;
+  max-width: 600px;
 }
 .product-card .product-images .main-image {
   flex: 1;
@@ -267,17 +276,6 @@ h6 {
   flex-direction: column;
   justify-content: flex-start;
 }
-.product-card .product-info .product-title {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  color: rgb(30, 26, 26);
-  margin-bottom: 24px;
-}
 .product-card .product-info .product-price {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
@@ -287,10 +285,12 @@ h6 {
   font-style: normal;
   font-weight: 600;
   color: rgb(30, 26, 26);
+  margin-top: 24px;
   margin-bottom: 24px;
   display: inline-block;
 }
 .product-card .product-info .product-description {
+  margin-top: 24px;
   margin-bottom: 24px;
 }
 .product-card .product-info .product-description ul {
@@ -403,4 +403,48 @@ h6 {
   .product-price {
     font-size: 1.6rem;
   }
+}
+/***************************************************
+ * Контейнер для счётчика и кнопки
+ ***************************************************/
+.order-controls {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #dadada;
+}
+.order-controls .quantity-block {
+  display: none;
+  align-items: center;
+  border: 1px solid rgb(238, 27, 85);
+  border-radius: 8px;
+  padding: 0 8px;
+  color: rgb(238, 27, 85);
+  font-size: 16px;
+}
+.order-controls .quantity-block button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 88px;
+  height: 48px;
+  color: rgb(238, 27, 85);
+}
+.order-controls .quantity-block .quantity-num {
+  display: inline-block;
+  width: 24px;
+  padding: 14px 24px;
+  text-align: center;
+  font-weight: 600;
+}
+.order-controls .btn {
+  display: inline-block;
+}
+.order-controls.active .btn {
+  display: none;
+}
+.order-controls.active .quantity-block {
+  display: inline-flex;
 }
