@@ -1,0 +1,450 @@
+@charset "UTF-8";
+@import "./normalize.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+/* Пример шаблона базового стиля кнопки */
+.btn {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  /* Используем Montserrat с весом 600 (Semibold) */
+  font-size: 16px;
+  width: 240px;
+  height: 60px;
+  background-color: rgb(255, 255, 255); /* Белый фон */
+  color: rgb(238, 27, 85); /* Текст красного цвета */
+  border: 1px solid rgb(238, 27, 85); /* Красная рамка толщиной 1px */
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Состояние при наведении */
+  /* Состояние при нажатии/активное */
+  /* Отключённая кнопка */
+  /* Адаптив */
+}
+.btn:hover {
+  background-color: #c70f42; /* затемняем фон на 10% */
+  color: rgb(255, 255, 255); /* делаем текст белым для контраста */
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:disabled, .btn.disabled {
+  background-color: #f57a9c;
+  border-color: #f57a9c;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 10px 20px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .btn {
+    padding: 8px 16px;
+  }
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(30, 26, 26);
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.topContainer {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topContainer h2 {
+  font-size: 40px;
+  font-weight: 600;
+}
+.topContainer #goBack {
+  background-image: url(/assets/logos/close-cross-red.svg);
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+  max-height: 40px;
+  max-width: 40px;
+}
+.topContainer #goBack:hover {
+  background-image: url(/assets/logos/close-cross.svg);
+  background-size: 60%;
+}
+@media screen and (max-width: 768px) {
+  .topContainer #goBack {
+    font-size: 0.9rem;
+    padding: 0;
+    max-height: 40px;
+    max-width: 40px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .topContainer #goBack {
+    font-size: 0.85rem;
+    padding: 0;
+    max-height: 40px;
+    max-width: 40px;
+  }
+}
+
+.cartItems {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5rem;
+}
+.cartItems #emptyMsg {
+  align-self: center;
+  font-size: 24px;
+  color: gray;
+}
+.cartItems #cartList {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.cartItems #cartList li:first-child {
+  border-top: 2px solid gray;
+}
+.cartItems #cartList li:last-child {
+  border-bottom: 1.5px solid gray;
+}
+.cartItems #cartList .cartItem {
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 10% 15% 12%;
+  align-items: center;
+  border-top: 1px solid gray;
+  border-bottom: 0.5px solid gray;
+}
+@media screen and (max-width: 440px) {
+  .cartItems #cartList .cartItem {
+    grid-template-columns: 50% 1fr 1fr;
+    grid-template-rows: 1rem 90px auto;
+  }
+  .cartItems #cartList .cartItem .itemName {
+    grid-column: 2/4;
+    font-size: 1rem;
+  }
+  .cartItems #cartList .cartItem .itemImage {
+    grid-row: 1/4;
+  }
+  .cartItems #cartList .cartItem .itemCounter {
+    grid-column: 2/3;
+  }
+  .cartItems #cartList .cartItem .removeBtn {
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
+}
+.cartItems #cartList .cartItem .itemImage {
+  min-width: 10rem;
+  max-width: 15rem;
+  min-height: 10rem;
+}
+.cartItems #cartList .cartItem .itemImage .itemPhoto {
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  border-radius: 8px;
+  min-width: 180px;
+  max-height: 150px;
+}
+.cartItems #cartList .cartItem .itemName {
+  justify-self: left;
+  font-weight: 600;
+}
+@media screen and (max-width: 768px) {
+  .cartItems #cartList .cartItem .itemName {
+    font-size: 1.3rem;
+  }
+}
+.cartItems #cartList .cartItem .itemCounter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgb(30, 26, 26);
+  border-radius: 6px;
+  max-width: 80px;
+}
+.cartItems #cartList .cartItem .itemCounter button {
+  border: none;
+  background: white;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bold;
+}
+.cartItems #cartList .cartItem .itemCounter button:hover {
+  background: #ddd;
+}
+.cartItems #cartList .cartItem .itemCounter .increment {
+  border-radius: 0 6px 6px 0;
+  border-left: 1px solid rgb(30, 26, 26);
+}
+.cartItems #cartList .cartItem .itemCounter .decrement {
+  border-radius: 6px 0 0 6px;
+  border-right: 1px solid rgb(30, 26, 26);
+}
+.cartItems #cartList .cartItem .price {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  justify-self: end;
+}
+@media screen and (max-width: 440px) {
+  .cartItems #cartList .cartItem .price {
+    justify-self: end;
+  }
+}
+.cartItems #cartList .cartItem .removeBtn {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url(/assets/logos/close-cross.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  justify-self: right;
+  cursor: pointer;
+}
+
+.orderDetails {
+  align-self: flex-end;
+  padding-right: 2rem;
+  display: grid;
+  grid-template-columns: 70% 5rem;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+}
+.orderDetails h3 {
+  grid-column: 1/3;
+  font-weight: 600;
+}
+.orderDetails #totalItems,
+.orderDetails #totalSum {
+  justify-self: right;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+}
+
+#orderForm {
+  margin-top: 3rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+#orderForm input,
+#orderForm textarea {
+  width: 40%;
+  height: 2rem;
+  padding: 0.2rem;
+  border-radius: 0.5em;
+  border: 1px solid gray;
+  margin-bottom: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  #orderForm input,
+  #orderForm textarea {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 440px) {
+  #orderForm input,
+  #orderForm textarea {
+    width: 100%;
+  }
+}
+#orderForm label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+#orderForm #deliveryOptions {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+#orderForm #deliveryOptions label {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-template-rows: 1fr;
+  -moz-column-gap: 0.4rem;
+       column-gap: 0.4rem;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+#orderForm #deliveryOptions label input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+}
+#orderForm #orderComment {
+  min-height: 4rem;
+}
+#orderForm .agreePolicy {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  width: 60%;
+}
+@media screen and (max-width: 768px) {
+  #orderForm .agreePolicy {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 440px) {
+  #orderForm .agreePolicy {
+    width: 100%;
+  }
+}
+#orderForm .agreePolicy label {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+#orderForm .agreePolicy label a {
+  font-weight: bold;
+}
+#orderForm .agreePolicy label a:hover {
+  color: rgb(245, 210, 88);
+}
+#orderForm .agreePolicy input {
+  width: 1.5rem;
+  margin: 0;
+}
+#orderForm .orderFinal {
+  align-self: flex-end;
+  padding-right: 2rem;
+  display: grid;
+  grid-template-columns: 70% 5rem;
+  grid-template-rows: repeat(3, 4fr);
+  align-items: center;
+}
+#orderForm .orderFinal h3 {
+  grid-column: 1/3;
+  font-weight: 600;
+}
+#orderForm .orderFinal #totalItemsSum,
+#orderForm .orderFinal #deliveryPrice,
+#orderForm .orderFinal #totalOrderSum {
+  justify-self: right;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+}
+#orderForm .orderFinal p:nth-child(6) {
+  font-weight: 600;
+}
+#orderForm .formBtns {
+  margin-top: 1rem;
+  align-self: center;
+}
+#orderForm .formBtns button {
+  margin: 0 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  #orderForm .formBtns button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    max-width: 180px;
+  }
+}
+@media screen and (max-width: 440px) {
+  #orderForm .formBtns button {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    max-width: 160px;
+  }
+}
+#orderForm .formBtns #makeOrderBtn {
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+}
+
+.validationError {
+  padding: 0 0 0.3rem 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(238, 27, 85);
+}/*# sourceMappingURL=cart.css.map */
