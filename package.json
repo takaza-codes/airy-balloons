@@ -1,0 +1,23 @@
+{
+  "name": "airy-balloons",
+  "version": "1.0.0",
+  "description": "## Описание проекта Сайт для компании AIRY, предоставляющей услуги по оформлению мероприятий воздушными шарами. Пользователи могут выбрать композиции по категориям, ознакомиться с составом и оформить заказ.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KamDiaV/airy-balloons.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KamDiaV/airy-balloons/issues"
+  },
+  "homepage": "https://github.com/KamDiaV/airy-balloons#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
