@@ -266,7 +266,7 @@ orderForm.addEventListener('submit', function(evt) {
         alert('Произошла ошибка при отправке заказа.');
       });
   }
-});
+);
 
 
 //Очистка/сброс корзины
