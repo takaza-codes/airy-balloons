@@ -13,23 +13,32 @@ function renderCart() {
         orderDetails.innerHTML = '';
         orderFinal.innerHTML = '';
     } else {
+        cartList.innerHTML = ''; 
+        // (Изменение №1) Очищаем список перед рендером, чтобы не дублировать товары
+
         cart.forEach((item, index) => {
             const li = document.createElement('li');
             li.classList.add('cartItem');
+
+            // (Изменение №2) Используем item.quantity (число) и item.price * item.quantity
+            // Это значит, что при добавлении в корзину мы должны добавлять поле quantity
             li.innerHTML = `
-            <div class="itemImage"><img src="${item.images}" alt="Фото товара" class="itemPhoto"></div>
+            <div class="itemImage">
+              <img src="${item.images}" alt="Фото товара" class="itemPhoto">
+            </div>
             <p class="itemName">${item.title}</p>
             <div class="itemCounter">
-                <button class="decrement">−</button>
-                <span class="quantity">${item.quantity || 1}</span>
-                <button class="increment">+</button>
+                <button class="decrement" data-id="${item.id}">−</button>
+                <span class="quantity">${item.quantity}</span>
+                <button class="increment" data-id="${item.id}">+</button>
             </div>
-            <h4 class="price">${item.price} ₽</h4>
+            <h4 class="price">${item.price * item.quantity} ₽</h4>
             <button class="removeBtn" data-index="${index}"></button>
             `;
             cartList.appendChild(li);
         });
 
+        // Кнопка "Удалить" (полностью убрать товар)
         const removeBtns = document.querySelectorAll('.removeBtn');
         removeBtns.forEach(button => {
             button.addEventListener('click', function () {
@@ -38,11 +47,26 @@ function renderCart() {
                 renderCart(); 
             });
         });
+
+        // (Изменение №3) Обработчики + и − для изменения количества
+        cartList.querySelectorAll('.increment').forEach(btn => {
+          btn.addEventListener('click', () => {
+            addOneToCart(+btn.dataset.id);
+            renderCart(); 
+          });
+        });
+
+        cartList.querySelectorAll('.decrement').forEach(btn => {
+          btn.addEventListener('click', () => {
+            removeOneFromCart(+btn.dataset.id);
+            renderCart();
+          });
+        });
     }
     updateTotal(); // функция для отображения цены и количества
 }
 
-// Удалить отдельный товар из корзины
+// Удалить весь товар (по индексу) — как раньше
 function removeItemFromCart(index) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     if (cart) {
@@ -51,6 +75,30 @@ function removeItemFromCart(index) {
     }
 }
 
+// (Изменение №4) Увеличить количество на 1 (товар уже есть в корзине)
+function addOneToCart(productId) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const productInCart = cart.find(item => item.id === productId);
+  if (productInCart) {
+    productInCart.quantity++; 
+    // Увеличиваем quantity, не дублируя товар
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+}
+
+// (Изменение №5) Уменьшить количество на 1, если оно не 1, иначе удалить товар
+function removeOneFromCart(productId) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const itemIndex = cart.findIndex(item => item.id === productId);
+  if (itemIndex !== -1) {
+    if (cart[itemIndex].quantity > 1) {
+      cart[itemIndex].quantity--;
+    } else {
+      cart.splice(itemIndex, 1);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+}
 
 //Счетчик количества позиций
 const cartItems = document.querySelectorAll(".cartItem");
@@ -61,43 +109,16 @@ const totalItemsSum = document.getElementById("totalItemsSum");
 function updateTotal() {
   let total = 0;
   let totalItems = 0;
-  document.querySelectorAll(".cartItem").forEach((cartItem) => {
-    const qty = parseInt(cartItem.querySelector(".quantity").textContent);
-    const price = parseInt(cartItem.querySelector(".price").textContent);
-    total += qty * price;
-    totalItems += qty;
+  // (Изменение №6) Вместо чтения DOM, теперь читаем cart из localStorage
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.forEach(item => {
+    total += item.price * item.quantity; 
+    totalItems += item.quantity;       
   });
   totalSumDisplay.textContent = `${total} ₽`;
   totalItemsSum.textContent = `${total} ₽`;
   totalItemsDisplay.textContent = totalItems;
 }
-
-cartItems.forEach((item) => {
-  const decrementBtn = item.querySelector(".decrement");
-  const incrementBtn = item.querySelector(".increment");
-  const quantityDisplay = item.querySelector(".quantity");
-  const priceDisplay = item.querySelector(".price");
-  const basePrice = parseInt(priceDisplay.textContent);
-
-  incrementBtn.addEventListener("click", () => {
-    let quantity = parseInt(quantityDisplay.textContent);
-    quantity++;
-    quantityDisplay.textContent = quantity;
-    priceDisplay.textContent = basePrice * quantity;
-    updateTotal();
-  });
-
-  decrementBtn.addEventListener("click", () => {
-    let quantity = parseInt(quantityDisplay.textContent);
-    if (quantity > 1) {
-      quantity--;
-      quantityDisplay.textContent = quantity;
-      priceDisplay.textContent = basePrice * quantity;
-      updateTotal();
-    }
-  });
-  updateTotal();
-});
 
 //Отображение деталей заказа после формы
 const deliveryPrice = document.getElementById("deliveryPrice");
@@ -110,9 +131,7 @@ function renderOrderFinal() {
     totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
 }
 
-//Окончательная стоимость заказа меняется динамически с учетом изменения варианта доставки
 document.getElementById("deliveryOptions").addEventListener('change', renderOrderFinal);
-
 
 //Валидация формы
 const orderForm = document.forms.orderForm;
@@ -136,7 +155,7 @@ function validateUsername(name) {
 }
 
 function validateTel(tel) {
-  let regex = /^((\+7|8)+([0-9]){10})$/;
+  let regex = /^((\\+7|8)+([0-9]){10})$/;
   return regex.test(tel);
 }
 
@@ -169,14 +188,12 @@ policyCheckbox.addEventListener('change', function () {
   if (policyCheckbox.checked) {
       policyError.style.display = 'none';
       makeOrderBtn.removeAttribute('disabled');
-
   } else {
     policyError.textContent = 'Необходимо согласие с условиями';
     policyError.style.display = 'block';
     makeOrderBtn.setAttribute('disabled', "");
   }
 });
-
 
 orderForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
@@ -221,7 +238,7 @@ orderForm.addEventListener('submit', function(evt) {
   }
 
   if (!hasError) {
-    const orderInfo = [ //изменить с учетом функционала отправки в телеграм
+    const orderInfo = [
       clientName.value,
       clientTel.value,
       deliveryOption.value,
@@ -230,8 +247,8 @@ orderForm.addEventListener('submit', function(evt) {
       orderComment.value,
     ];
     alert('Форма заказа успешно отправлена!');
-    console.log(orderInfo); //для себя и проверки, удалить по окончении тестирования
-    cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>'
+    console.log(orderInfo);
+    cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
     orderDetails.innerHTML = '';
     orderFinal.innerHTML = '';
     localStorage.removeItem('cart');
@@ -239,7 +256,6 @@ orderForm.addEventListener('submit', function(evt) {
     orderForm.reset(); 
   }
 });
-
 
 //Очистка/сброс корзины
 clearCartBtn.addEventListener('click', () => {
@@ -253,3 +269,5 @@ clearCartBtn.addEventListener('click', () => {
   errorDelivery.style.display = 'none';
   policyError.style.display = 'none';
 });
+
+// localStorage.removeItem('cart');
