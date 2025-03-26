@@ -17,7 +17,8 @@ function addToCart(productId) {
     saveCart(cart);
     console.log("Товар добавлен в корзину:", productToAdd);
     console.log("Содержимое корзины:", cart);
-    alert("Товар добавлен в корзину!");
+    // Убрали всплывающее сообщение:
+    // alert("Товар добавлен в корзину!");
   } else {
     console.error("Товар не найден");
   }
