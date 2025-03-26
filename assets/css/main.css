@@ -228,6 +228,7 @@ h6 {
   flex-direction: column;
   padding: 20px;
   background-color: rgb(30, 26, 26);
+  font-family: "Montserrat", sans-serif;
 }
 .footer__contacts, .footer__address {
   margin-bottom: 20px;
@@ -247,6 +248,7 @@ h6 {
 }
 .footer__socials__social-link {
   margin-right: 10px;
+  color: rgb(255, 255, 255);
 }
 .footer__socials__social-link:last-child {
   margin-right: 0;

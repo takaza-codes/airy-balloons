@@ -17,6 +17,7 @@
   flex-direction: column;
   padding: 20px;
   background-color: $black; // Цвет фона футера
+  font-family: $font-Montserrat;
 
   &__contacts,
   &__address {
@@ -40,6 +41,7 @@
 
     &__social-link {
       margin-right: 10px;
+      color: $white;
 
       &:last-child {
         margin-right: 0; // Убираем отступ для последнего значка
