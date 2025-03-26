@@ -1,6 +1,7 @@
 // === Корзина ===
 function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
+  const cart = localStorage.getItem("cart");
+  return cart ? JSON.parse(cart) : [];  // возвращается пустой массив, если 'cart' не существует
 }
 
 function saveCart(cart) {
