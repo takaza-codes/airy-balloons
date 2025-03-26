@@ -225,7 +225,7 @@ h6 {
 
 .footer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 20px;
   background-color: rgb(30, 26, 26);
 }

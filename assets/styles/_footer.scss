@@ -14,7 +14,7 @@
 
 .footer {
   display: flex;
-  flex-direction: row; // По умолчанию - вертикальное расположение
+  flex-direction: column;
   padding: 20px;
   background-color: $black; // Цвет фона футера
 
@@ -47,8 +47,8 @@
     }
 
     &__social-icon {
-      width: 24px; // Ширина значков
-      height: 24px; // Высота значков
+      width: 24px;
+      height: 24px;
     }
   }
 
