@@ -291,6 +291,7 @@ h6 {
   display: inline-block;
 }
 .product-card .product-info .product-description {
+  margin-top: 24px;
   margin-bottom: 24px;
 }
 .product-card .product-info .product-description ul {
@@ -403,4 +404,60 @@ h6 {
   .product-price {
     font-size: 1.6rem;
   }
+}
+/***************************************************
+ * Блок хлебных крошек (breadcrumbs)
+ ***************************************************/
+.breadcrumbs {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgb(30, 26, 26);
+  margin-bottom: 20px;
+}
+.breadcrumbs a {
+  color: rgb(30, 26, 26);
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.breadcrumbs span#currentBreadcrumb {
+  color: rgb(30, 26, 26);
+  font-weight: 500;
+}
+
+/***************************************************
+ * Контейнер для счётчика и кнопки
+ ***************************************************/
+.order-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Счётчик */
+.quantity-block {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 8px;
+}
+.quantity-block button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+}
+.quantity-block .quantity-num {
+  display: inline-block;
+  width: 24px;
+  padding: 14px 24px;
+  text-align: center;
+  font-weight: 600;
 }
