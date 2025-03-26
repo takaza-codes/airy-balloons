@@ -6,5 +6,5 @@ Thumbs.db
 dist/
 build/
 
-# all docs with .map extension will be ignored
-*.map
+# # all docs with .map extension will be ignored
+# *.map
