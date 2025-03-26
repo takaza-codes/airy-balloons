@@ -39,19 +39,23 @@
 /***************************************************
  * 3) Карточка товара (product-card)
  ***************************************************/
+.product-title {
+  @include h4;
+  @include Montserrat-600-base;
+  color: $black;
+  margin-bottom: 24px;
+}
+
 .product-card {
   display: flex;
   align-items: stretch;
   gap: 32px;
-  background-color: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
   margin-bottom: 40px;
 
   .product-images {
     display: flex;
     flex: 1;
+    max-width: 600px;
 
     .main-image {
       flex: 1;
@@ -73,17 +77,11 @@
     flex-direction: column;
     justify-content: flex-start;
 
-    .product-title {
-      @include h4;
-      @include Montserrat-600-base;
-      color: $black;
-      margin-bottom: 24px;
-    }
-
     .product-price {
       @include h4;
       @include Montserrat-600-base;
       color: $black;
+      margin-top: 24px;
       margin-bottom: 24px;
       display: inline-block;
     }
@@ -203,62 +201,54 @@
 }
 
 /***************************************************
- * Блок хлебных крошек (breadcrumbs)
- ***************************************************/
-.breadcrumbs {
-  @include Montserrat-400-base;
-  font-size: $font-size-regular;
-  color: $black;
-  margin-bottom: 20px;
-
-  a {
-    color: $black;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  // Текущий пункт
-  span#currentBreadcrumb {
-    color: $black;
-    font-weight: 500;
-  }
-}
-
-/***************************************************
  * Контейнер для счётчика и кнопки
  ***************************************************/
 .order-controls {
   display: flex;
-  align-items: center;
+  align-items: end;
   gap: 8px;
   margin-bottom: 16px;
-}
+  color: #dadada;
 
-/* Счётчик */
-.quantity-block {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 0 8px;
+  .quantity-block {
+    display: none;
+    align-items: center;
+    border: 1px solid $red;
+    border-radius: 8px;
+    padding: 0 8px;
+    color: $red;
+    font-size: $font-size-regular;
+    
 
-  button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
+    button {
+      background: none;
+      border: none;
+      font-size: $font-size-h4;
+      cursor: pointer;
+      width: 88px;
+      height: 48px;
+      color: $red;
+    }
+
+    .quantity-num {
+      display: inline-block;
+      width: 24px;
+      padding: 14px 24px;
+      text-align: center;
+      font-weight: 600;
+    }
   }
 
-  .quantity-num {
+  .btn {
     display: inline-block;
-    width: 24px;
-    padding: 14px 24px;
-    text-align: center;
-    font-weight: 600;
+  }
+
+  &.active {
+    .btn {
+      display: none;
+    }
+    .quantity-block {
+      display: inline-flex;
+    }
   }
 }

@@ -398,14 +398,3 @@ const products = [
     ]
   }
 ];
-
-const categoryLabels = {
-  bachelorette: "На девичник",
-  boy: "Для мальчиков",
-  girl: "Для девочек",
-  man: "Для мужчин",
-  woman: "Для женщин/девушек",
-  genderparty: "На gender-party",
-  newborn: "На выписку",
-  valentines: "На 14 февраля"
-};
