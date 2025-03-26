@@ -239,17 +239,6 @@ orderForm.addEventListener('submit', function(evt) {
     hasError = true;
   }
 
-  // Если нет ошибок, отправляем данные на сервер через Netlify Function
-  if (!hasError) {
-    const orderData = {
-      name: clientName.value,
-      phone: clientTel.value,
-      deliveryOption: deliveryOption.value,
-      address: deliveryAddress.value,
-      deliveryDate: deliveryDate.value,
-      comment: orderComment.value,
-    };
-
     fetch('/.netlify/functions/sendOrder', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
