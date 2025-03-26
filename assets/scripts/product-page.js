@@ -9,19 +9,68 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+/**
+ * Добавление товара в корзину
+ * @param {number} productId - ID товара
+ */
 function addToCart(productId) {
   const cart = getCart();
   const productToAdd = products.find(p => p.id === productId);
   if (productToAdd) {
+    // Добавляем товар в массив
     cart.push(productToAdd);
     saveCart(cart);
     console.log("Товар добавлен в корзину:", productToAdd);
     console.log("Содержимое корзины:", cart);
-    // Убрали всплывающее сообщение:
-    // alert("Товар добавлен в корзину!");
   } else {
     console.error("Товар не найден");
   }
+}
+
+/***************************************************
+ * Функция для показа всплывающего сообщения (toast)
+ ***************************************************/
+function showToast(message) {
+  // Ищем или создаём контейнер для всех тостов
+  let toastContainer = document.getElementById('toastContainer');
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.id = 'toastContainer';
+    // Пример простых inline-стилей
+    toastContainer.style.position = 'fixed';
+    toastContainer.style.bottom = '1rem';
+    toastContainer.style.right = '1rem';
+    toastContainer.style.display = 'flex';
+    toastContainer.style.flexDirection = 'column';
+    toastContainer.style.gap = '0.5rem';
+    toastContainer.style.zIndex = '9999';
+    document.body.appendChild(toastContainer);
+  }
+
+  // Создаём сам тост
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  // Минимальные стили для тоста
+  toast.style.backgroundColor = '#333';
+  toast.style.color = '#fff';
+  toast.style.padding = '0.75rem 1rem';
+  toast.style.borderRadius = '4px';
+  toast.style.cursor = 'pointer';
+  toast.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+
+  // При клике — убрать тост раньше таймера
+  toast.addEventListener('click', () => {
+    toast.remove();
+    clearTimeout(timer);
+  });
+
+  // Добавляем в контейнер
+  toastContainer.appendChild(toast);
+
+  // Убираем через 3 секунды
+  const timer = setTimeout(() => {
+    toast.remove();
+  }, 3000);
 }
 
 /***************************************************
@@ -41,7 +90,7 @@ const product = products.find(p => p.id === productId);
 if (!product) {
   productPageEl.innerHTML = '<p>Товар не найден!</p>';
 } else {
-  // Разбиваем description на строки -> делаем <li>...
+  // Разбиваем описание на строки -> делаем <li>...
   const lines = product.description
     .split('\n')
     .map(line => line.trim())
@@ -54,7 +103,7 @@ if (!product) {
   }).join('');
   const compositionHtml = `<ul>${listItems}</ul>`;
 
-  // Главное изображение
+  // Главное изображение (или заглушка)
   const mainImage = (product.images && product.images.length > 0)
     ? product.images[0]
     : '../assets/images/no-image.jpg';
@@ -76,14 +125,19 @@ if (!product) {
     </div>
   `;
 
-  // Навешиваем обработчик «В корзину»
+  // Обработчик «В корзину»
   const addToCartButton = document.getElementById('addToCartBtn');
   if (addToCartButton) {
     addToCartButton.addEventListener('click', () => {
+      // Добавляем товар
       addToCart(product.id);
-      // Меняем стиль и текст кнопки после добавления
+
+      // Меняем стиль и текст кнопки
       addToCartButton.classList.add('btn--white-red');
-      addToCartButton.textContent = 'Набор в корзине';
+      addToCartButton.textContent = 'Добавить ещё';
+
+      // Показываем всплывающее сообщение
+      showToast("Товар успешно добавлен в Корзину");
     });
   }
 
