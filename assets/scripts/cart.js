@@ -239,34 +239,63 @@ orderForm.addEventListener('submit', function(evt) {
     hasError = true;
   }
 
-    fetch('/.netlify/functions/sendOrder', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData)
+  // Если нет ошибок, отправляем данные на сервер через Netlify Function
+if (!hasError) {
+  // 1. Считываем корзину
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // 2. Подсчитываем сумму и количество
+  let total = 0;
+  let totalItems = 0;
+  cart.forEach(item => {
+    total += item.price * item.quantity;
+    totalItems += item.quantity;
+  });
+
+  // 3. Формируем orderData с user, cart, total, totalItems
+  const orderData = {
+    user: {
+      clientName: clientName.value,
+      clientTel: clientTel.value,
+      deliveryOption: deliveryOption.value,
+      deliveryAddress: deliveryAddress.value,
+      deliveryDate: deliveryDate.value,
+      orderComment: orderComment.value,
+    },
+    cart: cart,
+    total: total,
+    totalItems: totalItems
+  };
+
+  // 4. Отправляем запрос
+  fetch('/.netlify/functions/sendOrder', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(orderData)
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Ошибка сети');
+      }
+      return response.json();
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Ошибка сети');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Ответ от функции:', data);
-        alert('Форма заказа успешно отправлена!');
-        // Очищаем корзину и сбрасываем форму
-        cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
-        orderDetails.innerHTML = '';
-        orderFinal.innerHTML = '';
-        localStorage.removeItem('cart');
-        makeOrderBtn.setAttribute('disabled', '');
-        orderForm.reset();
-      })
-      .catch(error => {
-        console.error('Ошибка при отправке запроса:', error);
-        alert('Произошла ошибка при отправке заказа.');
-      });
-  }
-);
+    .then(data => {
+      console.log('Ответ от функции:', data);
+      alert('Форма заказа успешно отправлена!');
+      // Очищаем корзину и сбрасываем форму
+      cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
+      orderDetails.innerHTML = '';
+      orderFinal.innerHTML = '';
+      localStorage.removeItem('cart');
+      makeOrderBtn.setAttribute('disabled', '');
+      orderForm.reset();
+    })
+    .catch(error => {
+      console.error('Ошибка при отправке запроса:', error);
+      alert('Произошла ошибка при отправке заказа.');
+    });
+}
+});
 
 
 //Очистка/сброс корзины
