@@ -1,17 +1,106 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Главная страница</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles/main.css" />
+    <title>Главная страница</title>
+  </head>
+  <body>
+    <h1>Главная страница</h1>
+    <p>Здесь пока ничего нет.</p>
 
-  <h1>Главная страница</h1>
-  <p>Здесь пока ничего нет.</p>
+    <!-- Ссылка для перехода в каталог -->
+    <p><a href="./pages/catalog.html">Перейти в каталог</a></p>
 
-  <!-- Ссылка для перехода в каталог -->
-  <p><a href="./pages/catalog.html">Перейти в каталог</a></p>
+    <section class="catalogue">
+      <div class="catalogue__title">
+        <h3 class="catalogue__heading"><a href="#">Каталог</a></h3>
+      </div>
 
-</body>
+      <div class="catalogue__rows">
+        <div class="catalogue__row">
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img src="assets/photos/for-girl/for-girl-03.jpeg" alt="" />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">Для девочек</a>
+            </div>
+          </div>
+
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img src="assets/photos/for-boy/for-boy-03.jpeg" alt="" />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">Для мальчиков</a>
+            </div>
+          </div>
+
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img src="assets/photos/newborn/newborn-03.jpeg" alt="" />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">Выписка из роддома</a>
+            </div>
+          </div>
+
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img src="assets/photos/newborn/newborn-02.jpeg" alt="" />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">Гендер пати</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="catalogue__row">
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img src="assets/photos/for-woman/for-woman-02.jpeg" alt="" />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">Девушкам</a>
+            </div>
+          </div>
+
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img src="assets/photos/for-man/for-man-01.jpeg" alt="" />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">Мужчинам</a>
+            </div>
+          </div>
+
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img
+                src="assets/photos/bachelorette/bachelorette-01.jpeg"
+                alt=""
+              />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">Девичник</a>
+            </div>
+          </div>
+
+          <div class="catalogue__item">
+            <div class="catalogue__image">
+              <img
+                src="assets/photos/valentines-day/valentines-day-02.jpeg"
+                alt=""
+              />
+            </div>
+            <div class="catalogue__link">
+              <a href="#">14 февраля</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

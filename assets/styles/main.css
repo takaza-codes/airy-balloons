@@ -385,3 +385,25 @@ h6 {
     font-size: 0.9rem;
   }
 }
+
+.catalogue {
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+.catalogue__row {
+  display: flex;
+  gap: 20px;
+}
+.catalogue__item {
+  display: flex;
+  flex-direction: column;
+}
+.catalogue__image {
+  width: 250px;
+  height: 230px;
+}
+.catalogue__image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}/*# sourceMappingURL=main.css.map */
