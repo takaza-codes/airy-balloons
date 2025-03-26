@@ -1,4 +1,3 @@
-// order-form.js
 const orderForm = document.forms.orderForm;
 orderForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -32,7 +31,7 @@ orderForm.addEventListener('submit', async (e) => {
     const data = await res.json();
     if (data.ok) {
       alert('Заказ отправлен!');
-      // Можно очистить корзину, если нужно:
+      // Очистка корзины после отправки
       localStorage.removeItem('cart');
     } else {
       alert('Ошибка: ' + data.error);
