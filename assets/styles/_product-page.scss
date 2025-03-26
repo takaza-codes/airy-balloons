@@ -1,203 +1,202 @@
 /***************************************************
- * 1) Стили для header, footer, контейнеров
+ * 1) Стили для header, footer (Десктоп)
  ***************************************************/
-
-/* Тестовый хедер */
-.site-header {
+ .site-header {
   background-color: $pink;
   padding: 20px 0;
 
-  .container {
-    @include padding-1920;
-
-    @include tablets {
-      @include padding-768;
-    }
-    @include phones {
-      @include padding-440;
-    }
-
-    h1 {
-      @include h2; 
-      color: $black;
-      margin: 0;
-    }
+  h1 {
+    @include Montserrat-400-base;
+    font-size: $font-size-regular;
+    color: $black;
+    margin: 0;
+    text-align: center;
   }
 }
 
-/* Тестовый футер */
 .site-footer {
   background-color: $pink;
   padding: 20px 0;
   margin-top: 40px;
 
-  .container {
-    @include padding-1920;
-
-    @include tablets {
-      @include padding-768;
-    }
-    @include phones {
-      @include padding-440;
-    }
-
-    p {
-      @include Montserrat-400-base;
-      font-size: $font-size-regular;
-      color: $black;
-      margin: 0;
-      text-align: center;
-    }
-  }
-}
-
-/* Основной контейнер для страницы товара */
-.product-page {
-  @include padding-1920;
-  margin: 40px auto;
-
-  @include tablets {
-    @include padding-768;
-  }
-  @include phones {
-    @include padding-440;
-  }
-}
-
-/* Кнопка «Вернуться в каталог» по центру */
-.back-to-catalog-wrap {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* Стили для кнопки «Вернуться в каталог» */
-.back-to-catalog-btn {
-  @include Montserrat-600-base;
-  background-color: $red;
-  color: $white;
-  border: none;
-  border-radius: 4px;
-  padding: 12px 24px;
-  font-size: $font-size-regular;
-  text-decoration: none; /* убрать подчеркивание у ссылки */
-  display: inline-block;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: darken($red, 10%);
+  p {
+    @include Montserrat-400-base;
+    font-size: $font-size-regular;
+    color: $black;
+    margin: 0;
+    text-align: center;
   }
 }
 
 /***************************************************
- * 2) Стили для карточки товара (product-card)
+ * 2) Блок-обёртка для страницы товара
  ***************************************************/
+.product-page-wrapper {
+  @include padding-1920;
+  margin: 40px auto;
+}
 
+/***************************************************
+ * 3) Карточка товара (product-card)
+ ***************************************************/
 .product-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: stretch; 
   gap: 32px;
-  align-items: flex-start;
-  background-color: $white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  margin-bottom: 40px;
 
-  @include tablets {
-    grid-template-columns: 1fr;
-  }
-
-  /* Левая часть (изображение) */
   .product-images {
-    background-color: lighten($pink, 10%);
-    padding: 20px;
-    margin-bottom: 48px;
+    display: flex;
+    flex: 1; 
 
     .main-image {
-      position: relative;
-      width: 100%;
+      flex: 1;
+      height: 100%;
 
       img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
         display: block;
-        max-width: 100%;
-        margin: 0 auto;
         border-radius: 8px;
       }
     }
   }
 
-  /* Правая часть (информация о товаре) */
   .product-info {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 20px;
+    justify-content: flex-start;
 
     .product-title {
-      @include h2;
-      color: $black;
-      margin-bottom: 16px;
-    }
-
-    /* Выделение цены (фон, скруглённые углы) */
-    .product-price {
-      @include Montserrat-700-base;
-      font-size: 1.8rem;
-      color: $white;
-      background-color: $red;
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 4px;
-      margin-bottom: 16px;
-
-      @include tablets {
-        font-size: 1.6rem;
-      }
-      @include phones {
-        font-size: 1.4rem;
-      }
-    }
-
-    /* Сюда можно выводить список состава */
-    .description {
-      @include Montserrat-400-base;
-      font-size: $font-size-regular;
-      line-height: $line-height;
-      color: $black;
-      margin-bottom: 20px;
-    }
-
-    /* Кнопка «В корзину» */
-    .btn {
+      @include h4;
       @include Montserrat-600-base;
-      background-color: $red;
-      color: $white;
-      border: none;
-      border-radius: 4px;
-      padding: 12px 24px;
-      cursor: pointer;
-      font-size: $font-size-regular;
-      transition: background-color 0.3s ease;
+      color: $black;
+      margin-bottom: 24px;
+    }
 
-      &:hover {
-        background-color: darken($red, 10%);
+    .product-price {
+      @include h4;
+      @include Montserrat-600-base;
+      color: $black;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+
+    .product-description {
+      margin-bottom: 24px;
+
+      ul {
+        list-style: none;
+        margin-left: 0; 
+        padding-left: 0;
+      }
+    
+      li {
+        @include Montserrat-400-base;
+        color: $black;
+        margin-bottom: 8px;
+        list-style-type: none;
+      }
+    
+      li:not(:nth-child(-n+2)) {
+        list-style-type: disc;          
+        list-style-position: outside;   
+        margin-left: 1.5rem;           
+      }
+    
+      li:first-child {
+        margin-bottom: 16px;
       }
     }
   }
 }
 
 /***************************************************
- * 3) Стили для списков состава (если нужно)
+ * Блок «Похожие товары»
+ ***************************************************/
+.similar-products {
+  margin-bottom: 40px;
+
+  .similar-title {
+    @include h3;
+    @include Montserrat-500-base;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  .similar-list {
+    display: flex;
+    gap: 24px;
+  }
+
+  .similar-item {
+    width: 200px; 
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px;
+
+    .similar-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .similar-item-title {
+      @include h4;
+      @include Montserrat-500-base;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: $black;
+    }
+
+    .similar-item-price {
+      @include h5;
+      @include Montserrat-500-base;
+      color: $black;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+/***************************************************
+ * 4) Адаптив (tablets, phones) - с использованием миксинов
  ***************************************************/
 
-.composition-list {
-  list-style: disc;
-  padding-left: 20px;
-  margin-bottom: 20px;
+/* Планшеты: (max-width: 768px) */
+@include tablets {
+  .product-page-wrapper {
+    @include padding-768;
+  }
 
-  li {
-    @include Montserrat-400-base;
-    font-size: $font-size-regular;
-    color: $black;
-    margin-bottom: 4px;
+  .product-price {
+    font-size: 1.8rem;
+  }
+}
+
+/* Телефоны: (max-width: 440px) */
+@include phones {
+  .product-page-wrapper {
+    @include padding-440;
+  }
+
+  .product-card {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .product-price {
+    font-size: 1.6rem;
   }
 }

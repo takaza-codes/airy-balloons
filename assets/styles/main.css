@@ -32,86 +32,119 @@ h6 {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Bold.woff") format("woff");
+  src: url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Italic.woff") format("woff");
+  src: url("../fonts/Montserrat-Italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Light.woff") format("woff");
+  src: url("../fonts/Montserrat-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Medium.woff") format("woff");
+  src: url("../fonts/Montserrat-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-Regular.woff") format("woff");
+  src: url("../fonts/Montserrat-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat-SemiBold.woff") format("woff");
+  src: url("../fonts/Montserrat-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
-/* Пример шаблона базового стиля кнопки */
 .btn {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 600;
-  /* Используем Montserrat с весом 600 (Semibold) */
+  font-weight: 500;
   font-size: 16px;
-  width: 240px;
-  height: 60px;
-  background-color: rgb(255, 255, 255); /* Белый фон */
-  color: rgb(238, 27, 85); /* Текст красного цвета */
-  border: 1px solid rgb(238, 27, 85); /* Красная рамка толщиной 1px */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
   border-radius: 8px;
-  padding: 12px 24px;
+  padding: 16px 24px;
+  width: 240px;
+  text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Состояние при наведении */
-  /* Состояние при нажатии/активное */
-  /* Отключённая кнопка */
-  /* Адаптив */
+  /* Модификатор для центрирования */
+  /* Модификатор «ссылка» */
 }
 .btn:hover {
-  background-color: #c70f42; /* затемняем фон на 10% */
-  color: rgb(255, 255, 255); /* делаем текст белым для контраста */
+  background-color: #c70f42;
+  color: rgb(255, 255, 255);
 }
 .btn:active {
   transform: scale(0.98);
 }
 .btn:disabled, .btn.disabled {
   background-color: #f57a9c;
-  border-color: #f57a9c;
   cursor: not-allowed;
   opacity: 0.7;
 }
-@media screen and (max-width: 768px) {
-  .btn {
-    padding: 10px 20px;
-  }
+.btn.btn--center {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
-@media screen and (max-width: 440px) {
-  .btn {
-    padding: 8px 16px;
-  }
+.btn.btn--link {
+  background-color: transparent;
+  color: rgb(30, 26, 26);
+  border: 1px solid rgb(30, 26, 26);
+}
+.btn.btn--link:hover {
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+}
+.btn.btn--link:active {
+  transform: none;
+}
+.btn.btn--transparent {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn.btn--transparent:hover {
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+}
+.btn.btn--white-red {
+  background-color: rgb(255, 255, 255);
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+  /* Стили при наведении */
+}
+.btn.btn--white-red:hover {
+  background-color: white;
+  color: #c70f42;
+  border-color: #c70f42;
+}
+.btn.btn--white-red:active {
+  transform: scale(0.98);
 }
 
-/* Каталог (контейнер) */
+/* Каталог (контейнер)  с карточками товаров просто для примера */
 .catalog {
   display: flex;
   flex-wrap: wrap;
@@ -121,22 +154,21 @@ h6 {
 
 /* Мини-карточка товара в каталоге */
 .catalog-item {
-  background-color: #fff; /* или $white */
+  background-color: rgb(255, 255, 255);
   border: 1px solid #eee;
   border-radius: 8px;
-  width: 280px; /* Увеличиваем ширину, чтобы кнопка влезала */
+  width: 280px;
   padding: 16px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   /* Небольшая картинка (по ширине карточки) */
-  /* Блок с ценой (без слова «Цена») */
-  /* Кнопка */
+  /* Блок с ценой */
 }
 .catalog-item .item-image {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 140px; /* При желании ограничиваем высоту */
+  max-height: 140px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 8px;
@@ -146,94 +178,42 @@ h6 {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 700;
-  /* или замените на font-family: 'Montserrat'; font-weight: 700; */
   font-size: 1.2rem;
-  color: #333; /* или $black, если у вас есть переменная */
+  color: rgb(30, 26, 26);
   margin-bottom: 8px;
 }
 .catalog-item .price {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 700;
-  /* или font-weight: 700; */
   font-size: 1.4rem;
-  color: rgb(238, 27, 85); /* Подчеркнуть цифры цветом */
+  color: rgb(238, 27, 85);
   margin-bottom: 12px;
-}
-.catalog-item .btn {
-  display: inline-block;
-  background-color: rgb(238, 27, 85);
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 4px;
-  padding: 8px 12px; /* Уменьшаем горизонтальные отступы */
-  cursor: pointer;
-  font-size: 0.9rem; /* Чуть уменьшаем шрифт */
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  /* или просто font-weight: 700; */
-}
-.catalog-item .btn:hover {
-  background-color: #c70f42; /* затемняем цвет при ховере */
 }
 
 /***************************************************
- * 1) Стили для header, footer, контейнеров
+ * 1) Стили для header, footer (Десктоп)
  ***************************************************/
-/* Тестовый хедер */
 .site-header {
   background-color: rgb(242, 215, 219);
   padding: 20px 0;
 }
-.site-header .container {
-  padding-left: 5.2%;
-  padding-right: 5.2%;
-}
-@media screen and (max-width: 768px) {
-  .site-header .container {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-}
-@media screen and (max-width: 440px) {
-  .site-header .container {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-.site-header .container h1 {
+.site-header h1 {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 56px;
+  font-weight: 400;
+  font-size: 16px;
   color: rgb(30, 26, 26);
   margin: 0;
+  text-align: center;
 }
 
-/* Тестовый футер */
 .site-footer {
   background-color: rgb(242, 215, 219);
   padding: 20px 0;
   margin-top: 40px;
 }
-.site-footer .container {
-  padding-left: 5.2%;
-  padding-right: 5.2%;
-}
-@media screen and (max-width: 768px) {
-  .site-footer .container {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-}
-@media screen and (max-width: 440px) {
-  .site-footer .container {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-.site-footer .container p {
+.site-footer p {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -243,163 +223,184 @@ h6 {
   text-align: center;
 }
 
-/* Основной контейнер для страницы товара */
-.product-page {
+/***************************************************
+ * 2) Блок-обёртка для страницы товара
+ ***************************************************/
+.product-page-wrapper {
   padding-left: 5.2%;
   padding-right: 5.2%;
   margin: 40px auto;
 }
-@media screen and (max-width: 768px) {
-  .product-page {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-}
-@media screen and (max-width: 440px) {
-  .product-page {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
-/* Кнопка «Вернуться в каталог» по центру */
-.back-to-catalog-wrap {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* Стили для кнопки «Вернуться в каталог» */
-.back-to-catalog-btn {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  background-color: rgb(238, 27, 85);
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 4px;
-  padding: 12px 24px;
-  font-size: 16px;
-  text-decoration: none; /* убрать подчеркивание у ссылки */
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-.back-to-catalog-btn:hover {
-  background-color: #c70f42;
-}
 
 /***************************************************
- * 2) Стили для карточки товара (product-card)
+ * 3) Карточка товара (product-card)
  ***************************************************/
 .product-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: stretch;
   gap: 32px;
-  align-items: flex-start;
-  background-color: rgb(255, 255, 255);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  /* Левая часть (изображение) */
-  /* Правая часть (информация о товаре) */
-}
-@media screen and (max-width: 768px) {
-  .product-card {
-    grid-template-columns: 1fr;
-  }
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  margin-bottom: 40px;
 }
 .product-card .product-images {
-  background-color: #fffdfe;
-  padding: 20px;
-  margin-bottom: 48px;
+  display: flex;
+  flex: 1;
 }
 .product-card .product-images .main-image {
-  position: relative;
-  width: 100%;
+  flex: 1;
+  height: 100%;
 }
 .product-card .product-images .main-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   display: block;
-  max-width: 100%;
-  margin: 0 auto;
   border-radius: 8px;
 }
 .product-card .product-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-  /* Выделение цены (фон, скруглённые углы) */
-  /* Сюда можно выводить список состава */
-  /* Кнопка «В корзину» */
+  justify-content: flex-start;
 }
 .product-card .product-info .product-title {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 56px;
+  font-weight: 400;
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
   color: rgb(30, 26, 26);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 .product-card .product-info .product-price {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: rgb(255, 255, 255);
-  background-color: rgb(238, 27, 85);
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 4px;
-  margin-bottom: 16px;
-}
-@media screen and (max-width: 768px) {
-  .product-card .product-info .product-price {
-    font-size: 1.6rem;
-  }
-}
-@media screen and (max-width: 440px) {
-  .product-card .product-info .product-price {
-    font-size: 1.4rem;
-  }
-}
-.product-card .product-info .description {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: normal;
-  color: rgb(30, 26, 26);
-  margin-bottom: 20px;
-}
-.product-card .product-info .btn {
+  font-size: 24px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 600;
-  background-color: rgb(238, 27, 85);
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 4px;
-  padding: 12px 24px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  color: rgb(30, 26, 26);
+  margin-bottom: 24px;
+  display: inline-block;
 }
-.product-card .product-info .btn:hover {
-  background-color: #c70f42;
+.product-card .product-info .product-description {
+  margin-bottom: 24px;
 }
-
-/***************************************************
- * 3) Стили для списков состава (если нужно)
- ***************************************************/
-.composition-list {
-  list-style: disc;
-  padding-left: 20px;
-  margin-bottom: 20px;
+.product-card .product-info .product-description ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }
-.composition-list li {
+.product-card .product-info .product-description li {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
   color: rgb(30, 26, 26);
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+  list-style-type: none;
+}
+.product-card .product-info .product-description li:not(:nth-child(-n+2)) {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 1.5rem;
+}
+.product-card .product-info .product-description li:first-child {
+  margin-bottom: 16px;
+}
+
+/***************************************************
+ * Блок «Похожие товары»
+ ***************************************************/
+.similar-products {
+  margin-bottom: 40px;
+}
+.similar-products .similar-title {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+.similar-products .similar-list {
+  display: flex;
+  gap: 24px;
+}
+.similar-products .similar-item {
+  width: 200px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  text-align: center;
+  padding: 8px;
+}
+.similar-products .similar-item .similar-img {
+  width: 100%;
+  height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.similar-products .similar-item .similar-item-title {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: rgb(30, 26, 26);
+}
+.similar-products .similar-item .similar-item-price {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: rgb(30, 26, 26);
+  margin-bottom: 16px;
+}
+
+/***************************************************
+ * 4) Адаптив (tablets, phones) - с использованием миксинов
+ ***************************************************/
+/* Планшеты: (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .product-page-wrapper {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  .product-price {
+    font-size: 1.8rem;
+  }
+}
+/* Телефоны: (max-width: 440px) */
+@media screen and (max-width: 440px) {
+  .product-page-wrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .product-card {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+  .product-price {
+    font-size: 1.6rem;
+  }
 }
