@@ -24,7 +24,7 @@ orderForm.addEventListener('submit', async (e) => {
   });
 
   try {
-    const res = await fetch('./sendOrder.js', {
+    const res = await fetch('/.netlify/functions/sendOrder', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user, cart, total, totalItems }),
