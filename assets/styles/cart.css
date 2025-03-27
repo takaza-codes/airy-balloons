@@ -170,13 +170,16 @@ html {
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: transparent;
+  border: 1px solid rgb(238, 27, 85);
   padding: 0;
-  max-height: 40px;
-  max-width: 40px;
+  height: 40px;
+  width: 40px;
 }
 .topContainer #goBack:hover {
   background-image: url(/assets/logos/close-cross.svg);
   background-size: 60%;
+  border: 2px solid #cfcfcf;
 }
 @media screen and (max-width: 768px) {
   .topContainer #goBack {
@@ -205,6 +208,9 @@ html {
   font-size: 24px;
   color: gray;
 }
+.cartItems #emptyMsg a:hover {
+  color: rgb(245, 210, 88);
+}
 .cartItems #cartList {
   display: flex;
   flex-flow: column nowrap;
@@ -218,15 +224,21 @@ html {
 .cartItems #cartList .cartItem {
   padding: 10px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 10% 15% 12%;
+  grid-template-columns: 20% 1fr 15% 15% 12%;
   align-items: center;
   border-top: 1px solid gray;
   border-bottom: 0.5px solid gray;
 }
+@media screen and (max-width: 768px) {
+  .cartItems #cartList .cartItem {
+    grid-template-columns: 1fr 1fr 15% 15% 12%;
+  }
+}
 @media screen and (max-width: 440px) {
   .cartItems #cartList .cartItem {
-    grid-template-columns: 50% 1fr 1fr;
+    grid-template-columns: fit-content(48%) 1fr 1fr;
     grid-template-rows: 1rem 90px auto;
+    gap: 0.3rem;
   }
   .cartItems #cartList .cartItem .itemName {
     grid-column: 2/4;
@@ -266,12 +278,18 @@ html {
   }
 }
 .cartItems #cartList .cartItem .itemCounter {
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 10px;
   border: 1px solid rgb(30, 26, 26);
   border-radius: 6px;
   max-width: 80px;
+}
+@media screen and (max-width: 440px) {
+  .cartItems #cartList .cartItem .itemCounter {
+    justify-self: start;
+  }
 }
 .cartItems #cartList .cartItem .itemCounter button {
   border: none;
@@ -295,7 +313,7 @@ html {
   border-right: 1px solid rgb(30, 26, 26);
 }
 .cartItems #cartList .cartItem .price {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
   justify-self: end;
@@ -388,10 +406,33 @@ html {
   font-size: 16px;
   font-weight: 400;
 }
-#orderForm #deliveryOptions label input {
-  width: 1rem;
-  height: 1rem;
+#orderForm #deliveryOptions label input[type=radio] {
   margin: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid #d3d3d3;
+  width: 20px;
+  height: 20px;
+  content: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+}
+#orderForm #deliveryOptions label input[type=radio]:checked {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  padding: 0;
+  content: none;
+  border: none;
+}
+#orderForm #deliveryOptions label input[type=radio]:checked::before {
+  position: absolute;
+  color: rgb(238, 27, 85);
+  content: " ✓ ";
+  font-weight: bolder;
+  font-size: 1rem;
 }
 #orderForm #orderComment {
   min-height: 4rem;
@@ -422,9 +463,34 @@ html {
 #orderForm .agreePolicy label a:hover {
   color: rgb(245, 210, 88);
 }
-#orderForm .agreePolicy input {
-  width: 1.5rem;
+#orderForm .agreePolicy input[type=checkbox] {
   margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid #d3d3d3;
+  width: 100%;
+  max-width: 20px;
+  height: 20px;
+  content: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+}
+#orderForm .agreePolicy input[type=checkbox]:checked {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  padding: 0;
+  content: none;
+  border: none;
+}
+#orderForm .agreePolicy input[type=checkbox]:checked::before {
+  position: absolute;
+  color: rgb(238, 27, 85);
+  content: " ✓ ";
+  font-weight: bolder;
 }
 #orderForm .orderFinal {
   align-self: flex-end;
@@ -489,4 +555,4 @@ html {
   font-size: 16px;
   font-weight: 400;
   color: rgb(238, 27, 85);
-}
+}/*# sourceMappingURL=cart.css.map */

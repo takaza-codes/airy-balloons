@@ -38,13 +38,16 @@ html {
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: transparent;
+    border: 1px solid $red;
     padding: 0;
-    max-height: 40px;
-    max-width: 40px;
+    height: 40px;
+    width: 40px;
 
     &:hover {
       background-image: url(/assets/logos/close-cross.svg);
       background-size: 60%;
+      border: 2px solid #cfcfcf;
     }
 
     @include tablets {
@@ -73,6 +76,10 @@ html {
     align-self: center;
     font-size: $font-size-h4;
     color: gray;
+
+    a:hover {
+      color: $yellow;
+    }
   }
 
   #cartList {
@@ -90,14 +97,19 @@ html {
     .cartItem {
       padding: 10px 0;
       display: grid;
-      grid-template-columns: 1fr 1fr 10% 15% 12%;
+      grid-template-columns: 20% 1fr 15% 15% 12%;
       align-items: center;
       border-top: 1px solid gray;
       border-bottom: 0.5px solid gray;
 
+      @include tablets {
+        grid-template-columns: 1fr 1fr 15% 15% 12%;
+      }
+
       @include phones {
-        grid-template-columns: 50% 1fr 1fr;
+        grid-template-columns: fit-content(48%) 1fr 1fr;
         grid-template-rows: 1rem 90px auto;
+        gap: 0.3rem;
         .itemName {
           grid-column: 2 / 4;
           font-size: 1rem;
@@ -140,12 +152,17 @@ html {
       }
 
       .itemCounter {
+        justify-self: end;
         display: flex;
         align-items: center;
         gap: 10px;
         border: 1px solid $black;
         border-radius: 6px;
         max-width: 80px;
+
+        @include phones {
+          justify-self: start;
+        }
 
         button {
           border: none;
@@ -173,7 +190,7 @@ html {
       }
 
       .price {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
         font-weight: $font-weight-600;
         letter-spacing: $letter-spacing;
         justify-self: end;
@@ -266,13 +283,35 @@ html {
       font-size: $font-size-regular;
       font-weight: $font-weight-400;
 
-      input {
-        width: 1rem;
-        height: 1rem;
+      input[type="radio"] {
         margin: 0;
+        appearance: none;
+        border: 1px solid #d3d3d3;
+        width: 20px;
+        height: 20px;
+        content: none;
+        outline: none;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+
+        &:checked {
+          appearance: none;
+          outline: none;
+          padding: 0;
+          content: none;
+          border: none;
+        }
+
+        &:checked::before {
+          position: absolute;
+          color: $red;
+          content: "\00A0\2713\00A0";
+          font-weight: bolder;
+          font-size: 1rem;
+        }
       }
     }
   }
+
   #orderComment {
     min-height: 4rem;
   }
@@ -302,9 +341,33 @@ html {
       }
     }
 
-    input {
-      width: 1.5rem;
+    input[type="checkbox"] {
       margin: 0;
+      padding: 0;
+      appearance: none;
+      border: 1px solid #d3d3d3;
+      width: 100%;
+      max-width: 20px;
+      height: 20px;
+      content: none;
+      outline: none;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+
+      &:checked {
+        appearance: none;
+        outline: none;
+        padding: 0;
+        content: none;
+        border: none;
+      }
+
+      &:checked::before {
+        position: absolute;
+        color: $red;
+        content: "\00A0\2713\00A0";
+        font-weight: bolder;
+        // font-size: 1rem;
+      }
     }
   }
   .orderFinal {
