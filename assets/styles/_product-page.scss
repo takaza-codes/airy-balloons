@@ -87,13 +87,13 @@
     }
 
     .product-description {
-      margin-top: 24px;
       margin-bottom: 24px;
 
       ul {
         list-style: none;
         margin-left: 0;
         padding-left: 0;
+        margin-bottom: 24px;
       }
 
       li {
@@ -111,6 +111,11 @@
 
       li:first-child {
         margin-bottom: 16px;
+      }
+
+      p {
+        @include Montserrat-400-base;
+        color: $black;
       }
     }
   }
@@ -207,7 +212,7 @@
   display: flex;
   align-items: end;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   color: #dadada;
 
   .quantity-block {

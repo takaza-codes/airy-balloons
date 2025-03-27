@@ -60,68 +60,64 @@ function showToast(message) {
   if (!toastContainer) {
     toastContainer = document.createElement('div');
     toastContainer.id = 'toastContainer';
-    toastContainer.style.position = 'fixed';
-    toastContainer.style.bottom = '32px';
-    toastContainer.style.right = '56px';
-    toastContainer.style.width = '340px';
-    toastContainer.style.display = 'flex';
-    toastContainer.style.flexDirection = 'column';
-    toastContainer.style.gap = '16px';
-    toastContainer.style.zIndex = '9999';
+    Object.assign(toastContainer.style, {
+      position: 'fixed',
+      bottom: '32px',
+      right: '32px',
+      zIndex: '9999',
+      pointerEvents: 'none'
+    });
     document.body.appendChild(toastContainer);
   }
 
-  function positionToastContainer() {
-    const isMobile = window.innerWidth <= 440;
-  
-    toastContainer.style.bottom = '32px';
-    toastContainer.style.width = 'calc(100% - 32px)';
-    toastContainer.style.maxWidth = '340px';
-    toastContainer.style.gap = '16px';
-    toastContainer.style.zIndex = '9999';
-  
-    if (isMobile) {
-      toastContainer.style.left = '50%';
-      toastContainer.style.right = 'auto';
-      toastContainer.style.transform = 'translateX(-50%)';
-    } else {
-      toastContainer.style.left = 'auto';
-      toastContainer.style.right = '56px';
-      toastContainer.style.transform = 'none';
-    }
+  // Удаляем старый тост, если он есть
+  const oldToast = toastContainer.querySelector('.toast');
+  if (oldToast) {
+    oldToast.remove();
   }
 
-  positionToastContainer(); 
-  window.addEventListener('resize', positionToastContainer);
-
+  // Создаём новый тост
   const toast = document.createElement('div');
+  toast.className = 'toast';
   toast.textContent = message;
-  toast.style.backgroundColor = 'rgb(242, 215, 219)';
-  toast.style.color = 'rgb(30, 26, 26)';
-  toast.style.padding = '16px';
-  toast.style.borderRadius = '8px';
-  toast.style.cursor = 'pointer';
-  toast.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
-  toast.style.textAlign = 'center';
-  toast.style.fontSize = '18px';
-  toast.style.transition = 'opacity 0.3s ease, transform 0.2s ease';
-  toast.style.opacity = '1';
-  toast.style.transform = 'translateY(0)';  
-
-  toast.addEventListener('click', () => {
-    toast.remove();
-    clearTimeout(timer);
+  Object.assign(toast.style, {
+    backgroundColor: 'rgb(242, 215, 219)',
+    color: 'rgb(30, 26, 26)',
+    padding: '16px',
+    width: '320px',
+    borderRadius: '8px',
+    boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+    fontSize: '18px',
+    opacity: '0',
+    transform: 'translateX(100%)',
+    transition: 'transform 0.3s ease, opacity 0.3s ease',
+    cursor: 'pointer',
+    pointerEvents: 'auto',
+    textAlign: 'center'
   });
 
   toastContainer.appendChild(toast);
 
-  const timer = setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
-    setTimeout(() => {
-      toast.remove();
-    }, 300);
-  }, 3000);
+  // Запускаем анимацию появления
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(0)';
+  });
+
+  // Убираем по клику
+  toast.addEventListener('click', () => {
+    clearTimeout(timer);
+    hide(toast);
+  });
+
+  // Авто‑скрытие через 3 секунды
+  const timer = setTimeout(() => hide(toast), 3000);
+
+  function hide(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(100%)';
+    setTimeout(() => el.remove(), 300);
+  }
 }
 
 // ====================== Рендер карточки ======================
@@ -158,6 +154,7 @@ if (!product) {
         </div>
         <div class="product-description">
           <ul>${listItems}</ul>
+          <p>Состав набора, цвет шаров, надпись можно изменить по вашему желанию.</p>
         </div>
       </div>
     </div>

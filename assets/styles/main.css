@@ -290,13 +290,13 @@ h6 {
   display: inline-block;
 }
 .product-card .product-info .product-description {
-  margin-top: 24px;
   margin-bottom: 24px;
 }
 .product-card .product-info .product-description ul {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
+  margin-bottom: 24px;
 }
 .product-card .product-info .product-description li {
   font-family: "Montserrat", sans-serif;
@@ -313,6 +313,12 @@ h6 {
 }
 .product-card .product-info .product-description li:first-child {
   margin-bottom: 16px;
+}
+.product-card .product-info .product-description p {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: rgb(30, 26, 26);
 }
 
 /***************************************************
@@ -411,7 +417,7 @@ h6 {
   display: flex;
   align-items: end;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   color: #dadada;
 }
 .order-controls .quantity-block {
