@@ -273,13 +273,35 @@ html {
       font-size: $font-size-regular;
       font-weight: $font-weight-400;
 
-      input {
-        width: 1rem;
-        height: 1rem;
+      input[type="radio"] {
         margin: 0;
+        appearance: none;
+        border: 1px solid #d3d3d3;
+        width: 20px;
+        height: 20px;
+        content: none;
+        outline: none;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+
+        &:checked {
+          appearance: none;
+          outline: none;
+          padding: 0;
+          content: none;
+          border: none;
+        }
+
+        &:checked::before {
+          position: absolute;
+          color: $red;
+          content: "\00A0\2713\00A0";
+          font-weight: bolder;
+          font-size: 1rem;
+        }
       }
     }
   }
+
   #orderComment {
     min-height: 4rem;
   }
@@ -309,9 +331,33 @@ html {
       }
     }
 
-    input {
-      width: 1.5rem;
+    input[type="checkbox"] {
       margin: 0;
+      padding: 0;
+      appearance: none;
+      border: 1px solid #d3d3d3;
+      width: 100%;
+      max-width: 20px;
+      height: 20px;
+      content: none;
+      outline: none;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+
+      &:checked {
+        appearance: none;
+        outline: none;
+        padding: 0;
+        content: none;
+        border: none;
+      }
+
+      &:checked::before {
+        position: absolute;
+        color: $red;
+        content: "\00A0\2713\00A0";
+        font-weight: bolder;
+        // font-size: 1rem;
+      }
     }
   }
   .orderFinal {

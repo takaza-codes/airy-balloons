@@ -394,10 +394,33 @@ html {
   font-size: 16px;
   font-weight: 400;
 }
-#orderForm #deliveryOptions label input {
-  width: 1rem;
-  height: 1rem;
+#orderForm #deliveryOptions label input[type=radio] {
   margin: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid #d3d3d3;
+  width: 20px;
+  height: 20px;
+  content: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+}
+#orderForm #deliveryOptions label input[type=radio]:checked {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  padding: 0;
+  content: none;
+  border: none;
+}
+#orderForm #deliveryOptions label input[type=radio]:checked::before {
+  position: absolute;
+  color: rgb(238, 27, 85);
+  content: " ✓ ";
+  font-weight: bolder;
+  font-size: 1rem;
 }
 #orderForm #orderComment {
   min-height: 4rem;
@@ -428,9 +451,34 @@ html {
 #orderForm .agreePolicy label a:hover {
   color: rgb(245, 210, 88);
 }
-#orderForm .agreePolicy input {
-  width: 1.5rem;
+#orderForm .agreePolicy input[type=checkbox] {
   margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid #d3d3d3;
+  width: 100%;
+  max-width: 20px;
+  height: 20px;
+  content: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+}
+#orderForm .agreePolicy input[type=checkbox]:checked {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  padding: 0;
+  content: none;
+  border: none;
+}
+#orderForm .agreePolicy input[type=checkbox]:checked::before {
+  position: absolute;
+  color: rgb(238, 27, 85);
+  content: " ✓ ";
+  font-weight: bolder;
 }
 #orderForm .orderFinal {
   align-self: flex-end;
