@@ -1,0 +1,54 @@
+.contacts {
+  @include padding-1920;
+
+  &__title {
+    @include h2;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  &__info {
+    width: 48%;
+
+    p {
+      @include Montserrat-400-base;
+      color: $black;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__map {
+    width: 48%;
+
+    iframe,
+    img {
+      width: 100%;
+      border: none;
+      display: block;
+    }
+  }
+
+  @include tablets {
+    @include padding-768;
+
+    &__wrapper {
+      flex-direction: column;
+    }
+
+    &__info,
+    &__map {
+      width: 100%;
+    }
+  }
+
+  @include phones {
+    @include padding-440;
+  }
+}

@@ -144,6 +144,62 @@ h6 {
   transform: scale(0.98);
 }
 
+.contacts {
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+.contacts__title {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 56px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.contacts__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+.contacts__info {
+  width: 48%;
+}
+.contacts__info p {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: rgb(30, 26, 26);
+  margin-bottom: 8px;
+}
+.contacts__map {
+  width: 48%;
+}
+.contacts__map iframe,
+.contacts__map img {
+  width: 100%;
+  border: none;
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .contacts {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  .contacts__wrapper {
+    flex-direction: column;
+  }
+  .contacts__info, .contacts__map {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .contacts {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 /* Каталог (контейнер)  с карточками товаров просто для примера */
 .catalog {
   display: flex;
