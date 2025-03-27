@@ -208,6 +208,9 @@ html {
   font-size: 24px;
   color: gray;
 }
+.cartItems #emptyMsg a:hover {
+  color: rgb(245, 210, 88);
+}
 .cartItems #cartList {
   display: flex;
   flex-flow: column nowrap;

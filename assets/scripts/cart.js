@@ -9,7 +9,7 @@ function renderCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     if (cart.length === 0) {
-        cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто!</div>';
+        cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
         orderDetails.innerHTML = '';
         orderFinal.innerHTML = '';
     } else {
@@ -283,7 +283,7 @@ if (!hasError) {
       console.log('Ответ от функции:', data);
       alert('Форма заказа успешно отправлена!');
       // Очищаем корзину и сбрасываем форму
-      cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
+      cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
       orderDetails.innerHTML = '';
       orderFinal.innerHTML = '';
       localStorage.removeItem('cart');
@@ -301,7 +301,7 @@ if (!hasError) {
 //Очистка/сброс корзины
 clearCartBtn.addEventListener('click', () => {
   localStorage.removeItem('cart');
-  cartList.innerHTML = '<div id="emptyMsg">В корзине пусто!</div>';
+  cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
   orderDetails.innerHTML = '';
   orderFinal.innerHTML = '';
   errorName.style.display = 'none';
