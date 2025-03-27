@@ -224,15 +224,21 @@ html {
 .cartItems #cartList .cartItem {
   padding: 10px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 10% 15% 12%;
+  grid-template-columns: 20% 1fr 15% 15% 12%;
   align-items: center;
   border-top: 1px solid gray;
   border-bottom: 0.5px solid gray;
 }
+@media screen and (max-width: 768px) {
+  .cartItems #cartList .cartItem {
+    grid-template-columns: 1fr 1fr 15% 15% 12%;
+  }
+}
 @media screen and (max-width: 440px) {
   .cartItems #cartList .cartItem {
-    grid-template-columns: 50% 1fr 1fr;
+    grid-template-columns: fit-content(48%) 1fr 1fr;
     grid-template-rows: 1rem 90px auto;
+    gap: 0.3rem;
   }
   .cartItems #cartList .cartItem .itemName {
     grid-column: 2/4;
@@ -272,12 +278,18 @@ html {
   }
 }
 .cartItems #cartList .cartItem .itemCounter {
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 10px;
   border: 1px solid rgb(30, 26, 26);
   border-radius: 6px;
   max-width: 80px;
+}
+@media screen and (max-width: 440px) {
+  .cartItems #cartList .cartItem .itemCounter {
+    justify-self: start;
+  }
 }
 .cartItems #cartList .cartItem .itemCounter button {
   border: none;
