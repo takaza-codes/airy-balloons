@@ -38,13 +38,16 @@ html {
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: transparent;
+    border: 1px solid $red;
     padding: 0;
-    max-height: 40px;
-    max-width: 40px;
+    height: 40px;
+    width: 40px;
 
     &:hover {
       background-image: url(/assets/logos/close-cross.svg);
       background-size: 60%;
+      border: 2px solid #cfcfcf;
     }
 
     @include tablets {
