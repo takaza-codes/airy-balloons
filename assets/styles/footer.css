@@ -3,7 +3,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 a {
@@ -81,7 +82,10 @@ h6 {
   border-radius: 8px;
   padding: 12px 24px;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
   /* Состояние при наведении */
   /* Состояние при нажатии/активное */
   /* Отключённая кнопка */
@@ -92,7 +96,8 @@ h6 {
   color: rgb(255, 255, 255); /* делаем текст белым для контраста */
 }
 .btn:active {
-  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
 .btn:disabled, .btn.disabled {
   background-color: #f57a9c;
@@ -112,8 +117,13 @@ h6 {
 }
 
 .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 20px;
   background-color: rgb(30, 26, 26);
   font-family: "Montserrat", sans-serif;
@@ -132,6 +142,8 @@ h6 {
   color: rgb(255, 255, 255);
 }
 .footer__socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .footer__socials__social-link {
@@ -163,15 +175,22 @@ h6 {
 }
 @media (min-width: 768px) {
   .footer {
-    flex-direction: row;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   .footer__contacts, .footer__address {
     margin-bottom: 0;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     margin-right: 20px;
   }
   .footer__contacts:last-child, .footer__address:last-child {
     margin-right: 0;
   }
-}/*# sourceMappingURL=footer.css.map */
+}
