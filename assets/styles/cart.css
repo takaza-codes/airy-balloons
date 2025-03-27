@@ -166,18 +166,15 @@ html {
   font-weight: 600;
 }
 .topContainer #goBack {
-  background-image: url(/assets/logos/close-cross-red.svg);
-  background-size: 40%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgb(238, 27, 85);
-  padding: 0;
+  color: rgb(238, 27, 85);
   height: 40px;
-  width: 40px;
+  width: 100px;
+  justify-content: center;
 }
 .topContainer #goBack:hover {
-  background-image: url(/assets/logos/close-cross.svg);
+  color: #cfcfcf;
   background-size: 60%;
   border: 2px solid #cfcfcf;
 }
@@ -186,7 +183,7 @@ html {
     font-size: 0.9rem;
     padding: 0;
     max-height: 40px;
-    max-width: 40px;
+    max-width: 100px;
   }
 }
 @media screen and (max-width: 440px) {
@@ -194,7 +191,7 @@ html {
     font-size: 0.85rem;
     padding: 0;
     max-height: 40px;
-    max-width: 40px;
+    width: 100px;
   }
 }
 

@@ -34,18 +34,15 @@ html {
   }
 
   #goBack {
-    background-image: url(/assets/logos/close-cross-red.svg);
-    background-size: 40%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
+    background-color: $white;
     border: 1px solid $red;
-    padding: 0;
+    color: $red;
     height: 40px;
-    width: 40px;
+    width: 100px;
+    justify-content: center;
 
     &:hover {
-      background-image: url(/assets/logos/close-cross.svg);
+      color: #cfcfcf;
       background-size: 60%;
       border: 2px solid #cfcfcf;
     }
@@ -54,14 +51,14 @@ html {
       font-size: 0.9rem;
       padding: 0;
       max-height: 40px;
-      max-width: 40px;
+      max-width: 100px;
     }
 
     @include phones {
       font-size: 0.85rem;
       padding: 0;
       max-height: 40px;
-      max-width: 40px;
+      width: 100px;
     }
   }
 }

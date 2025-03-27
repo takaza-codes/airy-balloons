@@ -213,6 +213,13 @@ orderForm.addEventListener('submit', function(evt) {
   errorDelivery.style.display = 'none';
   errorDate.style.display = 'none';
   policyError.style.display = 'none';
+  // Валидация содержимого корзины
+  // let cart = JSON.parse(localStorage.getItem('cart'));
+  if (!JSON.parse(localStorage.getItem('cart'))) {
+    cartList.textContent = 'В корзине ничего нет!';
+    cartList.classList.add("validationError");
+    hasError = true;
+  }
 
   // Валидация полей
   if (clientName.value.trim() === '' || !validateUsername(clientName.value)) {
@@ -296,7 +303,6 @@ if (!hasError) {
     })
     .then(data => {
       console.log('Ответ от функции:', data);
-      alert('Форма заказа успешно отправлена!');
       // Очищаем корзину и сбрасываем форму
       cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
       orderDetails.innerHTML = '';
