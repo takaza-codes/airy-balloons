@@ -34,7 +34,7 @@
         <span class="validationError" id="errorTel"></span>
       <div id="deliveryOptions">
         Получение заказа
-        <label><input type="radio" name="deliveryOption" value="0">Самовывоз (Тольятти, ул. Свердлова, 23)</label>
+        <label><input type="radio" name="deliveryOption" value="0">Самовывоз (Тольятти, ул. Степана Разина, д.2)</label>
         <label><input type="radio" name="deliveryOption" value="300">Доставка по городу в Автозаводской район 300 руб.</label>
         <label><input type="radio" name="deliveryOption" value="400">Доставка по городу в Центральный район 400 руб.</label>
         <label><input type="radio" name="deliveryOption" value="550">Доставка по городу в Комсомольский/Шлюзовой район 550 руб.</label>
@@ -46,6 +46,7 @@
       <span class="validationError" id="errorAddress"></span>
       <label for="deliveryDate">Дата и время доставки</label>
       <input type="datetime-local" name="deliveryDate" id="deliveryDate">
+      <span class="validationError" id="errorDate"></span>
       <label for="orderComment">Комментарий к заказу</label>
       <textarea name="textarea" name="orderComment" id="orderComment"></textarea>
       <div class="agreePolicy">
@@ -67,9 +68,13 @@
         <p id="totalOrderSum"></p>
       </div>
         <div class="formBtns">
-        <button type="reset" class="btn" id="clearCartBtn">Очистить корзину</button>
         <button type="submit" class="btn" id="makeOrderBtn" disabled>Оформить заказ</button>
         </div>
+        <div id="popupContainer" class="popup">
+          <div class="popup-content">
+              <p id="popupMessage"></p>
+          </div>
+      </div>
       </form>
       </div>
     </main>

@@ -9,7 +9,7 @@ function renderCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     if (cart.length === 0) {
-        cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
+        cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! <p>Для выбора товаров <a href="#">перейдите в Каталог</a></p></div>';
         orderDetails.innerHTML = '';
         orderFinal.innerHTML = '';
     } else {
@@ -146,6 +146,7 @@ const errorAddress = document.getElementById("errorAddress");
 const policyCheckbox = orderForm.elements.policyCheckbox;
 const policyError = document.getElementById("checkboxError");
 const deliveryDate = document.getElementById("deliveryDate");
+const errorDate = document.getElementById("errorDate");
 const orderComment = document.getElementById("orderComment");
 const makeOrderBtn = document.getElementById("makeOrderBtn");
 
@@ -184,6 +185,12 @@ deliveryAddress.addEventListener('input', () => {
   }
 });
 
+deliveryDate.addEventListener('input', () => {
+  if(deliveryDate.value) {
+    errorDate.style.display = 'none';
+  }
+})
+
 policyCheckbox.addEventListener('change', function () {
   if (policyCheckbox.checked) {
       policyError.style.display = 'none';
@@ -204,6 +211,7 @@ orderForm.addEventListener('submit', function(evt) {
   errorTel.style.display = 'none';
   errorAddress.style.display = 'none';
   errorDelivery.style.display = 'none';
+  errorDate.style.display = 'none';
   policyError.style.display = 'none';
 
   // Валидация полей
@@ -222,7 +230,7 @@ orderForm.addEventListener('submit', function(evt) {
   }
 
   if (!deliveryOption.value) {
-    errorDelivery.textContent = 'Выберите один из вариантов получения товара';
+    errorDelivery.textContent = 'Выберите один из вариантов получения заказа';
     errorDelivery.style.display = 'block';
     hasError = true;
   }
@@ -230,6 +238,13 @@ orderForm.addEventListener('submit', function(evt) {
   if (!validateAddress(deliveryAddress)) {
     errorAddress.textContent = 'Укажите адрес для доставки заказа';
     errorAddress.style.display = 'block';
+    hasError = true;
+  }
+  
+  //Проверка на наличие даты доставки (ТЗ...)
+  if (!deliveryDate.value) {
+    errorDate.textContent = 'Укажите дату получения заказа';
+    errorDate.style.display = 'block';
     hasError = true;
   }
 
@@ -287,28 +302,44 @@ if (!hasError) {
       orderDetails.innerHTML = '';
       orderFinal.innerHTML = '';
       localStorage.removeItem('cart');
-      makeOrderBtn.setAttribute('disabled', '');
+      successBtn();
+      setTimeout(restoreBtn, 3000);
       orderForm.reset();
     })
     .catch(error => {
       console.error('Ошибка при отправке запроса:', error);
-      alert('Произошла ошибка при отправке заказа.');
+      showErrorPopup();
     });
 }
 });
 
 
-//Очистка/сброс корзины
-clearCartBtn.addEventListener('click', () => {
-  localStorage.removeItem('cart');
-  cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
-  orderDetails.innerHTML = '';
-  orderFinal.innerHTML = '';
-  errorName.style.display = 'none';
-  errorTel.style.display = 'none';
-  errorAddress.style.display = 'none';
-  errorDelivery.style.display = 'none';
-  policyError.style.display = 'none';
-});
+//Изменение поведения кнопки при успешной отправке запроса
+function successBtn() {
+    makeOrderBtn.style.color = "rgb(238, 27, 85)";
+    makeOrderBtn.style.backgroundColor = "rgb(255, 255, 255)";
+    makeOrderBtn.style.border = "1px solid rgb(238, 27, 85)";
+    makeOrderBtn.textContent = "Заказ оформлен!";
+}
 
+function restoreBtn() {
+  makeOrderBtn.setAttribute('disabled', '');
+  makeOrderBtn.style.color = "rgb(255, 255, 255)";
+  makeOrderBtn.style.backgroundColor = "rgb(238, 27, 85)";
+  makeOrderBtn.style.border = "none";
+  makeOrderBtn.textContent = "Оформить заказ";
+}
 // localStorage.removeItem('cart');
+
+//Поп-ап при ошибке отправки запроса
+function showErrorPopup() {
+  const popupContainer = document.getElementById("popupContainer");
+  const popupMessage = document.getElementById("popupMessage");
+
+  popupMessage.innerHTML = `При отправке произошла ошибка! Пожалуйста, <a href="https://wa.me/79272123514" target="_blank" ">свяжитесь с нами напрямую</a>`;
+  popupContainer.classList.add("show-popup");
+
+  setTimeout(() => {
+      popupContainer.classList.remove("show-popup");
+  }, 5000);
+}
