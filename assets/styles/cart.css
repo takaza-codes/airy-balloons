@@ -298,7 +298,7 @@ html {
   border-right: 1px solid rgb(30, 26, 26);
 }
 .cartItems #cartList .cartItem .price {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
   justify-self: end;
