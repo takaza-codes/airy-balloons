@@ -1,19 +1,44 @@
 .catalogue {
-  @include padding-1920;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+  //@include Montserrat-base;
+
+  h2 {
+    @include Montserrat-700-base;
+  }
 
   &__row {
     display: flex;
-    gap: 20px;
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // gap: 2rem;
   }
 
   &__item {
     display: flex;
     flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  &__link {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+    @include Montserrat-400-base;
+  }
+
+  .catalogue__link a {
+    color: $black;
+
+    &:hover {
+      color: $red;
+    }
   }
 
   &__image {
-    width: 250px;
-    height: 230px;
+    width: 100%;
+    max-width: 15rem;
+    height: 15rem;
 
     img {
       width: 100%;
@@ -21,4 +46,21 @@
       border-radius: 8px;
     }
   }
+}
+
+@include tablets {
+  .catalogue {
+    &__row {
+      // grid-template-columns: repeat(2, 1fr);
+      margin: 0 auto;
+    }
+  }
+}
+
+@include phones {
+  // .catalogue {
+  //   &__row {
+  //     // grid-template-columns: repeat(2, 1fr);
+  //   }
+  // }
 }
