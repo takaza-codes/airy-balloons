@@ -47,10 +47,6 @@
     justify-self: end;
   }
 
-  // &__phone {
-  //   font-size: 10px;
-  // }
-
   /* Tablet styles */
   @media (min-width: $tablets) {
     grid-template-columns: 1fr 1fr;
@@ -58,10 +54,6 @@
       "contacts address"
       "policy  policy"
       "tax-info tax-info";
-
-    &__phone {
-      font-size: 30px;
-    }
 
     &__address {
       justify-self: end;
@@ -79,8 +71,9 @@
       "contacts address"
       "policy  policy"
       "tax-info tax-info";
-    // &__phone {
-    //   font-size: 30px;
-    // }
+
+    &__phone {
+      font-size: 30px;
+    }
   }
 }

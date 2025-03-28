@@ -266,9 +266,6 @@ h6 {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "contacts address" "policy  policy" "tax-info tax-info";
   }
-  .footer__phone {
-    font-size: 30px;
-  }
   .footer__address {
     justify-self: end;
   }
@@ -280,6 +277,9 @@ h6 {
   .footer {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "contacts address" "policy  policy" "tax-info tax-info";
+  }
+  .footer__phone {
+    font-size: 30px;
   }
 }
 
