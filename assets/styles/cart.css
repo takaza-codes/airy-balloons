@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 a {
@@ -72,9 +72,15 @@ h6 {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: rgb(238, 27, 85);
   color: rgb(255, 255, 255);
   border: none;
@@ -86,6 +92,7 @@ h6 {
   -webkit-transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
   /* Модификатор для центрирования */
   /* Модификатор «ссылка» */
 }
@@ -95,10 +102,9 @@ h6 {
 }
 .btn:active {
   -webkit-transform: scale(0.98);
-  transform: scale(0.98);
+          transform: scale(0.98);
 }
-.btn:disabled,
-.btn.disabled {
+.btn:disabled, .btn.disabled {
   background-color: #f57a9c;
   cursor: not-allowed;
   opacity: 0.7;
@@ -118,12 +124,14 @@ h6 {
   border: 1px solid rgb(238, 27, 85);
 }
 .btn.btn--link:active {
-  transform: none;
+  -webkit-transform: none;
+          transform: none;
 }
 .btn.btn--transparent {
   display: block;
   width: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: transparent;
   color: rgb(238, 27, 85);
   border: 1px solid rgb(238, 27, 85);
@@ -146,7 +154,8 @@ h6 {
   border-color: #c70f42;
 }
 .btn.btn--white-red:active {
-  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
 
 html {
@@ -166,11 +175,11 @@ html {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .topContainer h2 {
   font-size: 40px;
@@ -215,13 +224,16 @@ html {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-flow: column nowrap;
-  flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
   gap: 1.5rem;
 }
 .cartItems #emptyMsg {
-  align-self: center;
-  font-size: 24px;
+  padding: 1rem 0;
+  text-align: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-size: 1.1rem;
   color: gray;
 }
 .cartItems #emptyMsg a:hover {
@@ -233,8 +245,8 @@ html {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-flow: column nowrap;
-  flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
 }
 .cartItems #cartList li:first-child {
   border-top: 2px solid gray;
@@ -245,8 +257,10 @@ html {
 .cartItems #cartList .cartItem {
   padding: 10px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 10% 15% 12%;
-  align-items: center;
+  grid-template-columns: 20% 1fr 15% 15% 12%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-top: 1px solid gray;
   border-bottom: 0.5px solid gray;
 }
@@ -283,7 +297,7 @@ html {
 }
 .cartItems #cartList .cartItem .itemImage .itemPhoto {
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   overflow: hidden;
   border-radius: 8px;
   min-width: 180px;
@@ -299,10 +313,13 @@ html {
   }
 }
 .cartItems #cartList .cartItem .itemCounter {
+  justify-self: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
   border: 1px solid rgb(30, 26, 26);
   border-radius: 6px;
@@ -320,7 +337,7 @@ html {
   width: 30px;
   height: 30px;
   -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-weight: bold;
 }
@@ -366,8 +383,8 @@ html {
   grid-template-columns: 70% 5rem;
   grid-template-rows: repeat(3, 1fr);
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .orderDetails h3 {
   grid-column: 1/3;
@@ -388,11 +405,11 @@ html {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-flow: column nowrap;
-  flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
   -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   gap: 0.2rem;
 }
 #orderForm input,
@@ -427,8 +444,8 @@ html {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-flow: column nowrap;
-  flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
   gap: 0.3rem;
   font-size: 1.1rem;
   font-weight: 600;
@@ -437,34 +454,38 @@ html {
   display: grid;
   grid-template-columns: 20px 1fr;
   grid-template-rows: 1fr;
-  -moz-column-gap: 0.4rem;
-  column-gap: 0.4rem;
-  align-items: center;
-  font-size: 16px;
+  -webkit-column-gap: 0.4rem;
+     -moz-column-gap: 0.4rem;
+          column-gap: 0.4rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.8rem;
   font-weight: 400;
 }
-#orderForm #deliveryOptions label input[type="radio"] {
+#orderForm #deliveryOptions label input[type=radio] {
   margin: 0;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border: 1px solid #d3d3d3;
   width: 20px;
   height: 20px;
   content: none;
   outline: none;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
 }
-#orderForm #deliveryOptions label input[type="radio"]:checked {
+#orderForm #deliveryOptions label input[type=radio]:checked {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   outline: none;
   padding: 0;
   content: none;
   border: none;
 }
-#orderForm #deliveryOptions label input[type="radio"]:checked::before {
+#orderForm #deliveryOptions label input[type=radio]:checked::before {
   position: absolute;
   color: rgb(238, 27, 85);
   content: " ✓ ";
@@ -505,30 +526,31 @@ html {
 #orderForm .agreePolicy label a:hover {
   color: rgb(245, 210, 88);
 }
-#orderForm .agreePolicy input[type="checkbox"] {
+#orderForm .agreePolicy input[type=checkbox] {
   margin: 0;
   padding: 0;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border: 1px solid #d3d3d3;
   width: 100%;
   max-width: 20px;
   height: 20px;
   content: none;
   outline: none;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 4px;
 }
-#orderForm .agreePolicy input[type="checkbox"]:checked {
+#orderForm .agreePolicy input[type=checkbox]:checked {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   outline: none;
   padding: 0;
   content: none;
   border: none;
 }
-#orderForm .agreePolicy input[type="checkbox"]:checked::before {
+#orderForm .agreePolicy input[type=checkbox]:checked::before {
   position: absolute;
   color: rgb(238, 27, 85);
   content: " ✓ ";
@@ -541,8 +563,8 @@ html {
   grid-template-columns: 70% 5rem;
   grid-template-rows: repeat(3, 4fr);
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 #orderForm .orderFinal h3 {
   grid-column: 1/3;
@@ -560,8 +582,15 @@ html {
   font-weight: 600;
 }
 #orderForm .formBtns {
-  margin-top: 1rem;
-  align-self: center;
+  margin: 1.5rem 0;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 #orderForm .formBtns button {
   margin: 0 0.5rem;
@@ -588,4 +617,65 @@ html {
   font-size: 16px;
   font-weight: 400;
   color: rgb(238, 27, 85);
-} /*# sourceMappingURL=cart.css.map */
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup-content {
+  background: rgb(255, 255, 255);
+  color: rgb(238, 27, 85);
+  border: none;
+  padding: 1rem;
+  height: 6rem;
+  width: 50%;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .popup-content {
+    width: 70%;
+    height: 8rem;
+  }
+}
+@media screen and (max-width: 440px) {
+  .popup-content {
+    width: 80%;
+    height: 8rem;
+  }
+}
+.popup-content a {
+  text-decoration: underline;
+}
+.popup-content a:hover {
+  color: rgb(245, 210, 88);
+}
+
+.show-popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
