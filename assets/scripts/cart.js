@@ -202,6 +202,7 @@ policyCheckbox.addEventListener('change', function () {
   }
 });
 
+
 orderForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   let hasError = false;
@@ -213,11 +214,11 @@ orderForm.addEventListener('submit', function(evt) {
   errorDelivery.style.display = 'none';
   errorDate.style.display = 'none';
   policyError.style.display = 'none';
-  // Валидация содержимого корзины
-  // let cart = JSON.parse(localStorage.getItem('cart'));
-  if (!JSON.parse(localStorage.getItem('cart'))) {
-    cartList.textContent = 'В корзине ничего нет!';
-    cartList.classList.add("validationError");
+
+  //Валидация содержимого корзины
+  if (cartList.querySelectorAll('li') !== null) {
+    const cartError = document.querySelector('.cartMsg');
+    cartError.innerHTML = '<div id="emptyCart">В корзине пока пусто! <p>Для выбора товаров <a href="#">перейдите в Каталог</a></p></div>';
     hasError = true;
   }
 

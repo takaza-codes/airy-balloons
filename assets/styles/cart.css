@@ -158,7 +158,7 @@ html {
 .topContainer {
   padding: 2rem 0;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 .topContainer h2 {
@@ -167,31 +167,24 @@ html {
 }
 .topContainer #goBack {
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(238, 27, 85);
-  color: rgb(238, 27, 85);
+  color: #cfcfcf;
   height: 40px;
-  width: 100px;
-  justify-content: center;
+  display: flex;
+  align-items: end;
 }
 .topContainer #goBack:hover {
-  color: #cfcfcf;
-  background-size: 60%;
-  border: 2px solid #cfcfcf;
+  color: rgb(238, 27, 85);
 }
 @media screen and (max-width: 768px) {
   .topContainer #goBack {
     font-size: 0.9rem;
-    padding: 0;
     max-height: 40px;
-    max-width: 100px;
   }
 }
 @media screen and (max-width: 440px) {
   .topContainer #goBack {
     font-size: 0.85rem;
-    padding: 0;
     max-height: 40px;
-    width: 100px;
   }
 }
 
@@ -516,6 +509,19 @@ html {
 }
 #orderForm .orderFinal p:nth-child(6) {
   font-weight: 600;
+}
+#orderForm .cartMsg {
+  align-self: center;
+}
+#orderForm .cartMsg #emptyCart {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 0 0 0.3rem 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgb(238, 27, 85);
 }
 #orderForm .formBtns {
   margin: 1.5rem 0;
