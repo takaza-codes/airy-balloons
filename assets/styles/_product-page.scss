@@ -1,0 +1,259 @@
+/***************************************************
+ * 1) Стили для header, footer (Десктоп)
+ ***************************************************/
+ .site-header {
+  background-color: $pink;
+  padding: 20px 0;
+
+  h1 {
+    @include Montserrat-400-base;
+    font-size: $font-size-regular;
+    color: $black;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.site-footer {
+  background-color: $pink;
+  padding: 20px 0;
+  margin-top: 40px;
+
+  p {
+    @include Montserrat-400-base;
+    font-size: $font-size-regular;
+    color: $black;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+/***************************************************
+ * 2) Блок-обёртка для страницы товара
+ ***************************************************/
+.product-page-wrapper {
+  @include padding-1920;
+  margin: 40px auto;
+}
+
+/***************************************************
+ * 3) Карточка товара (product-card)
+ ***************************************************/
+.product-title {
+  @include h4;
+  @include Montserrat-600-base;
+  color: $black;
+  margin-bottom: 24px;
+}
+
+.product-card {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  margin-bottom: 40px;
+
+  .product-images {
+    display: flex;
+    flex: 1;
+    max-width: 600px;
+
+    .main-image {
+      flex: 1;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .product-price {
+      @include h4;
+      @include Montserrat-600-base;
+      color: $black;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+
+    .product-description {
+      margin-bottom: 24px;
+
+      ul {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+        margin-bottom: 24px;
+      }
+
+      li {
+        @include Montserrat-400-base;
+        color: $black;
+        margin-bottom: 8px;
+        list-style-type: none;
+      }
+
+      li:not(:nth-child(-n+2)) {
+        list-style-type: disc;
+        list-style-position: outside;
+        margin-left: 1.5rem;
+      }
+
+      li:first-child {
+        margin-bottom: 16px;
+      }
+
+      p {
+        @include Montserrat-400-base;
+        color: $black;
+      }
+    }
+  }
+}
+
+/***************************************************
+ * Блок «Похожие товары»
+ ***************************************************/
+.similar-products {
+  margin-bottom: 40px;
+
+  .similar-title {
+    @include h3;
+    @include Montserrat-500-base;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  .similar-list {
+    display: flex;
+    gap: 24px;
+  }
+
+  .similar-item {
+    width: 200px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px;
+
+    .similar-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .similar-item-title {
+      @include h4;
+      @include Montserrat-500-base;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: $black;
+    }
+
+    .similar-item-price {
+      @include h5;
+      @include Montserrat-500-base;
+      color: $black;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+/***************************************************
+ * 4) Адаптив (tablets, phones) - с использованием миксинов
+ ***************************************************/
+
+/* Планшеты: (max-width: 768px) */
+@include tablets {
+  .product-page-wrapper {
+    @include padding-768;
+  }
+
+  .product-price {
+    font-size: 1.8rem;
+  }
+}
+
+/* Телефоны: (max-width: 440px) */
+@include phones {
+  .product-page-wrapper {
+    @include padding-440;
+  }
+
+  .product-card {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .product-price {
+    font-size: 1.6rem;
+  }
+}
+
+/***************************************************
+ * Контейнер для счётчика и кнопки
+ ***************************************************/
+.order-controls {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  margin-bottom: 24px;
+  color: #dadada;
+
+  .quantity-block {
+    display: none;
+    align-items: center;
+    border: 1px solid $red;
+    border-radius: 8px;
+    padding: 0 8px;
+    color: $red;
+    font-size: $font-size-regular;
+    
+
+    button {
+      background: none;
+      border: none;
+      font-size: $font-size-h4;
+      cursor: pointer;
+      width: 88px;
+      height: 48px;
+      color: $red;
+    }
+
+    .quantity-num {
+      display: inline-block;
+      width: 24px;
+      padding: 14px 24px;
+      text-align: center;
+      font-weight: 600;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+  }
+
+  &.active {
+    .btn {
+      display: none;
+    }
+    .quantity-block {
+      display: inline-flex;
+    }
+  }
+}
