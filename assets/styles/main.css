@@ -155,6 +155,7 @@ h6 {
   font-weight: 500;
   font-size: 40px;
   margin-bottom: 24px;
+  text-align: center;
 }
 .contacts__wrapper {
   display: flex;
@@ -166,6 +167,7 @@ h6 {
 }
 .contacts__info {
   flex: 0 0 30%;
+  margin-top: 24px;
 }
 .contacts__info p {
   font-family: "Montserrat", sans-serif;
@@ -177,6 +179,14 @@ h6 {
   font-weight: 400;
   color: rgb(30, 26, 26);
   margin-bottom: 16px;
+}
+.contacts__info p a {
+  color: rgb(158, 209, 220);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.contacts__info p a:hover {
+  opacity: 0.8;
 }
 .contacts__info .address {
   display: block;
