@@ -117,80 +117,51 @@ h6 {
 }
 
 .footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "contacts" "address" "policy" "tax-info";
   padding: 20px;
-  background-color: rgb(30, 26, 26);
   font-family: "Montserrat", sans-serif;
+  /* Tablet styles */
+  /* Desktop styles */
 }
-.footer__contacts, .footer__address {
-  margin-bottom: 20px;
-}
-.footer__title {
-  font-size: 1.5rem;
+.footer > div {
+  padding: 10px;
   margin-bottom: 10px;
-  color: rgb(255, 255, 255);
 }
-.footer__phone {
-  font-size: 1rem;
-  margin-bottom: 10px;
-  color: rgb(255, 255, 255);
+.footer__contacts {
+  grid-area: contacts;
 }
-.footer__socials {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.footer__address {
+  grid-area: address;
 }
-.footer__socials__social-link {
-  margin-right: 10px;
-  color: rgb(255, 255, 255);
-}
-.footer__socials__social-link:last-child {
-  margin-right: 0;
-}
-.footer__socials__social-icon {
-  width: 24px;
-  height: 24px;
-}
-.footer__address p {
-  margin: 5px 0;
-  color: rgb(255, 255, 255);
-}
-.footer__policy-link {
-  color: #6c757d;
-  text-decoration: none;
-}
-.footer__policy-link:hover {
-  text-decoration: underline;
+.footer__policy {
+  grid-area: policy;
+  text-align: center;
 }
 .footer__tax-info {
-  text-align: right;
-  font-size: 0.9rem;
-  color: #6c757d;
+  grid-area: tax-info;
+  justify-self: end;
 }
 @media (min-width: 768px) {
   .footer {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "contacts address" "policy  policy" "tax-info tax-info";
   }
-  .footer__contacts, .footer__address {
-    margin-bottom: 0;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    margin-right: 20px;
+  .footer__phone {
+    font-size: 30px;
   }
-  .footer__contacts:last-child, .footer__address:last-child {
-    margin-right: 0;
+  .footer__address {
+    justify-self: end;
+  }
+  .footer__tax-info {
+    justify-self: end;
+  }
+}
+@media (min-width: 1200px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "contacts address" "policy  policy" "tax-info tax-info";
   }
 }
