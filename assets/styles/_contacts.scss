@@ -1,36 +1,44 @@
 .contacts {
   @include padding-1920;
+  margin: 40px auto;
 
   &__title {
-    @include h2;
-    text-align: center;
+    @include h3;
     margin-bottom: 24px;
   }
 
   &__wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 24px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   &__info {
-    width: 48%;
+    flex: 0 0 30%;
 
     p {
+      @include h5;
       @include Montserrat-400-base;
       color: $black;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
+    }
+
+    .address {
+      display: block;
     }
   }
 
   &__map {
-    width: 48%;
+    flex: 0 0 70%;
+    overflow: hidden;
 
     iframe,
     img {
       width: 100%;
-      border: none;
+      height: 300px;
       display: block;
     }
   }
@@ -51,4 +59,11 @@
   @include phones {
     @include padding-440;
   }
+}
+
+.contacts__address {
+  @include Montserrat-400-base;
+  color: $black;
+  text-align: center;
+  margin-top: 8px;
 }

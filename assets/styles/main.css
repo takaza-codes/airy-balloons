@@ -147,38 +147,48 @@ h6 {
 .contacts {
   padding-left: 5.2%;
   padding-right: 5.2%;
+  margin: 40px auto;
 }
 .contacts__title {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 56px;
-  text-align: center;
+  font-weight: 500;
+  font-size: 40px;
   margin-bottom: 24px;
 }
 .contacts__wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 24px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .contacts__info {
-  width: 48%;
+  flex: 0 0 30%;
 }
 .contacts__info p {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
   font-weight: 400;
   color: rgb(30, 26, 26);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+}
+.contacts__info .address {
+  display: block;
 }
 .contacts__map {
-  width: 48%;
+  flex: 0 0 70%;
+  overflow: hidden;
 }
 .contacts__map iframe,
 .contacts__map img {
   width: 100%;
-  border: none;
+  height: 300px;
   display: block;
 }
 @media screen and (max-width: 768px) {
@@ -198,6 +208,15 @@ h6 {
     padding-left: 16px;
     padding-right: 16px;
   }
+}
+
+.contacts__address {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: rgb(30, 26, 26);
+  text-align: center;
+  margin-top: 8px;
 }
 
 /* Каталог (контейнер)  с карточками товаров просто для примера */
