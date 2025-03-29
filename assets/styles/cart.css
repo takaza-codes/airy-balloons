@@ -536,19 +536,6 @@ html {
 #orderForm .orderFinal p:nth-child(6) {
   font-weight: 600;
 }
-#orderForm .cartMsg {
-  align-self: center;
-}
-#orderForm .cartMsg #emptyCart {
-  width: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  padding: 0 0 0.3rem 0;
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: rgb(238, 27, 85);
-}
 #orderForm .formBtns {
   margin: 1.5rem 0;
   align-self: center;

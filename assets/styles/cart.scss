@@ -395,21 +395,6 @@ html {
     }
   }
 
-  .cartMsg {
-    align-self: center;
-
-    #emptyCart {
-      width: 100%;
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
-      padding: 0 0 0.3rem 0;
-      font-size: 0.8rem;
-      font-weight: $font-weight-400;
-      color: $red;
-    }
-  }
-
   .formBtns {
     margin: 1.5rem 0;
     align-self: center;
