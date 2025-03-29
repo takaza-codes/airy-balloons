@@ -12,7 +12,7 @@
     <main>
       <div class="topContainer">
         <h2>Корзина</h2>
-        <button class="btn" id="goBack" onclick="history.back()"></button>
+        <div id="goBack"><a href="#">Вернуться в каталог ></a></div>
       </div>
       <div class="cartItems">
         <ul id="cartList">
@@ -34,11 +34,11 @@
         <span class="validationError" id="errorTel"></span>
       <div id="deliveryOptions">
         Получение заказа
-        <label><input type="radio" name="deliveryOption" value="0">Самовывоз (Тольятти, ул. Степана Разина, д.2)</label>
+        <label><input type="radio" name="deliveryOption" value="0">Самовывоз (Тольятти, пр. Степана Разина, д.2)</label>
         <label><input type="radio" name="deliveryOption" value="300">Доставка по городу в Автозаводской район 300 руб.</label>
         <label><input type="radio" name="deliveryOption" value="400">Доставка по городу в Центральный район 400 руб.</label>
         <label><input type="radio" name="deliveryOption" value="550">Доставка по городу в Комсомольский/Шлюзовой район 550 руб.</label>
-        <label><input type="radio" name="deliveryOption" value="0">Рассчитать удаленную доставку</label>
+        <label><input type="radio" name="deliveryOption" value="Рассчитать">Рассчитать удаленную доставку</label>
         <span class="validationError" id="errorDelivery"></span>
       </div>
       <label for="deliveryAddress">Адрес доставки</label>
