@@ -100,7 +100,7 @@ html {
       @include phones {
         grid-template-columns: fit-content(48%) 1fr 1fr;
         grid-template-rows: 1rem 90px auto;
-        gap: 0.3rem;
+        gap: 0.4rem;
         .itemName {
           grid-column: 2 / 4;
           font-size: 1rem;
@@ -112,6 +112,7 @@ html {
 
         .itemCounter {
           grid-column: 2 / 3;
+          justify-self: start;
         }
 
         .removeBtn {
@@ -152,6 +153,7 @@ html {
         max-width: 80px;
 
         @include phones {
+          align-self: start;
           justify-self: start;
         }
 
@@ -186,6 +188,7 @@ html {
         letter-spacing: $letter-spacing;
         justify-self: end;
         @include phones {
+          align-self: start;
           justify-self: end;
         }
       }

@@ -230,7 +230,7 @@ html {
   .cartItems #cartList .cartItem {
     grid-template-columns: fit-content(48%) 1fr 1fr;
     grid-template-rows: 1rem 90px auto;
-    gap: 0.3rem;
+    gap: 0.4rem;
   }
   .cartItems #cartList .cartItem .itemName {
     grid-column: 2/4;
@@ -241,6 +241,7 @@ html {
   }
   .cartItems #cartList .cartItem .itemCounter {
     grid-column: 2/3;
+    justify-self: start;
   }
   .cartItems #cartList .cartItem .removeBtn {
     grid-column: 3/4;
@@ -280,6 +281,7 @@ html {
 }
 @media screen and (max-width: 440px) {
   .cartItems #cartList .cartItem .itemCounter {
+    align-self: start;
     justify-self: start;
   }
 }
@@ -312,6 +314,7 @@ html {
 }
 @media screen and (max-width: 440px) {
   .cartItems #cartList .cartItem .price {
+    align-self: start;
     justify-self: end;
   }
 }
