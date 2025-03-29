@@ -126,17 +126,33 @@ const deliveryPrice = document.getElementById("deliveryPrice");
 const totalOrderSum = document.getElementById("totalOrderSum");
 
 function renderOrderFinal() {
-  //Особое поведение блока с итоговой стоимостью при выборе варианта "Рассчитать доставку"
-    if (deliveryOption.value === "Рассчитать") {
-      deliveryPrice.style.display = 'none';
-      totalOrderSum.style.display = 'none';
-      orderFinal.querySelector('p:nth-child(4)').style.display = 'none';
-      orderFinal.querySelector('p:nth-child(6)').style.display = 'none';
-      const deliveryMsg = document.createElement('div');
-      deliveryMsg.style.color = 'rgb(238, 27, 85)';
-      deliveryMsg.textContent = 'Без учета доставки';
-      orderFinal.appendChild(deliveryMsg);
-    } else {
+  const existingDeliveryMsg = orderFinal.querySelector('div'); 
+
+  if (deliveryOption.value === "Рассчитать") {
+    specialOption();
+  } else {
+    if (existingDeliveryMsg) { //Проверяем на наличие сообщения "Без учета доставки" и удаляем в случае наличия
+      existingDeliveryMsg.remove();
+    }
+    noSpecialOption();
+  }
+}
+
+function specialOption() {
+  deliveryPrice.style.display = 'none';
+  totalOrderSum.style.display = 'none';
+  orderFinal.querySelector('p:nth-child(4)').style.display = 'none';
+  orderFinal.querySelector('p:nth-child(6)').style.display = 'none';
+  
+  if (!orderFinal.querySelector('div')) { //Добавляем сообщение "Без учета доставки", если оно не было выведено ранее
+    const deliveryMsg = document.createElement('div');
+    deliveryMsg.style.color = 'rgb(238, 27, 85)';
+    deliveryMsg.textContent = 'Без учета доставки';
+    orderFinal.appendChild(deliveryMsg);
+  }
+}
+
+function noSpecialOption() {
       deliveryPrice.style.display = 'block';
       totalOrderSum.style.display = 'block';
       orderFinal.querySelector('p:nth-child(4)').style.display = 'block';
@@ -145,7 +161,6 @@ function renderOrderFinal() {
       deliveryPrice.textContent = `${deliveryCost} ₽`;
       const totalItemsCost = parseInt(totalItemsSum.textContent.replace(/\D/g, ""));
       totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
-    }
 }
 
 document.getElementById("deliveryOptions").addEventListener('change', renderOrderFinal);

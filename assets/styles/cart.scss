@@ -240,6 +240,7 @@ html {
 
   input,
   textarea {
+    @include custom-input-focus;
     width: 40%;
     height: 2rem;
     padding: 0.2rem;
