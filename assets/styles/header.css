@@ -260,7 +260,7 @@ header {
     top: 5px;
     background-color: white;
     width: 200px;
-    border: 2px solid red;
+    border: 2px solid rgb(238, 27, 85);
     z-index: 1000;
   }
   .menu.active {
