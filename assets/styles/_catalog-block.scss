@@ -9,10 +9,9 @@
   }
 
   &__row {
-    display: flex;
-    // display: grid;
-    // grid-template-columns: repeat(4, 1fr);
-    // gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
   }
 
   &__item {
@@ -24,7 +23,7 @@
   &__link {
     text-align: center;
     padding: 1rem 0 1rem 0;
-    @include Montserrat-400-base;
+    @include Montserrat-600-base;
   }
 
   .catalogue__link a {
@@ -37,8 +36,8 @@
 
   &__image {
     width: 100%;
-    max-width: 15rem;
-    height: 15rem;
+    max-width: 360px;
+    max-height: fit-content;
 
     img {
       width: 100%;
@@ -51,16 +50,77 @@
 @include tablets {
   .catalogue {
     &__row {
-      // grid-template-columns: repeat(2, 1fr);
-      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    &__image {
+      max-width: 330px;
+    }
+  }
+}
+@include phones {
+  .catalogue {
+    &__row {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
 
-@include phones {
-  // .catalogue {
-  //   &__row {
-  //     // grid-template-columns: repeat(2, 1fr);
-  //   }
-  // }
+.popular {
+  padding: 2rem;
+
+  h2 {
+    @include Montserrat-700-base;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  &__item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    margin: 1rem 0 0.5rem;
+    @include Montserrat-300-base;
+  }
+
+  &__price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: $red;
+    @include Montserrat-600-base;
+  }
+}
+
+@include tablets {
+  .popular {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
 }
