@@ -17,7 +17,7 @@ class Goods {
           <h2 class="goods-element__price">${price} p</h2>
           <h3 class="goods-element__title">${title}</h3>
           <div class="buttons">
-<button class="goods-element_btnInformation data-id="${id}">Подробнее</button>
+<button class="view-details" data-id="${id}">Подробнее</button>
 <button class="btn add-to-cart" data-id="${id}">В корзину</button>
           </div>
         </li>`;
