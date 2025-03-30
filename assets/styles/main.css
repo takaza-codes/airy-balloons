@@ -491,8 +491,8 @@ h6 {
 *************************************/
 @media screen and (max-width: 440px) {
   .header {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .top-bar .header-right {
     gap: 16px;
@@ -524,10 +524,10 @@ h6 {
     padding: 10px;
   }
   .banner .banner__content .airy_banner {
-    font-size: 40px;
+    font-size: 24px;
   }
   .banner .banner__content .ballons_banner {
-    font-size: 24px;
+    font-size: 16px;
   }
 }
 /*************************************
@@ -654,8 +654,8 @@ h6 {
 }
 @media screen and (max-width: 440px) {
   .contacts {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -834,53 +834,85 @@ h6 {
   font-style: normal;
   font-weight: 600;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: "contacts" "address" "policy" "tax-info";
-  row-gap: 0.2rem;
-  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "contacts address" "policy tax-info";
+  text-align: left;
 }
 .footer__contacts {
+  grid-area: contacts;
+  justify-self: start;
+  text-align: left;
   margin-bottom: 1rem;
+}
+.footer__address {
+  grid-area: address;
+  justify-self: end;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.footer__policy {
+  grid-area: policy;
+  padding: 0;
+  justify-self: start;
+  align-self: center;
+}
+.footer__policy-link {
+  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: rgb(160, 160, 160);
+}
+.footer__tax-info {
+  grid-area: tax-info;
+  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  text-align: right;
+  color: rgb(160, 160, 160);
+  align-self: center;
 }
 .footer__title {
   font-size: 1.2rem;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 600;
+  text-align: left;
 }
 .footer__phone {
   font-size: 31px;
   display: block;
   margin-bottom: 10px;
+  text-align: left;
 }
-.footer__address {
-  margin-bottom: 1rem;
-}
-.footer__address a p {
+.footer a p {
   font-size: 1.4rem;
   margin: 8px 0;
   display: block;
+  text-align: left;
 }
-.footer__address .footer__work-label {
+.footer .footer__work-label {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 10px;
   margin-top: 10px;
   margin-bottom: 4px;
+  text-align: left;
 }
-.footer__address .footer__work-time {
+.footer .footer__work-time {
   font-size: 14px;
   margin: 0;
+  text-align: left;
 }
 .footer__socials {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   gap: 0.7rem;
   margin-top: 10px;
 }
@@ -895,9 +927,9 @@ h6 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: auto;
 }
 .footer__socials-text {
@@ -905,76 +937,29 @@ h6 {
   margin-top: 6px;
   display: block;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 .footer__social-icon {
   width: 24px;
   height: 24px;
   display: block;
-  margin: 0 auto;
+  margin: 0;
 }
 .footer__social-text {
   font-weight: 500;
   font-size: 10px;
   margin-top: 6px;
+  text-align: left;
 }
-.footer__policy {
-  grid-area: policy;
-  padding: 0 !important;
-  justify-self: center;
-  align-self: end;
-}
-.footer__policy-link {
-  font-size: 0.7rem;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  color: rgb(160, 160, 160);
-}
-.footer__tax-info {
-  font-size: 0.7rem;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  grid-area: tax-info;
-  text-align: center;
-  color: rgb(160, 160, 160);
-}
-@media (min-width: 768px) {
+@media screen and (max-width: 440px) {
   .footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "contacts" "address" "policy" "tax-info";
+    row-gap: 0.2rem;
     text-align: left;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "contacts address" "policy policy" "tax-info tax-info";
   }
-  .footer__address {
-    text-align: left;
-    justify-self: end;
-  }
-  .footer__socials {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-  }
-  .footer__socials-link {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .footer__tax-info {
-    text-align: left;
-    justify-self: end;
-  }
-}
-@media (min-width: 1024px) {
-  .footer {
-    -webkit-column-gap: 7rem;
-       -moz-column-gap: 7rem;
-            column-gap: 7rem;
-  }
-  .footer__contacts {
-    justify-self: end;
-  }
-  .footer__address {
+  .footer__contacts, .footer__address, .footer__policy, .footer__tax-info {
     justify-self: start;
   }
 }
@@ -1175,8 +1160,8 @@ h6 {
 /* Телефоны: (max-width: 440px) */
 @media screen and (max-width: 440px) {
   .product-page-wrapper {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .product-card {
     -webkit-box-orient: vertical;

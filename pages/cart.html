@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/styles/normalize.css">
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/cart.css">
+    <link rel="stylesheet" href="../assets/styles/footer.css" />
   </head>
   <body>
     <header class="header">
@@ -17,35 +18,51 @@
           <div class="container top-bar__inner">
             <!-- ЛОГОТИП -->
             <div class="logo">
-              <img src="../assets/logos/logo-color.svg" width="110" alt="логотип">
+              <img
+                src="../assets/logos/logo-color.svg"
+                width="110"
+                alt="логотип"
+              />
             </div>
             <!-- Поиск и кнопка "Каталог" -->
             <div class="search">
               <a href="#">
                 <button class="cataloge_btn">Каталог</button>
               </a>
-              <input class="input_search" type="search" placeholder="Поиск">
+              <input class="input_search" type="search" placeholder="Поиск" />
             </div>
-        
+
             <!-- Блок с контактами -->
             <div class="contact">
-              <p class="number_contact">+7 927 212-35-14</p>
+              <a href="https://wa.me/79272123514" class="number_contact" target="_blank">+7 927 212-35-14</a>
               <p class="reception">Прием заявок</p>
               <p class="time">с 9:00 до 20:00</p>
             </div>
             <!-- Мессенджеры и корзина (справа) -->
             <div class="header-right">
               <div class="messengers">
-                <a href="#" target="_blank">
-                  <img class="telegram" src="../assets/messenger/telegram.svg" alt="Telegram">
+                <a href="https://t.me/mary_zharkova" target="_blank" class="footer__social-link" title="Напишите в Telegram">
+                  <img
+                    class="telegram"
+                    src="../assets/messenger/telegram.svg"
+                    alt="Telegram"
+                  />
                 </a>
-                <a href="#" target="_blank">
-                  <img class="whatsapp" src="../assets/messenger/whatsapp.svg" alt="Whatsapp">
+                <a href="https://wa.me/79272123514" target="_blank" class="footer__social-link" title="Напишите в WhatsApp">
+                  <img
+                    class="whatsapp"
+                    src="../assets/messenger/whatsapp.svg"
+                    alt="Whatsapp"
+                  />
                 </a>
               </div>
               <div class="basket-wrap">
                 <a href="./cart.html">
-                  <img class="basket" src="../assets/header/cart.svg" alt="Корзина">
+                  <img
+                    class="basket"
+                    src="../assets/header/cart.svg"
+                    alt="Корзина"
+                  />
                   <span class="cart-count" id="cart-count">0</span>
                 </a>
               </div>
@@ -62,7 +79,7 @@
         <nav class="main-nav">
           <div class="container nav__inner">
             <ul class="menu" id="menu">
-              <li><a href="../index.html">Главная</a></li>
+              <li><a href="#">Главная</a></li>
               <li><a href="#">Доставка/Оплата</a></li>
               <li><a href="#">Контакты</a></li>
               <li><a href="#">О нас</a></li>
@@ -72,14 +89,14 @@
         </nav>
       </div>
     </header>
+
     <main>
       <div class="topContainer">
         <h2>Корзина</h2>
         <div id="goBack"><a href="#">Вернуться в каталог ></a></div>
       </div>
       <div class="cartItems">
-        <ul id="cartList">
-        </ul>
+        <ul id="cartList"></ul>
         <div class="orderDetails">
           <h3>Детали заказа</h3>
           <p>Количество</p>
@@ -95,41 +112,40 @@
         <label for="clientTel">Номер телефона</label>
         <input type="tel" name="clientTel" id="clientTel" placeholder="8" required>
         <span class="validationError" id="errorTel"></span>
-      <div id="deliveryOptions">
-        Получение заказа
-        <label><input type="radio" name="deliveryOption" value="0">Самовывоз (Тольятти, пр. Степана Разина, д.2)</label>
-        <label><input type="radio" name="deliveryOption" value="300">Доставка по городу в Автозаводской район 300 руб.</label>
-        <label><input type="radio" name="deliveryOption" value="400">Доставка по городу в Центральный район 400 руб.</label>
-        <label><input type="radio" name="deliveryOption" value="550">Доставка по городу в Комсомольский/Шлюзовой район 550 руб.</label>
-        <label><input type="radio" name="deliveryOption" value="Рассчитать">Рассчитать удаленную доставку</label>
-        <span class="validationError" id="errorDelivery"></span>
-      </div>
-      <label for="deliveryAddress">Адрес доставки</label>
-      <input type="text" name="deliveryAddress" id="deliveryAddress" placeholder="Улица, дом, подъезд" pattern="^[a-zA-Z0-9,\\.]+$">
-      <span class="validationError" id="errorAddress"></span>
-      <label for="deliveryDate">Дата и время доставки</label>
-      <input type="datetime-local" name="deliveryDate" id="deliveryDate">
-      <span class="validationError" id="errorDate"></span>
-      <label for="orderComment">Комментарий к заказу</label>
-      <textarea name="textarea" name="orderComment" id="orderComment"></textarea>
-      <div class="agreePolicy">
-        <input type="checkbox" name="policyCheckbox" id="policyCheckbox" />
-        <label for="policyCheckbox"
-          >Я даю согласие на обработку, сбор, хранение и передачу третьим лицам
-          представленной информации на условиях
-          <a href="#">Политики обработки персональных данных.</a></label
-        >
-      </div>
-      <div class="validationError" id="checkboxError"></div>
-      <div class="orderFinal">
-        <h3>Детали заказа</h3>
-        <p>Товары</p>
-        <p id="totalItemsSum"></p>
-        <p>Стоимость доставки</p>
-        <p id="deliveryPrice"></p>
-        <p>Итого</p>
-        <p id="totalOrderSum"></p>
-      </div>
+        <div id="deliveryOptions">
+          Получение заказа
+          <label><input type="radio" name="deliveryOption" value="0">Самовывоз (Тольятти, пр. Степана Разина, д.2)</label>
+          <label><input type="radio" name="deliveryOption" value="300">Доставка по городу в Автозаводской район 300 руб.</label>
+          <label><input type="radio" name="deliveryOption" value="400">Доставка по городу в Центральный район 400 руб.</label>
+          <label><input type="radio" name="deliveryOption" value="550">Доставка по городу в Комсомольский/Шлюзовой район 550 руб.</label>
+          <label><input type="radio" name="deliveryOption" value="Рассчитать">Рассчитать удаленную доставку</label>
+          <span class="validationError" id="errorDelivery"></span>
+        </div>
+        <label for="deliveryAddress">Адрес доставки</label>
+        <input type="text" name="deliveryAddress" id="deliveryAddress" placeholder="Улица, дом, подъезд" pattern="^[a-zA-Z0-9,\.]+$">
+        <span class="validationError" id="errorAddress"></span>
+        <label for="deliveryDate">Дата и время доставки</label>
+        <input type="datetime-local" name="deliveryDate" id="deliveryDate">
+        <span class="validationError" id="errorDate"></span>
+        <label for="orderComment">Комментарий к заказу</label>
+        <textarea name="textarea" name="orderComment" id="orderComment"></textarea>
+        <div class="agreePolicy">
+          <input type="checkbox" name="policyCheckbox" id="policyCheckbox" />
+          <label for="policyCheckbox"
+            >Я даю согласие на обработку, сбор, хранение и передачу третьим лицам
+            представленной информации на условиях
+            <a href="#">Политики обработки персональных данных.</a></label>
+        </div>
+        <div class="validationError" id="checkboxError"></div>
+        <div class="orderFinal">
+          <h3>Детали заказа</h3>
+          <p>Товары</p>
+          <p id="totalItemsSum"></p>
+          <p>Стоимость доставки</p>
+          <p id="deliveryPrice"></p>
+          <p>Итого</p>
+          <p id="totalOrderSum"></p>
+        </div>
         <div class="formBtns">
         <button type="submit" class="btn" id="makeOrderBtn" disabled>Оформить заказ</button>
         </div>
@@ -137,11 +153,43 @@
           <div class="popup-content">
               <p id="popupMessage"></p>
           </div>
-      </div>
+        </div>
       </form>
-      </div>
     </main>
-    <footer></footer>
+      
+    <footer class="footer">
+      <div class="footer__contacts">
+        <h2 class="footer__title">Контакты</h2>
+        <a href="https://wa.me/79272123514" class="footer__phone" target="_blank">+7 927 212-35-14</a>
+        <div class="footer__socials">
+          <a href="https://t.me/mary_zharkova" target="_blank" class="footer__social-link" title="Напишите в Telegram">
+            <img src="../assets/messenger/telegram.svg" alt="Telegram" class="footer__social-icon"/>
+            <span class="footer__social-text">Telegram</span>
+          </a>
+          <a href="https://wa.me/79272123514" target="_blank" class="footer__social-link" title="Напишите в WhatsApp">
+            <img src="../assets/messenger/whatsapp.svg" alt="WhatsApp" class="footer__social-icon"/>
+            <span class="footer__social-text">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer__address">
+        <h2 class="footer__title">Адрес</h2>
+        <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank">
+          <p>г. Тольятти, </br> пр. Степана Рaзина, д. 2</p>
+        </a>
+        <p class="footer__work-label">Прием заявок</p>
+        <p class="footer__work-time">с 9:00 до 20:00</p>
+      </div>
+      <div class="footer__policy">
+        <a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FQ367bUFHMLk0dV1Yz7vELu0fq3i9ubOJleVNllht%2FvvY2rzc%2Fm%2F5n0WJyt%2BG%2B%2Fejq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BF%D0%B5%D1%80%D1%81%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%2F2025-03-21%2001-00-01.docx&name=2025-03-21%2001-00-01.docx"
+          target="_blank"
+          class="footer__policy-link">Политика обработки персональных данных</a>
+      </div>
+      <div class="footer__tax-info">
+        <p>Жаркова Мария Юрьевна</p>
+        <p>ИНН 730208285547</p>
+      </div>
+    </footer>
 
     <!-- Скрипт БД -->
     <script src="../assets/scripts/data.js"></script>

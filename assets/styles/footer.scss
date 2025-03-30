@@ -17,94 +17,32 @@
   @include padding-1920;
   @include Montserrat-600-base;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "contacts"
-    "address"
-    "policy"
-    "tax-info";
-  row-gap: 0.2rem;
-  text-align: center;
+    "contacts address"
+    "policy tax-info";
+  text-align: left;
 
   &__contacts {
+    grid-area: contacts;
+    justify-self: start;
+    text-align: left;
     margin-bottom: 1rem;
-  }
-
-  &__title {
-    font-size: 1.2rem;
-    @include Montserrat-600-base;
-  }
-
-  &__phone {
-    font-size: 31px;
-    display: block;
-    margin-bottom: 10px;
   }
 
   &__address {
+    grid-area: address;
+    justify-self: end;
+    text-align: left;
     margin-bottom: 1rem;
-    a {
-      p {
-        font-size: 1.4rem;
-        margin: 8px 0;
-        display: block;
-      }
-    }
-    .footer__work-label {
-      @include Montserrat-500-base;
-      font-size: 10px;
-      margin-top: 10px;
-      margin-bottom: 4px;
-    }
-    .footer__work-time {
-      font-size: 14px;
-      margin: 0;
-    }
-  }
-
-  //Иконки соцсетей
-  &__socials {
-    display: flex;
-    justify-content: center;
-    gap: 0.7rem;
-    margin-top: 10px;
-
-    &-link {
-      @include Montserrat-500-base;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      width: auto;
-    }
-
-    &-text {
-      font-size: 10px;
-      margin-top: 6px;
-      display: block;
-      width: 100%;
-      text-align: center;
-    }
-  }
-
-  &__social-icon {
-    width: 24px;
-    height: 24px;
-    display: block;
-    margin: 0 auto;
-  }
-
-  &__social-text {
-    font-weight: 500;
-    font-size: 10px;
-    margin-top: 6px;
   }
 
   &__policy {
     grid-area: policy;
-    padding: 0 !important;
-    justify-self: center;
-    align-self: end;
+    padding: 0;
+    justify-self: start;
+    align-self: center;
+    
     &-link {
       font-size: 0.7rem;
       @include Montserrat-500-base;
@@ -113,50 +51,133 @@
   }
 
   &__tax-info {
+    grid-area: tax-info;
     font-size: 0.7rem;
     @include Montserrat-500-base;
-    grid-area: tax-info;
-    text-align: center;
+    text-align: right;
     color: $gray;
+    align-self: center;
   }
 
-  // Tablets styles
-  @media (min-width: $tablets) {
+  &__title {
+    font-size: 1.2rem;
+    @include Montserrat-600-base;
     text-align: left;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "contacts address"
-      "policy policy"
-      "tax-info tax-info";
+  }
 
-    &__address {
+  &__phone {
+    font-size: 31px;
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  a {
+    p {
+      font-size: 1.4rem;
+      margin: 8px 0;
+      display: block;
       text-align: left;
-      justify-self: end;
-    }
-
-    &__socials {
-      justify-content: flex-start;
-
-      &-link {
-        align-items: flex-start;
-      }
-    }
-
-    &__tax-info {
-      text-align: left;
-      justify-self: end;
     }
   }
 
-  // Desktop styles
-  @media (min-width: 1024px) {
-    column-gap: 7rem;
-    &__contacts {
-      justify-self: end;
+  .footer__work-label {
+    @include Montserrat-500-base;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    text-align: left;
+  }
+
+  .footer__work-time {
+    font-size: 14px;
+    margin: 0;
+    text-align: left;
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.7rem;
+    margin-top: 10px;
+
+    &-link {
+      @include Montserrat-500-base;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: auto;
     }
 
-    &__address {
-      justify-self: start;
+    &-text {
+      font-size: 10px;
+      margin-top: 6px;
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  &__social-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin: 0;
+
+    @include tablets {
+      margin: 0 auto;
+    }
+  }
+
+  &__social-text {
+    font-weight: 500;
+    font-size: 10px;
+    margin-top: 6px;
+    text-align: left;
+  }
+
+  // Мобильная раскладка (Phones) – переопределяем всё для центрирования
+  @include tablets {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "contacts"
+      "address"
+      "policy"
+      "tax-info";
+    row-gap: 0.2rem;
+    text-align: center;
+    
+    // Центрируем основные блоки футера
+    &__contacts,
+    &__address,
+    &__policy,
+    &__tax-info,
+    &__title,
+    &__phone {
+      justify-self: center;
+      text-align: center;
+    }
+    
+    // Центрируем текст внутри ссылок и подписи
+    a p,
+    .footer__work-label,
+    .footer__work-time {
+      text-align: center;
+    }
+    
+    // Центрируем блок соцсетей и его элементы
+    &__socials {
+      justify-content: center;
+      
+      &-link {
+        align-items: center;
+        text-align: center;
+      }
+      
+      &-text {
+        text-align: center;
+      }
     }
   }
 }

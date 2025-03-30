@@ -28,6 +28,15 @@ html {
   align-items: baseline;
   justify-content: space-between;
   margin-top: 120px;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 
   h2 {
     font-size: $font-size-h3;
@@ -61,6 +70,15 @@ html {
   display: flex;
   flex-flow: column nowrap;
   gap: 1.5rem;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 
   #emptyMsg {
     padding: 1rem 0;
@@ -238,6 +256,16 @@ html {
   flex-flow: column nowrap;
   align-items: flex-start;
   gap: 0.2rem;
+  @include padding-1920;
+  margin-bottom: 100px;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 
   input,
   textarea {
