@@ -1,189 +1,217 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="shortcut icon" href="../assets/logos/balloons.svg" type="image/svg+xml" />
-  <title>Главная страница</title>
-  <link rel="stylesheet" href="./assets/styles/normalize.css" />
-  <link rel="stylesheet" href="./assets/styles/main.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/logos/balloons.svg"
+      type="image/svg+xml"
+    />
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="./assets/styles/normalize.css" />
+    <link rel="stylesheet" href="./assets/styles/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-fixed-wrapper">
+        <!-- Верхняя часть шапки -->
+        <div class="top-bar">
+          <div class="container top-bar__inner">
+            <!-- ЛОГОТИП -->
+            <div class="logo">
+              <img
+                src="./assets/logos/logo-color.svg"
+                width="110"
+                alt="логотип"
+              />
+            </div>
+            <!-- Поиск и кнопка "Каталог" -->
+            <div class="search">
+              <a href="#">
+                <button class="cataloge_btn">Каталог</button>
+              </a>
+              <input class="input_search" type="search" placeholder="Поиск" />
+            </div>
 
-<header class="header">
-  <div class="header-fixed-wrapper">
-    <!-- Верхняя часть шапки -->
-    <div class="top-bar">
-      <div class="container top-bar__inner">
-        <!-- ЛОГОТИП -->
-        <div class="logo">
-          <img src="./assets/logos/logo-color.svg" width="110" alt="логотип">
-        </div>
-        <!-- Поиск и кнопка "Каталог" -->
-        <div class="search">
-          <a href="#">
-            <button class="cataloge_btn">Каталог</button>
-          </a>
-          <input class="input_search" type="search" placeholder="Поиск">
-        </div>
-    
-        <!-- Блок с контактами -->
-        <div class="contact">
-          <p class="number_contact">+7 927 212-35-14</p>
-          <p class="reception">Прием заявок</p>
-          <p class="time">с 9:00 до 20:00</p>
-        </div>
-        <!-- Мессенджеры и корзина (справа) -->
-        <div class="header-right">
-          <div class="messengers">
-            <a href="#" target="_blank">
-              <img class="telegram" src="./assets/messenger/telegram.svg" alt="Telegram">
-            </a>
-            <a href="#" target="_blank">
-              <img class="whatsapp" src="./assets/messenger/whatsapp.svg" alt="Whatsapp">
-            </a>
+            <!-- Блок с контактами -->
+            <div class="contact">
+              <p class="number_contact">+7 927 212-35-14</p>
+              <p class="reception">Прием заявок</p>
+              <p class="time">с 9:00 до 20:00</p>
+            </div>
+            <!-- Мессенджеры и корзина (справа) -->
+            <div class="header-right">
+              <div class="messengers">
+                <a href="#" target="_blank">
+                  <img
+                    class="telegram"
+                    src="./assets/messenger/telegram.svg"
+                    alt="Telegram"
+                  />
+                </a>
+                <a href="#" target="_blank">
+                  <img
+                    class="whatsapp"
+                    src="./assets/messenger/whatsapp.svg"
+                    alt="Whatsapp"
+                  />
+                </a>
+              </div>
+              <div class="basket-wrap">
+                <a href="./pages/cart.html">
+                  <img
+                    class="basket"
+                    src="./assets/header/cart.svg"
+                    alt="Корзина"
+                  />
+                  <span class="cart-count" id="cart-count">0</span>
+                </a>
+              </div>
+              <!-- Гамбургер (по умолчанию скрыт, показываем на планшетах) -->
+              <div class="hamb" id="hamb">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
           </div>
-          <div class="basket-wrap">
-            <a href="./pages/cart.html">
-              <img class="basket" src="./assets/header/cart.svg" alt="Корзина">
-              <span class="cart-count" id="cart-count">0</span>
-            </a>
+        </div>
+        <!-- Основное меню (для десктопа или при клике на гамбургер) -->
+        <nav class="main-nav">
+          <div class="container nav__inner">
+            <ul class="menu" id="menu">
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Доставка/Оплата</a></li>
+              <li><a href="#">Контакты</a></li>
+              <li><a href="#">О нас</a></li>
+              <li><a href="#">Отзывы</a></li>
+            </ul>
           </div>
-          <!-- Гамбургер (по умолчанию скрыт, показываем на планшетах) -->
-          <div class="hamb" id="hamb">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
+        </nav>
+      </div>
+
+      <!-- БОЛЬШОЙ БАННЕР -->
+      <div class="banner">
+        <div class="banner__content">
+          <h1 class="airy_banner">Оформление красивых событий</h1>
+          <h2 class="ballons_banner">Воздушные и гелевые шары с доставкой</h2>
         </div>
       </div>
-    </div>
-    <!-- Основное меню (для десктопа или при клике на гамбургер) -->
-    <nav class="main-nav">
-      <div class="container nav__inner">
-        <ul class="menu" id="menu">
-          <li><a href="#">Главная</a></li>
-          <li><a href="#">Доставка/Оплата</a></li>
-          <li><a href="#">Контакты</a></li>
-          <li><a href="#">О нас</a></li>
-          <li><a href="#">Отзывы</a></li>
-        </ul>
+    </header>
+
+    <section class="contacts">
+      <div class="contacts__wrapper">
+        <div class="contacts__info">
+          <h2 class="contacts__title">Наши контакты</h2>
+          <p>
+            Самовывоз по адресу:
+            <span class="address">г. Тольятти, пр. Степана Разина, д. 2</span>
+          </p>
+          <p>
+            <a
+              href="https://wa.me/+79272123514"
+              target="_blank"
+              style="display: inline-flex; align-items: center"
+            >
+              <img
+                src="./assets/messenger/whatsapp.svg"
+                alt="WhatsApp"
+                width="20"
+                style="margin-right: 5px"
+              />
+              +7‑927‑212‑35‑14
+            </a>
+          </p>
+
+          <p>Прием заявок с 9:00 до 20:00</p>
+          <p>Доставка с 8:00 до 23:00</p>
+        </div>
+
+        <div class="contacts__map">
+          <div id="map" style="width: 100%; height: 300px"></div>
+          <p class="contacts__address">Проспект Степана Разина, 2</p>
+        </div>
       </div>
-    </nav>
-  </div>
+    </section>
 
-  <!-- БОЛЬШОЙ БАННЕР -->
-  <div class="banner">
-    <div class="banner__content">
-      <h1 class="airy_banner">Оформление красивых событий</h1>
-      <h2 class="ballons_banner">Воздушные и гелевые шары с доставкой</h2>
-    </div>
-  </div>
-
-</header>
-  
-  <section class="contacts">
-    <div class="contacts__wrapper">
-      <div class="contacts__info">
-        <h2 class="contacts__title">Наши контакты</h2>
-        <p>Самовывоз по адресу: <span class="address">г. Тольятти, пр. Степана Разина, д. 2</span></p>
-        <p>
-          <a href="https://wa.me/+79272123514" target="_blank" style="display: inline-flex; align-items: center;">
-            <img 
-              src="./assets/messenger/whatsapp.svg" 
-              alt="WhatsApp" 
-              width="20" 
-              style="margin-right: 5px;"
+    <!-- Футер -->
+    <footer class="footer">
+      <div class="footer__contacts">
+        <h2 class="footer__title">Контакты</h2>
+        <a href="https://wa.me/79272123514" class="footer__phone"
+          >+7 927 212-35-14</a
+        >
+        <div class="footer__socials">
+          <a
+            href="https://t.me/mary_zharkova"
+            target="_blank"
+            class="footer__social-link"
+            title="Напишите в Telegram"
+          >
+            <img
+              src="assets/messenger/telegram.svg"
+              alt="Telegram"
+              class="footer__social-icon"
             />
-            +7‑927‑212‑35‑14
+            <span class="footer__social-text">Telegram</span>
           </a>
-        </p>
-        
-        <p>Прием заявок с 9:00 до 20:00</p>
-        <p>Доставка с 8:00 до 23:00</p>
+          <a
+            href="https://wa.me/79272123514"
+            target="_blank"
+            class="footer__social-link"
+            title="Напишите в WhatsApp"
+          >
+            <img
+              src="assets/messenger/whatsapp.svg"
+              alt="WhatsApp"
+              class="footer__social-icon"
+            />
+            <span class="footer__social-text">WhatsApp</span>
+          </a>
+        </div>
       </div>
-  
-      <div class="contacts__map">
-        <div id="map" style="width:100%;height:300px;"></div>
-        <p class="contacts__address">Проспект Степана Разина, 2</p>
-      </div>
-    </div>
-  </section>
-  
-   <!-- Футер -->
-  <footer class="footer">
-    <div class="footer__contacts">
-      <h2 class="footer__title">Контакты</h2>
-      <a href="https://wa.me/79272123514" class="footer__phone"
-        >+7 927 212-35-14</a
-      >
-      <div class="footer__socials">
-        <a
-          href="https://t.me/mary_zharkova"
-          target="_blank"
-          class="footer__social-link"
-          title="Напишите в Telegram"
-        >
-          <img
-            src="assets/messenger/telegram 1.svg"
-            alt="Telegram"
-            class="footer__social-icon"
-          />
-          <span class="footer__social-text">Telegram</span>
-        </a>
-        <a
-          href="https://wa.me/79272123514"
-          target="_blank"
-          class="footer__social-link"
-          title="Напишите в WhatsApp"
-        >
-          <img
-            src="assets/messenger/whatsapp.svg"
-            alt="WhatsApp"
-            class="footer__social-icon"
-          />
-          <span class="footer__social-text">WhatsApp</span>
-        </a>
-      </div>
-    </div>
-    <div class="footer__address">
-      <h2 class="footer__title">Адрес</h2>
-      <!-- <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
+      <div class="footer__address">
+        <h2 class="footer__title">Адрес</h2>
+        <!-- <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
         ><p>г. Тольятти, пр. Степана Резина, д. 2</p></a
       > -->
-      <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
-        ><p>г. Тольятти,</p></a
-      ><a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
-        ><p>пр. Степана Резина, д. 2</p></a
-      >
-      <p class="footer__work-label">Прием заявок</p>
-      <p class="footer__work-time">с 9:00 до 20:00</p>
-    </div>
-    <div class="footer__policy">
-      <a
-        href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FQ367bUFHMLk0dV1Yz7vELu0fq3i9ubOJleVNllht%2FvvY2rzc%2Fm%2F5n0WJyt%2BG%2B%2Fejq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BF%D0%B5%D1%80%D1%81%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%2F2025-03-21%2001-00-01.docx&name=2025-03-21%2001-00-01.docx"
-        target="_blank"
-        class="footer__policy-link"
-        >Политика обработки персональных данных</a
-      >
-    </div>
-    <div class="footer__tax-info">
-      <p>Жаркова Мария Юрьевна</p>
-      <p>ИНН 730208285547</p>
-    </div>
-  </footer>
+        <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
+          ><p>г. Тольятти,</p></a
+        ><a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
+          ><p>пр. Степана Резина, д. 2</p></a
+        >
+        <p class="footer__work-label">Прием заявок</p>
+        <p class="footer__work-time">с 9:00 до 20:00</p>
+      </div>
+      <div class="footer__policy">
+        <a
+          href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FQ367bUFHMLk0dV1Yz7vELu0fq3i9ubOJleVNllht%2FvvY2rzc%2Fm%2F5n0WJyt%2BG%2B%2Fejq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BF%D0%B5%D1%80%D1%81%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%2F2025-03-21%2001-00-01.docx&name=2025-03-21%2001-00-01.docx"
+          target="_blank"
+          class="footer__policy-link"
+          >Политика обработки персональных данных</a
+        >
+      </div>
+      <div class="footer__tax-info">
+        <p>Жаркова Мария Юрьевна</p>
+        <p>ИНН 730208285547</p>
+      </div>
+    </footer>
 
-  <!-- Скрипт для бургера -->
-  <script src="./assets/scripts/burger.js"></script>
+    <!-- Скрипт для бургера -->
+    <script src="./assets/scripts/burger.js"></script>
 
-  <!-- Скрипт для бейджа корзины-->
-  <script src="./assets/scripts/cart-badge.js"></script>
+    <!-- Скрипт для бейджа корзины-->
+    <script src="./assets/scripts/cart-badge.js"></script>
 
-  <!-- Скрипт для уведомления всех частей приложения об изменениях в корзине-->
-  <script src="./assets/scripts/cart-events.js"></script>
+    <!-- Скрипт для уведомления всех частей приложения об изменениях в корзине-->
+    <script src="./assets/scripts/cart-events.js"></script>
 
-  <!-- Скрипты для карты -->
-  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=bf2b88df-2d12-413e-97eb-ed69df7d6dc3" defer></script>
-  <script src="assets/scripts/maps-api.js" defer></script>
-</body>
+    <!-- Скрипты для карты -->
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=bf2b88df-2d12-413e-97eb-ed69df7d6dc3"
+      defer
+    ></script>
+    <script src="assets/scripts/maps-api.js" defer></script>
+  </body>
 </html>
