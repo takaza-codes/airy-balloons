@@ -12,6 +12,7 @@ function renderCart() {
         cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! <p>Для выбора товаров <a href="#">перейдите в Каталог</a></p></div>';
         orderDetails.innerHTML = '';
         orderFinal.innerHTML = '';
+        orderForm.style.display = 'none'; //Форма не отображается при пустой корзине
     } else {
         cartList.innerHTML = ''; 
         // (Изменение №1) Очищаем список перед рендером, чтобы не дублировать товары
@@ -125,10 +126,41 @@ const deliveryPrice = document.getElementById("deliveryPrice");
 const totalOrderSum = document.getElementById("totalOrderSum");
 
 function renderOrderFinal() {
-    deliveryCost = Number(deliveryOption.value);
-    deliveryPrice.textContent = `${deliveryCost} ₽`;
-    const totalItemsCost = parseInt(totalItemsSum.textContent.replace(/\D/g, ""));
-    totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
+  const existingDeliveryMsg = orderFinal.querySelector('div'); 
+
+  if (deliveryOption.value === "Рассчитать") {
+    specialOption();
+  } else {
+    if (existingDeliveryMsg) { //Проверяем на наличие сообщения "Без учета доставки" и удаляем в случае наличия
+      existingDeliveryMsg.remove();
+    }
+    noSpecialOption();
+  }
+}
+
+function specialOption() {
+  deliveryPrice.style.display = 'none';
+  totalOrderSum.style.display = 'none';
+  orderFinal.querySelector('p:nth-child(4)').style.display = 'none';
+  orderFinal.querySelector('p:nth-child(6)').style.display = 'none';
+  
+  if (!orderFinal.querySelector('div')) { //Добавляем сообщение "Без учета доставки", если оно не было выведено ранее
+    const deliveryMsg = document.createElement('div');
+    deliveryMsg.style.color = 'rgb(238, 27, 85)';
+    deliveryMsg.textContent = 'Без учета доставки';
+    orderFinal.appendChild(deliveryMsg);
+  }
+}
+
+function noSpecialOption() {
+      deliveryPrice.style.display = 'block';
+      totalOrderSum.style.display = 'block';
+      orderFinal.querySelector('p:nth-child(4)').style.display = 'block';
+      orderFinal.querySelector('p:nth-child(6)').style.display = 'block';
+      deliveryCost = Number(deliveryOption.value);
+      deliveryPrice.textContent = `${deliveryCost} ₽`;
+      const totalItemsCost = parseInt(totalItemsSum.textContent.replace(/\D/g, ""));
+      totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
 }
 
 document.getElementById("deliveryOptions").addEventListener('change', renderOrderFinal);
@@ -170,7 +202,7 @@ function enterAddress() {
 }
 
 function validateAddress(address) {
-  if(address.value.trim() === '' && Number(deliveryOption.value) > 0) {
+  if(address.value.trim() === '' && (Number(deliveryOption.value) > 0 || deliveryOption.value === "Рассчитать")) {
     return false;
   }
   return true;
@@ -201,6 +233,7 @@ policyCheckbox.addEventListener('change', function () {
     makeOrderBtn.setAttribute('disabled', "");
   }
 });
+
 
 orderForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
@@ -296,7 +329,6 @@ if (!hasError) {
     })
     .then(data => {
       console.log('Ответ от функции:', data);
-      alert('Форма заказа успешно отправлена!');
       // Очищаем корзину и сбрасываем форму
       cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
       orderDetails.innerHTML = '';
@@ -305,6 +337,7 @@ if (!hasError) {
       successBtn();
       setTimeout(restoreBtn, 3000);
       orderForm.reset();
+      orderForm.innerHTML = ''; //Форма не отображается при пустой корзине
     })
     .catch(error => {
       console.error('Ошибка при отправке запроса:', error);
