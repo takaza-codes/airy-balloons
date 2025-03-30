@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles/normalize.css" />
-    <link rel="stylesheet" href="./assets/styles/main.css" />
+    <link rel="stylesheet" href="./assets/styles/header.css" />
     <title>Главная страница</title>
     <link
       rel="shortcut icon"
@@ -13,74 +13,143 @@
     />
   </head>
   <body>
+    <header>
+      <div class="head">
+        <div class="logo">
+      <img src="./assets/logos/logo-color.svg" width="110px" alt="логотип">
+    </div>
+      <div class="search">
+        <a href="#">
+      <button class="cataloge_btn">Каталог</button>
+    </a>
+      <input class="input_search" type="search" placeholder="Поиск">
+      </div>
+    <div class="contact">
+      <p class="number_contact">+7 927 212-35-14</p>
+      <p class="reception">Прием заявок</p>
+      <p class="time">с 9:00 до 20:00</p>
+      </p>
+    </div>
+    <div class="navigation">
+    <div class="img_nav_header">
+      <a href="#">
+      <img class="telegram" 
+      src="./assets/messenger/telegram 1.svg"
+      alt="Telegram"
+      target="_blank"
+      />
+      </a>
+      <a href="#">
+      <img class="whatsapp"
+      src="./assets/messenger/whatsapp.svg"
+      alt="Whatsapp"
+      target="_blank"
+      />
+      </a>
+    </div>
+      <div>
+      <a href="#">
+        <img class="basket" src="./assets/header/basket.svg" alt="">
+      </a>
+      </div>
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar__wrap">
+            <div class="hamb">
+              <div class="hamb__field" id="hamb">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+              </div>
+            </div>
+          </nav>
+    </div>
+    </div>
+        <div>
+            <ul class="menu" id="menu">
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Доставка/Оплата</a></li>
+              <li><a href="#">Контакты</a></li>
+              <li><a href="#">О наc</a></li>
+              <li><a href="#">Отзывы</a></li>
+            </ul>
+          </div>
+      <div class="banner">
+        <div class="tittle">
+        <h1 class="airy_banner">Воздушные и гелевые</h1>
+        <h2 class="ballons_banner">шары с доставкой</h2>
+      </div>
+    </div>
+    </header>
     <main>
-      <h1>Главная страница</h1>
-      <p>Здесь пока ничего нет.</p>
+    <h1>Главная страница</h1>
+    <p>Здесь пока ничего нет.</p>
 
-      <!-- Ссылка для перехода в каталог -->
-      <p><a href="./pages/catalog.html">Перейти в каталог</a></p>
-    </main>
-    <!-- Футер -->
-    <footer class="footer">
-      <div class="footer__contacts">
-        <h2 class="footer__title">Контакты</h2>
-        <a href="https://wa.me/79272123514" class="footer__phone"
-          >+7 927 212-35-14</a
-        >
-        <div class="footer__socials">
-          <a
-            href="https://t.me/mary_zharkova"
-            target="_blank"
-            class="footer__social-link"
-            title="Напишите в Telegram"
-          >
-            <img
-              src="assets/messenger/telegram 1.svg"
-              alt="Telegram"
-              class="footer__social-icon"
-            />
-            <span class="footer__social-text">Telegram</span>
-          </a>
-          <a
-            href="https://wa.me/79272123514"
-            target="_blank"
-            class="footer__social-link"
-            title="Напишите в WhatsApp"
-          >
-            <img
-              src="assets/messenger/whatsapp.svg"
-              alt="WhatsApp"
-              class="footer__social-icon"
-            />
-            <span class="footer__social-text">WhatsApp</span>
-          </a>
-        </div>
-      </div>
-      <div class="footer__address">
-        <h2 class="footer__title">Адрес</h2>
-        <!-- <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
-          ><p>г. Тольятти, пр. Степана Резина, д. 2</p></a
-        > -->
-        <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
-          ><p>г. Тольятти,</p></a
-        ><a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
-          ><p>пр. Степана Резина, д. 2</p></a
-        >
-        <p class="footer__work-label">Прием заявок</p>
-        <p class="footer__work-time">с 9:00 до 20:00</p>
-      </div>
-      <div class="footer__policy">
+    <!-- Ссылка для перехода в каталог -->
+    <p><a href="./pages/catalog.html">Перейти в каталог</a></p>
+  </main>
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="footer__contacts">
+      <h2 class="footer__title">Контакты</h2>
+      <a href="https://wa.me/79272123514" class="footer__phone"
+        >+7 927 212-35-14</a
+      >
+      <div class="footer__socials">
         <a
-          href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FQ367bUFHMLk0dV1Yz7vELu0fq3i9ubOJleVNllht%2FvvY2rzc%2Fm%2F5n0WJyt%2BG%2B%2Fejq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BF%D0%B5%D1%80%D1%81%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%2F2025-03-21%2001-00-01.docx&name=2025-03-21%2001-00-01.docx"
+          href="https://t.me/mary_zharkova"
           target="_blank"
-          class="footer__policy-link"
-          >Политика обработки персональных данных</a
+          class="footer__social-link"
+          title="Напишите в Telegram"
         >
+          <img
+            src="assets/messenger/telegram 1.svg"
+            alt="Telegram"
+            class="footer__social-icon"
+          />
+          <span class="footer__social-text">Telegram</span>
+        </a>
+        <a
+          href="https://wa.me/79272123514"
+          target="_blank"
+          class="footer__social-link"
+          title="Напишите в WhatsApp"
+        >
+          <img
+            src="assets/messenger/whatsapp.svg"
+            alt="WhatsApp"
+            class="footer__social-icon"
+          />
+          <span class="footer__social-text">WhatsApp</span>
+        </a>
       </div>
-      <div class="footer__tax-info">
-        <p>Жаркова Мария Юрьевна</p>
-        <p>ИНН 730208285547</p>
-      </div>
-    </footer>
+    </div>
+    <div class="footer__address">
+      <h2 class="footer__title">Адрес</h2>
+      <!-- <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
+        ><p>г. Тольятти, пр. Степана Резина, д. 2</p></a
+      > -->
+      <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
+        ><p>г. Тольятти,</p></a
+      ><a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank"
+        ><p>пр. Степана Резина, д. 2</p></a
+      >
+      <p class="footer__work-label">Прием заявок</p>
+      <p class="footer__work-time">с 9:00 до 20:00</p>
+    </div>
+    <div class="footer__policy">
+      <a
+        href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FQ367bUFHMLk0dV1Yz7vELu0fq3i9ubOJleVNllht%2FvvY2rzc%2Fm%2F5n0WJyt%2BG%2B%2Fejq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BF%D0%B5%D1%80%D1%81%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%2F2025-03-21%2001-00-01.docx&name=2025-03-21%2001-00-01.docx"
+        target="_blank"
+        class="footer__policy-link"
+        >Политика обработки персональных данных</a
+      >
+    </div>
+    <div class="footer__tax-info">
+      <p>Жаркова Мария Юрьевна</p>
+      <p>ИНН 730208285547</p>
+    </div>
+  </footer>
   </body>
 </html>
