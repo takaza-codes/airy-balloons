@@ -244,6 +244,11 @@ h6 {
   display: block;
   margin: 0 auto;
 }
+.footer__social-text {
+  font-weight: 500;
+  font-size: 10px;
+  margin-top: 6px;
+}
 .footer__policy {
   grid-area: policy;
   text-align: center;
@@ -284,7 +289,10 @@ h6 {
   }
 }
 @media (min-width: 1200px) {
-  .footer__phone {
-    font-size: 30px;
+  .footer__contacts {
+    justify-self: center;
+  }
+  .footer__address {
+    justify-self: center;
   }
 }
