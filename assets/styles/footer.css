@@ -159,49 +159,50 @@ h6 {
 }
 
 .footer {
+  width: 100%;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto;
   grid-template-areas: "contacts" "address" "policy" "tax-info";
-  padding: 20px;
-  font-family: "Montserrat", sans-serif;
+  row-gap: 0.2rem;
   text-align: center;
 }
-.footer > div {
-  padding: 10px;
-  margin-bottom: 15px;
+.footer__contacts {
+  margin-bottom: 1rem;
 }
 .footer__title {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
 }
 .footer__phone {
-  font-weight: 600;
   font-size: 31px;
   display: block;
-  margin-bottom: 15px;
-  text-decoration: none;
-  color: inherit;
+  margin-bottom: 10px;
 }
-.footer__address a {
-  text-decoration: none;
-  color: inherit;
+.footer__address {
+  margin-bottom: 1rem;
 }
 .footer__address a p {
-  font-weight: 600;
-  font-size: 27px;
+  font-size: 1.4rem;
   margin: 8px 0;
   display: block;
 }
 .footer__address .footer__work-label {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
   font-weight: 500;
   font-size: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 4px;
 }
 .footer__address .footer__work-time {
-  font-weight: 600;
   font-size: 14px;
   margin: 0;
 }
@@ -212,10 +213,13 @@ h6 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 20px;
-  margin-top: 15px;
+  gap: 0.7rem;
+  margin-top: 10px;
 }
 .footer__socials-link {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -226,12 +230,9 @@ h6 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-decoration: none;
-  color: inherit;
   width: auto;
 }
 .footer__socials-text {
-  font-weight: 500;
   font-size: 10px;
   margin-top: 6px;
   display: block;
@@ -251,16 +252,24 @@ h6 {
 }
 .footer__policy {
   grid-area: policy;
-  text-align: center;
+  padding: 0 !important;
+  justify-self: center;
+  align-self: end;
 }
 .footer__policy-link {
-  text-decoration: none;
+  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
   color: rgb(160, 160, 160);
 }
 .footer__tax-info {
+  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
   grid-area: tax-info;
   text-align: center;
-  font-size: 14px;
   color: rgb(160, 160, 160);
 }
 @media (min-width: 768px) {
@@ -288,11 +297,16 @@ h6 {
     justify-self: end;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
+  .footer {
+    -webkit-column-gap: 7rem;
+       -moz-column-gap: 7rem;
+            column-gap: 7rem;
+  }
   .footer__contacts {
-    justify-self: center;
+    justify-self: end;
   }
   .footer__address {
-    justify-self: center;
+    justify-self: start;
   }
 }
