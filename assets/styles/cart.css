@@ -158,7 +158,7 @@ html {
 .topContainer {
   padding: 2rem 0;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 .topContainer h2 {
@@ -166,35 +166,25 @@ html {
   font-weight: 600;
 }
 .topContainer #goBack {
-  background-image: url(/assets/logos/close-cross-red.svg);
-  background-size: 40%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  border: 1px solid rgb(238, 27, 85);
-  padding: 0;
+  background-color: rgb(255, 255, 255);
+  color: #cfcfcf;
   height: 40px;
-  width: 40px;
+  display: flex;
+  align-items: end;
 }
 .topContainer #goBack:hover {
-  background-image: url(/assets/logos/close-cross.svg);
-  background-size: 60%;
-  border: 2px solid #cfcfcf;
+  color: rgb(238, 27, 85);
 }
 @media screen and (max-width: 768px) {
   .topContainer #goBack {
     font-size: 0.9rem;
-    padding: 0;
     max-height: 40px;
-    max-width: 40px;
   }
 }
 @media screen and (max-width: 440px) {
   .topContainer #goBack {
     font-size: 0.85rem;
-    padding: 0;
     max-height: 40px;
-    max-width: 40px;
   }
 }
 
@@ -240,7 +230,7 @@ html {
   .cartItems #cartList .cartItem {
     grid-template-columns: fit-content(48%) 1fr 1fr;
     grid-template-rows: 1rem 90px auto;
-    gap: 0.3rem;
+    gap: 0.4rem;
   }
   .cartItems #cartList .cartItem .itemName {
     grid-column: 2/4;
@@ -251,6 +241,7 @@ html {
   }
   .cartItems #cartList .cartItem .itemCounter {
     grid-column: 2/3;
+    justify-self: start;
   }
   .cartItems #cartList .cartItem .removeBtn {
     grid-column: 3/4;
@@ -290,6 +281,7 @@ html {
 }
 @media screen and (max-width: 440px) {
   .cartItems #cartList .cartItem .itemCounter {
+    align-self: start;
     justify-self: start;
   }
 }
@@ -322,6 +314,7 @@ html {
 }
 @media screen and (max-width: 440px) {
   .cartItems #cartList .cartItem .price {
+    align-self: start;
     justify-self: end;
   }
 }
@@ -373,6 +366,29 @@ html {
   border-radius: 0.5em;
   border: 1px solid gray;
   margin-bottom: 0.5rem;
+}
+#orderForm input:focus,
+#orderForm textarea:focus {
+  outline: 1.5px solid rgb(245, 210, 88);
+  outline-offset: 2px;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+#orderForm input::-moz-selection,
+#orderForm textarea::-moz-selection {
+  background-color: transparent !important;
+}
+#orderForm input:-webkit-autofill, #orderForm input:-webkit-autofill:hover, #orderForm input:-webkit-autofill:focus,
+#orderForm textarea:-webkit-autofill,
+#orderForm textarea:-webkit-autofill:hover,
+#orderForm textarea:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 @media screen and (max-width: 768px) {
   #orderForm input,

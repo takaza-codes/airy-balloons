@@ -144,6 +144,329 @@ h6 {
   transform: scale(0.98);
 }
 
+/*************************************
+* HEADER
+*************************************/
+.header {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+
+/* Верхняя полоса (top-bar) */
+.top-bar {
+  background-color: rgb(255, 255, 255);
+  padding: 10px 0;
+}
+.top-bar .top-bar__inner {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-bar .logo img {
+  display: block;
+}
+.top-bar .contact {
+  text-align: right;
+  font-size: 14px;
+}
+.top-bar .contact .number_contact {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: rgb(30, 26, 26);
+}
+.top-bar .contact .reception {
+  margin-top: 2px;
+  font-size: 10px;
+  color: rgb(30, 26, 26);
+}
+.top-bar .contact .time {
+  margin-top: 2px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  color: rgb(30, 26, 26);
+}
+.top-bar .header-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  /* Гамбургер по умолчанию скрыт (для десктопа) */
+}
+.top-bar .header-right .messengers {
+  display: flex;
+  gap: 16px;
+}
+.top-bar .header-right .messengers .telegram {
+  width: 36px;
+}
+.top-bar .header-right .messengers .whatsapp {
+  width: 32px;
+}
+.top-bar .header-right .basket-wrap .basket {
+  width: 36px;
+}
+.top-bar .header-right .hamb {
+  display: none;
+  cursor: pointer;
+}
+.top-bar .header-right .hamb .bar {
+  background-color: rgb(30, 26, 26);
+  transition: 0.4s;
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin: 6px 0;
+}
+.top-bar .search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.top-bar .search .cataloge_btn {
+  width: 120px;
+  height: 35px;
+  color: rgb(30, 26, 26);
+  background-color: rgb(245, 210, 88);
+  border: 1px solid rgb(245, 210, 88);
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+}
+.top-bar .search .input_search {
+  width: 200px;
+  height: 35px;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 3px;
+}
+.top-bar .search .input_search:focus {
+  outline: 1.5px solid rgb(245, 210, 88);
+  outline-offset: 2px;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+.top-bar .search .input_search::-moz-selection {
+  background-color: transparent !important;
+}
+.top-bar .search .input_search:-webkit-autofill, .top-bar .search .input_search:-webkit-autofill:hover, .top-bar .search .input_search:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Основное меню */
+.main-nav {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid #eee;
+}
+.main-nav .nav__inner {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+.main-nav .menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+.main-nav .menu li a {
+  text-decoration: none;
+  color: rgb(30, 26, 26);
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+}
+.main-nav .menu li a:hover {
+  color: rgb(238, 27, 85);
+}
+
+/* Блок баннера */
+.banner {
+  width: 100%;
+  min-height: 500px;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../header/banner.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.banner .banner__content {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  padding: 20px;
+}
+.banner .banner__content .airy_banner {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 72px;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-size: clamp(2rem, 5vw, 72px);
+}
+.banner .banner__content .ballons_banner {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-size: clamp(1.5rem, 4vw, 40px);
+}
+
+/*************************************
+* АДАПТИВ (ПЛАНШЕТЫ)
+*************************************/
+@media screen and (max-width: 768px) {
+  .header {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  .top-bar .top-bar__inner {
+    justify-content: space-between;
+  }
+  .top-bar .contact {
+    display: none;
+  }
+  .top-bar .search {
+    display: none;
+  }
+  .top-bar .header-right {
+    gap: 24px;
+  }
+  .top-bar .header-right .messengers {
+    gap: 12px;
+  }
+  .top-bar .header-right .messengers .telegram {
+    width: 30px;
+  }
+  .top-bar .header-right .messengers .whatsapp {
+    width: 28px;
+  }
+  .top-bar .header-right .basket-wrap .basket {
+    width: 30px;
+  }
+  .top-bar .header-right .hamb {
+    display: block;
+  }
+  .top-bar .header-right .hamb .bar {
+    width: 28px;
+    height: 2px;
+    margin: 5px 0;
+  }
+  .main-nav .nav__inner .menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    border: 2px solid rgb(238, 27, 85);
+    padding: 10px;
+    z-index: 1000;
+  }
+  .main-nav .nav__inner .menu li {
+    margin: 5px 0;
+  }
+  .main-nav .nav__inner .menu.active {
+    display: flex;
+  }
+  .banner {
+    min-height: 300px;
+  }
+  .banner .banner__content {
+    padding: 20px;
+  }
+  .banner .banner__content .airy_banner {
+    font-size: 56px;
+  }
+  .banner .banner__content .ballons_banner {
+    font-size: 40px;
+  }
+}
+/*************************************
+* АДАПТИВ (ТЕЛЕФОНЫ)
+*************************************/
+@media screen and (max-width: 440px) {
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .top-bar .header-right {
+    gap: 16px;
+  }
+  .top-bar .header-right .messengers {
+    gap: 8px;
+  }
+  .top-bar .header-right .messengers .telegram {
+    width: 24px;
+  }
+  .top-bar .header-right .messengers .whatsapp {
+    width: 22px;
+  }
+  .top-bar .header-right .basket-wrap .basket {
+    width: 24px;
+  }
+  .top-bar .header-right .hamb {
+    display: block;
+  }
+  .top-bar .header-right .hamb .bar {
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+  }
+  .banner {
+    min-height: 250px;
+  }
+  .banner .banner__content {
+    padding: 10px;
+  }
+  .banner .banner__content .airy_banner {
+    font-size: 40px;
+  }
+  .banner .banner__content .ballons_banner {
+    font-size: 24px;
+  }
+}
+/*************************************
+* АНИМАЦИЯ БАРОВ ГАМБУРГЕРА
+*************************************/
+.bar.top {
+  transform: rotate(45deg) translate(6.5px, 6px);
+}
+
+.bar.middle {
+  opacity: 0;
+}
+
+.bar.bottom {
+  transform: rotate(-45deg) translate(6.5px, -6px);
+}
+
 .contacts {
   padding-left: 5.2%;
   padding-right: 5.2%;
@@ -226,53 +549,6 @@ h6 {
   color: rgb(30, 26, 26);
   text-align: center;
   margin-top: 8px;
-}
-
-/* Каталог (контейнер)  с карточками товаров просто для примера */
-.catalog {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 20px;
-}
-
-/* Мини-карточка товара в каталоге */
-.catalog-item {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #eee;
-  border-radius: 8px;
-  width: 280px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  /* Небольшая картинка (по ширине карточки) */
-  /* Блок с ценой */
-}
-.catalog-item .item-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 140px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 8px;
-}
-.catalog-item h2 {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: rgb(30, 26, 26);
-  margin-bottom: 8px;
-}
-.catalog-item .price {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: rgb(238, 27, 85);
-  margin-bottom: 12px;
 }
 
 /***************************************************
