@@ -154,6 +154,17 @@ h6 {
   padding-right: 5.2%;
 }
 
+.header-fixed-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgb(255, 255, 255);
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+
 /* Верхняя полоса (top-bar) */
 .top-bar {
   background-color: rgb(255, 255, 255);
@@ -308,6 +319,7 @@ h6 {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  margin-top: 120px;
 }
 .banner .banner__content {
   text-align: center;
@@ -467,10 +479,29 @@ h6 {
   transform: rotate(-45deg) translate(6.5px, -6px);
 }
 
+.basket-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -7px;
+  right: -11px;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  padding: 4px 6px;
+  font-size: 12px;
+  line-height: 1;
+  min-width: 20px;
+  text-align: center;
+}
+
 .contacts {
   padding-left: 5.2%;
   padding-right: 5.2%;
-  margin: 40px auto;
+  margin: 120px auto;
 }
 .contacts__title {
   font-family: "Montserrat", sans-serif;

@@ -1,12 +1,12 @@
 // ====================== Корзина ======================
 
-// (Изменение №A) Теперь в cart мы храним объекты вида { id, title, price, images, quantity }.
-// При добавлении не плодим дубликаты, а увеличиваем quantity.
+// (Изменение №A) Функция для получения корзины из localStorage
 function getCart() {
   const cart = localStorage.getItem("cart");
   return cart ? JSON.parse(cart) : [];
 }
 
+// Функция для сохранения корзины в localStorage
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -14,11 +14,13 @@ function saveCart(cart) {
 // Создаём канал для синхронизации между вкладками/страницами (Изменение №S1)
 const cartChannel = new BroadcastChannel('cartChannel');
 
+// Функция для обновления корзины в других вкладках и отправки кастомного события
 function updateCartAcrossTabs() {
   cartChannel.postMessage('updateCart');
+  dispatchCartUpdate(); // Функция dispatchCartUpdate() должна быть определена глобально (например, в отдельном файле или выше)
 }
 
-// (Изменение №B) Функция addToCart – если товар уже есть, увеличиваем quantity, иначе добавляем объект с quantity = itemCount.
+// (Изменение №B) Функция addToCart – если товар уже есть, увеличиваем quantity, иначе добавляем объект с полем quantity = itemCount.
 function addToCart(productId, itemCount = 1) {
   const cart = getCart();
   const productToAdd = products.find(p => p.id === productId);
@@ -34,7 +36,7 @@ function addToCart(productId, itemCount = 1) {
 
   saveCart(cart);
   showToast(`${productToAdd.title} добавлен в корзину`);
-  updateCartAcrossTabs(); // отправляем сообщение для обновления в других вкладках
+  updateCartAcrossTabs(); // уведомляем другие вкладки
 }
 
 // (Изменение №C) Функция removeFromCart – уменьшает quantity, если >1, иначе удаляет товар.
@@ -54,7 +56,7 @@ function removeFromCart(productId) {
   }
 }
 
-// Функция для тостов (без изменений)
+// Функция для отображения тост-сообщений
 function showToast(message) {
   let toastContainer = document.getElementById('toastContainer');
   if (!toastContainer) {
@@ -120,7 +122,8 @@ function showToast(message) {
   }
 }
 
-// ====================== Рендер карточки ======================
+// ====================== Рендер карточки товара ======================
+
 const urlParams = new URLSearchParams(window.location.search);
 const productId = +urlParams.get('id');
 const productPageEl = document.getElementById('productPage');
@@ -161,10 +164,9 @@ if (!product) {
   `;
 
   // -----------------------------
-  // Логика счётчика
+  // Логика счётчика товара
   // -----------------------------
   let quantity = 0;
-  // Объявляем переменные глобально в пределах страницы товара
   const orderControls = document.getElementById("orderControls");
   const orderBtn = document.getElementById("orderBtn");
   const quantityNum = document.querySelector(".quantity-num");
@@ -175,11 +177,10 @@ if (!product) {
     quantityNum.textContent = quantity;
   }
 
-  // (Изменение №1) При загрузке проверяем, есть ли этот товар в cart
+  // (Изменение №1) При загрузке проверяем, есть ли этот товар в корзине
   const cart = getCart();
   const itemInCart = cart.find(item => item.id === productId);
   if (itemInCart) {
-    // Если товар уже есть, устанавливаем quantity из LocalStorage
     quantity = itemInCart.quantity;
     orderControls.classList.add("active");
     orderBtn.style.display = 'none';
@@ -188,7 +189,7 @@ if (!product) {
   }
   updateQuantityDisplay();
 
-  // (Изменение №2) При клике «Заказать» → ставим quantity = 1, скрываем кнопку «Заказать»
+  // (Изменение №2) При клике "Заказать" – устанавливаем quantity = 1, скрываем кнопку "Заказать"
   orderBtn.addEventListener("click", () => {
     quantity = 1;
     orderControls.classList.add("active");
