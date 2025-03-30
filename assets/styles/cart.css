@@ -160,6 +160,7 @@ html {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  margin-top: 120px;
 }
 .topContainer h2 {
   font-size: 40px;

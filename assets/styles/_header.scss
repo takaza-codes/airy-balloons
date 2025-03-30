@@ -2,142 +2,154 @@
 * HEADER
 *************************************/
 .header {
-width: 100%;
-background-color: $white;
-@include padding-1920;
+  width: 100%;
+  background-color: $white;
+  @include padding-1920;
 }
 
 .header-fixed-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; // выбирайте подходящее значение
-    background-color: $white; // или другой нужный цвет
-    @include padding-1920;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; // выбирайте подходящее значение
+  background-color: $white;
+  @include padding-1920;
+}
 
 /* Верхняя полоса (top-bar) */
 .top-bar {
-background-color: $white;
-padding: 10px 0;
+  background-color: $white;
+  padding: 10px 0;
 
-.top-bar__inner {
+  .top-bar__inner {
     @include Montserrat-base;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+  }
 
-.logo {
+  .logo {
     img {
-    display: block;
+      display: block;
     }
-}
+  }
 
-.contact {
+  .contact {
     text-align: right;
     font-size: 14px;
-    
+
     .number_contact {
-    @include Montserrat-700-base;
-    font-size: 16px;
-    color: $black;
+      @include Montserrat-700-base;
+      font-size: 16px;
+      color: $black;
     }
     .reception {
-    margin-top: 2px;
-    font-size: 10px;
-    color: $black;
+      margin-top: 2px;
+      font-size: 10px;
+      color: $black;
     }
     .time {
-    margin-top: 2px;
-    @include Montserrat-base;
-    font-weight: $font-weight-500;
-    font-size: 10px;
-    color: $black;
+      margin-top: 2px;
+      @include Montserrat-base;
+      font-weight: $font-weight-500;
+      font-size: 10px;
+      color: $black;
     }
-}
+  }
 
-.header-right {
+  .header-right {
     display: flex;
     align-items: center;
     gap: 40px;
 
     .messengers {
-    display: flex;
-    gap: 16px;
+      display: flex;
+      gap: 16px;
 
-    .telegram {
+      .telegram {
         width: 36px;
-    }
-    .whatsapp {
+      }
+      .whatsapp {
         width: 32px;
-    }
+      }
     }
 
     .basket-wrap {
-    .basket {
+      .basket {
         width: 36px;
-    }
+      }
     }
 
-    /* Гамбургер по умолчанию скрыт (для десктопа) */
+    /* Гамбургер: по умолчанию скрыт (для десктопа) */
     .hamb {
-    display: none;
-    cursor: pointer;
-
-    .bar {
+      display: none;
+      cursor: pointer;
+      .bar {
         background-color: $black;
-        transition: 0.4s;
-        display: block; 
+        display: block;
         width: 32px;
         height: 2px;
         margin: 6px 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        transform-origin: center;
+      }
+      // При активном состоянии контейнера
+      &.active {
+        .bar:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .bar:nth-child(2) {
+          opacity: 0;
+        }
+        .bar:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
+      }
     }
-    }
-}
+  }
 
-.search {
+  .search {
     display: flex;
     align-items: center;
     gap: 10px;
 
     .cataloge_btn {
-    width: 120px;
-    height: 35px;
-    color: $black;
-    background-color: $yellow;
-    border: 1px solid $yellow;
-    border-radius: 3px;
-    cursor: pointer;
-    @include Montserrat-600-base;
-    font-size: 14px;
+      width: 120px;
+      height: 35px;
+      color: $black;
+      background-color: $yellow;
+      border: 1px solid $yellow;
+      border-radius: 3px;
+      cursor: pointer;
+      @include Montserrat-600-base;
+      font-size: 14px;
     }
 
     .input_search {
-    width: 200px;
-    height: 35px;
-    border: 1px solid rgb(211, 210, 210);
-    border-radius: 3px;
-    @include custom-input-focus;
+      width: 200px;
+      height: 35px;
+      border: 1px solid rgb(211, 210, 210);
+      border-radius: 3px;
+      @include custom-input-focus;
     }
-}
+  }
 }
 
 /* Основное меню */
 .main-nav {
-background-color: $white;
-border-bottom: 1px solid #eee;
+  background-color: $white;
+  border-bottom: 1px solid #eee;
 
-.nav__inner {
+  .nav__inner {
     @include Montserrat-base;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-}
+  }
 
-.menu {
+  .menu {
     list-style: none;
     display: flex;
     gap: 20px;
@@ -145,32 +157,32 @@ border-bottom: 1px solid #eee;
     padding: 0;
 
     li {
-    a {
+      a {
         text-decoration: none;
         color: $black;
         @include Montserrat-500-base;
         font-size: 14px;
 
         &:hover {
-        color: $red;
+          color: $red;
         }
+      }
     }
-    }
-}
+  }
 }
 
 /* Блок баннера */
 .banner {
-width: 100%;
-min-height: 500px; // Минимальная высота для десктопа
-background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../header/banner.jpeg");
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: relative;
-margin-top: 120px;
+  width: 100%;
+  min-height: 500px; // Минимальная высота для десктопа
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../header/banner.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: 120px;
 
-.banner__content {
+  .banner__content {
     text-align: center;
     color: $white;
     position: absolute;
@@ -179,71 +191,71 @@ margin-top: 120px;
     transform: translate(-50%, -50%);
     width: 90%;
     padding: 20px;
-    
+
     .airy_banner {
-    @include h1;
-    color: $white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    // Адаптивный размер шрифта: не меньше 2rem, максимум $font-size-h1, оптимальный 5vw
-    font-size: clamp(2rem, 5vw, $font-size-h1);
+      @include h1;
+      color: $white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+      // Адаптивный размер шрифта: не меньше 2rem, максимум $font-size-h1, оптимальный 5vw
+      font-size: clamp(2rem, 5vw, $font-size-h1);
     }
     .ballons_banner {
-    @include h3;
-    color: $white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    font-size: clamp(1.5rem, 4vw, $font-size-h3);
+      @include h3;
+      color: $white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+      font-size: clamp(1.5rem, 4vw, $font-size-h3);
     }
-}
+  }
 }
 
 /*************************************
 * АДАПТИВ (ПЛАНШЕТЫ)
 *************************************/
 @include tablets {
-.header {
+  .header {
     @include padding-768;
-}
+  }
 
-.top-bar {
+  .top-bar {
     .top-bar__inner {
-    justify-content: space-between;
+      justify-content: space-between;
     }
     .contact {
-    display: none;
+      display: none;
     }
     .search {
-    display: none;
+      display: none;
     }
     .header-right {
-    gap: 24px;
-    .messengers {
+      gap: 24px;
+      .messengers {
         gap: 12px;
         .telegram {
-        width: 30px; // уменьшено с 36px
+          width: 30px; // уменьшено с 36px
         }
         .whatsapp {
-        width: 28px; // уменьшено с 32px
+          width: 28px; // уменьшено с 32px
         }
-    }
-    .basket-wrap {
+      }
+      .basket-wrap {
         .basket {
-        width: 30px; // уменьшено с 36px
+          width: 30px; // уменьшено с 36px
         }
-    }
-    .hamb {
+      }
+      .hamb {
         display: block;
         .bar {
-        width: 28px; // уменьшено с 32px
-        height: 2px;
-        margin: 5px 0;
+          width: 28px; // уменьшено с 32px
+          height: 2px;
+          margin: 5px 0;
         }
+      }
     }
-    }
-}
+  }
 
-.main-nav {
+  .main-nav {
     .nav__inner {
-    .menu {
+      .menu {
         display: none; 
         position: absolute;
         right: 0;
@@ -255,90 +267,76 @@ margin-top: 120px;
         z-index: 1000;
 
         li {
-        margin: 5px 0;
+          margin: 5px 0;
         }
 
         &.active {
-        display: flex; 
+          display: flex; 
         }
+      }
     }
-    }
-}
+  }
 
-.banner {
+  .banner {
     min-height: 300px; // Минимальная высота для планшетов
     .banner__content {
-    padding: 20px;
-    .airy_banner {
+      padding: 20px;
+      .airy_banner {
         font-size: $font-size-h2; // фиксированный размер для планшетов
-    }
-    .ballons_banner {
+      }
+      .ballons_banner {
         font-size: $font-size-h3;
+      }
     }
-    }
-}
+  }
 }
 
 /*************************************
 * АДАПТИВ (ТЕЛЕФОНЫ)
 *************************************/
 @include phones {
-.header {
+  .header {
     @include padding-440;
-}
+  }
 
-.top-bar {
-    
+  .top-bar {
     .header-right {
-    gap: 16px;
-    .messengers {
+      gap: 16px;
+      .messengers {
         gap: 8px;
         .telegram {
-        width: 24px; // уменьшено с 30px (планшет) -> ещё меньше
+          width: 24px; // уменьшено с 30px (планшет) -> ещё меньше
         }
         .whatsapp {
-        width: 22px; // уменьшено с 28px
+          width: 22px; // уменьшено с 28px
         }
-    }
-    .basket-wrap {
+      }
+      .basket-wrap {
         .basket {
-        width: 24px; // уменьшено с 30px
+          width: 24px; // уменьшено с 30px
         }
-    }
-    .hamb {
+      }
+      .hamb {
         display: block;
         .bar {
-        width: 22px; // уменьшено с 28px
-        height: 2px;
-        margin: 4px 0;
+          width: 22px; // уменьшено с 28px
+          height: 2px;
+          margin: 4px 0;
         }
+      }
     }
-    }
-}
+  }
 
-.banner {
+  .banner {
     min-height: 250px; // Минимальная высота для телефонов
     .banner__content {
-    padding: 10px;
-    .airy_banner {
+      padding: 10px;
+      .airy_banner {
         font-size: $font-size-h3; // меньше для телефонов
-    }
-    .ballons_banner {
+      }
+      .ballons_banner {
         font-size: 24px;
+      }
     }
-    }
+  }
 }
-}
-
-/*************************************
-* АНИМАЦИЯ БАРОВ ГАМБУРГЕРА
-*************************************/
-.bar.top {
-transform: rotate(45deg) translate(6.5px, 6px);
-}
-.bar.middle {
-opacity: 0;
-}
-.bar.bottom {
-transform: rotate(-45deg) translate(6.5px, -6px);
-}  

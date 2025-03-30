@@ -10,10 +10,66 @@
 </head>
 <body>
 
-  <!-- Тестовый хедер -->
-  <header class="site-header">
-    <div class="container">
-      <h1>Магазин шаров</h1>
+  <header class="header">
+    <div class="header-fixed-wrapper">
+      <!-- Верхняя часть шапки -->
+      <div class="top-bar">
+        <div class="container top-bar__inner">
+          <!-- ЛОГОТИП -->
+          <div class="logo">
+            <img src="../assets/logos/logo-color.svg" width="110" alt="логотип">
+          </div>
+          <!-- Поиск и кнопка "Каталог" -->
+          <div class="search">
+            <a href="#">
+              <button class="cataloge_btn">Каталог</button>
+            </a>
+            <input class="input_search" type="search" placeholder="Поиск">
+          </div>
+      
+          <!-- Блок с контактами -->
+          <div class="contact">
+            <p class="number_contact">+7 927 212-35-14</p>
+            <p class="reception">Прием заявок</p>
+            <p class="time">с 9:00 до 20:00</p>
+          </div>
+          <!-- Мессенджеры и корзина (справа) -->
+          <div class="header-right">
+            <div class="messengers">
+              <a href="#" target="_blank">
+                <img class="telegram" src="../assets/messenger/telegram.svg" alt="Telegram">
+              </a>
+              <a href="#" target="_blank">
+                <img class="whatsapp" src="../assets/messenger/whatsapp.svg" alt="Whatsapp">
+              </a>
+            </div>
+            <div class="basket-wrap">
+              <a href="./cart.html">
+                <img class="basket" src="../assets/header/cart.svg" alt="Корзина">
+                <span class="cart-count" id="cart-count">0</span>
+              </a>
+            </div>
+            <!-- Гамбургер (по умолчанию скрыт, показываем на планшетах) -->
+            <div class="hamb" id="hamb">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Основное меню (для десктопа или при клике на гамбургер) -->
+      <nav class="main-nav">
+        <div class="container nav__inner">
+          <ul class="menu" id="menu">
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="#">Доставка/Оплата</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Отзывы</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
   </header>
 
@@ -39,6 +95,7 @@
       <p>© 2025 My Balloons Shop</p>
     </div>
   </footer>
+  
   <!-- Скрипт БД -->
   <script src="../assets/scripts/data.js"></script>
 

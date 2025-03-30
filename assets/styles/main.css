@@ -208,7 +208,7 @@ h6 {
   display: flex;
   align-items: center;
   gap: 40px;
-  /* Гамбургер по умолчанию скрыт (для десктопа) */
+  /* Гамбургер: по умолчанию скрыт (для десктопа) */
 }
 .top-bar .header-right .messengers {
   display: flex;
@@ -229,11 +229,21 @@ h6 {
 }
 .top-bar .header-right .hamb .bar {
   background-color: rgb(30, 26, 26);
-  transition: 0.4s;
   display: block;
   width: 32px;
   height: 2px;
   margin: 6px 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center;
+}
+.top-bar .header-right .hamb.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.top-bar .header-right .hamb.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.top-bar .header-right .hamb.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 .top-bar .search {
   display: flex;
@@ -464,21 +474,6 @@ h6 {
     font-size: 24px;
   }
 }
-/*************************************
-* АНИМАЦИЯ БАРОВ ГАМБУРГЕРА
-*************************************/
-.bar.top {
-  transform: rotate(45deg) translate(6.5px, 6px);
-}
-
-.bar.middle {
-  opacity: 0;
-}
-
-.bar.bottom {
-  transform: rotate(-45deg) translate(6.5px, -6px);
-}
-
 .basket-wrap {
   position: relative;
   display: inline-block;
@@ -583,48 +578,17 @@ h6 {
 }
 
 /***************************************************
- * 1) Стили для header, footer (Десктоп)
- ***************************************************/
-.site-header {
-  background-color: rgb(242, 215, 219);
-  padding: 20px 0;
-}
-.site-header h1 {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  color: rgb(30, 26, 26);
-  margin: 0;
-  text-align: center;
-}
-
-.site-footer {
-  background-color: rgb(242, 215, 219);
-  padding: 20px 0;
-  margin-top: 40px;
-}
-.site-footer p {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  color: rgb(30, 26, 26);
-  margin: 0;
-  text-align: center;
-}
-
-/***************************************************
- * 2) Блок-обёртка для страницы товара
+ * 1) Блок-обёртка для страницы товара
  ***************************************************/
 .product-page-wrapper {
   padding-left: 5.2%;
   padding-right: 5.2%;
-  margin: 40px auto;
+  margin: 0px auto;
+  margin-top: 140px;
 }
 
 /***************************************************
- * 3) Карточка товара (product-card)
+ * 2) Карточка товара (product-card)
  ***************************************************/
 .product-title {
   font-family: "Montserrat", sans-serif;
@@ -773,7 +737,7 @@ h6 {
 }
 
 /***************************************************
- * 4) Адаптив (tablets, phones) - с использованием миксинов
+ * 3) Адаптив (tablets, phones)
  ***************************************************/
 /* Планшеты: (max-width: 768px) */
 @media screen and (max-width: 768px) {
