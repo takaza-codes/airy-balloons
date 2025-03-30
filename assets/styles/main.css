@@ -454,20 +454,6 @@ h6 {
   .footer__address {
     justify-self: center;
   }
-  .footer__socials {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-  }
-  .footer__socials-link {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .footer__tax-info {
-    text-align: left;
-    justify-self: end;
-  }
 }
 
 /* Каталог (контейнер)  с карточками товаров просто для примера */
