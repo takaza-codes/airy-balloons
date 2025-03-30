@@ -71,3 +71,26 @@
   @include Montserrat-300-base;
   font-size: $font-size-regular;
 }
+
+//Сброс отображения полей input по умолчанию: кастом фокус и стили автозаполнения
+@mixin custom-input-focus {
+  &:focus {
+    outline: 1.5px solid $yellow;
+    outline-offset: 2px;
+    background-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  &::-moz-selection {
+    background-color: transparent !important;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important; // Override background
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    background-color: transparent !important;
+    -webkit-text-fill-color: inherit !important; // Keep text color
+    transition: background-color 5000s ease-in-out 0s; // Hack to persist transparency
+  }
+}
