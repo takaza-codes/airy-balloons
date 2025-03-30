@@ -1,93 +1,97 @@
-//Отображение товаров, добавленных в корзину
+// Функция для отправки события обновления корзины
+function dispatchCartUpdate() {
+  document.dispatchEvent(new CustomEvent("cartUpdated"));
+}
+
+// Элементы страницы корзины
 const cartList = document.getElementById('cartList');
 const orderDetails = document.querySelector('.orderDetails');
 const orderFinal = document.querySelector('.orderFinal');
 
+// При загрузке страницы отрисовываем корзину
 document.addEventListener('DOMContentLoaded', renderCart);
 
 function renderCart() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    if (cart.length === 0) {
-        cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! <p>Для выбора товаров <a href="#">перейдите в Каталог</a></p></div>';
-        orderDetails.innerHTML = '';
-        orderFinal.innerHTML = '';
-        orderForm.style.display = 'none'; //Форма не отображается при пустой корзине
-    } else {
-        cartList.innerHTML = ''; 
-        // (Изменение №1) Очищаем список перед рендером, чтобы не дублировать товары
+  if (cart.length === 0) {
+    cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! <p>Для выбора товаров <a href="#">перейдите в Каталог</a></p></div>';
+    orderDetails.innerHTML = '';
+    orderFinal.innerHTML = '';
+    orderForm.style.display = 'none'; // Форма не отображается при пустой корзине
+  } else {
+    cartList.innerHTML = ''; // Очищаем список перед рендером, чтобы не дублировать товары
 
-        cart.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.classList.add('cartItem');
+    cart.forEach((item, index) => {
+      const li = document.createElement('li');
+      li.classList.add('cartItem');
 
-            // (Изменение №2) Используем item.quantity (число) и item.price * item.quantity
-            // Это значит, что при добавлении в корзину мы должны добавлять поле quantity
-            li.innerHTML = `
-            <div class="itemImage">
-              <img src="${item.images}" alt="Фото товара" class="itemPhoto">
-            </div>
-            <p class="itemName">${item.title}</p>
-            <div class="itemCounter">
-                <button class="decrement" data-id="${item.id}">−</button>
-                <span class="quantity">${item.quantity}</span>
-                <button class="increment" data-id="${item.id}">+</button>
-            </div>
-            <h4 class="price">${item.price * item.quantity} ₽</h4>
-            <button class="removeBtn" data-index="${index}"></button>
-            `;
-            cartList.appendChild(li);
-        });
+      li.innerHTML = `
+        <div class="itemImage">
+          <img src="${item.images}" alt="Фото товара" class="itemPhoto">
+        </div>
+        <p class="itemName">${item.title}</p>
+        <div class="itemCounter">
+          <button class="decrement" data-id="${item.id}">−</button>
+          <span class="quantity">${item.quantity}</span>
+          <button class="increment" data-id="${item.id}">+</button>
+        </div>
+        <h4 class="price">${item.price * item.quantity} ₽</h4>
+        <button class="removeBtn" data-index="${index}"></button>
+      `;
+      cartList.appendChild(li);
+    });
 
-        // Кнопка "Удалить" (полностью убрать товар)
-        const removeBtns = document.querySelectorAll('.removeBtn');
-        removeBtns.forEach(button => {
-            button.addEventListener('click', function () {
-                const index = button.getAttribute("data-index");
-                removeItemFromCart(index);
-                renderCart(); 
-            });
-        });
+    // Кнопка "Удалить" (полностью убрать товар)
+    const removeBtns = document.querySelectorAll('.removeBtn');
+    removeBtns.forEach(button => {
+      button.addEventListener('click', function () {
+        const index = button.getAttribute("data-index");
+        removeItemFromCart(index);
+        renderCart(); 
+      });
+    });
 
-        // (Изменение №3) Обработчики + и − для изменения количества
-        cartList.querySelectorAll('.increment').forEach(btn => {
-          btn.addEventListener('click', () => {
-            addOneToCart(+btn.dataset.id);
-            renderCart(); 
-          });
-        });
+    // Обработчики кнопок "+" и "−" для изменения количества
+    cartList.querySelectorAll('.increment').forEach(btn => {
+      btn.addEventListener('click', () => {
+        addOneToCart(+btn.dataset.id);
+        renderCart(); 
+      });
+    });
 
-        cartList.querySelectorAll('.decrement').forEach(btn => {
-          btn.addEventListener('click', () => {
-            removeOneFromCart(+btn.dataset.id);
-            renderCart();
-          });
-        });
-    }
-    updateTotal(); // функция для отображения цены и количества
+    cartList.querySelectorAll('.decrement').forEach(btn => {
+      btn.addEventListener('click', () => {
+        removeOneFromCart(+btn.dataset.id);
+        renderCart();
+      });
+    });
+  }
+  updateTotal(); // Обновляем итоговые данные
 }
 
-// Удалить весь товар (по индексу) — как раньше
+// Удалить товар по индексу
 function removeItemFromCart(index) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart) {
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart)); 
-    }
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart)); 
+    dispatchCartUpdate(); // Отправляем событие обновления корзины
+  }
 }
 
-// (Изменение №4) Увеличить количество на 1 (товар уже есть в корзине)
+// Увеличить количество товара на 1 (если товар уже есть в корзине)
 function addOneToCart(productId) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   const productInCart = cart.find(item => item.id === productId);
   if (productInCart) {
     productInCart.quantity++; 
-    // Увеличиваем quantity, не дублируя товар
     localStorage.setItem('cart', JSON.stringify(cart));
+    dispatchCartUpdate();
   }
 }
 
-// (Изменение №5) Уменьшить количество на 1, если оно не 1, иначе удалить товар
+// Уменьшить количество товара на 1, если оно больше 1, иначе удалить товар
 function removeOneFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   const itemIndex = cart.findIndex(item => item.id === productId);
@@ -98,11 +102,11 @@ function removeOneFromCart(productId) {
       cart.splice(itemIndex, 1);
     }
     localStorage.setItem('cart', JSON.stringify(cart));
+    dispatchCartUpdate();
   }
 }
 
-//Счетчик количества позиций
-const cartItems = document.querySelectorAll(".cartItem");
+// Элементы для отображения итоговых данных (сумма, количество)
 const totalSumDisplay = document.getElementById("totalSum");
 const totalItemsDisplay = document.getElementById("totalItems");
 const totalItemsSum = document.getElementById("totalItemsSum");
@@ -110,7 +114,7 @@ const totalItemsSum = document.getElementById("totalItemsSum");
 function updateTotal() {
   let total = 0;
   let totalItems = 0;
-  // (Изменение №6) Вместо чтения DOM, теперь читаем cart из localStorage
+  // Читаем корзину из localStorage
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.forEach(item => {
     total += item.price * item.quantity; 
@@ -121,7 +125,7 @@ function updateTotal() {
   totalItemsDisplay.textContent = totalItems;
 }
 
-//Отображение деталей заказа после формы
+// Отображение деталей заказа (после заполнения формы)
 const deliveryPrice = document.getElementById("deliveryPrice");
 const totalOrderSum = document.getElementById("totalOrderSum");
 
@@ -131,7 +135,7 @@ function renderOrderFinal() {
   if (deliveryOption.value === "Рассчитать") {
     specialOption();
   } else {
-    if (existingDeliveryMsg) { //Проверяем на наличие сообщения "Без учета доставки" и удаляем в случае наличия
+    if (existingDeliveryMsg) {
       existingDeliveryMsg.remove();
     }
     noSpecialOption();
@@ -144,7 +148,7 @@ function specialOption() {
   orderFinal.querySelector('p:nth-child(4)').style.display = 'none';
   orderFinal.querySelector('p:nth-child(6)').style.display = 'none';
   
-  if (!orderFinal.querySelector('div')) { //Добавляем сообщение "Без учета доставки", если оно не было выведено ранее
+  if (!orderFinal.querySelector('div')) {
     const deliveryMsg = document.createElement('div');
     deliveryMsg.style.color = 'rgb(238, 27, 85)';
     deliveryMsg.textContent = 'Без учета доставки';
@@ -153,19 +157,19 @@ function specialOption() {
 }
 
 function noSpecialOption() {
-      deliveryPrice.style.display = 'block';
-      totalOrderSum.style.display = 'block';
-      orderFinal.querySelector('p:nth-child(4)').style.display = 'block';
-      orderFinal.querySelector('p:nth-child(6)').style.display = 'block';
-      deliveryCost = Number(deliveryOption.value);
-      deliveryPrice.textContent = `${deliveryCost} ₽`;
-      const totalItemsCost = parseInt(totalItemsSum.textContent.replace(/\D/g, ""));
-      totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
+  deliveryPrice.style.display = 'block';
+  totalOrderSum.style.display = 'block';
+  orderFinal.querySelector('p:nth-child(4)').style.display = 'block';
+  orderFinal.querySelector('p:nth-child(6)').style.display = 'block';
+  deliveryCost = Number(deliveryOption.value);
+  deliveryPrice.textContent = `${deliveryCost} ₽`;
+  const totalItemsCost = parseInt(totalItemsSum.textContent.replace(/\D/g, ""));
+  totalOrderSum.textContent = `${deliveryCost + totalItemsCost} ₽`;
 }
 
 document.getElementById("deliveryOptions").addEventListener('change', renderOrderFinal);
 
-//Валидация формы
+// Валидация формы заказа
 const orderForm = document.forms.orderForm;
 const clientName = orderForm.elements.clientName;
 const errorName = document.getElementById("errorName");
@@ -221,19 +225,18 @@ deliveryDate.addEventListener('input', () => {
   if(deliveryDate.value) {
     errorDate.style.display = 'none';
   }
-})
+});
 
 policyCheckbox.addEventListener('change', function () {
   if (policyCheckbox.checked) {
-      policyError.style.display = 'none';
-      makeOrderBtn.removeAttribute('disabled');
+    policyError.style.display = 'none';
+    makeOrderBtn.removeAttribute('disabled');
   } else {
     policyError.textContent = 'Необходимо согласие с условиями';
     policyError.style.display = 'block';
     makeOrderBtn.setAttribute('disabled', "");
   }
 });
-
 
 orderForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
@@ -274,7 +277,7 @@ orderForm.addEventListener('submit', function(evt) {
     hasError = true;
   }
   
-  //Проверка на наличие даты доставки (ТЗ...)
+  // Проверка на наличие даты доставки
   if (!deliveryDate.value) {
     errorDate.textContent = 'Укажите дату получения заказа';
     errorDate.style.display = 'block';
@@ -288,71 +291,70 @@ orderForm.addEventListener('submit', function(evt) {
   }
 
   // Если нет ошибок, отправляем данные на сервер через Netlify Function
-if (!hasError) {
-  // 1. Считываем корзину
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (!hasError) {
+    // 1. Считываем корзину
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // 2. Подсчитываем сумму и количество
-  let total = 0;
-  let totalItems = 0;
-  cart.forEach(item => {
-    total += item.price * item.quantity;
-    totalItems += item.quantity;
-  });
-
-  // 3. Формируем orderData с user, cart, total, totalItems
-  const orderData = {
-    user: {
-      clientName: clientName.value,
-      clientTel: clientTel.value,
-      deliveryOption: deliveryOption.value,
-      deliveryAddress: deliveryAddress.value,
-      deliveryDate: deliveryDate.value,
-      orderComment: orderComment.value,
-    },
-    cart: cart,
-    total: total,
-    totalItems: totalItems
-  };
-
-  // 4. Отправляем запрос
-  fetch('/.netlify/functions/sendOrder', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(orderData)
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Ошибка сети');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Ответ от функции:', data);
-      // Очищаем корзину и сбрасываем форму
-      cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
-      orderDetails.innerHTML = '';
-      orderFinal.innerHTML = '';
-      localStorage.removeItem('cart');
-      successBtn();
-      setTimeout(restoreBtn, 3000);
-      orderForm.reset();
-      orderForm.innerHTML = ''; //Форма не отображается при пустой корзине
-    })
-    .catch(error => {
-      console.error('Ошибка при отправке запроса:', error);
-      showErrorPopup();
+    // 2. Подсчитываем сумму и количество
+    let total = 0;
+    let totalItems = 0;
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      totalItems += item.quantity;
     });
-}
+
+    // 3. Формируем orderData с данными пользователя и корзиной
+    const orderData = {
+      user: {
+        clientName: clientName.value,
+        clientTel: clientTel.value,
+        deliveryOption: deliveryOption.value,
+        deliveryAddress: deliveryAddress.value,
+        deliveryDate: deliveryDate.value,
+        orderComment: orderComment.value,
+      },
+      cart: cart,
+      total: total,
+      totalItems: totalItems
+    };
+
+    // 4. Отправляем запрос
+    fetch('/.netlify/functions/sendOrder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Ошибка сети');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Ответ от функции:', data);
+        // Очищаем корзину и сбрасываем форму
+        cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="#">перейдите в Каталог</a></div>';
+        orderDetails.innerHTML = '';
+        orderFinal.innerHTML = '';
+        localStorage.removeItem('cart');
+        successBtn();
+        setTimeout(restoreBtn, 3000);
+        orderForm.reset();
+        orderForm.innerHTML = ''; // Форма не отображается при пустой корзине
+      })
+      .catch(error => {
+        console.error('Ошибка при отправке запроса:', error);
+        showErrorPopup();
+      });
+  }
 });
 
-
-//Изменение поведения кнопки при успешной отправке запроса
+// Изменение поведения кнопки при успешной отправке заказа
 function successBtn() {
-    makeOrderBtn.style.color = "rgb(238, 27, 85)";
-    makeOrderBtn.style.backgroundColor = "rgb(255, 255, 255)";
-    makeOrderBtn.style.border = "1px solid rgb(238, 27, 85)";
-    makeOrderBtn.textContent = "Заказ оформлен!";
+  makeOrderBtn.style.color = "rgb(238, 27, 85)";
+  makeOrderBtn.style.backgroundColor = "rgb(255, 255, 255)";
+  makeOrderBtn.style.border = "1px solid rgb(238, 27, 85)";
+  makeOrderBtn.textContent = "Заказ оформлен!";
 }
 
 function restoreBtn() {
@@ -362,17 +364,19 @@ function restoreBtn() {
   makeOrderBtn.style.border = "none";
   makeOrderBtn.textContent = "Оформить заказ";
 }
-// localStorage.removeItem('cart');
 
-//Поп-ап при ошибке отправки запроса
+// Поп-ап при ошибке отправки запроса
 function showErrorPopup() {
   const popupContainer = document.getElementById("popupContainer");
   const popupMessage = document.getElementById("popupMessage");
 
-  popupMessage.innerHTML = `При отправке произошла ошибка! Пожалуйста, <a href="https://wa.me/79272123514" target="_blank" ">свяжитесь с нами напрямую</a>`;
+  popupMessage.innerHTML = `При отправке произошла ошибка! Пожалуйста, <a href="https://wa.me/79272123514" target="_blank">свяжитесь с нами напрямую</a>`;
   popupContainer.classList.add("show-popup");
 
   setTimeout(() => {
-      popupContainer.classList.remove("show-popup");
+    popupContainer.classList.remove("show-popup");
   }, 5000);
 }
+
+// При получении события обновления корзины перерисовываем список
+document.addEventListener("cartUpdated", renderCart);
