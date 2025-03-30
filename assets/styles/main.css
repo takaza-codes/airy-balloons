@@ -325,7 +325,6 @@ h6 {
   padding: 20px;
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  /* Критически важный блок - социальные иконки */
 }
 .footer > div {
   padding: 10px;
@@ -378,7 +377,7 @@ h6 {
 .footer__socials-link {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
-  display: inline-flex; /* Изменено на inline-flex */
+  display: inline-flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -410,12 +409,13 @@ h6 {
 }
 .footer__policy-link {
   text-decoration: none;
-  color: inherit;
+  color: rgb(160, 160, 160);
 }
 .footer__tax-info {
   grid-area: tax-info;
   text-align: center;
   font-size: 14px;
+  color: rgb(160, 160, 160);
 }
 @media (min-width: 768px) {
   .footer {
@@ -793,4 +793,4 @@ h6 {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}/*# sourceMappingURL=main.css.map */
+}

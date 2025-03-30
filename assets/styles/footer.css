@@ -174,7 +174,7 @@ h6 {
 .footer__title {
   font-weight: bold;
   font-size: 18px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 .footer__phone {
   font-weight: 600;
@@ -250,12 +250,13 @@ h6 {
 }
 .footer__policy-link {
   text-decoration: none;
-  color: inherit;
+  color: rgb(160, 160, 160);
 }
 .footer__tax-info {
   grid-area: tax-info;
   text-align: center;
   font-size: 14px;
+  color: rgb(160, 160, 160);
 }
 @media (min-width: 768px) {
   .footer {

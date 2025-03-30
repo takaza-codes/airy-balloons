@@ -33,7 +33,7 @@
   &__title {
     font-weight: bold;
     font-size: 18px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
   }
 
   &__phone {
@@ -107,7 +107,7 @@
     text-align: center;
     &-link {
       text-decoration: none;
-      color: inherit;
+      color: $gray;
     }
   }
 
@@ -115,6 +115,7 @@
     grid-area: tax-info;
     text-align: center;
     font-size: 14px;
+    color: $gray;
   }
 
   @media (min-width: $tablets) {
