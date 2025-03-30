@@ -12,12 +12,13 @@
 
 // common blocks
 @import "./button";
+@import "./header";
+@import "./cart-badge";
 
 // link landing page
-// здесь можно еще каждый блок по отдельным файлам записать
-@import "./footer";
+@import "./contacts";
 
-@import "./mini-product-card"; // блок карточки товара из общего каталога для примера
+@import "./footer";
 
 // link product modal
 @import "./product-page";
