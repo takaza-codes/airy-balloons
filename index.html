@@ -3,17 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Главная страница</title>
     <link
       rel="shortcut icon"
       href="../assets/logos/balloons.svg"
       type="image/svg+xml"
     />
-    <title>Главная страница</title>
     <link rel="stylesheet" href="./assets/styles/normalize.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="stylesheet" href="./assets/styles/footer.css" />
   </head>
   <body>
+    <!-- <h1>Главная страница</h1>
+    <p>Здесь пока ничего нет.</p> -->
+
+    <!-- Ссылка для перехода в каталог -->
+    <!-- <p><a href="./pages/catalog.html">Перейти в каталог</a></p> -->
+
     <header class="header">
       <div class="header-fixed-wrapper">
         <!-- Верхняя часть шапки -->
@@ -101,6 +107,252 @@
       </div>
     </header>
 
+    <section class="catalogue">
+      <div class="catalogue__title">
+        <h2 class="catalogue__heading">
+          <a href="./pages/catalog.html">Каталог</a>
+        </h2>
+      </div>
+
+      <div class="catalogue__row">
+        <div class="catalogue__item catalogue__item--wide-1">
+          <div class="catalogue__image">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/photos/for-girl/for-girl-03.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">Для девочек</a>
+          </div>
+        </div>
+
+        <div class="catalogue__item catalogue__item--wide-2">
+          <div class="catalogue__image">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/photos/for-boy/for-boy-03.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">Для мальчиков</a>
+          </div>
+        </div>
+
+        <div class="catalogue__item">
+          <div class="catalogue__image">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/photos/newborn/newborn-03.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">Выписка из роддома</a>
+          </div>
+        </div>
+
+        <div class="catalogue__item">
+          <div class="catalogue__image">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src="assets/photos/gender-party/gender-party-03.jpeg"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">Гендер пати</a>
+          </div>
+        </div>
+
+        <div class="catalogue__item">
+          <div class="catalogue__image" id="big_img2">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/photos/for-woman/for-woman-02.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">Девушкам</a>
+          </div>
+        </div>
+
+        <div class="catalogue__item">
+          <div class="catalogue__image">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/photos/for-man/for-man-01.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">Мужчинам</a>
+          </div>
+        </div>
+
+        <div class="catalogue__item">
+          <div class="catalogue__image">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/photos/bachelorette/bachelorette-01.jpeg" alt=""
+            /></a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">Девичник</a>
+          </div>
+        </div>
+
+        <div class="catalogue__item">
+          <div class="catalogue__image">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src="assets/photos/valentines-day/valentines-day-02.jpeg"
+                alt=""
+            /></a>
+          </div>
+          <div class="catalogue__link">
+            <a href="#">14 февраля</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="popular">
+      <h2 class="popular__title">Популярные товары</h2>
+      <div class="popular__list" id="popular-list"></div>
+    </section>
+
+    <section class="delivery">
+      <h2 class="delivery__title">Доставка и оплата</h2>
+      <p class="delivery__description">
+        Работаем в формате мастерской по предварительным заказам
+      </p>
+      <p class="delivery__description--time">
+        Время приёма заказов с 9:00 до 20:00
+      </p>
+      <p class="delivery__description--time">
+        Доставка осуществляется с 8:00 до 23:00.
+      </p>
+    </section>
+
+
+    <section class="about">
+      <h2 class="about__title">О нас</h2>
+      <div class="about__wrapper">
+        <div class="about__image-wrapper">
+          <img
+            class="about__image"
+            src="assets/photos/2025-03-20 23-00-00 1.jpg"
+            alt=""
+          />
+        </div>
+        <div class="about__text-wrapper">
+          <p class="about__description">
+            Привет! Меня зовут Мария, и я создаю не просто гелиевые шары, а
+            маленькие искринки счастья, которые делают ваш день особенным.
+          </p>
+          <p class="about__description">
+            Когда я начала заниматься этим делом, то поняла, как важно наполнять
+            каждый момент праздника радостью и светом. Вкладываю душу в каждую
+            работу, чтобы мои шары были не просто украшением, а настоящими
+            акцентами, которые создают атмосферу волшебства.
+          </p>
+          <p class="about__description">
+            Я люблю, когда мои шары становятся частью самых теплых и значимых
+            событий в жизни. Это могут быть дни рождения детей и взрослых,
+            выписка мамы и малыша из роддома или тот чудесный момент, когда
+            маленький человечек празднует свой первый годик. Я искренне верю,
+            что такие моменты заслуживают самого яркого и особенного оформления.
+          </p>
+          <p class="about__description">
+            Каждый заказ для меня это не просто работа, это возможность сделать
+            ваш день неповторимым, наполненным радостью и любовью. И я стараюсь,
+            чтобы все было идеально. В этом процессе я и менеджер, и креатор, и
+            закупщик, и, иногда, курьер. Я занимаюсь всеми этапами от создания
+            идеи до контроля доставки, чтобы все прошло как надо, и вы могли
+            наслаждаться своим праздником без лишних забот.
+          </p>
+          <p class="about__description">
+            В моём любимом деле часто помогает мой муж Алексей, спасибо ему за
+            это.
+          </p>
+          <p class="about__description">
+            Благодарю, что выбираете меня, чтобы стать частью таких невероятных
+            и трогательных событий. Я с радостью помогу сделать ваш праздник
+            по-настоящему волшебным.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <h2 class="reviews__title">Отзывы</h2>
+      <div class="reviews__wrapper">
+        <button class="reviews__arrow reviews__arrow--left" disabled>←</button>
+
+        <div class="reviews__track-wrapper">
+          <div class="reviews__track">
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-1.jpeg"
+                alt="Отзыв 1"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-2.jpeg"
+                alt="Отзыв 2"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-3.jpeg"
+                alt="Отзыв 3"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-4.jpeg"
+                alt="Отзыв 4"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-5.jpeg"
+                alt="Отзыв 5"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button class="reviews__arrow reviews__arrow--right">→</button>
+      </div>
+    </section>
+
+    <section class="contacts">
+      <div class="contacts__wrapper">
+        <div class="contacts__info">
+          <h2 class="contacts__title">Наши контакты</h2>
+          <p>
+            Самовывоз по адресу:
+            <span class="address">г. Тольятти, пр. Степана Разина, д. 2</span>
+          </p>
+          <p>
+            <a
+              href="https://wa.me/+79272123514"
+              target="_blank"
+              style="display: inline-flex; align-items: center"
+            >
+              <img
+                src="./assets/messenger/whatsapp.svg"
+                alt="WhatsApp"
+                width="20"
+                style="margin-right: 5px"
+              />
+              +7‑927‑212‑35‑14
+            </a>
+          </p>
+
+          <p>Прием заявок с 9:00 до 20:00</p>
+          <p>Доставка с 8:00 до 23:00</p>
+        </div>
+
+        <div class="contacts__map">
+          <div id="map" style="width: 100%; height: 300px"></div>
+          <p class="contacts__address">Проспект Степана Разина, 2</p>
     <main>
       <section class="contacts">
         <div class="contacts__wrapper">
@@ -182,5 +434,10 @@
     <!-- Скрипты для карты -->
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=bf2b88df-2d12-413e-97eb-ed69df7d6dc3" defer></script>
     <script src="assets/scripts/maps-api.js" defer></script>
+
+    <script src="./assets/scripts/data.js"></script>
+    <script src="./assets/scripts/catalog-block.js"></script>
+    <script src="./assets/scripts/popular-block.js"></script>
+    <script src="./assets/scripts/reviews-block.js"></script>
   </body>
 </html>
