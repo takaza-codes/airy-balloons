@@ -24,8 +24,8 @@ const hoverPairs = new Map([
     "assets/photos/for-man/for-man-03.jpeg",
   ],
   [
-    "assets/photos/bachelorette/bachelorette-01.jpeg",
     "assets/photos/bachelorette/bachelorette-03.jpeg",
+    "assets/photos/bachelorette/bachelorette-02.jpeg",
   ],
   [
     "assets/photos/valentines-day/valentines-day-02.jpeg",
