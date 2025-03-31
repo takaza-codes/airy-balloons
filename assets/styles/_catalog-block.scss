@@ -82,6 +82,8 @@
       grid-template-columns: repeat(2, 1fr);
       padding-left: 0;
       padding-right: 0;
+      column-gap: 1.5rem;
+      row-gap: 0.2rem;
     }
 
     &__image {

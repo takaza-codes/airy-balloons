@@ -643,6 +643,7 @@ main {
 }
 
 .footer {
+  margin-top: 100px;
   width: 100%;
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -1822,6 +1823,10 @@ main {
     grid-template-columns: repeat(2, 1fr);
     padding-left: 0;
     padding-right: 0;
+    -webkit-column-gap: 1.5rem;
+       -moz-column-gap: 1.5rem;
+            column-gap: 1.5rem;
+    row-gap: 0.2rem;
   }
   .catalogue__image {
     max-width: 360px;
