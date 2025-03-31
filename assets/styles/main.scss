@@ -14,11 +14,20 @@
 @import "./button";
 @import "./header";
 @import "./cart-badge";
+@import "./footer";
 
 // link landing page
 @import "./contacts";
 
-@import "./footer";
+// link cart page
+@import "./cart";
 
-// link product modal
+// link product page
 @import "./product-page";
+
+//Блок с каталогом на главной странице
+@import "./catalog-block";
+@import "./popular-block";
+@import "./delivery-block";
+@import "./about-block";
+@import "./reviews-block";

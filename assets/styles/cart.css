@@ -165,8 +165,8 @@ html {
   padding-right: 5.2%;
   padding-left: 4%;
   padding-right: 4%;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .topContainer {
@@ -180,6 +180,21 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 120px;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .topContainer {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .topContainer {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .topContainer h2 {
   font-size: 40px;
@@ -221,6 +236,20 @@ html {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   gap: 1.5rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .cartItems {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .cartItems {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .cartItems #emptyMsg {
   padding: 1rem 0;
@@ -410,6 +439,21 @@ html {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 0.2rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+  margin-bottom: 100px;
+}
+@media screen and (max-width: 768px) {
+  #orderForm {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  #orderForm {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 #orderForm input,
 #orderForm textarea {
