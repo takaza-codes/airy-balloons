@@ -1,0 +1,83 @@
+.catalogue {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+
+  h2 {
+    @include h3;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  &__link {
+    text-align: center;
+    padding: 0.5rem 0 0.5rem 0;
+    @include Montserrat-600-base;
+  }
+
+  .catalogue__link a {
+    color: $black;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 360px;
+    max-height: fit-content;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+  }
+}
+
+@include tablets {
+  .catalogue {
+    h2 {
+      font-size: 36px;
+      text-align: center;
+    }
+    &__row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    // &__image {
+    // max-width: 260px;
+    // margin: 0 auto;
+
+    // max-height: 300px;
+    // object-fit: cover;
+    // }
+  }
+}
+@include phones {
+  .catalogue {
+    &__row {
+      grid-template-columns: repeat(2, 1fr);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    &__image {
+      max-width: 360px; // вернули как на десктопе
+    }
+  }
+}

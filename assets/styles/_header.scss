@@ -23,6 +23,14 @@ main {
   width: 100%;
   background-color: $white;
   @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 }
 
 .header-fixed-wrapper {
@@ -33,12 +41,29 @@ main {
   z-index: 1000; // выбирайте подходящее значение
   background-color: $white; // или другой нужный цвет
   @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 }
 
 /* Верхняя полоса (top-bar) */
 .top-bar {
   background-color: $white;
   padding: 10px 0;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 
   .top-bar__inner {
     @include Montserrat-base;
@@ -99,18 +124,31 @@ main {
       }
     }
 
-    /* Гамбургер по умолчанию скрыт (для десктопа) */
+    /* Гамбургер: по умолчанию скрыт (для десктопа) */
     .hamb {
       display: none;
       cursor: pointer;
 
       .bar {
         background-color: $black;
-        transition: 0.4s;
         display: block;
         width: 32px;
         height: 2px;
         margin: 6px 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        transform-origin: center;
+      }
+      // При активном состоянии контейнера
+      &.active {
+        .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+        .bar:nth-child(2) {
+          opacity: 0;
+        }
+        .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
       }
     }
   }
@@ -146,6 +184,15 @@ main {
 .main-nav {
   background-color: $white;
   border-bottom: 1px solid #eee;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 
   .nav__inner {
     @include Montserrat-base;
@@ -181,8 +228,7 @@ main {
 .banner {
   width: 100%;
   min-height: 500px; // Минимальная высота для десктопа
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../header/banner.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../header/banner.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -203,12 +249,10 @@ main {
       @include h1;
       color: $white;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-      // Адаптивный размер шрифта: не меньше 2rem, максимум $font-size-h1, оптимальный 5vw
       font-size: clamp(2rem, 5vw, $font-size-h1);
     }
     .ballons_banner {
       @include h3;
-      color: $white;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
       font-size: clamp(1.5rem, 4vw, $font-size-h3);
     }
@@ -254,7 +298,7 @@ main {
         .bar {
           width: 28px; // уменьшено с 32px
           height: 2px;
-          margin: 5px 0;
+          margin: 6px 0;
         }
       }
     }
@@ -328,7 +372,7 @@ main {
         .bar {
           width: 22px; // уменьшено с 28px
           height: 2px;
-          margin: 4px 0;
+          margin: 6px 0;
         }
       }
     }
@@ -339,10 +383,10 @@ main {
     .banner__content {
       padding: 10px;
       .airy_banner {
-        font-size: $font-size-h3; // меньше для телефонов
+        font-size: $font-size-h4; // меньше для телефонов
       }
       .ballons_banner {
-        font-size: 24px;
+        font-size: $font-size-regular;
       }
     }
   }
@@ -360,14 +404,3 @@ main {
 .bar.bottom {
   transform: rotate(-45deg) translate(6.5px, -6px);
 }
-
-//Альтернативный вариант анимации
-// .bar.top {
-//   transform: rotate(45deg) translateX(39%);
-// }
-// .bar.middle {
-//   opacity: 0;
-// }
-// .bar.bottom {
-//   transform: rotate(-45deg) translateX(37%);
-// }
