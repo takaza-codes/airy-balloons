@@ -778,25 +778,28 @@ main {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "contacts address" "policy tax-info";
     row-gap: 0.2rem;
+    -webkit-column-gap: 20rem;
+       -moz-column-gap: 20rem;
+            column-gap: 20rem;
   }
   .footer__contacts {
-    justify-self: start;
+    justify-self: end;
     text-align: left;
     margin-bottom: 1rem;
   }
   .footer__address {
-    justify-self: end;
+    justify-self: start;
     text-align: left;
     margin-bottom: 1rem;
   }
   .footer__policy {
-    justify-self: start;
+    justify-self: end;
     text-align: left;
-    -ms-flex-item-align: center;
-        align-self: center;
+    -ms-flex-item-align: start;
+        align-self: start;
   }
   .footer__tax-info {
-    justify-self: end;
+    justify-self: start;
     text-align: right;
     -ms-flex-item-align: center;
         align-self: center;
@@ -906,6 +909,7 @@ main {
 }
 
 main {
+  width: 100%;
   color: rgb(30, 26, 26);
   font-family: "Montserrat", sans-serif;
   padding-left: 5.2%;
@@ -1732,10 +1736,24 @@ main {
 }
 
 .catalogue {
+  margin-top: 4rem;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 2rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .catalogue {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .catalogue {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .catalogue h2 {
   font-family: "Montserrat", sans-serif;
@@ -1746,7 +1764,10 @@ main {
 .catalogue__row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
+  -webkit-column-gap: 3rem;
+     -moz-column-gap: 3rem;
+          column-gap: 3rem;
+  row-gap: 1rem;
 }
 .catalogue__item {
   display: -webkit-box;
@@ -1807,7 +1828,21 @@ main {
   }
 }
 .popular {
-  padding: 2rem;
+  padding-top: 4rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .popular {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .popular {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .popular h2 {
   font-family: "Montserrat", sans-serif;
@@ -1878,12 +1913,28 @@ main {
   }
 }
 .delivery {
-  padding: 2rem;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding-top: 4rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
   font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .delivery {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .delivery {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .delivery__title {
   font-family: "Montserrat", sans-serif;
@@ -1915,7 +1966,21 @@ main {
   }
 }
 .about {
-  padding: 2rem;
+  padding-top: 4rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .about {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .about {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .about__title {
   font-family: "Montserrat", sans-serif;
@@ -1971,7 +2036,21 @@ main {
   }
 }
 .reviews {
-  padding: 2rem;
+  padding-top: 4rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .reviews {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .reviews {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .reviews__title {
   text-align: center;

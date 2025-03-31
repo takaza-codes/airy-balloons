@@ -98,7 +98,7 @@
   &__policy {
     grid-area: policy;
     padding: 0;
-    
+
     &-link {
       font-size: 0.7rem;
       @include Montserrat-500-base;
@@ -132,27 +132,28 @@
       "contacts address"
       "policy tax-info";
     row-gap: 0.2rem;
+    column-gap: 20rem;
 
     &__contacts {
-      justify-self: start;
+      justify-self: end;
       text-align: left;
       margin-bottom: 1rem;
     }
 
     &__address {
-      justify-self: end;
+      justify-self: start;
       text-align: left;
       margin-bottom: 1rem;
     }
 
     &__policy {
-      justify-self: start;
+      justify-self: end;
       text-align: left;
-      align-self: center;
+      align-self: start;
     }
 
     &__tax-info {
-      justify-self: end;
+      justify-self: start;
       text-align: right;
       align-self: center;
     }

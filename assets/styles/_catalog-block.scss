@@ -1,7 +1,14 @@
 .catalogue {
+  margin-top: 4rem;
   width: 100%;
   box-sizing: border-box;
-  padding: 2rem;
+  @include padding-1920;
+  @include tablets {
+    @include padding-768;
+  }
+  @include phones {
+    @include padding-440;
+  }
 
   h2 {
     @include h3;
@@ -10,7 +17,8 @@
   &__row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    column-gap: 3rem;
+    row-gap: 1rem;
   }
 
   &__item {
