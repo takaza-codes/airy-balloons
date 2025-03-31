@@ -1,104 +1,186 @@
-const rootGoods = document.getElementById("page-catalog");
-class Goods {
-  render() {
-    let boysCatalog = "";
-    let girlsCatalog = "";
-    let newbornCatalog = "";
-    let genderPartyCatalog = "";
-    let womanCatalog = "";
-    let manCatalog = "";
-    let bacheloretteCatalog = "";
-    let valentinesCatalog = "";
+document.addEventListener("DOMContentLoaded", () => {
+  const catalogContent = document.getElementById("catalog-content");
+  const categoryList = document.getElementById("catalog-categories");
+  const categoryPills = document.getElementById("category-pills");
+  const LOCAL_STORAGE_KEY = "selectedCategory";
 
-    products.forEach(({ id, category, images, title, price }) => {
-      const itemHTML = `
-        <li class="goods-element">
-          <img class="goods-element__img" src ="${images}"/>
-          <h2 class="goods-element__price">${price} p</h2>
-          <h3 class="goods-element__title">${title}</h3>
-          <div class="buttons">
-<a class="view-details" href="product-page.html?id=${id}">Подробнее</a>
-<a class="add-to-cart" data-id="${id}" data-title="${title}" data-price="${price}">В корзину</a>
-          </div>
-        </li>`;
+  // Если в URL есть параметр category, обновляем localStorage
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlCategory = urlParams.get("category");
+  if (urlCategory) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, urlCategory);
+  }
 
-      if (category === "boy") {
-        boysCatalog += itemHTML;
-      } else if (category === "girl") {
-        girlsCatalog += itemHTML;
-      } else if (category === "newborn") {
-        newbornCatalog += itemHTML;
-      } else if (category === "gender-party") {
-        genderPartyCatalog += itemHTML;
-      } else if (category === "woman") {
-        womanCatalog += itemHTML;
-      } else if (category === "man") {
-        manCatalog += itemHTML;
-      } else if (category === "bachelorette") {
-        bacheloretteCatalog += itemHTML;
-      } else if (category === "valentines") {
-        valentinesCatalog += itemHTML;
+  // Функция для рендера списка товаров
+  function renderProducts(productsArray) {
+    catalogContent.innerHTML = "";
+    productsArray.forEach((product) => {
+      const productCard = document.createElement("div");
+      productCard.classList.add("product-card-mini");
+
+      const img = document.createElement("img");
+      img.classList.add("product-image");
+      img.src = product.images[0] || "";
+
+      const info = document.createElement("div");
+      info.classList.add("product-info");
+
+      const title = document.createElement("h3");
+      title.textContent = product.title;
+
+      const price = document.createElement("div");
+      price.classList.add("product-price");
+      price.textContent = `${product.price} ₽`;
+
+      const controls = document.createElement("div");
+      controls.classList.add("order-controls-mini");
+
+      const detailsLink = document.createElement("a");
+      detailsLink.classList.add("product-btn", "btn-details");
+      detailsLink.textContent = "Подробнее";
+      detailsLink.href = `../pages/product-page.html?id=${product.id}`;
+
+      const orderBtn = document.createElement("button");
+      orderBtn.classList.add("product-btn", "btn-order");
+      orderBtn.textContent = "Заказать";
+
+      const quantityBlock = document.createElement("div");
+      quantityBlock.classList.add("quantity-block", "quantity-block--small");
+
+      const decrementBtn = document.createElement("button");
+      decrementBtn.classList.add("decrement");
+      decrementBtn.textContent = "−";
+
+      const quantityNum = document.createElement("span");
+      quantityNum.classList.add("quantity-num");
+      quantityNum.textContent = "0";
+
+      const incrementBtn = document.createElement("button");
+      incrementBtn.classList.add("increment");
+      incrementBtn.textContent = "+";
+
+      quantityBlock.appendChild(decrementBtn);
+      quantityBlock.appendChild(quantityNum);
+      quantityBlock.appendChild(incrementBtn);
+
+      controls.appendChild(detailsLink);
+      controls.appendChild(orderBtn);
+      controls.appendChild(quantityBlock);
+
+      function updateQuantityDisplay() {
+        quantityNum.textContent = quantity;
       }
-    });
 
-    rootGoods.innerHTML = `
-      <h1 class="goods-element__category">Для мальчиков</h1>
-      <ul class="goods-container">${boysCatalog}</ul>
-      <h1 class="goods-element__category">Для девочек</h1>
-      <ul class="goods-container">${girlsCatalog}</ul>
-      <h1 class="goods-element__category">Выписка из роддома</h1>
-      <ul class="goods-container">${newbornCatalog}</ul>
-      <h1 class="goods-element__category">Гендер Пати</h1>
-      <ul class="goods-container">${genderPartyCatalog}</ul>
-      <h1 class="goods-element__category">Девушкам</h1>
-      <ul class="goods-container">${womanCatalog}</ul>
-      <h1 class="goods-element__category">Мужчинам</h1>
-      <ul class="goods-container">${manCatalog}</ul>
-      <h1 class="goods-element__category">Девичник</h1>
-      <ul class="goods-container">${bacheloretteCatalog}</ul>
-      <h1 class="goods-element__category">14 февраля</h1>
-      <ul class="goods-container">${valentinesCatalog}</ul>
-    `;
-    this.addCartEventListeners();
-  }
-  addCartEventListeners() {
-    const addToCartButtons = document.querySelectorAll(".add-to-cart");
-    addToCartButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const productId = button.dataset.id;
-        const productTitle = button.dataset.title;
-        const productPrice = button.dataset.price;
+      let quantity = 0;
+      const cart = getCart();
+      const itemInCart = cart.find((item) => item.id === product.id);
+      if (itemInCart) {
+        quantity = itemInCart.quantity;
+        controls.classList.add("active");
+        orderBtn.style.display = "none";
+        quantityBlock.style.display = "flex";
+        updateQuantityDisplay();
+      } else {
+        quantityBlock.style.display = "none";
+        orderBtn.style.display = "inline-block";
+      }
 
-        this.addToCart(productId, productTitle, productPrice);
+      orderBtn.addEventListener("click", () => {
+        quantity = 1;
+        controls.classList.add("active");
+        updateQuantityDisplay();
+        orderBtn.style.display = "none";
+        quantityBlock.style.display = "flex";
+        addToCart(product.id, 1);
       });
+
+      incrementBtn.addEventListener("click", () => {
+        quantity++;
+        updateQuantityDisplay();
+        addToCart(product.id, 1);
+      });
+
+      decrementBtn.addEventListener("click", () => {
+        if (quantity > 0) {
+          quantity--;
+          updateQuantityDisplay();
+          removeFromCart(product.id);
+        }
+        if (quantity === 0) {
+          controls.classList.remove("active");
+          orderBtn.style.display = "inline-block";
+          quantityBlock.style.display = "none";
+        }
+      });
+
+      info.appendChild(title);
+      info.appendChild(price);
+      info.appendChild(controls);
+      productCard.appendChild(img);
+      productCard.appendChild(info);
+      catalogContent.appendChild(productCard);
     });
   }
 
-  addToCart(id, title, price) {
-    // Получаем текущую корзину из localStorage
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Функция фильтрации товаров по категории
+  function filterProducts(category) {
+    // Сохраняем выбранную категорию
+    localStorage.setItem(LOCAL_STORAGE_KEY, category);
 
-    // Проверяем, есть ли товар уже в корзине
-    const existingProductIndex = cart.findIndex((item) => item.id === id);
-
-    if (existingProductIndex > -1) {
-      // Если товар уже есть, увеличиваем его количество
-      cart[existingProductIndex].quantity++;
+    if (category === "all") {
+      renderProducts(products);
     } else {
-      // Если товара нет, добавляем его в корзину
-      cart.push({
-        id: id,
-        title: title,
-        price: price,
-        quantity: 1,
+      const filtered = products.filter((item) => item.category === category);
+      renderProducts(filtered);
+    }
+  }
+
+  // Функция для установки активного класса по сохранённой категории
+  function setActiveCategory(category) {
+    // Если есть десктопный список категорий
+    if (categoryList) {
+      [...categoryList.querySelectorAll("li")].forEach((li) => {
+        li.classList.toggle("active", li.getAttribute("data-category") === category);
       });
     }
-
-    // Сохраняем обновленную корзину в localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${title} добавлен в корзину!`); // Уведомление о добавлении товара
+    // Если есть пилюли для мобильных
+    if (categoryPills) {
+      [...categoryPills.querySelectorAll(".pill")].forEach((pill) => {
+        pill.classList.toggle("active", pill.getAttribute("data-category") === category);
+      });
+    }
   }
-}
 
-const goodsPage = new Goods();
-goodsPage.render();
+  // Изначально рендерим все товары или сохраняем выбранную категорию
+  const savedCategory = localStorage.getItem(LOCAL_STORAGE_KEY) || "all";
+  setActiveCategory(savedCategory);
+  filterProducts(savedCategory);
+
+  // Обработчик клика для десктопа (сайдбар)
+  if (categoryList) {
+    categoryList.addEventListener("click", (e) => {
+      if (e.target.tagName.toLowerCase() === "li") {
+        [...categoryList.querySelectorAll("li")].forEach((li) =>
+          li.classList.remove("active")
+        );
+        e.target.classList.add("active");
+        const category = e.target.getAttribute("data-category");
+        filterProducts(category);
+      }
+    });
+  }
+
+  // Обработчик клика для мобильных устройств (пилюли)
+  if (categoryPills) {
+    categoryPills.addEventListener("click", (e) => {
+      if (e.target.classList.contains("pill")) {
+        [...categoryPills.querySelectorAll(".pill")].forEach((pill) =>
+          pill.classList.remove("active")
+        );
+        e.target.classList.add("active");
+        const category = e.target.getAttribute("data-category");
+        filterProducts(category);
+      }
+    });
+  }
+});

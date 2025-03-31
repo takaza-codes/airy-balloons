@@ -6,7 +6,7 @@
     <title>Главная страница</title>
     <link
       rel="shortcut icon"
-      href="../assets/logos/balloons.svg"
+      href="./assets/logos/balloons.svg"
       type="image/svg+xml"
     />
     <link rel="stylesheet" href="./assets/styles/normalize.css" />
@@ -28,7 +28,7 @@
             </div>
             <!-- Поиск и кнопка "Каталог" -->
             <div class="search">
-              <a href="pages/catalog.html">
+              <a href="./pages/page-catalog.html">
                 <button class="cataloge_btn">Каталог</button>
               </a>
               <input id="searchInput" class="input_search" type="search" placeholder="Поиск" />
@@ -82,7 +82,7 @@
         <nav class="main-nav">
           <div class="container nav__inner">
             <ul class="menu" id="menu">
-              <li><a href="index.html">Главная</a></li>
+              <li><a href="./index.html">Главная</a></li>
               <li><a href="index.html#delivery">Доставка/Оплата</a></li>
               <li><a href="index.html#contacts">Контакты</a></li>
               <li><a href="index.html#about">О нас</a></li>
@@ -106,7 +106,7 @@
           <h2>Результаты поиска</h2>
           <div id="results"></div>
       </div>
-  </div>
+    </div>
 
     <section class="catalogue">
       <div class="catalogue__title">
@@ -116,7 +116,11 @@
       </div>
 
       <div class="catalogue__row">
-        <div class="catalogue__item catalogue__item--wide-1">
+        <!-- Для девочек -->
+        <div
+          class="catalogue__item catalogue__item--wide-1"
+          data-category="girl"
+        >
           <div class="catalogue__image">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img src="assets/photos/for-girl/for-girl-03.jpeg" alt="" />
@@ -127,7 +131,11 @@
           </div>
         </div>
 
-        <div class="catalogue__item catalogue__item--wide-2">
+        <!-- Для мальчиков -->
+        <div
+          class="catalogue__item catalogue__item--wide-2"
+          data-category="boy"
+        >
           <div class="catalogue__image">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img src="assets/photos/for-boy/for-boy-03.jpeg" alt="" />
@@ -138,7 +146,8 @@
           </div>
         </div>
 
-        <div class="catalogue__item">
+        <!-- Выписка из роддома -->
+        <div class="catalogue__item" data-category="newborn">
           <div class="catalogue__image">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img src="assets/photos/newborn/newborn-03.jpeg" alt="" />
@@ -149,7 +158,8 @@
           </div>
         </div>
 
-        <div class="catalogue__item">
+        <!-- Гендер пати -->
+        <div class="catalogue__item" data-category="gender-party">
           <div class="catalogue__image">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img
@@ -163,7 +173,8 @@
           </div>
         </div>
 
-        <div class="catalogue__item">
+        <!-- Для девушек -->
+        <div class="catalogue__item" data-category="woman">
           <div class="catalogue__image" id="big_img2">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img src="assets/photos/for-woman/for-woman-02.jpeg" alt="" />
@@ -174,7 +185,8 @@
           </div>
         </div>
 
-        <div class="catalogue__item">
+        <!-- Для мужчин -->
+        <div class="catalogue__item" data-category="man">
           <div class="catalogue__image">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img src="assets/photos/for-man/for-man-01.jpeg" alt="" />
@@ -185,24 +197,27 @@
           </div>
         </div>
 
-        <div class="catalogue__item">
+        <!-- Девичник -->
+        <div class="catalogue__item" data-category="bachelorette">
           <div class="catalogue__image">
             <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="assets/photos/bachelorette/bachelorette-03.jpeg" alt=""
-            /></a>
+              <img src="assets/photos/bachelorette/bachelorette-03.jpeg" alt="" />
+            </a>
           </div>
           <div class="catalogue__link">
             <a href="#">Девичник</a>
           </div>
         </div>
 
-        <div class="catalogue__item">
+        <!-- 14 февраля -->
+        <div class="catalogue__item" data-category="valentines">
           <div class="catalogue__image">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img
                 src="assets/photos/valentines-day/valentines-day-02.jpeg"
                 alt=""
-            /></a>
+              />
+            </a>
           </div>
           <div class="catalogue__link">
             <a href="#">14 февраля</a>
@@ -322,40 +337,38 @@
       </div>
     </section>
     
-    <main>
-      <section class="contacts" id="contacts">
-        <div class="contacts__wrapper">
-          <div class="contacts__info">
-            <h2 class="contacts__title">Наши контакты</h2>
-            <p>
-              Самовывоз по адресу:
-              <span class="address">г. Тольятти, пр. Степана Разина, д. 2</span>
-            </p>
-            <p>
-              <a
-                href="https://wa.me/+79272123514"
-                target="_blank"
-                style="display: inline-flex; align-items: center"
-              >
-                <img
-                  src="./assets/messenger/whatsapp.svg"
-                  alt="WhatsApp"
-                  width="20"
-                  style="margin-right: 5px"
-                />
-                +7‑927‑212‑35‑14
-              </a>
-            </p>
-            <p>Прием заявок с 9:00 до 20:00</p>
-            <p>Доставка с 8:00 до 23:00</p>
-          </div>
-          <div class="contacts__map">
-            <div id="map" style="width: 100%; height: 300px"></div>
-            <p class="contacts__address">Проспект Степана Разина, 2</p>
-          </div>
+    <section class="contacts" id="contacts">
+      <div class="contacts__wrapper">
+        <div class="contacts__info">
+          <h2 class="contacts__title">Наши контакты</h2>
+          <p>
+            Самовывоз по адресу:
+            <span class="address">г. Тольятти, пр. Степана Разина, д. 2</span>
+          </p>
+          <p>
+            <a
+              href="https://wa.me/+79272123514"
+              target="_blank"
+              style="display: inline-flex; align-items: center"
+            >
+              <img
+                src="./assets/messenger/whatsapp.svg"
+                alt="WhatsApp"
+                width="20"
+                style="margin-right: 5px"
+              />
+              +7‑927‑212‑35‑14
+            </a>
+          </p>
+          <p>Прием заявок с 9:00 до 20:00</p>
+          <p>Доставка с 8:00 до 23:00</p>
         </div>
-      </section>
-    </main>
+        <div class="contacts__map">
+          <div id="map" style="width: 100%; height: 300px"></div>
+          <p class="contacts__address">Проспект Степана Разина, 2</p>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="footer__contacts">

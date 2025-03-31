@@ -1,3 +1,4 @@
+// Маппинг для замены картинки при hover
 const hoverPairs = new Map([
   [
     "assets/photos/for-girl/for-girl-03.jpeg",
@@ -33,6 +34,7 @@ const hoverPairs = new Map([
   ],
 ]);
 
+// Замена изображения при наведении
 document.querySelectorAll(".catalogue__image img").forEach((img) => {
   const originalSrc = img.getAttribute("src");
   const hoverSrc = hoverPairs.get(originalSrc);
@@ -46,4 +48,20 @@ document.querySelectorAll(".catalogue__image img").forEach((img) => {
       img.src = originalSrc;
     });
   }
+});
+
+// Обработчик клика по карточке каталога
+document.querySelectorAll(".catalogue__item").forEach((item) => {
+  item.addEventListener("click", (e) => {
+    // Если клик по ссылке внутри карточки – отменяем стандартное поведение
+    if (e.target.closest("a")) {
+      e.preventDefault();
+    }
+    // Получаем значение категории из data-атрибута (например, data-category="for-girl")
+    const category = item.getAttribute("data-category") || "all";
+    // Сохраняем выбранную категорию в localStorage
+    localStorage.setItem("selectedCategory", category);
+    // Переходим на страницу каталога
+    window.location.href = "../../pages/page-catalog.html";
+  });
 });

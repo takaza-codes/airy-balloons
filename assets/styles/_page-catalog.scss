@@ -1,0 +1,357 @@
+/* ========== Desktop Styles ========== */
+
+.page-catalog {
+  display: flex;
+  margin-top: 160px;
+  margin-bottom: 140px;
+  position: relative;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
+}
+
+/* --- Боковое меню категорий (десктоп) --- */
+.catalog-sidebar {
+  width: 220px;
+  position: fixed;    // фиксированное положение
+  top: 157px;         // отступ от верха, чтобы не перекрывать шапку
+  left: 10%;          // позиционируем слева
+  z-index: 101;       // выше остальных элементов
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  .catalog-categories {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      cursor: pointer;
+      padding: 8px 0;
+      border-bottom: 1px solid #ccc;
+      transition: background-color 0.3s;
+      font-size: 18px;
+
+      &.active {
+        color: $red;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* Для основного контента на десктопе задаём отступ слева, чтобы не перекрывался sidebar */
+@media screen and (min-width: 769px) {
+  .catalog-main {
+    margin-left: 240px;  // ширина sidebar + небольшой отступ
+  }
+}
+
+/* --- Блок с основным контентом (карточки и пилюли) --- */
+.catalog-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Пилюли с категориями (базово скрыты на десктопе) --- */
+.category-pills {
+  display: none; // скрыты по умолчанию
+  gap: 10px;
+  padding: 10px 0;
+  width: 100%; 
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  // Скрываем полосу прокрутки
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;           /* Chrome, Safari, Opera */
+  }
+  
+
+  .pill {
+    border: 1px solid #999;
+    border-radius: 20px;
+    padding: 8px 16px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Montserrat", sans-serif;
+    flex: 0 0 auto;
+
+    &:hover {
+      background-color: #f3f3f3;
+    }
+
+    &.active {
+      background-color: #ee1b55;
+      color: #fff;
+      border-color: #ee1b55;
+    }
+  }
+}
+
+/* --- Секция для товаров --- */
+.catalog-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 44px;
+}
+
+/* --- Карточка товара --- */
+.product-card-mini {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    background-color: #f8c5d1;
+  }
+
+  .product-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: auto;
+
+    h3 {
+      font-family: "Montserrat", sans-serif;
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+
+    .product-price {
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      font-size: 24px;
+      color: $black;
+      margin-bottom: 16px;
+      margin-top: auto;
+    }
+
+    .order-controls-mini {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      .product-btn {
+        flex: 1;
+        padding: 16px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.3s;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba(238, 27, 85, 0.5);
+        }
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+
+      .btn-details {
+        background-color: #fff;
+        color: #ee1b55;
+        border: 1px solid #ee1b55;
+
+        &:hover {
+          background-color: #ee1b55;
+          color: #fff;
+        }
+      }
+
+      .btn-order {
+        background-color: #ee1b55;
+        color: #fff;
+        border: 1px solid #ee1b55;
+
+        &:hover {
+          background-color: #ee1b55;
+          color: #fff;
+        }
+      }
+
+      .quantity-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #ee1b55;
+        border-radius: 8px;
+        padding: 9px 11px;
+        color: #ee1b55;
+        font-size: 14px;
+        max-width: 240px;
+        flex: 1;
+
+        @include tablets {
+          padding: 9px 16px;
+        }
+
+        button {
+          background: none;
+          border: none;
+          font-size: 16px;
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          color: #ee1b55;
+        }
+
+        .quantity-num {
+          display: inline-block;
+          width: 24px;
+          text-align: center;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+/* ========== Adaptive Styles ========== */
+
+/* --- Мобильная версия: на экранах до 768px --- */
+@media screen and (max-width: 768px) {
+
+  .page-catalog {
+    @include padding-768;
+    margin-top: 92px;
+  }
+
+  .catalog-sidebar {
+    display: none;
+  }
+  
+  .catalog-main {
+    margin-top: 16px;   // добавляем отступ сверху, чтобы контент не заходил под пилюли
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .catalog-content {
+    margin-top: 72px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  
+  /* Фиксируем пилюли */
+  .category-pills {
+    display: flex !important; /* принудительно показываем пилюли */
+    position: fixed;
+    top: 101px; /* отступ от верха; при необходимости скорректируйте */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 101;
+    padding-left: 7%;
+    padding-right: 7%;
+    overflow-x: auto;  /* позволяет скроллить по горизонтали */
+    overflow-y: hidden; /* скрывает вертикальный выход */
+    box-sizing: border-box;
+    /* Добавляем белый градиент справа */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50px;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .pill {
+      border: 1px solid #999;
+      border-radius: 20px;
+      padding: 8px 16px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-family: "Montserrat", sans-serif;
+      flex: 0 0 auto;
+
+      &:hover {
+        background-color: #f3f3f3;
+      }
+
+      &.active {
+        background-color: #ee1b55;
+        color: #fff;
+        border-color: #ee1b55;
+      }
+    }
+  }
+
+  /* Уменьшение размера карточки, текста и цены на экране 768px */
+  .product-card-mini {
+    .product-info {
+      h3 {
+        font-size: 16px; // уменьшенный размер заголовка
+      }
+      .product-price {
+        font-size: 20px; // уменьшенный размер цены
+      }
+    }
+  }
+}
+
+/* Дополнительная адаптивность для очень узких экранов (например, max-width: 440px) */
+@media screen and (max-width: 440px) {
+
+  .page-catalog {
+    @include padding-440;
+  }
+
+  .order-controls {
+    flex-direction: column;
+    align-items: stretch;
+
+    .product-btn {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    .quantity-block {
+      max-width: none;
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+
+  .category-pills {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
