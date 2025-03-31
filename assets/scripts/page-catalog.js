@@ -17,8 +17,8 @@ class Goods {
           <h2 class="goods-element__price">${price} p</h2>
           <h3 class="goods-element__title">${title}</h3>
           <div class="buttons">
-<button class="view-details" data-id="${id}">Подробнее</button>
-<button class="btn add-to-cart" data-id="${id}">В корзину</button>
+<a class="view-details" href="product-page.html?id=${id}">Подробнее</a>
+<a class="add-to-cart" data-id="${id}" data-title="${title}" data-price="${price}">В корзину</a>
           </div>
         </li>`;
 
@@ -59,44 +59,46 @@ class Goods {
       <h1 class="goods-element__category">14 февраля</h1>
       <ul class="goods-container">${valentinesCatalog}</ul>
     `;
+    this.addCartEventListeners();
   }
-  addEventListeners() {
-    const viewDetailsButtons = document.querySelectorAll(".view-details");
+  addCartEventListeners() {
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
-
-    console.log(`Найдено кнопок "Подробнее": ${viewDetailsButtons.length}`);
-    console.log(`Найдено кнопок "В корзину": ${addToCartButtons.length}`);
-
-    viewDetailsButtons.forEach((button) => {
-      button.addEventListener("click", (event) => this.viewDetails(event));
-    });
-
     addToCartButtons.forEach((button) => {
-      button.addEventListener("click", (event) => this.addToCart(event));
+      button.addEventListener("click", (event) => {
+        const productId = button.dataset.id;
+        const productTitle = button.dataset.title;
+        const productPrice = button.dataset.price;
+
+        this.addToCart(productId, productTitle, productPrice);
+      });
     });
   }
 
-  viewDetails(event) {
-    const id = event.target.getAttribute("data-id");
-    const product = products.find((item) => item.id === id);
-    if (product) {
-      console.log(`Просмотр деталей товара: ${product.title}`);
-    } else {
-      console.error("Товар не найден");
-    }
-  }
+  addToCart(id, title, price) {
+    // Получаем текущую корзину из localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  addToCart(event) {
-    const id = event.target.getAttribute("data-id");
-    const product = products.find((item) => item.id === id);
-    if (product) {
-      console.log(`Товар добавлен в корзину: ${product.title}`);
+    // Проверяем, есть ли товар уже в корзине
+    const existingProductIndex = cart.findIndex((item) => item.id === id);
+
+    if (existingProductIndex > -1) {
+      // Если товар уже есть, увеличиваем его количество
+      cart[existingProductIndex].quantity++;
     } else {
-      console.error("Товар не найден");
+      // Если товара нет, добавляем его в корзину
+      cart.push({
+        id: id,
+        title: title,
+        price: price,
+        quantity: 1,
+      });
     }
+
+    // Сохраняем обновленную корзину в localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${title} добавлен в корзину!`); // Уведомление о добавлении товара
   }
 }
 
 const goodsPage = new Goods();
 goodsPage.render();
-goodsPage.addEventListeners();
