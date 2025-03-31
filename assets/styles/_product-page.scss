@@ -1,43 +1,14 @@
 /***************************************************
- * 1) Стили для header, footer (Десктоп)
- ***************************************************/
- .site-header {
-  background-color: $pink;
-  padding: 20px 0;
-
-  h1 {
-    @include Montserrat-400-base;
-    font-size: $font-size-regular;
-    color: $black;
-    margin: 0;
-    text-align: center;
-  }
-}
-
-.site-footer {
-  background-color: $pink;
-  padding: 20px 0;
-  margin-top: 40px;
-
-  p {
-    @include Montserrat-400-base;
-    font-size: $font-size-regular;
-    color: $black;
-    margin: 0;
-    text-align: center;
-  }
-}
-
-/***************************************************
- * 2) Блок-обёртка для страницы товара
+ * 1) Блок-обёртка для страницы товара
  ***************************************************/
 .product-page-wrapper {
   @include padding-1920;
-  margin: 40px auto;
+  margin: 0px auto;
+  margin-top: 140px;
 }
 
 /***************************************************
- * 3) Карточка товара (product-card)
+ * 2) Карточка товара (product-card)
  ***************************************************/
 .product-title {
   @include h4;
@@ -172,7 +143,7 @@
 }
 
 /***************************************************
- * 4) Адаптив (tablets, phones) - с использованием миксинов
+ * 3) Адаптив (tablets, phones)
  ***************************************************/
 
 /* Планшеты: (max-width: 768px) */

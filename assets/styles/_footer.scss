@@ -14,8 +14,11 @@
 
 .footer {
   width: 100%;
-  @include padding-1920;
+  flex-shrink: 0;
+  @include padding-440;
   @include Montserrat-600-base;
+  
+  // Базовая (мобильная) раскладка – одноколоночная
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto;
@@ -63,12 +66,16 @@
     }
   }
 
-  //Иконки соцсетей
+  // Иконки соцсетей
   &__socials {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.7rem;
     margin-top: 10px;
+
+    @include phones {
+      justify-content: center;
+    }
 
     &-link {
       @include Montserrat-500-base;
@@ -91,7 +98,11 @@
     width: 24px;
     height: 24px;
     display: block;
-    margin: 0 auto;
+    margin: 0;
+
+    @include phones {
+      margin: 0 auto;
+    }
   }
 
   &__social-text {
@@ -102,9 +113,8 @@
 
   &__policy {
     grid-area: policy;
-    padding: 0 !important;
-    justify-self: center;
-    align-self: end;
+    padding: 0;
+    
     &-link {
       font-size: 0.7rem;
       @include Montserrat-500-base;
@@ -113,50 +123,54 @@
   }
 
   &__tax-info {
+    grid-area: tax-info;
+    margin-bottom: 10px;
     font-size: 0.7rem;
     @include Montserrat-500-base;
-    grid-area: tax-info;
+    // Для мобильной – текст по центру
     text-align: center;
     color: $gray;
   }
 
-  // Tablets styles
+  // Мобильная раскладка – всё уже выровнено по центру (базовые стили)
+
+  // ---------------------------
+  // Раскладка для планшетов и десктопов
+  // ---------------------------
   @media (min-width: $tablets) {
+    @include padding-768;
     text-align: left;
+    display: grid;
     grid-template-columns: 1fr 1fr;
+    // В первой строке: контакты (слева) и адрес (справа)
+    // Во второй строке: политика (слева) и Жаркова (справа)
     grid-template-areas:
       "contacts address"
-      "policy policy"
-      "tax-info tax-info";
+      "policy tax-info";
+    row-gap: 0.2rem;
 
-    &__address {
+    &__contacts {
+      justify-self: start;
       text-align: left;
-      justify-self: end;
+      margin-bottom: 1rem;
     }
 
-    &__socials {
-      justify-content: flex-start;
+    &__address {
+      justify-self: end;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
 
-      &-link {
-        align-items: flex-start;
-      }
+    &__policy {
+      justify-self: start;
+      text-align: left;
+      align-self: center;
     }
 
     &__tax-info {
-      text-align: left;
       justify-self: end;
-    }
-  }
-
-  // Desktop styles
-  @media (min-width: 1024px) {
-    column-gap: 7rem;
-    &__contacts {
-      justify-self: end;
-    }
-
-    &__address {
-      justify-self: start;
+      text-align: right;
+      align-self: center;
     }
   }
 }
