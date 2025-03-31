@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "./normalize.css";
+@import "./normalize.css";
 * {
   margin: 0;
   padding: 0;
@@ -904,26 +905,23 @@ main {
   margin-top: 8px;
 }
 
-html {
+main {
+  color: rgb(30, 26, 26);
   font-family: "Montserrat", sans-serif;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
 @media screen and (max-width: 768px) {
-  html {
+  main {
     padding-left: 4%;
     padding-right: 4%;
   }
 }
 @media screen and (max-width: 440px) {
-  html {
+  main {
     padding-left: 8px;
     padding-right: 8px;
   }
-}
-
-main {
-  color: rgb(30, 26, 26);
 }
 
 .topContainer {
@@ -938,20 +936,6 @@ main {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 120px;
-  padding-left: 5.2%;
-  padding-right: 5.2%;
-}
-@media screen and (max-width: 768px) {
-  .topContainer {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-}
-@media screen and (max-width: 440px) {
-  .topContainer {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
 }
 .topContainer h2 {
   font-size: 40px;
@@ -993,20 +977,6 @@ main {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   gap: 1.5rem;
-  padding-left: 5.2%;
-  padding-right: 5.2%;
-}
-@media screen and (max-width: 768px) {
-  .cartItems {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-}
-@media screen and (max-width: 440px) {
-  .cartItems {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
 }
 .cartItems #emptyMsg {
   padding: 1rem 0;
@@ -1046,7 +1016,7 @@ main {
 }
 @media screen and (max-width: 768px) {
   .cartItems #cartList .cartItem {
-    grid-template-columns: 1fr 1fr 15% 15% 12%;
+    grid-template-columns: 1fr 1fr 15% 17% 10%;
   }
 }
 @media screen and (max-width: 440px) {
@@ -1141,6 +1111,12 @@ main {
   letter-spacing: 0.03rem;
   justify-self: end;
 }
+@media screen and (max-width: 768px) {
+  .cartItems #cartList .cartItem .price {
+    justify-self: end;
+    font-size: 1.5rem;
+  }
+}
 @media screen and (max-width: 440px) {
   .cartItems #cartList .cartItem .price {
     -ms-flex-item-align: start;
@@ -1196,21 +1172,7 @@ main {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 0.2rem;
-  padding-left: 5.2%;
-  padding-right: 5.2%;
   margin-bottom: 100px;
-}
-@media screen and (max-width: 768px) {
-  #orderForm {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-}
-@media screen and (max-width: 440px) {
-  #orderForm {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
 }
 #orderForm input,
 #orderForm textarea {
@@ -2096,9 +2058,6 @@ main {
     padding: 0.25rem;
   }
 }
-
-
-
 * {
   margin: 0;
   padding: 0;
@@ -2288,8 +2247,8 @@ body {
 }
 @media screen and (max-width: 440px) {
   body {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 

@@ -1,20 +1,7 @@
-// @import "./variables";
-// @import "./mixins";
-// @import "./media";
-// @import "./base";
-
-// // import fonts
-// @import "../fonts/fonts";
-
-// // link normalize
-// @import "./normalize.css";
-
-// // common blocks
-// @import "./button";
-
 $letter-spacing: 0.03rem;
 
-html {
+main {
+  color: $black;
   font-family: $font-Montserrat;
   @include padding-1920;
   @include tablets {
@@ -25,25 +12,12 @@ html {
   }
 }
 
-main {
-  color: $black;
-}
-
 .topContainer {
   padding: 2rem 0;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   margin-top: 120px;
-  @include padding-1920;
-
-  @include tablets {
-    @include padding-768;
-  }
-
-  @include phones {
-    @include padding-440;
-  }
 
   h2 {
     font-size: $font-size-h3;
@@ -77,15 +51,6 @@ main {
   display: flex;
   flex-flow: column nowrap;
   gap: 1.5rem;
-  @include padding-1920;
-
-  @include tablets {
-    @include padding-768;
-  }
-
-  @include phones {
-    @include padding-440;
-  }
 
   #emptyMsg {
     padding: 1rem 0;
@@ -120,7 +85,7 @@ main {
       border-bottom: 0.5px solid gray;
 
       @include tablets {
-        grid-template-columns: 1fr 1fr 15% 15% 12%;
+        grid-template-columns: 1fr 1fr 15% 17% 10%;
       }
 
       @include phones {
@@ -213,6 +178,11 @@ main {
         font-weight: $font-weight-600;
         letter-spacing: $letter-spacing;
         justify-self: end;
+        @include tablets {
+          justify-self: end;
+          font-size: 1.5rem;
+        }
+
         @include phones {
           align-self: start;
           justify-self: end;
@@ -263,16 +233,7 @@ main {
   flex-flow: column nowrap;
   align-items: flex-start;
   gap: 0.2rem;
-  @include padding-1920;
   margin-bottom: 100px;
-
-  @include tablets {
-    @include padding-768;
-  }
-
-  @include phones {
-    @include padding-440;
-  }
 
   input,
   textarea {
