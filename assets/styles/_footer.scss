@@ -1,20 +1,7 @@
-@import "./variables";
-@import "./mixins";
-@import "./media";
-@import "./base";
-
-// import fonts
-@import "../fonts/fonts";
-
-// link normalize
-@import "./normalize.css";
-
-// common blocks
-@import "./button";
-
 .footer {
   width: 100%;
-  @include padding-1920;
+  flex-shrink: 0;
+  @include padding-440;
   @include Montserrat-600-base;
   display: grid;
   grid-template-columns: 1fr;
@@ -83,7 +70,7 @@
       margin-top: 6px;
       display: block;
       width: 100%;
-      text-align: center;
+      text-align: left;
     }
   }
 
@@ -113,6 +100,7 @@
   }
 
   &__tax-info {
+    margin-bottom: 10px;
     font-size: 0.7rem;
     @include Montserrat-500-base;
     grid-area: tax-info;
@@ -122,6 +110,7 @@
 
   // Tablets styles
   @media (min-width: $tablets) {
+    @include padding-768;
     text-align: left;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -150,6 +139,7 @@
 
   // Desktop styles
   @media (min-width: 1024px) {
+    @include padding-1920;
     column-gap: 7rem;
     &__contacts {
       justify-self: end;
