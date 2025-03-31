@@ -1,5 +1,13 @@
 .delivery {
-  padding: 2rem;
+  align-self: flex-start;
+  padding-top: 4rem;
+  @include padding-1920;
+  @include tablets {
+    @include padding-768;
+  }
+  @include phones {
+    @include padding-440;
+  }
   @include h5;
   font-weight: 500;
 

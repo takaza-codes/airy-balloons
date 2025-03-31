@@ -1,0 +1,64 @@
+@import "./variables";
+@import "./mixins";
+@import "./media";
+@import "./base";
+
+// link normalize
+@import "./normalize.css";
+
+// import fonts
+@import "../fonts/fonts";
+
+// common blocks
+@import "./button";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  @include Montserrat-base;
+  @include padding-1920;
+  @include tablets {
+    @include padding-768;
+  }
+  @include phones {
+    @include padding-440;
+  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+}
+
+main {
+  flex: 1 0 auto;
+
+  .policy-title {
+    font-size: $font-size-h4;
+    @include Montserrat-500-base;
+    text-align: center;
+  }
+
+  .policy-text {
+    text-align: left;
+
+    h2 {
+      font-size: 1rem;
+      @include Montserrat-500-base;
+      padding: 1rem 0 0.5rem 0;
+    }
+
+    p {
+      padding: 0.1rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.go-back {
+  padding: 2rem 0;
+  flex-shrink: 0;
+}
