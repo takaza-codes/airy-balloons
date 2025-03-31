@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryPills = document.getElementById("category-pills");
   const LOCAL_STORAGE_KEY = "selectedCategory";
 
+  // Если в URL есть параметр category, обновляем localStorage
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlCategory = urlParams.get("category");
+  if (urlCategory) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, urlCategory);
+  }
+
   // Функция для рендера списка товаров
   function renderProducts(productsArray) {
     catalogContent.innerHTML = "";
