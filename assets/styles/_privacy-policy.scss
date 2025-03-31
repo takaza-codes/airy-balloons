@@ -1,37 +1,23 @@
-@import "./variables";
-@import "./mixins";
-@import "./media";
-@import "./base";
-
-// link normalize
-@import "./normalize.css";
-
-// import fonts
-@import "../fonts/fonts";
-
-// common blocks
-@import "./button";
-
 html,
 body {
   height: 100%;
   margin: 0;
 }
 
-body {
-  @include Montserrat-base;
-  @include padding-1920;
-  @include tablets {
-    @include padding-768;
-  }
-  @include phones {
-    @include padding-440;
-  }
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
-}
+// body {
+//   @include Montserrat-base;
+//   @include padding-1920;
+//   @include tablets {
+//     @include padding-768;
+//   }
+//   @include phones {
+//     @include padding-440;
+//   }
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+//   // align-items: center;
+// }
 
 main {
   flex: 1 0 auto;
@@ -61,4 +47,6 @@ main {
 .go-back {
   padding: 2rem 0;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
 }
