@@ -1,24 +1,8 @@
-@import "./variables";
-@import "./mixins";
-@import "./media";
-@import "./base";
-
-// import fonts
-@import "../fonts/fonts";
-
-// link normalize
-@import "./normalize.css";
-
-// common blocks
-@import "./button";
-
 .footer {
   width: 100%;
   flex-shrink: 0;
   @include padding-440;
   @include Montserrat-600-base;
-  
-  // Базовая (мобильная) раскладка – одноколоночная
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto;
