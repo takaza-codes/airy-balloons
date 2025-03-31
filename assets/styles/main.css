@@ -194,6 +194,18 @@ main {
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
+@media screen and (max-width: 768px) {
+  .header {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .header {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
 
 .header-fixed-wrapper {
   position: fixed;
@@ -205,11 +217,37 @@ main {
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
+@media screen and (max-width: 768px) {
+  .header-fixed-wrapper {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .header-fixed-wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
 
 /* Верхняя полоса (top-bar) */
 .top-bar {
   background-color: rgb(255, 255, 255);
   padding: 10px 0;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .top-bar {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .top-bar {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .top-bar .top-bar__inner {
   font-family: "Montserrat", sans-serif;
@@ -282,8 +320,6 @@ main {
 }
 .top-bar .header-right .hamb .bar {
   background-color: rgb(30, 26, 26);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
   display: block;
   width: 32px;
   height: 2px;
@@ -296,15 +332,15 @@ main {
           transform-origin: center;
 }
 .top-bar .header-right .hamb.active .bar:nth-child(1) {
-  -webkit-transform: rotate(45deg) translate(5px, 5px);
-          transform: rotate(45deg) translate(5px, 5px);
+  -webkit-transform: translateY(8px) rotate(45deg);
+          transform: translateY(8px) rotate(45deg);
 }
 .top-bar .header-right .hamb.active .bar:nth-child(2) {
   opacity: 0;
 }
 .top-bar .header-right .hamb.active .bar:nth-child(3) {
-  -webkit-transform: rotate(-45deg) translate(5px, -5px);
-          transform: rotate(-45deg) translate(5px, -5px);
+  -webkit-transform: translateY(-8px) rotate(-45deg);
+          transform: translateY(-8px) rotate(-45deg);
 }
 .top-bar .search {
   display: -webkit-box;
@@ -358,6 +394,20 @@ main {
 .main-nav {
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid #eee;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .main-nav {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .main-nav {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .main-nav .nav__inner {
   font-family: "Montserrat", sans-serif;
@@ -475,7 +525,7 @@ main {
   .top-bar .header-right .hamb .bar {
     width: 28px;
     height: 2px;
-    margin: 5px 0;
+    margin: 6px 0;
   }
   .main-nav .nav__inner .menu {
     display: none;
@@ -541,7 +591,7 @@ main {
   .top-bar .header-right .hamb .bar {
     width: 22px;
     height: 2px;
-    margin: 4px 0;
+    margin: 6px 0;
   }
   .banner {
     min-height: 250px;
