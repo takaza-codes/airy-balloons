@@ -9,7 +9,7 @@ popularItems.forEach((item) => {
 
   card.innerHTML = `
     <div class="popular__image">
-      <img src="${item.images[0]}" alt="${item.title}" />
+      <a href="/pages/product-page.html?id=${item.id}" target="_blank"><img src="${item.images[0]}" alt="${item.title}" /></a>
     </div>
     <div class="popular__info">
       <h3 class="popular__title">${item.title}</h3>

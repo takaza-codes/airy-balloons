@@ -1,5 +1,12 @@
 .about {
-  padding: 2rem;
+  padding-top: 4rem;
+  @include padding-1920;
+  @include tablets {
+    @include padding-768;
+  }
+  @include phones {
+    @include padding-440;
+  }
 
   &__title {
     @include h3;

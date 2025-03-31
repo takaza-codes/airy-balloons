@@ -15,7 +15,7 @@ function renderCart() {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   if (cart.length === 0) {
-    cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! <p>Для выбора товаров <a href="/pages/page-catalog.html>перейдите в Каталог</a></p></div>';
+    cartList.innerHTML = '<div id="emptyMsg">В корзине пока пусто! <p>Для выбора товаров <a href="/pages/page-catalog.html">перейдите в Каталог</a></p></div>';
     orderDetails.innerHTML = '';
     orderFinal.innerHTML = '';
     orderForm.style.display = 'none'; // Форма не отображается при пустой корзине
@@ -333,7 +333,7 @@ orderForm.addEventListener('submit', function(evt) {
       .then(data => {
         console.log('Ответ от функции:', data);
         // Очищаем корзину и сбрасываем форму
-        cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="/pages/page-catalog.html>перейдите в Каталог</a></div>';
+        cartList.innerHTML = '<div id="emptyMsg">В корзине пусто! Для выбора товаров <a href="/pages/page-catalog.html">перейдите в Каталог</a></div>';
         orderDetails.innerHTML = '';
         orderFinal.innerHTML = '';
         localStorage.removeItem('cart');

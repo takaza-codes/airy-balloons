@@ -1,6 +1,7 @@
 $letter-spacing: 0.03rem;
 
 main {
+  width: 100%;
   color: $black;
   font-family: $font-Montserrat;
   @include padding-1920;
