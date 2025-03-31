@@ -899,7 +899,7 @@ h6 {
  * 1) Стили для header, footer (Десктоп)
  ***************************************************/
 .site-header {
-  background-color: rgb(242, 215, 219);;
+  background-color: rgb(242, 215, 219);
   padding: 20px 0;
 }
 .site-header h1 {
@@ -913,7 +913,7 @@ h6 {
 }
 
 .site-footer {
-  background-color: rgb(242, 215, 219);;
+  background-color: rgb(242, 215, 219);
   padding: 20px 0;
   margin-top: 40px;
 }
