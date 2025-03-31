@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "./normalize.css";
+@import "./normalize.css";
 * {
   margin: 0;
   padding: 0;
@@ -258,7 +259,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   gap: 40px;
-  /* Гамбургер по умолчанию скрыт (для десктопа) */
+  /* Гамбургер: по умолчанию скрыт (для десктопа) */
 }
 .top-bar .header-right .messengers {
   display: -webkit-box;
@@ -287,6 +288,23 @@ main {
   width: 32px;
   height: 2px;
   margin: 6px 0;
+  -webkit-transition: opacity 0.4s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.4s ease, -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease, -webkit-transform 0.4s ease;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.top-bar .header-right .hamb.active .bar:nth-child(1) {
+  -webkit-transform: rotate(45deg) translate(5px, 5px);
+          transform: rotate(45deg) translate(5px, 5px);
+}
+.top-bar .header-right .hamb.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.top-bar .header-right .hamb.active .bar:nth-child(3) {
+  -webkit-transform: rotate(-45deg) translate(5px, -5px);
+          transform: rotate(-45deg) translate(5px, -5px);
 }
 .top-bar .search {
   display: -webkit-box;
@@ -413,7 +431,6 @@ main {
   font-style: normal;
   font-weight: 500;
   font-size: 40px;
-  color: rgb(255, 255, 255);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   font-size: clamp(1.5rem, 4vw, 40px);
 }
@@ -500,8 +517,8 @@ main {
 *************************************/
 @media screen and (max-width: 440px) {
   .header {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .top-bar .header-right {
     gap: 16px;
@@ -533,10 +550,10 @@ main {
     padding: 10px;
   }
   .banner .banner__content .airy_banner {
-    font-size: 40px;
+    font-size: 24px;
   }
   .banner .banner__content .ballons_banner {
-    font-size: 24px;
+    font-size: 16px;
   }
 }
 /*************************************
@@ -573,6 +590,325 @@ main {
   line-height: 1;
   min-width: 20px;
   text-align: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+.btn {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  width: 240px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+  /* Модификатор для центрирования */
+  /* Модификатор «ссылка» */
+}
+.btn:hover {
+  background-color: #c70f42;
+  color: rgb(255, 255, 255);
+}
+.btn:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+.btn:disabled, .btn.disabled {
+  background-color: #f57a9c;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.btn.btn--center {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.btn.btn--link {
+  background-color: transparent;
+  color: rgb(30, 26, 26);
+  border: 1px solid rgb(30, 26, 26);
+}
+.btn.btn--link:hover {
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+}
+.btn.btn--link:active {
+  -webkit-transform: none;
+          transform: none;
+}
+.btn.btn--transparent {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: transparent;
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn.btn--transparent:hover {
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+}
+.btn.btn--white-red {
+  background-color: rgb(255, 255, 255);
+  color: rgb(238, 27, 85);
+  border: 1px solid rgb(238, 27, 85);
+  /* Стили при наведении */
+}
+.btn.btn--white-red:hover {
+  background-color: white;
+  color: #c70f42;
+  border-color: #c70f42;
+}
+.btn.btn--white-red:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+.footer {
+  width: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "contacts" "address" "policy" "tax-info";
+  row-gap: 0.2rem;
+  text-align: center;
+}
+.footer__contacts {
+  margin-bottom: 1rem;
+}
+.footer__title {
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+.footer__phone {
+  font-size: 31px;
+  display: block;
+  margin-bottom: 10px;
+}
+.footer__address {
+  margin-bottom: 1rem;
+}
+.footer__address a p {
+  font-size: 1.4rem;
+  margin: 8px 0;
+  display: block;
+}
+.footer__address .footer__work-label {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+.footer__address .footer__work-time {
+  font-size: 14px;
+  margin: 0;
+}
+.footer__socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 0.7rem;
+  margin-top: 10px;
+}
+@media screen and (max-width: 440px) {
+  .footer__socials {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+.footer__socials-link {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+}
+.footer__socials-text {
+  font-size: 10px;
+  margin-top: 6px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.footer__social-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 0;
+}
+@media screen and (max-width: 440px) {
+  .footer__social-icon {
+    margin: 0 auto;
+  }
+}
+.footer__social-text {
+  font-weight: 500;
+  font-size: 10px;
+  margin-top: 6px;
+}
+.footer__policy {
+  grid-area: policy;
+  padding: 0;
+}
+.footer__policy-link {
+  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: rgb(160, 160, 160);
+}
+.footer__tax-info {
+  grid-area: tax-info;
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  color: rgb(160, 160, 160);
+}
+@media (min-width: 768px) {
+  .footer {
+    padding-left: 4%;
+    padding-right: 4%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "contacts address" "policy tax-info";
+    row-gap: 0.2rem;
+  }
+  .footer__contacts {
+    justify-self: start;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .footer__address {
+    justify-self: end;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .footer__policy {
+    justify-self: start;
+    text-align: left;
+    -ms-flex-item-align: center;
+        align-self: center;
+  }
+  .footer__tax-info {
+    justify-self: end;
+    text-align: right;
+    -ms-flex-item-align: center;
+        align-self: center;
+  }
 }
 
 .contacts {
@@ -663,8 +999,8 @@ main {
 }
 @media screen and (max-width: 440px) {
   .contacts {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -690,8 +1026,8 @@ html {
 }
 @media screen and (max-width: 440px) {
   html {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -710,6 +1046,21 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 120px;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .topContainer {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .topContainer {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .topContainer h2 {
   font-size: 40px;
@@ -751,6 +1102,20 @@ main {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   gap: 1.5rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .cartItems {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .cartItems {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .cartItems #emptyMsg {
   padding: 1rem 0;
@@ -940,6 +1305,21 @@ main {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 0.2rem;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+  margin-bottom: 100px;
+}
+@media screen and (max-width: 768px) {
+  #orderForm {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (max-width: 440px) {
+  #orderForm {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 #orderForm input,
 #orderForm textarea {
@@ -1233,209 +1613,18 @@ main {
   display: flex;
 }
 
-.footer {
-  width: 100%;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  padding-left: 16px;
-  padding-right: 16px;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: "contacts" "address" "policy" "tax-info";
-  row-gap: 0.2rem;
-  text-align: center;
-}
-.footer__contacts {
-  margin-bottom: 1rem;
-}
-.footer__title {
-  font-size: 1.2rem;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-}
-.footer__phone {
-  font-size: 31px;
-  display: block;
-  margin-bottom: 10px;
-}
-.footer__address {
-  margin-bottom: 1rem;
-}
-.footer__address a p {
-  font-size: 1.4rem;
-  margin: 8px 0;
-  display: block;
-}
-.footer__address .footer__work-label {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 10px;
-  margin-top: 10px;
-  margin-bottom: 4px;
-}
-.footer__address .footer__work-time {
-  font-size: 14px;
-  margin: 0;
-}
-.footer__socials {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 0.7rem;
-  margin-top: 10px;
-}
-.footer__socials-link {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: auto;
-}
-.footer__socials-text {
-  font-size: 10px;
-  margin-top: 6px;
-  display: block;
-  width: 100%;
-  text-align: left;
-}
-.footer__social-icon {
-  width: 24px;
-  height: 24px;
-  display: block;
-  margin: 0 auto;
-}
-.footer__social-text {
-  font-weight: 500;
-  font-size: 10px;
-  margin-top: 6px;
-}
-.footer__policy {
-  grid-area: policy;
-  padding: 0 !important;
-  justify-self: center;
-  align-self: end;
-}
-.footer__policy-link {
-  font-size: 0.7rem;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  color: rgb(160, 160, 160);
-}
-.footer__tax-info {
-  margin-bottom: 10px;
-  font-size: 0.7rem;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  grid-area: tax-info;
-  text-align: center;
-  color: rgb(160, 160, 160);
-}
-@media (min-width: 768px) {
-  .footer {
-    padding-left: 4%;
-    padding-right: 4%;
-    text-align: left;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "contacts address" "policy policy" "tax-info tax-info";
-  }
-  .footer__address {
-    text-align: left;
-    justify-self: end;
-  }
-  .footer__socials {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-  }
-  .footer__socials-link {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .footer__tax-info {
-    text-align: left;
-    justify-self: end;
-  }
-}
-@media (min-width: 1024px) {
-  .footer {
-    padding-left: 5.2%;
-    padding-right: 5.2%;
-    -webkit-column-gap: 7rem;
-       -moz-column-gap: 7rem;
-            column-gap: 7rem;
-  }
-  .footer__contacts {
-    justify-self: end;
-  }
-  .footer__address {
-    justify-self: start;
-  }
-}
-
 /***************************************************
- * 1) Стили для header, footer (Десктоп)
- ***************************************************/
-.site-header {
-  background-color: rgb(242, 215, 219);
-  padding: 20px 0;
-}
-.site-header h1 {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  color: rgb(30, 26, 26);
-  margin: 0;
-  text-align: center;
-}
-
-.site-footer {
-  background-color: rgb(242, 215, 219);
-  padding: 20px 0;
-  margin-top: 40px;
-}
-.site-footer p {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  color: rgb(30, 26, 26);
-  margin: 0;
-  text-align: center;
-}
-
-/***************************************************
- * 2) Блок-обёртка для страницы товара
+ * 1) Блок-обёртка для страницы товара
  ***************************************************/
 .product-page-wrapper {
   padding-left: 5.2%;
   padding-right: 5.2%;
-  margin: 40px auto;
+  margin: 0px auto;
+  margin-top: 140px;
 }
 
 /***************************************************
- * 3) Карточка товара (product-card)
+ * 2) Карточка товара (product-card)
  ***************************************************/
 .product-title {
   font-family: "Montserrat", sans-serif;
@@ -1605,7 +1794,7 @@ main {
 }
 
 /***************************************************
- * 4) Адаптив (tablets, phones) - с использованием миксинов
+ * 3) Адаптив (tablets, phones)
  ***************************************************/
 /* Планшеты: (max-width: 768px) */
 @media screen and (max-width: 768px) {
@@ -1620,8 +1809,8 @@ main {
 /* Телефоны: (max-width: 440px) */
 @media screen and (max-width: 440px) {
   .product-page-wrapper {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .product-card {
     -webkit-box-orient: vertical;
