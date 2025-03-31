@@ -1,6 +1,24 @@
+/***************************
+Общее для index.html для правильного расположения футера
+****************************/
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1 0 auto;
+}
+
 /*************************************
 * HEADER
 *************************************/
+
 .header {
   width: 100%;
   background-color: $white;
