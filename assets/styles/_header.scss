@@ -23,6 +23,14 @@ main {
   width: 100%;
   background-color: $white;
   @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 }
 
 .header-fixed-wrapper {
@@ -33,12 +41,29 @@ main {
   z-index: 1000; // выбирайте подходящее значение
   background-color: $white; // или другой нужный цвет
   @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 }
 
 /* Верхняя полоса (top-bar) */
 .top-bar {
   background-color: $white;
   padding: 10px 0;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 
   .top-bar__inner {
     @include Montserrat-base;
@@ -106,7 +131,6 @@ main {
 
       .bar {
         background-color: $black;
-        transition: 0.4s;
         display: block;
         width: 32px;
         height: 2px;
@@ -117,13 +141,13 @@ main {
       // При активном состоянии контейнера
       &.active {
         .bar:nth-child(1) {
-          transform: rotate(45deg) translate(5px, 5px);
+          transform: translateY(8px) rotate(45deg);
         }
         .bar:nth-child(2) {
           opacity: 0;
         }
         .bar:nth-child(3) {
-          transform: rotate(-45deg) translate(5px, -5px);
+          transform: translateY(-8px) rotate(-45deg);
         }
       }
     }
@@ -160,6 +184,15 @@ main {
 .main-nav {
   background-color: $white;
   border-bottom: 1px solid #eee;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
+
+  @include phones {
+    @include padding-440;
+  }
 
   .nav__inner {
     @include Montserrat-base;
@@ -265,7 +298,7 @@ main {
         .bar {
           width: 28px; // уменьшено с 32px
           height: 2px;
-          margin: 5px 0;
+          margin: 6px 0;
         }
       }
     }
@@ -339,7 +372,7 @@ main {
         .bar {
           width: 22px; // уменьшено с 28px
           height: 2px;
-          margin: 4px 0;
+          margin: 6px 0;
         }
       }
     }
