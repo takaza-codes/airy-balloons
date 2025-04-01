@@ -1063,6 +1063,10 @@ main {
   font-size: 1.1rem;
   color: gray;
 }
+.cartItems #emptyMsg a {
+  color: rgb(30, 26, 26);
+  font-weight: bold;
+}
 .cartItems #emptyMsg a:hover {
   color: rgb(245, 210, 88);
 }
