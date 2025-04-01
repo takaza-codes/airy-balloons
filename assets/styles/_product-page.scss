@@ -177,6 +177,20 @@
   }
 }
 
+/* Адаптив для экранов до 415px */
+@include phones-415 {
+  .product-page-wrapper {
+    @include padding-415;
+  }
+}
+
+/* Адаптив для экранов до 375px */
+@include phones-375 {
+  .product-page-wrapper {
+    @include padding-375;
+  }
+}
+
 /***************************************************
  * Контейнер для счётчика и кнопки
  ***************************************************/
@@ -195,7 +209,11 @@
     padding: 0 8px;
     color: $red;
     font-size: $font-size-regular;
-    
+
+    @include phones {
+      width: 100%;
+      justify-content: center;
+    }
 
     button {
       background: none;
@@ -213,6 +231,10 @@
       padding: 14px 24px;
       text-align: center;
       font-weight: 600;
+
+      @include phones {
+        padding: 14px 88px;
+      }
     }
   }
 

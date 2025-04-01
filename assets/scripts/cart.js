@@ -192,7 +192,8 @@ function validateUsername(name) {
 }
 
 function validateTel(tel) {
-  let regex = /^((\\+7|8)+([0-9]){10})$/;
+  // let regex = /^((\\+7|8)+([0-9]){10})$/;
+  let regex = /^(\+7|8)[0-9]{10}$/;
   return regex.test(tel);
 }
 
