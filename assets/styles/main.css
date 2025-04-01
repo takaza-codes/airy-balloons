@@ -1999,6 +1999,7 @@ main {
 }
 .reviews {
   padding-top: 4rem;
+  margin-bottom: 48px;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
@@ -2119,4 +2120,4 @@ main .policy-text p {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}/*# sourceMappingURL=main.css.map */
+}
