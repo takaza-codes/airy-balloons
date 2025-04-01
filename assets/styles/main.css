@@ -1509,7 +1509,6 @@ main {
   padding-right: 5.2%;
   margin: 0px auto;
   margin-top: 140px;
-  margin-bottom: 100px;
 }
 
 /***************************************************
@@ -2166,4 +2165,4 @@ body {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}/*# sourceMappingURL=main.css.map */
+}
