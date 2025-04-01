@@ -485,7 +485,7 @@ main {
   }
   .product-link {
     display: grid;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 26% auto;
     grid-template-rows: 30% auto;
     column-gap: 0.5rem;
     align-items: center;
@@ -494,7 +494,8 @@ main {
 
     @include tablets {
       grid-template-columns: 30% auto;
-      grid-template-rows: 20% auto;
+      grid-template-rows: 25% auto;
+      align-items: center;
     }
 
     .small-img-container {
@@ -541,6 +542,7 @@ main {
       margin: 0;
       font-size: 1.5rem;
       grid-row: 1 / 2;
+      padding-right: 1rem;
 
       @include tablets {
         grid-row: 1 / 2;
@@ -559,6 +561,7 @@ main {
       color: gray;
       grid-column: 2 / 3;
       grid-row: 2 / 3;
+      padding-right: 1rem;
 
       @include tablets {
         font-size: 1rem;

@@ -638,7 +638,7 @@ main {
 }
 .product .product-link {
   display: grid;
-  grid-template-columns: 30% auto;
+  grid-template-columns: 26% auto;
   grid-template-rows: 30% auto;
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
@@ -649,7 +649,8 @@ main {
 @media screen and (max-width: 768px) {
   .product .product-link {
     grid-template-columns: 30% auto;
-    grid-template-rows: 20% auto;
+    grid-template-rows: 25% auto;
+    align-items: center;
   }
 }
 .product .product-link .small-img-container {
@@ -701,6 +702,7 @@ main {
   margin: 0;
   font-size: 1.5rem;
   grid-row: 1/2;
+  padding-right: 1rem;
 }
 @media screen and (max-width: 768px) {
   .product .product-link h3 {
@@ -720,6 +722,7 @@ main {
   color: gray;
   grid-column: 2/3;
   grid-row: 2/3;
+  padding-right: 1rem;
 }
 @media screen and (max-width: 768px) {
   .product .product-link p {
@@ -2148,4 +2151,4 @@ body {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}
+}/*# sourceMappingURL=main.css.map */
