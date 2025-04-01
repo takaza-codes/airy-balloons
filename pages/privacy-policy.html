@@ -29,10 +29,15 @@
             </div>
             <!-- Поиск и кнопка "Каталог" -->
             <div class="search">
-              <a href="./page-catalog.html">
+              <a href="./pages/page-catalog.html">
                 <button class="cataloge_btn">Каталог</button>
               </a>
-              <input class="input_search" type="search" placeholder="Поиск" />
+              <input
+                id="searchInput"
+                class="input_search"
+                type="search"
+                placeholder="Поиск"
+              />
             </div>
 
             <!-- Блок с контактами -->
@@ -48,6 +53,13 @@
             </div>
             <!-- Мессенджеры и корзина (справа) -->
             <div class="header-right">
+              <div>
+                <img
+                  src="../assets/logos/search.svg"
+                  id="searchIcon"
+                  class="loupe"
+                />
+              </div>
               <div class="messengers">
                 <a
                   href="https://t.me/mary_zharkova"
@@ -108,6 +120,14 @@
       </div>
     </header>
     <main class="policy-main">
+      <!-- Контейнер для вывода результатов поиска -->
+      <div id="searchOverlay" class="search-overlay">
+        <div class="search-results-container">
+          <span id="closeSearch" class="close-btn">&times;</span>
+          <h2>Результаты поиска</h2>
+          <div id="results"></div>
+        </div>
+      </div>
       <h1 class="policy-title">
         Политика в отношении обработки персональных данных
       </h1>
@@ -570,5 +590,8 @@
     <footer class="go-back">
       <button class="btn"><a href="../index.html">На главную</a></button>
     </footer>
+    <script src="../assets/scripts/data.js"></script>
+    <!-- Скрипт для поиска -->
+    <script src="../assets/scripts/search-box.js"></script>
   </body>
 </html>
