@@ -727,7 +727,7 @@ main {
   }
 }
 .product .product-link p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: gray;
   grid-column: 2/3;
   grid-row: 2/3;
