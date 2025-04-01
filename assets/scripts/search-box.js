@@ -1,69 +1,87 @@
-// document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("searchInput");
-    const searchBlock = document.querySelector(".search");
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput"); // Desktop input
+    const searchInputMobile = document.getElementById("searchInputMobile"); // Mobile input in overlay
     const searchIcon = document.getElementById("searchIcon");
     const resultsDiv = document.getElementById("results");
     const searchOverlay = document.getElementById("searchOverlay");
     const closeSearch = document.getElementById("closeSearch");
-    const messengerIcons = document.querySelector(".messengers");
+
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
 
     function toggleSearch(event) {
         event.stopPropagation();
 
-        if (searchBlock.style.display === "none" || searchBlock.style.display === "") {
-            showSearch();
+        if (isMobile()) {
+            if (searchOverlay.style.display === "none" || searchOverlay.style.display === "") {
+                showSearch();
+            } else {
+                hideSearch();
+            }
+        }
+    }
+
+    //Отображение поля ввода: внутри модального окна для мобильных устройств, в хедере для десктопа
+    function showSearch() {
+        if (isMobile()) {
+            searchOverlay.style.display = "flex"; 
+            searchInputMobile.style.display = "inline-block";
+
+            searchInputMobile.value = "";
+            setTimeout(() => {
+                searchInputMobile.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                searchInputMobile.focus();
+            }, 100);
         } else {
-            hideSearch();
-        }
-    }
-
-        function showSearch() {
-            messengerIcons.style.display = "none";
-            searchBlock.style.display = "flex";
+            searchOverlay.style.display = "flex";
             searchInput.style.display = "inline-block";
-        
-            searchInput.value = "";
-    setTimeout(() => {
-        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        searchInput.focus();
-    }, 100); 
-    }
-
-    
-    
-    function hideSearch() {
-        if (window.innerWidth <= 768) { 
-            searchBlock.style.display = "none";
         }
-        searchInput.value = ""
-        resultsDiv.innerHTML = "";
-        messengerIcons.style.display = "flex";
     }
 
+    // Прятать модальное окно и затемнение
+    function hideSearch() {
+        resultsDiv.innerHTML = ""; // Очистка результатов поиска
+        if (isMobile()) {
+            searchOverlay.style.display = "none"; 
+            searchInputMobile.value = "";
+        } else {
+            searchOverlay.style.display = "none";
+        }
+    }
 
-    searchIcon.addEventListener("click", toggleSearch);
-    searchIcon.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        toggleSearch(e);
-    });
+    // Вызывать модальное окно при клике на иконку поиска, если она есть
+    if (searchIcon) {
+        searchIcon.addEventListener("click", toggleSearch);
+        searchIcon.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            toggleSearch(e);
+        });
+    }
 
+    // Не закрывать окно при клике на поле ввода или окно отображения результатов
     searchInput.addEventListener("click", (event) => event.stopPropagation());
+    searchInputMobile.addEventListener("click", (event) => event.stopPropagation());
     resultsDiv.addEventListener("click", (event) => event.stopPropagation());
 
     document.addEventListener("click", function (event) {
-        if (!searchBlock.contains(event.target) && event.target !== searchIcon && event.target !== searchInput) {
+        if (!searchOverlay.contains(event.target) && event.target !== searchIcon) {
             hideSearch();
         }
     });
-    searchInput.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-            const searchTerm = searchInput.value.trim();
-            if (!searchTerm) return;
-            const results = searchProducts(searchTerm);
-            displayResults(results);
-        }
-    });
 
+    // Обработка нажатия Enter
+    function handleSearchInput(event, inputElement) {
+        if (event.key === "Enter") {
+            const searchTerm = inputElement.value.trim();
+            if (searchTerm) {
+                const results = searchProducts(searchTerm);
+                displayResults(results);
+            }
+        }
+    }
+
+    // Поиск товаров, у которых в названии или описании есть введенное в поисковое поле слово
     function searchProducts(term) {
         return products.filter(product =>
             product.title.toLowerCase().includes(term.toLowerCase()) ||
@@ -71,20 +89,25 @@
         );
     }
 
+    // Отображение результатов в модальном окне
     function displayResults(results) {
         resultsDiv.innerHTML = "";
 
         if (results.length === 0) {
             resultsDiv.innerHTML = "<p>Ничего не найдено.</p>";
         } else {
+            const searchResultsHeading = document.createElement("h2");
+            searchResultsHeading.textContent = "Результаты поиска";
+            resultsDiv.appendChild(searchResultsHeading);
+
             results.forEach(product => {
                 const productDiv = document.createElement("div");
                 productDiv.className = "product";
                 productDiv.innerHTML = `
                     <a href="/pages/product-page.html?id=${product.id}" target="_blank" class="product-link">
                         <div class="small-img-container">
-                    <img src="${product.images[0]}" class="small-img">
-                    </div>
+                            <img src="${product.images[0]}" class="small-img">
+                        </div>
                         <h3>${product.title}</h3>
                         <p>${product.description}</p>
                     </a>
@@ -93,35 +116,41 @@
             });
         }
 
-        searchOverlay.style.display = "flex";
+        if (!isMobile()) {
+            searchOverlay.style.display = "flex";
+        }
     }
 
-    // closeSearch.addEventListener("touchstart", (e) => {
-    //     e.preventDefault();
-    //     searchOverlay.style.display = "none";
-    //     searchInput.value = "";
-    //     hideSearch();
-    // });
-    closeSearch.addEventListener("click", () => {
+    // Закрывать модальное окно по клике на крестик
+    closeSearch.addEventListener("click", (e) => {
         e.preventDefault();
-        searchOverlay.style.display = "none";
         hideSearch();
     });
 
+    // Закрывать модальное окно по клику на затемненный фон
     searchOverlay.addEventListener("click", (e) => {
         if (e.target === searchOverlay) {
-            searchOverlay.style.display = "none";
-            searchInput.value = "";
             hideSearch();
         }
     });
 
+    // Обработка нажатия Enter
+    searchInput.addEventListener("keypress", (event) => handleSearchInput(event, searchInput));
+    searchInputMobile.addEventListener("keypress", (event) => handleSearchInput(event, searchInputMobile));
+
+    // Ресайз окна
     window.addEventListener("resize", () => {
-        if (window.innerWidth > 768) {
-            showSearch();
-            // searchBlock.style.display = "flex";
+        if (window.innerWidth <= 768) {
+            if (searchOverlay.style.display === "flex") {
+                showSearch();
+            } else {
+                hideSearch();
+            }
         } else {
-            hideSearch();
+            searchOverlay.style.display = "flex"; 
+            hideSearch(); 
         }
     });
-// });
+});
+
+
