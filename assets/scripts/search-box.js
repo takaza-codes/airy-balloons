@@ -17,17 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function showSearch() {
-        if (!searchInput) return;
-
-        messengerIcons.style.display = "none";
-        searchBlock.style.display = "flex";
-        searchInput.style.display = "inline-block";
-    
-        setTimeout(() => {
-            searchInput.focus();
-            searchInput.dispatchEvent(new Event('input'));
-        }, 50);
+        function showSearch() {
+            messengerIcons.style.display = "none";
+            searchBlock.style.display = "flex";
+            searchInput.style.display = "inline-block";
+        
+            requestAnimationFrame(() => {
+                searchInput.focus();
+            });
     }
     
     function hideSearch() {
