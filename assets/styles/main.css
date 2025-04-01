@@ -1066,7 +1066,7 @@ main {
 .cartItems #emptyMsg a {
   font-weight: 600;
 }
-.cartItems #emptyMsg:hover {
+.cartItems #emptyMsg a:hover {
   color: rgb(245, 210, 88);
 }
 .cartItems #cartList {
