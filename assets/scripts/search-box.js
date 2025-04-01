@@ -22,18 +22,24 @@
             searchBlock.style.display = "flex";
             searchInput.style.display = "inline-block";
         
-            requestAnimationFrame(() => {
-                searchInput.focus();
-            });
+            searchInput.value = "";
+    setTimeout(() => {
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        searchInput.focus();
+    }, 100); 
     }
+
+    
     
     function hideSearch() {
         if (window.innerWidth <= 768) { 
             searchBlock.style.display = "none";
         }
+        searchInput.value = ""
         resultsDiv.innerHTML = "";
         messengerIcons.style.display = "flex";
     }
+
 
     searchIcon.addEventListener("click", toggleSearch);
     searchIcon.addEventListener("touchstart", (e) => {
@@ -90,10 +96,15 @@
         searchOverlay.style.display = "flex";
     }
 
-    closeSearch.addEventListener("touchstart", (e) => {
+    // closeSearch.addEventListener("touchstart", (e) => {
+    //     e.preventDefault();
+    //     searchOverlay.style.display = "none";
+    //     searchInput.value = "";
+    //     hideSearch();
+    // });
+    closeSearch.addEventListener("click", () => {
         e.preventDefault();
         searchOverlay.style.display = "none";
-        searchInput.value = "";
         hideSearch();
     });
 
