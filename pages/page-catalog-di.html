@@ -24,10 +24,10 @@
             </div>
             <!-- Поиск и кнопка "Каталог" -->
             <div class="search">
-              <a href="./page-catalog.html">
+              <a href="./page-catalog-di.html">
                 <button class="cataloge_btn">Каталог</button>
               </a>
-              <input class="input_search" type="search" placeholder="Поиск" />
+              <input id="searchInput" class="input_search" type="search" placeholder="Поиск" />
             </div>
   
             <!-- Блок с контактами -->
@@ -38,6 +38,11 @@
             </div>
             <!-- Мессенджеры и корзина (справа) -->
             <div class="header-right">
+              <div><img
+                src="../assets/logos/search.svg"
+                id="searchIcon"
+                class="loupe"
+              /></div>
               <div class="messengers">
                 <a href="https://t.me/mary_zharkova" target="_blank" class="footer__social-link" title="Напишите в Telegram">
                   <img
@@ -86,6 +91,14 @@
           </div>
         </nav>
       </div>
+      <!-- Контейнер для вывода результатов поиска -->
+    <div id="searchOverlay" class="search-overlay">
+      <div class="search-results-container">
+          <span id="closeSearch" class="close-btn">&times;</span>
+          <h2>Результаты поиска</h2>
+          <div id="results"></div>
+      </div>
+    </div>
     </header>
 
     <!-- Основной контент страницы каталога -->
@@ -180,5 +193,8 @@
 
     <!-- Скрипт для уведомления всех частей приложения об изменениях в корзине-->
     <script src="../assets/scripts/cart-events.js"></script>
+
+    <!-- Скрипт для поиска -->
+    <script src="./assets/scripts/search-box.js"></script>
   </body>
 </html>
