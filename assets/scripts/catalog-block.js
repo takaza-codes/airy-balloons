@@ -51,17 +51,17 @@ document.querySelectorAll(".catalogue__image img").forEach((img) => {
 });
 
 // Обработчик клика по карточке каталога
-document.querySelectorAll(".catalogue__item").forEach((item) => {
-  item.addEventListener("click", (e) => {
-    // Если клик по ссылке внутри карточки – отменяем стандартное поведение
-    if (e.target.closest("a")) {
-      e.preventDefault();
-    }
-    // Получаем значение категории из data-атрибута (например, data-category="for-girl")
-    const category = item.getAttribute("data-category") || "all";
-    // Сохраняем выбранную категорию в localStorage
-    localStorage.setItem("selectedCategory", category);
-    // Переходим на страницу каталога
-    window.location.href = "../../pages/page-catalog.html";
-  });
-});
+// document.querySelectorAll(".catalogue__item").forEach((item) => {
+//   item.addEventListener("click", (e) => {
+//     // Если клик по ссылке внутри карточки – отменяем стандартное поведение
+//     if (e.target.closest("a")) {
+//       e.preventDefault();
+//     }
+//     // Получаем значение категории из data-атрибута (например, data-category="for-girl")
+//     const category = item.getAttribute("data-category") || "all";
+//     // Сохраняем выбранную категорию в localStorage
+//     localStorage.setItem("selectedCategory", category);
+//     // Переходим на страницу каталога
+//     window.location.href = "../../pages/page-catalog.html";
+//   });
+// });
