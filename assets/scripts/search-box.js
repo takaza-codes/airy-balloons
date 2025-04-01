@@ -19,18 +19,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showSearch() {
         if (!searchInput) return;
-    
+
         messengerIcons.style.display = "none";
         searchBlock.style.display = "flex";
         searchInput.style.display = "inline-block";
     
         setTimeout(() => {
-            if (document.activeElement !== searchInput) {
-                searchInput.focus();
-            }
-        }, 300);
+            searchInput.focus();
+            searchInput.dispatchEvent(new Event('input'));
+        }, 50);
     }
-
+    
     function hideSearch() {
         if (window.innerWidth <= 768) { 
             searchBlock.style.display = "none";
