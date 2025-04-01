@@ -18,10 +18,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showSearch() {
+        if (!searchInput) return;
+    
         messengerIcons.style.display = "none";
         searchBlock.style.display = "flex";
         searchInput.style.display = "inline-block";
-        searchInput.focus();
+    
+        setTimeout(() => {
+            if (document.activeElement !== searchInput) {
+                searchInput.focus();
+            }
+        }, 300);
     }
 
     function hideSearch() {
@@ -42,11 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
     resultsDiv.addEventListener("click", (event) => event.stopPropagation());
 
     document.addEventListener("click", function (event) {
-        if (!searchBlock.contains(event.target) && event.target !== searchIcon) {
+        if (!searchBlock.contains(event.target) && event.target !== searchIcon && event.target !== searchInput) {
             hideSearch();
         }
     });
-
     searchInput.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             const searchTerm = searchInput.value.trim();
@@ -87,15 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         searchOverlay.style.display = "flex";
     }
-    
+
     closeSearch.addEventListener("touchstart", (e) => {
         e.preventDefault();
-        searchOverlay.style.display = "none";
-        searchInput.value = "";
-        hideSearch();
-    });
-
-    closeSearch.addEventListener("touchstart", () => {
         searchOverlay.style.display = "none";
         searchInput.value = "";
         hideSearch();
@@ -112,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", () => {
         if (window.innerWidth > 768) {
             showSearch();
+            // searchBlock.style.display = "flex";
         } else {
             hideSearch();
         }
