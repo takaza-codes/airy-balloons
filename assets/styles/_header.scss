@@ -82,6 +82,10 @@ main {
     text-align: right;
     font-size: 14px;
 
+    @include tablets-1024 {
+      display: none;
+    }
+
     .number_contact {
       @include Montserrat-700-base;
       font-size: 16px;
@@ -272,9 +276,6 @@ main {
   .top-bar {
     .top-bar__inner {
       justify-content: space-between;
-    }
-    .contact {
-      display: none;
     }
     .search {
       display: none;

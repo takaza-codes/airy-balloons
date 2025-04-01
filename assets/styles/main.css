@@ -250,6 +250,11 @@ main {
   text-align: right;
   font-size: 14px;
 }
+@media screen and (max-width: 1024px) {
+  .top-bar .contact {
+    display: none;
+  }
+}
 .top-bar .contact .number_contact {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
@@ -441,9 +446,6 @@ main {
   }
   .top-bar .top-bar__inner {
     justify-content: space-between;
-  }
-  .top-bar .contact {
-    display: none;
   }
   .top-bar .search {
     display: none;
