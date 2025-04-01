@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("searchInput");
     const searchBlock = document.querySelector(".search");
     const searchIcon = document.getElementById("searchIcon");
@@ -113,4 +113,4 @@ document.addEventListener("DOMContentLoaded", function () {
             hideSearch();
         }
     });
-});
+// });
