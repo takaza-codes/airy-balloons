@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     searchIcon.addEventListener("click", toggleSearch);
+    searchIcon.addEventListener("touchstart", toggleSearch);
 
     searchInput.addEventListener("click", (event) => event.stopPropagation());
     resultsDiv.addEventListener("click", (event) => event.stopPropagation());
@@ -46,10 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                const results = searchProducts(searchTerm);
-                displayResults(results);
-            }
+            if (!searchTerm) return;
+            const results = searchProducts(searchTerm);
+            displayResults(results);
         }
     });
 
@@ -91,6 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
         hideSearch();
     });
 
+    closeSearch.addEventListener("touchstart", () => {
+        searchOverlay.style.display = "none";
+        searchInput.value = "";
+        hideSearch();
+    });
+
     searchOverlay.addEventListener("click", (e) => {
         if (e.target === searchOverlay) {
             searchOverlay.style.display = "none";
@@ -101,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("resize", () => {
         if (window.innerWidth > 768) {
-            searchInput.style.display = "inline-block";
+            showSearch();
         } else {
             hideSearch();
         }
