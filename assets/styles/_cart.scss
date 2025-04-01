@@ -60,6 +60,11 @@ main {
     font-size: 1.1rem;
     color: gray;
 
+    a{
+      color: $black;
+      font-weight: bold;
+    }
+
     a:hover {
       color: $yellow;
     }
