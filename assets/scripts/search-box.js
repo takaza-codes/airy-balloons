@@ -33,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     searchIcon.addEventListener("click", toggleSearch);
-    searchIcon.addEventListener("touchstart", toggleSearch);
+    searchIcon.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        toggleSearch(e);
+    });
 
     searchInput.addEventListener("click", (event) => event.stopPropagation());
     resultsDiv.addEventListener("click", (event) => event.stopPropagation());
@@ -84,8 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         searchOverlay.style.display = "flex";
     }
-
-    closeSearch.addEventListener("click", () => {
+    
+    closeSearch.addEventListener("touchstart", (e) => {
+        e.preventDefault();
         searchOverlay.style.display = "none";
         searchInput.value = "";
         hideSearch();
