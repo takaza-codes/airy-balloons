@@ -370,7 +370,7 @@ function showErrorPopup() {
   const popupContainer = document.getElementById("popupContainer");
   const popupMessage = document.getElementById("popupMessage");
 
-  popupMessage.innerHTML = `При отправке произошла ошибка! Пожалуйста, <a href="https://wa.me/79272123514" target="_blank">свяжитесь с нами напрямую</a>`;
+  popupMessage.innerHTML = `При отправке произошла ошибка! Пожалуйста, <a href="https://wa.me/79272123524" target="_blank">свяжитесь с нами напрямую</a>`;
   popupContainer.classList.add("show-popup");
 
   setTimeout(() => {

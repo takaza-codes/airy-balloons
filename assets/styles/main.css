@@ -321,6 +321,7 @@ main {
   font-size: 14px;
 }
 .top-bar .search .input_search {
+  padding-left: 5px;
   width: 200px;
   height: 35px;
   border: 1px solid rgb(211, 210, 210);
@@ -436,6 +437,10 @@ main {
     display: none;
   }
   .top-bar .search {
+    display: none;
+  }
+  .top-bar .search a,
+  .top-bar .search .cataloge_btn {
     display: none;
   }
   .top-bar .header-right {
@@ -592,6 +597,8 @@ main {
 }
 
 .search-results-container {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
   background: white;
   padding: 10px 0;
   width: 60%;
@@ -645,23 +652,51 @@ main {
     grid-template-rows: 20% auto;
   }
 }
-.product .product-link .small-img {
+.product .product-link .small-img-container {
+  min-height: 150px;
+  max-height: 170px;
+  min-width: 150px;
   max-width: 200px;
   grid-column: 1/2;
   grid-row: 1/3;
-  border-radius: 4px;
 }
 @media screen and (max-width: 768px) {
-  .product .product-link .small-img {
+  .product .product-link .small-img-container {
     max-width: 150px;
   }
 }
 @media screen and (max-width: 440px) {
-  .product .product-link .small-img {
+  .product .product-link .small-img-container {
+    min-width: 90px;
     max-width: 100px;
+    min-height: 130px;
+    max-height: 150px;
+  }
+}
+.product .product-link .small-img-container .small-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  border-radius: 4px;
+  max-width: 200px;
+  max-height: 170px;
+}
+@media screen and (max-width: 768px) {
+  .product .product-link .small-img-container .small-img {
+    max-width: 150px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .product .product-link .small-img-container .small-img {
+    max-width: 100px;
+    min-height: 130px;
+    max-height: 150px;
   }
 }
 .product .product-link h3 {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
   justify-self: start;
   margin: 0;
   font-size: 1.5rem;
@@ -2057,28 +2092,28 @@ body {
   margin: 0;
 }
 
-main {
+.policy-main {
   margin-top: 200px;
   flex: 1 0 auto;
 }
-main .policy-title {
+.policy-main .policy-title {
   font-size: 24px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   text-align: center;
 }
-main .policy-text {
+.policy-main .policy-text {
   text-align: left;
 }
-main .policy-text h2 {
+.policy-main .policy-text h2 {
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   padding: 1rem 0 0.5rem 0;
 }
-main .policy-text p {
+.policy-main .policy-text p {
   padding: 0.1rem;
   font-size: 0.8rem;
 }

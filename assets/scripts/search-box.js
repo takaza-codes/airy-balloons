@@ -7,29 +7,38 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeSearch = document.getElementById("closeSearch");
 
     function toggleSearch(event) {
-        event.stopPropagation(); // Prevent the click from bubbling up to document
-    
-        // Show search input if hidden, otherwise do nothing
-        if (searchInput.style.display === "none" || searchInput.style.display === "" || searchBlock.style.display === "none") {
-            searchBlock.style.display = "flex";
-            searchBlock.innerHTML = `<input id="searchInput" class="input_search" type="search" placeholder="Поиск" />`
-            searchInput.style.display = "block";
-            searchInput.focus();
+        event.stopPropagation();
+
+        if (searchBlock.style.display === "none" || searchBlock.style.display === "") {
+            showSearch();
+        } else {
+            hideSearch();
         }
     }
-    
-    // Open search input when clicking the icon
-    searchIcon.addEventListener("click", toggleSearch);
-    
-    // Prevent input from closing when clicking inside it
-    searchInput.addEventListener("click", (event) => event.stopPropagation());
-    
-    // Close search input if clicking outside (on the document)
-    document.addEventListener("click", function () {
-        searchBlock.style.display = "none";
-    });
-    
 
+    function showSearch() {
+        searchBlock.style.display = "flex";
+        searchInput.style.display = "inline-block";
+        searchInput.focus();
+    }
+
+    function hideSearch() {
+        if (window.innerWidth <= 768) { 
+            searchBlock.style.display = "none";
+        }
+        resultsDiv.innerHTML = "";
+    }
+
+    searchIcon.addEventListener("click", toggleSearch);
+
+    searchInput.addEventListener("click", (event) => event.stopPropagation());
+    resultsDiv.addEventListener("click", (event) => event.stopPropagation());
+
+    document.addEventListener("click", function (event) {
+        if (!searchBlock.contains(event.target) && event.target !== searchIcon) {
+            hideSearch();
+        }
+    });
 
     searchInput.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
@@ -38,14 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const results = searchProducts(searchTerm);
                 displayResults(results);
             }
-        }
-    });
-
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 768) {
-            searchInput.style.display = "flex";
-        } else {
-            searchInput.style.display = "none";
         }
     });
 
@@ -67,7 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 productDiv.className = "product";
                 productDiv.innerHTML = `
                     <a href="/pages/product-page.html?id=${product.id}" target="_blank" class="product-link">
-                        <img src="${product.images[0]}" class="small-img">
+                        <div class="small-img-container">
+                    <img src="${product.images[0]}" class="small-img">
+                    </div>
                         <h3>${product.title}</h3>
                         <p>${product.description}</p>
                     </a>
@@ -81,12 +84,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     closeSearch.addEventListener("click", () => {
         searchOverlay.style.display = "none";
+        searchInput.value = "";
+        hideSearch();
     });
 
     searchOverlay.addEventListener("click", (e) => {
         if (e.target === searchOverlay) {
             searchOverlay.style.display = "none";
+            searchInput.value = "";
+            hideSearch();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+            searchInput.style.display = "inline-block";
+        } else {
+            hideSearch();
         }
     });
 });
-
