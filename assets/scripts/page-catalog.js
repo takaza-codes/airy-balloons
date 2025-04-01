@@ -42,21 +42,21 @@ class Goods {
     });
 
     rootGoods.innerHTML = `
-      <h1 class="goods-element__category">Для мальчиков</h1>
+      <h1 class="goods-element__category" id="for-boys-from-index">Для мальчиков</h1>
       <ul class="goods-container">${boysCatalog}</ul>
-      <h1 class="goods-element__category">Для девочек</h1>
+      <h1 class="goods-element__category" id="for-girls-from-index">Для девочек</h1>
       <ul class="goods-container">${girlsCatalog}</ul>
-      <h1 class="goods-element__category">Выписка из роддома</h1>
+      <h1 class="goods-element__category" id="for-newborn-from-index">Выписка из роддома</h1>
       <ul class="goods-container">${newbornCatalog}</ul>
-      <h1 class="goods-element__category">Гендер Пати</h1>
+      <h1 class="goods-element__category" id="for-genderParty-from-index">Гендер Пати</h1>
       <ul class="goods-container">${genderPartyCatalog}</ul>
-      <h1 class="goods-element__category">Девушкам</h1>
+      <h1 class="goods-element__category" id="for-woman-from-index">Девушкам</h1>
       <ul class="goods-container">${womanCatalog}</ul>
-      <h1 class="goods-element__category">Мужчинам</h1>
+      <h1 class="goods-element__category" id="for-man-from-index"">Мужчинам</h1>
       <ul class="goods-container">${manCatalog}</ul>
-      <h1 class="goods-element__category">Девичник</h1>
+      <h1 class="goods-element__category" id="for-bachelorette-from-index">Девичник</h1>
       <ul class="goods-container">${bacheloretteCatalog}</ul>
-      <h1 class="goods-element__category">14 февраля</h1>
+      <h1 class="goods-element__category" id="for-valentines-from-index">14 февраля</h1>
       <ul class="goods-container">${valentinesCatalog}</ul>
     `;
     this.addCartEventListeners();
