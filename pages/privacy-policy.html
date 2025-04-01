@@ -13,8 +13,99 @@
     <link rel="stylesheet" href="../assets/styles/main.css" />
   </head>
   <body>
-    <header>
-      <!-- header top-container -->
+    <header class="header">
+      <div class="header-fixed-wrapper">
+        <!-- Верхняя часть шапки -->
+        <div class="top-bar">
+          <div class="container top-bar__inner">
+            <!-- ЛОГОТИП -->
+            <div class="logo">
+              <a href="../index.html"
+                ><img
+                  src="../assets/logos/logo-color.svg"
+                  width="110"
+                  alt="логотип"
+              /></a>
+            </div>
+            <!-- Поиск и кнопка "Каталог" -->
+            <div class="search">
+              <a href="./page-catalog.html">
+                <button class="cataloge_btn">Каталог</button>
+              </a>
+              <input class="input_search" type="search" placeholder="Поиск" />
+            </div>
+
+            <!-- Блок с контактами -->
+            <div class="contact">
+              <a
+                href="https://wa.me/79272123514"
+                class="number_contact"
+                target="_blank"
+                >+7 927 212-35-14</a
+              >
+              <p class="reception">Прием заявок</p>
+              <p class="time">с 9:00 до 20:00</p>
+            </div>
+            <!-- Мессенджеры и корзина (справа) -->
+            <div class="header-right">
+              <div class="messengers">
+                <a
+                  href="https://t.me/mary_zharkova"
+                  target="_blank"
+                  class="footer__social-link"
+                  title="Напишите в Telegram"
+                >
+                  <img
+                    class="telegram"
+                    src="../assets/messenger/telegram.svg"
+                    alt="Telegram"
+                  />
+                </a>
+                <a
+                  href="https://wa.me/79272123514"
+                  target="_blank"
+                  class="footer__social-link"
+                  title="Напишите в WhatsApp"
+                >
+                  <img
+                    class="whatsapp"
+                    src="../assets/messenger/whatsapp.svg"
+                    alt="Whatsapp"
+                  />
+                </a>
+              </div>
+              <div class="basket-wrap">
+                <a href="./cart.html">
+                  <img
+                    class="basket"
+                    src="../assets/header/cart.svg"
+                    alt="Корзина"
+                  />
+                  <span class="cart-count" id="cart-count">0</span>
+                </a>
+              </div>
+              <!-- Гамбургер (по умолчанию скрыт, показываем на планшетах) -->
+              <div class="hamb" id="hamb">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Основное меню (для десктопа или при клике на гамбургер) -->
+        <nav class="main-nav">
+          <div class="container nav__inner">
+            <ul class="menu" id="menu">
+              <li><a href="../index.html">Главная</a></li>
+              <li><a href="../index.html#delivery">Доставка/Оплата</a></li>
+              <li><a href="../index.html#contacts">Контакты</a></li>
+              <li><a href="../index.html#about">О нас</a></li>
+              <li><a href="../index.html#reviews">Отзывы</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </header>
     <main>
       <h1 class="policy-title">
