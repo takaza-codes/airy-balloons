@@ -1063,7 +1063,10 @@ main {
   font-size: 1.1rem;
   color: gray;
 }
-.cartItems #emptyMsg a:hover {
+.cartItems #emptyMsg a {
+  font-weight: 600;
+}
+.cartItems #emptyMsg:hover {
   color: rgb(245, 210, 88);
 }
 .cartItems #cartList {
@@ -2161,4 +2164,4 @@ body {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}
+}/*# sourceMappingURL=main.css.map */

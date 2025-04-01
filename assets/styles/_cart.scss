@@ -60,7 +60,11 @@ main {
     font-size: 1.1rem;
     color: gray;
 
-    a:hover {
+    a {
+      font-weight: $font-weight-600;
+    }
+
+    &:hover {
       color: $yellow;
     }
   }
