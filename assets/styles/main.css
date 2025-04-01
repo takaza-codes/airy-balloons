@@ -727,7 +727,7 @@ main {
   }
 }
 .product .product-link p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: gray;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -1064,8 +1064,7 @@ main {
   color: gray;
 }
 .cartItems #emptyMsg a {
-  color: rgb(30, 26, 26);
-  font-weight: bold;
+  font-weight: 600;
 }
 .cartItems #emptyMsg a:hover {
   color: rgb(245, 210, 88);
@@ -2165,4 +2164,4 @@ body {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}
+}/*# sourceMappingURL=main.css.map */

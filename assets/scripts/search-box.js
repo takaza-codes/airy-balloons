@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultsDiv = document.getElementById("results");
     const searchOverlay = document.getElementById("searchOverlay");
     const closeSearch = document.getElementById("closeSearch");
+    const messengerIcons = document.querySelector(".messengers");
 
     function toggleSearch(event) {
         event.stopPropagation();
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showSearch() {
+        messengerIcons.style.display = "none";
         searchBlock.style.display = "flex";
         searchInput.style.display = "inline-block";
         searchInput.focus();
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             searchBlock.style.display = "none";
         }
         resultsDiv.innerHTML = "";
+        messengerIcons.style.display = "flex";
     }
 
     searchIcon.addEventListener("click", toggleSearch);
