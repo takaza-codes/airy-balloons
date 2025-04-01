@@ -1672,7 +1672,6 @@ main {
 @media screen and (max-width: 440px) {
   .order-controls .quantity-block {
     width: 100%;
-    display: flex;
     justify-content: center;
   }
 }
@@ -2114,4 +2113,4 @@ main .policy-text p {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}/*# sourceMappingURL=main.css.map */
+}
