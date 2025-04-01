@@ -29,5 +29,9 @@ h6 {
 }
 
 section, [id] {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 140px;
+
+  @include phones {
+    scroll-margin-top: 120px;
+  }
 }

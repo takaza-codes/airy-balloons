@@ -31,7 +31,12 @@ h6 {
 }
 
 section, [id] {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 140px;
+}
+@media screen and (max-width: 440px) {
+  section, [id] {
+    scroll-margin-top: 120px;
+  }
 }
 
 @font-face {
@@ -909,7 +914,7 @@ main {
 .contacts {
   padding-left: 5.2%;
   padding-right: 5.2%;
-  margin-top: 100px;
+  margin-top: 4rem;
 }
 .contacts__title {
   font-family: "Montserrat", sans-serif;
@@ -1838,7 +1843,7 @@ main {
   }
 }
 .popular {
-  padding-top: 4rem;
+  margin-top: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
@@ -1920,7 +1925,7 @@ main {
 }
 .delivery {
   align-self: flex-start;
-  padding-top: 4rem;
+  margin-top: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
   font-family: "Montserrat", sans-serif;
@@ -1964,14 +1969,13 @@ main {
 }
 @media screen and (max-width: 440px) {
   .delivery {
-    padding-left: 0;
-    padding-right: 0;
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     font-size: 0.9rem;
   }
 }
 .about {
-  padding-top: 4rem;
+  margin-top: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
@@ -2036,8 +2040,7 @@ main {
   }
 }
 .reviews {
-  padding-top: 4rem;
-  margin-bottom: 48px;
+  margin-top: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
