@@ -14,6 +14,16 @@
   padding-right: 8px;
 }
 
+@mixin padding-415 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+@mixin padding-375 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 // Базовый миксин для Montserrat
 @mixin Montserrat-base {
   font-family: $font-Montserrat;
