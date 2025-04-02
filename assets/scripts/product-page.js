@@ -1,5 +1,6 @@
 // ====================== Корзина ======================
-// Функция для отправки события обновления корзины
+
+// Функция для отправки события обновления корзины (используется в разных файлах)
 function dispatchCartUpdate() {
   document.dispatchEvent(new CustomEvent("cartUpdated"));
 }
@@ -14,6 +15,9 @@ function getCart() {
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+/*  
+// --- Блок синхронизации между вкладками (использование BroadcastChannel) --- 
 
 // Создаём канал для синхронизации между вкладками/страницами (Изменение №S1)
 let cartChannel;
@@ -30,10 +34,17 @@ function updateCartAcrossTabs() {
     dispatchCartUpdate();
   }
 }
+*/
+
+// Если синхронизация через API отключена, оставляем updateCartAcrossTabs с вызовом только кастомного события:
+function updateCartAcrossTabs() {
+  dispatchCartUpdate();
+}
 
 // (Изменение №B) Функция addToCart – если товар уже есть, увеличиваем quantity, иначе добавляем объект с полем quantity = itemCount.
 function addToCart(productId, itemCount = 1) {
   const cart = getCart();
+  // Предполагается, что глобальный массив products определён и доступен
   const productToAdd = products.find(p => p.id === productId);
   if (!productToAdd) return;
 
@@ -47,7 +58,7 @@ function addToCart(productId, itemCount = 1) {
 
   saveCart(cart);
   showToast(`${productToAdd.title} добавлен в корзину`);
-  updateCartAcrossTabs(); // уведомляем другие вкладки
+  updateCartAcrossTabs(); // уведомляем другие вкладки (через кастомное событие)
 }
 
 // (Изменение №C) Функция removeFromCart – уменьшает quantity, если >1, иначе удаляет товар.
@@ -63,7 +74,7 @@ function removeFromCart(productId) {
       showToast("Товар удалён из корзины");
     }
     saveCart(cart);
-    updateCartAcrossTabs(); // уведомляем другие вкладки
+    updateCartAcrossTabs(); // уведомляем другие вкладки (через кастомное событие)
   }
 }
 
@@ -135,19 +146,28 @@ function showToast(message) {
 
 // ====================== Рендер карточки товара ======================
 
+// Получаем параметры из URL и идентификатор товара
 const urlParams = new URLSearchParams(window.location.search);
 const productId = +urlParams.get('id');
+
+// Находим элементы страницы для отображения товара и похожих товаров
 const productPageEl = document.getElementById('productPage');
 const similarContainer = document.getElementById('similarProducts');
+
+// Ищем товар в глобальном массиве products
 const product = products.find(p => p.id === productId);
 
+// Если товар не найден, выводим сообщение
 if (!product) {
   productPageEl.innerHTML = '<p>Товар не найден!</p>';
 } else {
+  // Разбиваем описание товара на строки для создания списка
   const lines = product.description.split('\n').map(line => line.trim()).filter(Boolean);
   const listItems = lines.map(line => `<li>${line}</li>`).join('');
+  // Определяем основное изображение товара (если нет – подставляем заглушку)
   const mainImage = product.images?.[0] || '../assets/images/no-image.jpg';
 
+  // Формируем HTML-разметку страницы товара
   productPageEl.innerHTML = `
     <h2 class="product-title">${product.title}</h2>
     <div class="product-card">
@@ -174,9 +194,9 @@ if (!product) {
     </div>
   `;
 
-  // -----------------------------
-  // Логика счётчика товара
-  // -----------------------------
+  // -------------- Логика счётчика товара --------------
+
+  // Объявляем переменные, связанные с количеством товара и элементами управления
   let quantity = 0;
   const orderControls = document.getElementById("orderControls");
   const orderBtn = document.getElementById("orderBtn");
@@ -184,11 +204,12 @@ if (!product) {
   const incrementBtn = document.querySelector(".increment");
   const decrementBtn = document.querySelector(".decrement");
 
+  // Функция обновления отображения количества товара
   function updateQuantityDisplay() {
     quantityNum.textContent = quantity;
   }
 
-  // (Изменение №1) При загрузке проверяем, есть ли этот товар в корзине
+  // При загрузке страницы проверяем, есть ли этот товар в корзине
   const cart = getCart();
   const itemInCart = cart.find(item => item.id === productId);
   if (itemInCart) {
@@ -200,7 +221,7 @@ if (!product) {
   }
   updateQuantityDisplay();
 
-  // (Изменение №2) При клике "Заказать" – устанавливаем quantity = 1, скрываем кнопку "Заказать"
+  // Обработчик клика по кнопке "В корзину"
   orderBtn.addEventListener("click", () => {
     quantity = 1;
     orderControls.classList.add("active");
@@ -209,14 +230,14 @@ if (!product) {
     addToCart(product.id, 1);
   });
 
-  // При клике "+" увеличиваем quantity и вызываем addToCart
+  // Обработчик кнопки "+" для увеличения количества товара
   incrementBtn.addEventListener("click", () => {
     quantity++;
     updateQuantityDisplay();
     addToCart(product.id, 1);
   });
 
-  // При клике "-" уменьшаем quantity и вызываем removeFromCart
+  // Обработчик кнопки "−" для уменьшения количества товара
   decrementBtn.addEventListener("click", () => {
     if (quantity > 0) {
       quantity--;
@@ -229,56 +250,65 @@ if (!product) {
     }
   });
 
-  renderSimilarProducts(product);
-}
-
-// (Изменение №S2) Слушаем сообщения канала для обновления страницы товара в реальном времени
-if (cartChannel) {
-  cartChannel.onmessage = (event) => {
-    if (event.data === 'updateCart') {
-      const cart = getCart();
-      const itemInCart = cart.find(item => item.id === productId);
-      if (itemInCart) {
-        quantity = itemInCart.quantity;
-        orderControls.classList.add("active");
-        orderBtn.style.display = 'none';
-      } else {
-        quantity = 0;
-        orderControls.classList.remove("active");
-        orderBtn.style.display = 'inline-block';
+  /*  
+  // --- Блок синхронизации через API (BroadcastChannel) на странице товара --- 
+  // Этот блок закомментирован, так как мы отключаем межвкладочную синхронизацию через API.
+  if (cartChannel) {
+    cartChannel.onmessage = (event) => {
+      if (event.data === 'updateCart') {
+        const cart = getCart();
+        const itemInCart = cart.find(item => item.id === productId);
+        if (itemInCart) {
+          quantity = itemInCart.quantity;
+          orderControls.classList.add("active");
+          orderBtn.style.display = 'none';
+        } else {
+          quantity = 0;
+          orderControls.classList.remove("active");
+          orderBtn.style.display = 'inline-block';
+        }
+        updateQuantityDisplay();
       }
-      updateQuantityDisplay();
+    };
+  }
+  */
+
+  // Оставляем кастомное событие "cartUpdated" для синхронизации (например, между страницей товара и страницей корзины)
+  // document.addEventListener("cartUpdated", () => { ... }); // можно добавить, если требуется
+
+  // Функция для рендера похожих товаров
+  function renderSimilarProducts(currentProduct) {
+    // Фильтруем товары той же категории, исключая текущий
+    const sameCategory = products.filter(
+      p => p.category === currentProduct.category && p.id !== currentProduct.id
+    );
+
+    if (!sameCategory.length) {
+      similarContainer.innerHTML = '';
+      return;
     }
-  };
-}
 
-function renderSimilarProducts(currentProduct) {
-  const sameCategory = products.filter(
-    p => p.category === currentProduct.category && p.id !== currentProduct.id
-  );
+    let html = `<h2 class="similar-title">Похожие товары</h2>`;
+    html += `<div class="similar-list">`;
 
-  if (!sameCategory.length) {
-    similarContainer.innerHTML = '';
-    return;
+    sameCategory.forEach(item => {
+      const imageSrc = item.images?.[0] || '../assets/photos/no-photo.jpg';
+      html += `
+        <div class="similar-item">
+          <a href="product-page.html?id=${item.id}" class="similar-img-link">
+            <img src="${imageSrc}" alt="${item.title}" class="similar-img" />
+          </a>
+          <h3 class="similar-item-title">${item.title}</h3>
+          <p class="similar-item-price">${item.price}₽</p>
+          <a href="product-page.html?id=${item.id}" class="btn btn--transparent">Подробнее</a>
+        </div>
+      `;
+    });
+
+    html += `</div>`;
+    similarContainer.innerHTML = html;
   }
 
-  let html = `<h2 class="similar-title">Похожие товары</h2>`;
-  html += `<div class="similar-list">`;
-
-  sameCategory.forEach(item => {
-    const imageSrc = item.images?.[0] || '../assets/photos/no-photo.jpg';
-    html += `
-      <div class="similar-item">
-        <a href="product-page.html?id=${item.id}" class="similar-img-link">
-          <img src="${imageSrc}" alt="${item.title}" class="similar-img" />
-        </a>
-        <h3 class="similar-item-title">${item.title}</h3>
-        <p class="similar-item-price">${item.price}₽</p>
-        <a href="product-page.html?id=${item.id}" class="btn btn--transparent">Подробнее</a>
-      </div>
-    `;
-  });
-
-  html += `</div>`;
-  similarContainer.innerHTML = html;
+  // Вызываем функцию для рендера похожих товаров
+  renderSimilarProducts(product);
 }
