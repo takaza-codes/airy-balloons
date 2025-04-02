@@ -1,8 +1,11 @@
 const rootGoods = document.getElementById("page-catalog");
 class Goods {
+  constructor() {
+    this.cartCountElement = document.getElementById("cart-count"); // Элемент для отображения количества товаров
+  }
   render() {
-    let boysCatalog = "";
     let girlsCatalog = "";
+    let boysCatalog = "";
     let newbornCatalog = "";
     let genderPartyCatalog = "";
     let womanCatalog = "";
@@ -18,14 +21,13 @@ class Goods {
           <h3 class="goods-element__title">${title}</h3>
           <div class="buttons">
 <a class="view-details" href="product-page.html?id=${id}">Подробнее</a>
-<a class="add-to-cart" data-id="${id}" data-title="${title}" data-price="${price}">В корзину</a>
           </div>
         </li>`;
 
-      if (category === "boy") {
-        boysCatalog += itemHTML;
-      } else if (category === "girl") {
+      if (category === "girl") {
         girlsCatalog += itemHTML;
+      } else if (category === "boy") {
+        boysCatalog += itemHTML;
       } else if (category === "newborn") {
         newbornCatalog += itemHTML;
       } else if (category === "gender-party") {
@@ -42,10 +44,10 @@ class Goods {
     });
 
     rootGoods.innerHTML = `
-      <h1 class="goods-element__category" id="for-boys-from-index">Для мальчиков</h1>
-      <ul class="goods-container">${boysCatalog}</ul>
       <h1 class="goods-element__category" id="for-girls-from-index">Для девочек</h1>
       <ul class="goods-container">${girlsCatalog}</ul>
+      <h1 class="goods-element__category" id="for-boys-from-index">Для мальчиков</h1>
+      <ul class="goods-container">${boysCatalog}</ul>
       <h1 class="goods-element__category" id="for-newborn-from-index">Выписка из роддома</h1>
       <ul class="goods-container">${newbornCatalog}</ul>
       <h1 class="goods-element__category" id="for-genderParty-from-index">Гендер Пати</h1>
@@ -59,6 +61,7 @@ class Goods {
       <h1 class="goods-element__category" id="for-valentines-from-index">14 февраля</h1>
       <ul class="goods-container">${valentinesCatalog}</ul>
     `;
+    this.updateCartCount();
     this.addCartEventListeners();
   }
   addCartEventListeners() {
@@ -68,13 +71,15 @@ class Goods {
         const productId = button.dataset.id;
         const productTitle = button.dataset.title;
         const productPrice = button.dataset.price;
-
-        this.addToCart(productId, productTitle, productPrice);
+        const productImage = button
+          .closest(".goods-element")
+          .querySelector(".goods-element__img").src;
+        this.addToCart(productId, productTitle, productPrice, productImage);
       });
     });
   }
 
-  addToCart(id, title, price) {
+  addToCart(id, title, price, images) {
     // Получаем текущую корзину из localStorage
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -88,6 +93,7 @@ class Goods {
       // Если товара нет, добавляем его в корзину
       cart.push({
         id: id,
+        image: images, // Сохраняем изображение
         title: title,
         price: price,
         quantity: 1,
@@ -97,6 +103,15 @@ class Goods {
     // Сохраняем обновленную корзину в localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(`${title} добавлен в корзину!`); // Уведомление о добавлении товара
+    this.updateCartCount(); // Обновляем счетчик после добавления товара
+  }
+  updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    if (this.cartCountElement) {
+      this.cartCountElement.textContent = totalCount; // Обновляем текст элемента с количеством товаров
+    }
   }
 }
 
