@@ -53,14 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Вызывать модальное окно при клике на иконку поиска, если она есть
     if (searchIcon) {
         searchIcon.addEventListener("click", toggleSearch);
-        // searchIcon.addEventListener("touchstart", (e) => {
-        //     e.preventDefault();
-        //     toggleSearch(e);
-        // });
         searchIcon.addEventListener("touchstart", (e) => {
-            // Здесь можно вызвать stopPropagation, если нужно предотвратить всплытие,
-            // но не отменяем стандартное поведение, чтобы якорные ссылки работали.
-            e.stopPropagation();
+            e.preventDefault();
             toggleSearch(e);
         });
     }
