@@ -121,14 +121,3 @@ class Goods {
 
 const goodsPage = new Goods();
 goodsPage.render();
-
-// Сразу после рендеринга проверяем выбранную категорию
-const selectedCategory = localStorage.getItem("selectedCategory");
-if (selectedCategory) {
-  const targetId = `for-${selectedCategory}-from-index`;
-  const targetElement = document.getElementById(targetId);
-  if (targetElement) {
-    targetElement.scrollIntoView({ behavior: "smooth" });
-  }
-  localStorage.removeItem("selectedCategory");
-};
