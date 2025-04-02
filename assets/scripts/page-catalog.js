@@ -65,17 +65,6 @@ class Goods {
       <h1 class="goods-element__category" id="for-valentines-from-index">14 февраля</h1>
       <ul class="goods-container">${valentinesCatalog}</ul>
     `;
-
-    if (window.location.hash) {
-      const element = document.querySelector(window.location.hash);
-      if (element) {
-        // Если у вас фиксированная шапка, можно учесть её высоту:
-        const headerHeight = document.querySelector('.header-fixed-wrapper') ? document.querySelector('.header-fixed-wrapper').offsetHeight : 0;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: elementPosition, behavior: 'smooth' });
-      }
-    }
-
     this.updateCartCount();
     this.addCartEventListeners();
   }
@@ -132,3 +121,19 @@ class Goods {
 
 const goodsPage = new Goods();
 goodsPage.render();
+
+// На странице каталога (после загрузки страницы)
+document.addEventListener("DOMContentLoaded", () => {
+  const selectedCategory = localStorage.getItem("selectedCategory");
+  if (selectedCategory) {
+    // Составляем id для заголовка нужного раздела
+    const targetId = `for-${selectedCategory}-from-index`;
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      // Прокручиваем страницу к нужному разделу
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+    // Убираем значение после использования
+    localStorage.removeItem("selectedCategory");
+  }
+});

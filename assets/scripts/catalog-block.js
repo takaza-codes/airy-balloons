@@ -65,3 +65,20 @@ document.querySelectorAll(".catalogue__image img").forEach((img) => {
 //     window.location.href = "../../pages/page-catalog.html";
 //   });
 // });
+
+// На главной странице (при клике на карточку категории)
+document.querySelectorAll(".catalogue__item").forEach((item) => {
+  item.addEventListener("click", (e) => {
+    // Отменяем стандартное поведение, если клик по ссылке внутри карточки
+    if (e.target.closest("a")) {
+      e.preventDefault();
+    }
+    // Получаем значение категории из data-атрибута
+    const category = item.getAttribute("data-category") || "all";
+    // Сохраняем выбранную категорию в localStorage
+    localStorage.setItem("selectedCategory", category);
+    // Переходим на страницу каталога
+    window.location.href = "./pages/page-catalog.html";
+  });
+});
+
