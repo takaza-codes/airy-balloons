@@ -121,16 +121,3 @@ class Goods {
 
 const goodsPage = new Goods();
 goodsPage.render();
-
-const selectedCategory = localStorage.getItem("selectedCategory");
-if (selectedCategory) {
-  const targetId = `for-${selectedCategory}-from-index`;
-  const targetElement = document.getElementById(targetId);
-  if (targetElement) {
-    // Можно добавить задержку, чтобы убедиться, что элемент отрисован
-    setTimeout(() => {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  }
-  localStorage.removeItem("selectedCategory");
-}
