@@ -8,13 +8,15 @@ popularItems.forEach((item) => {
   card.classList.add("popular__item");
 
   card.innerHTML = `
+  <a href="/pages/product-page.html?id=${item.id}" target="_blank">
     <div class="popular__image">
-      <a href="/pages/product-page.html?id=${item.id}" target="_blank"><img src="${item.images[0]}" alt="${item.title}" /></a>
+      <img src="${item.images[0]}" alt="${item.title}" />
     </div>
     <div class="popular__info">
       <h3 class="popular__title">${item.title}</h3>
       <p class="popular__price">${item.price} ₽</p>
     </div>
+    </a>
   `;
 
   popularList.appendChild(card);
