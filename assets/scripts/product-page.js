@@ -148,7 +148,7 @@ if (!product) {
       <div class="product-info">
         <p class="product-price">${product.price}₽</p>
         <div class="order-controls" id="orderControls">
-          <button class="btn" id="orderBtn">Заказать</button>
+          <button class="btn" id="orderBtn">В корзину</button>
           <div class="quantity-block">
             <button class="decrement">−</button>
             <span class="quantity-num">0</span>
