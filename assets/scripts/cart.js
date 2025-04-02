@@ -1,7 +1,7 @@
 // Функция для отправки события обновления корзины
-function dispatchCartUpdate() {
-  document.dispatchEvent(new CustomEvent("cartUpdated"));
-}
+// function dispatchCartUpdate() {
+//   document.dispatchEvent(new CustomEvent("cartUpdated"));
+// }
 
 // Элементы страницы корзины
 const cartList = document.getElementById('cartList');
@@ -380,4 +380,4 @@ function showErrorPopup() {
 }
 
 // При получении события обновления корзины перерисовываем список
-document.addEventListener("cartUpdated", renderCart);
+// document.addEventListener("cartUpdated", renderCart);
