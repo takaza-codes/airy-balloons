@@ -507,6 +507,7 @@ main {
   }
   .banner {
     min-height: 300px;
+    margin-bottom: 4rem;
   }
   .banner .banner__content {
     padding: 20px;
@@ -961,7 +962,7 @@ main {
 .contacts {
   padding-left: 5.2%;
   padding-right: 5.2%;
-  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 .contacts__title {
   font-family: "Montserrat", sans-serif;
@@ -1805,7 +1806,7 @@ main {
 }
 
 .catalogue {
-  margin-top: 4rem;
+  margin-bottom: 4rem;
   width: 100%;
   box-sizing: border-box;
   padding-left: 5.2%;
@@ -1892,7 +1893,7 @@ main {
   }
 }
 .popular {
-  margin-top: 4rem;
+  margin-bottom: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
@@ -1974,7 +1975,7 @@ main {
 }
 .delivery {
   align-self: flex-start;
-  margin-top: 4rem;
+  margin-bottom: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
   font-family: "Montserrat", sans-serif;
@@ -2024,7 +2025,7 @@ main {
   }
 }
 .about {
-  margin-top: 4rem;
+  margin-bottom: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
@@ -2089,7 +2090,7 @@ main {
   }
 }
 .reviews {
-  margin-top: 4rem;
+  margin-bottom: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
