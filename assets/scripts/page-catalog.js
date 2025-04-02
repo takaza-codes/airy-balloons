@@ -48,9 +48,9 @@ class Goods {
     });
 
     rootGoods.innerHTML = `
-      <h1 class="goods-element__category" id="for-girls-from-index">Для девочек</h1>
+      <h1 class="goods-element__category" id="for-girl-from-index">Для девочек</h1>
       <ul class="goods-container">${girlsCatalog}</ul>
-      <h1 class="goods-element__category" id="for-boys-from-index">Для мальчиков</h1>
+      <h1 class="goods-element__category" id="for-boy-from-index">Для мальчиков</h1>
       <ul class="goods-container">${boysCatalog}</ul>
       <h1 class="goods-element__category" id="for-newborn-from-index">Выписка из роддома</h1>
       <ul class="goods-container">${newbornCatalog}</ul>
