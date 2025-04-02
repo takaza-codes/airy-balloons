@@ -43,10 +43,10 @@
             <!-- Блок с контактами -->
             <div class="contact">
               <a
-                href="https://wa.me/79272123514"
+                href="https://wa.me/79272123524"
                 class="number_contact"
                 target="_blank"
-                >+7 927 212-35-14</a
+                >+7 927 212-35-24</a
               >
               <p class="reception">Прием заявок</p>
               <p class="time">с 9:00 до 20:00</p>
@@ -74,7 +74,7 @@
                   />
                 </a>
                 <a
-                  href="https://wa.me/79272123514"
+                  href="https://wa.me/79272123524"
                   target="_blank"
                   class="footer__social-link"
                   title="Напишите в WhatsApp"
@@ -124,7 +124,14 @@
       <div id="searchOverlay" class="search-overlay">
         <div class="search-results-container">
           <span id="closeSearch" class="close-btn">&times;</span>
-          <h2>Результаты поиска</h2>
+          <div class="mobile-input-container">
+            <input
+              id="searchInputMobile"
+              class="input_search"
+              type="search"
+              placeholder="Поиск"
+            />
+          </div>
           <div id="results"></div>
         </div>
       </div>
@@ -590,8 +597,15 @@
     <footer class="go-back">
       <button class="btn"><a href="../index.html">На главную</a></button>
     </footer>
+    <!-- Скрипт БД -->
     <script src="../assets/scripts/data.js"></script>
     <!-- Скрипт для поиска -->
     <script src="../assets/scripts/search-box.js"></script>
+    <!-- Скрипт для бургера -->
+    <script src="../assets/scripts/burger.js"></script>
+    <!-- Скрипт для бейджа корзины-->
+    <script src="../assets/scripts/cart-badge.js"></script>
+    <!-- Скрипт для уведомления всех частей приложения об изменениях в корзине-->
+    <script src="../assets/scripts/cart-events.js"></script>
   </body>
 </html>
