@@ -122,18 +122,13 @@ class Goods {
 const goodsPage = new Goods();
 goodsPage.render();
 
-// На странице каталога (после загрузки страницы)
-document.addEventListener("DOMContentLoaded", () => {
-  const selectedCategory = localStorage.getItem("selectedCategory");
-  if (selectedCategory) {
-    // Составляем id для заголовка нужного раздела
-    const targetId = `for-${selectedCategory}-from-index`;
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      // Прокручиваем страницу к нужному разделу
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
-    // Убираем значение после использования
-    localStorage.removeItem("selectedCategory");
+// Сразу после рендеринга проверяем выбранную категорию
+const selectedCategory = localStorage.getItem("selectedCategory");
+if (selectedCategory) {
+  const targetId = `for-${selectedCategory}-from-index`;
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: "smooth" });
   }
-});
+  localStorage.removeItem("selectedCategory");
+};
