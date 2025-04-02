@@ -54,7 +54,7 @@ class Goods {
       <ul class="goods-container">${boysCatalog}</ul>
       <h1 class="goods-element__category" id="for-newborn-from-index">Выписка из роддома</h1>
       <ul class="goods-container">${newbornCatalog}</ul>
-      <h1 class="goods-element__category" id="for-genderParty-from-index">Гендер Пати</h1>
+      <h1 class="goods-element__category" id="for-gender-party-from-index">Гендер Пати</h1>
       <ul class="goods-container">${genderPartyCatalog}</ul>
       <h1 class="goods-element__category" id="for-woman-from-index">Девушкам</h1>
       <ul class="goods-container">${womanCatalog}</ul>
@@ -121,3 +121,16 @@ class Goods {
 
 const goodsPage = new Goods();
 goodsPage.render();
+
+const selectedCategory = localStorage.getItem("selectedCategory");
+if (selectedCategory) {
+  const targetId = `for-${selectedCategory}-from-index`;
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    // Можно добавить задержку, чтобы убедиться, что элемент отрисован
+    setTimeout(() => {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }
+  localStorage.removeItem("selectedCategory");
+}
