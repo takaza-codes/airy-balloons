@@ -1554,7 +1554,17 @@ main {
   padding-left: 5.2%;
   padding-right: 5.2%;
   margin: 0px auto;
-  margin-top: 140px;
+  margin-top: 110px;
+}
+@media screen and (max-width: 768px) {
+  .product-page-wrapper {
+    margin-top: 80px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .product-page-wrapper {
+    margin-top: 60px;
+  }
 }
 
 /***************************************************

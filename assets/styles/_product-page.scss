@@ -4,8 +4,16 @@
 .product-page-wrapper {
   @include padding-1920;
   margin: 0px auto;
-  margin-top: 140px;
-  // margin-bottom: 100px;
+  margin-top: 110px;
+
+  @include tablets {
+    margin-top: 80px;
+  }
+
+  @include phones {
+    margin-top: 60px;
+  }
+  
 }
 
 /***************************************************
