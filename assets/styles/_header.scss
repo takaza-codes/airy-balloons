@@ -22,6 +22,7 @@ main {
 .header {
   width: 100%;
   background-color: $white;
+  margin-bottom: 4rem;
   @include padding-1920;
 
   @include tablets {
@@ -337,7 +338,6 @@ main {
 
   .banner {
     min-height: 300px; // Минимальная высота для планшетов
-    margin-bottom: 4rem;
     .banner__content {
       padding: 20px;
       .airy_banner {

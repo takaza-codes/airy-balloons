@@ -189,6 +189,7 @@ main {
 .header {
   width: 100%;
   background-color: rgb(255, 255, 255);
+  margin-bottom: 4rem;
   padding-left: 5.2%;
   padding-right: 5.2%;
 }
@@ -507,7 +508,6 @@ main {
   }
   .banner {
     min-height: 300px;
-    margin-bottom: 4rem;
   }
   .banner .banner__content {
     padding: 20px;

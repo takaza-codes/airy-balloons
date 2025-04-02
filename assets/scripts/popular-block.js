@@ -8,7 +8,7 @@ popularItems.forEach((item) => {
   card.classList.add("popular__item");
 
   card.innerHTML = `
-  <a href="/pages/product-page.html?id=${item.id}" target="_blank">
+  <a href="/pages/product-page.html?id=${item.id}">
     <div class="popular__image">
       <img src="${item.images[0]}" alt="${item.title}" />
     </div>
