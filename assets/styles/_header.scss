@@ -499,7 +499,7 @@ main {
       align-items: center;
     }
 
-    .small-img-container {
+    #small-img-container {
       min-height: 130px;
       max-height: 150px;
       min-width: 150px;
@@ -522,14 +522,17 @@ main {
         object-fit: cover;
         overflow: hidden;
         border-radius: 4px;
+        min-height: 130px;
+        max-height: 150px;
+        min-width: 150px;
         max-width: 200px;
-        max-height: 170px;
 
         @include tablets {
           max-width: 150px;
         }
 
         @include phones {
+          min-width: 90px;
           max-width: 100px;
           min-height: 130px;
           max-height: 150px;
