@@ -39,6 +39,12 @@ section, [id] {
   }
 }
 
+/* Когда элемент является целью (активным якорем),
+   сбрасываем отступ, чтобы при повторном переходе он не добавлялся повторно */
+section:target, [id]:target {
+  scroll-margin-top: 0;
+}
+
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Bold.woff") format("woff");
@@ -2199,4 +2205,4 @@ body {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}/*# sourceMappingURL=main.css.map */
+}
