@@ -477,8 +477,8 @@ main {
 }
 
 .product {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem 0.5rem;
+  border-bottom: 2px solid $pink;
   transition: background 0.3s;
 
   &:hover {
@@ -500,8 +500,8 @@ main {
     }
 
     .small-img-container {
-      min-height: 150px;
-      max-height: 170px;
+      min-height: 130px;
+      max-height: 150px;
       min-width: 150px;
       max-width: 200px;
       grid-column: 1 / 2;
@@ -558,14 +558,14 @@ main {
     }
 
     p {
-      font-size: 1rem;
+      font-size: 0.8rem;
       color: gray;
       grid-column: 2 / 3;
       grid-row: 2 / 3;
       padding-right: 1rem;
 
       @include tablets {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
 
       @include phones {
@@ -573,4 +573,18 @@ main {
       }
     }
   }
+}
+
+.mobile-input-container {
+  padding: 2rem 0;
+}
+
+#searchInputMobile {
+  padding-left: 5px;
+  width: 200px;
+  height: 35px;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 3px;
+  box-sizing: border-box;
+  @include custom-input-focus;
 }

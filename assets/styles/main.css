@@ -640,8 +640,8 @@ main {
 }
 
 .product {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem 0.5rem;
+  border-bottom: 2px solid rgb(242, 215, 219);
   transition: background 0.3s;
 }
 .product:hover {
@@ -665,8 +665,8 @@ main {
   }
 }
 .product .product-link .small-img-container {
-  min-height: 150px;
-  max-height: 170px;
+  min-height: 130px;
+  max-height: 150px;
   min-width: 150px;
   max-width: 200px;
   grid-column: 1/2;
@@ -729,7 +729,7 @@ main {
   }
 }
 .product .product-link p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: gray;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -737,13 +737,44 @@ main {
 }
 @media screen and (max-width: 768px) {
   .product .product-link p {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 @media screen and (max-width: 440px) {
   .product .product-link p {
     display: none;
   }
+}
+
+.mobile-input-container {
+  padding: 2rem 0;
+}
+
+#searchInputMobile {
+  padding-left: 5px;
+  width: 200px;
+  height: 35px;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+#searchInputMobile:focus {
+  outline: 1.5px solid rgb(245, 210, 88);
+  outline-offset: 2px;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+#searchInputMobile::-moz-selection {
+  background-color: transparent !important;
+}
+#searchInputMobile:-webkit-autofill, #searchInputMobile:-webkit-autofill:hover, #searchInputMobile:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .basket-wrap {
@@ -2165,4 +2196,4 @@ body {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-}
+}/*# sourceMappingURL=main.css.map */
