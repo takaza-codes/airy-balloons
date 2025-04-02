@@ -124,7 +124,14 @@
       <div id="searchOverlay" class="search-overlay">
         <div class="search-results-container">
           <span id="closeSearch" class="close-btn">&times;</span>
-          <h2>Результаты поиска</h2>
+          <div class="mobile-input-container">
+            <input
+              id="searchInputMobile"
+              class="input_search"
+              type="search"
+              placeholder="Поиск"
+            />
+          </div>
           <div id="results"></div>
         </div>
       </div>
@@ -590,7 +597,7 @@
     <footer class="go-back">
       <button class="btn"><a href="../index.html">На главную</a></button>
     </footer>
-      <!-- Скрипт БД -->
+    <!-- Скрипт БД -->
     <script src="../assets/scripts/data.js"></script>
     <!-- Скрипт для поиска -->
     <script src="../assets/scripts/search-box.js"></script>

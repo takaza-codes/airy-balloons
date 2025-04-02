@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 productDiv.className = "product";
                 productDiv.innerHTML = `
                     <a href="/pages/product-page.html?id=${product.id}" target="_blank" class="product-link">
-                        <div class="small-img-container">
+                        <div id="small-img-container">
                             <img src="${product.images[0]}" class="small-img">
                         </div>
                         <h3>${product.title}</h3>
