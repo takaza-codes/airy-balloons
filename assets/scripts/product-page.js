@@ -12,12 +12,19 @@ function saveCart(cart) {
 }
 
 // Создаём канал для синхронизации между вкладками/страницами (Изменение №S1)
-const cartChannel = new BroadcastChannel('cartChannel');
+// let cartChannel;
+// if ('BroadcastChannel' in window) {
+//   cartChannel = new BroadcastChannel('cartChannel');
+// }
 
 // Функция для обновления корзины в других вкладках и отправки кастомного события
 function updateCartAcrossTabs() {
-  cartChannel.postMessage('updateCart');
-  dispatchCartUpdate(); // Функция dispatchCartUpdate() должна быть определена глобально (например, в отдельном файле или выше)
+  // if (cartChannel) {
+  //   cartChannel.postMessage('updateCart');
+  // }
+  if (typeof dispatchCartUpdate === 'function') {
+    dispatchCartUpdate();
+  }
 }
 
 // (Изменение №B) Функция addToCart – если товар уже есть, увеличиваем quantity, иначе добавляем объект с полем quantity = itemCount.
@@ -222,22 +229,24 @@ if (!product) {
 }
 
 // (Изменение №S2) Слушаем сообщения канала для обновления страницы товара в реальном времени
-cartChannel.onmessage = (event) => {
-  if (event.data === 'updateCart') {
-    const cart = getCart();
-    const itemInCart = cart.find(item => item.id === productId);
-    if (itemInCart) {
-      quantity = itemInCart.quantity;
-      orderControls.classList.add("active");
-      orderBtn.style.display = 'none';
-    } else {
-      quantity = 0;
-      orderControls.classList.remove("active");
-      orderBtn.style.display = 'inline-block';
-    }
-    updateQuantityDisplay();
-  }
-};
+// if (cartChannel) {
+//   cartChannel.onmessage = (event) => {
+//     if (event.data === 'updateCart') {
+//       const cart = getCart();
+//       const itemInCart = cart.find(item => item.id === productId);
+//       if (itemInCart) {
+//         quantity = itemInCart.quantity;
+//         orderControls.classList.add("active");
+//         orderBtn.style.display = 'none';
+//       } else {
+//         quantity = 0;
+//         orderControls.classList.remove("active");
+//         orderBtn.style.display = 'inline-block';
+//       }
+//       updateQuantityDisplay();
+//     }
+//   };
+// }
 
 function renderSimilarProducts(currentProduct) {
   const sameCategory = products.filter(
