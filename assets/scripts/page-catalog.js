@@ -15,12 +15,16 @@ class Goods {
 
     products.forEach(({ id, category, images, title, price }) => {
       const itemHTML = `
-        <li class="goods-element">
-          <img class="goods-element__img" src ="${images}"/>
-          <h2 class="goods-element__price">${price} p</h2>
-          <h3 class="goods-element__title">${title}</h3>
+          <li class="goods-element">
+          <a href="product-page.html?id=${id}">
+            <img class="goods-element__img" src ="${images}"/>
+          </a>
+          <h2 class="goods-element__price">${price}₽</h2>
+          <a href="product-page.html?id=${id}">
+            <h3 class="goods-element__title">${title}</h3>
+          </a>
           <div class="buttons">
-<a class="view-details" href="product-page.html?id=${id}">Подробнее</a>
+          <a class="view-details" href="product-page.html?id=${id}">Подробнее</a>
           </div>
         </li>`;
 
@@ -54,13 +58,24 @@ class Goods {
       <ul class="goods-container">${genderPartyCatalog}</ul>
       <h1 class="goods-element__category" id="for-woman-from-index">Девушкам</h1>
       <ul class="goods-container">${womanCatalog}</ul>
-      <h1 class="goods-element__category" id="for-man-from-index"">Мужчинам</h1>
+      <h1 class="goods-element__category" id="for-man-from-index">Мужчинам</h1>
       <ul class="goods-container">${manCatalog}</ul>
       <h1 class="goods-element__category" id="for-bachelorette-from-index">Девичник</h1>
       <ul class="goods-container">${bacheloretteCatalog}</ul>
       <h1 class="goods-element__category" id="for-valentines-from-index">14 февраля</h1>
       <ul class="goods-container">${valentinesCatalog}</ul>
     `;
+
+    if (window.location.hash) {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        // Если у вас фиксированная шапка, можно учесть её высоту:
+        const headerHeight = document.querySelector('.header-fixed-wrapper') ? document.querySelector('.header-fixed-wrapper').offsetHeight : 0;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+      }
+    }
+
     this.updateCartCount();
     this.addCartEventListeners();
   }
