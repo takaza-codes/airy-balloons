@@ -30,15 +30,6 @@ h6 {
   margin: 0;
 }
 
-section, [id] {
-  scroll-margin-top: 140px;
-}
-@media screen and (max-width: 440px) {
-  section, [id] {
-    scroll-margin-top: 120px;
-  }
-}
-
 /* Когда элемент является целью (активным якорем),
    сбрасываем отступ, чтобы при повторном переходе он не добавлялся повторно */
 section:target, [id]:target {
@@ -2180,8 +2171,13 @@ body {
 }
 
 .policy-main {
-  margin-top: 200px;
+  margin-top: 140px;
   flex: 1 0 auto;
+}
+@media screen and (max-width: 440px) {
+  .policy-main {
+    margin-top: 120px;
+  }
 }
 .policy-main .policy-title {
   font-size: 24px;
