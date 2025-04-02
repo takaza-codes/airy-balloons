@@ -1677,6 +1677,11 @@ main {
   display: flex;
   gap: 24px;
 }
+@media screen and (max-width: 375px) {
+  .similar-products .similar-list {
+    gap: 16px;
+  }
+}
 .similar-products .similar-item {
   width: 200px;
   border: 1px solid #eee;

@@ -117,6 +117,10 @@
   .similar-list {
     display: flex;
     gap: 24px;
+
+    @include phones-375 {
+      gap: 16px;
+    }
   }
 
   .similar-item {
