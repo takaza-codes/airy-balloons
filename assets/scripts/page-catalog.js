@@ -22,43 +22,38 @@ class Goods {
   }
 
   render() {
-    // Если блок с пилюлями существует – навешиваем обработчики кликов
     if (this.categoryPills) {
       this.categoryPills.querySelectorAll(".pill").forEach(pill => {
         pill.addEventListener("click", () => {
-          // Устанавливаем выбранную категорию из data-атрибута
           this.currentCategory = pill.getAttribute("data-category");
-          // Обновляем активное состояние всех кнопок
           this.categoryPills.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
           pill.classList.add("active");
-          // Прокручиваем активную пилюлю влево, если она не видна
+          // Прокручиваем активную пилюлю влево, без вертикальной прокрутки
           pill.scrollIntoView({
             inline: "start",
+            block: "nearest",
             behavior: "smooth"
           });
-          // Перерисовываем каталог с учетом выбранной категории
           this.renderCatalog();
         });
       });
-      // Если по хэшу определена категория, установим активное состояние соответствующей пилюли
       if (this.currentCategory) {
         const activePill = this.categoryPills.querySelector(`.pill[data-category="${this.currentCategory}"]`);
         if (activePill) {
           activePill.classList.add("active");
           activePill.scrollIntoView({
             inline: "start",
+            block: "nearest",
             behavior: "smooth"
           });
         }
       }
     }
-    // Начальный рендер каталога и обновление счетчика корзины
     this.renderCatalog();
     this.updateCartCount();
   }
 
   renderCatalog() {
-    // Задаем фиксированный порядок категорий с заголовками
     const sections = [
       { key: "girl", label: "Для девочек", content: "" },
       { key: "boy", label: "Для мальчиков", content: "" },
@@ -70,7 +65,6 @@ class Goods {
       { key: "valentines", label: "14 февраля", content: "" }
     ];
 
-    // Заполняем содержимое для каждой категории
     products.forEach(({ id, category, images, title, price }) => {
       const itemHTML = `
         <li class="goods-element">
@@ -94,7 +88,6 @@ class Goods {
 
     let html = "";
 
-    // Если никакая категория не выбрана (пустая строка), выводим все секции
     if (!this.currentCategory) {
       sections.forEach(section => {
         if (section.content.trim() !== "") {
@@ -103,13 +96,11 @@ class Goods {
         }
       });
     } else {
-      // Если выбрана определенная категория – выводим сначала выбранную секцию...
       const selectedSection = sections.find(sec => sec.key === this.currentCategory);
       if (selectedSection && selectedSection.content.trim() !== "") {
         html += `<h1 class="goods-element__category" id="for-${selectedSection.key}-from-index">${selectedSection.label}</h1>`;
         html += `<ul class="goods-container">${selectedSection.content}</ul>`;
       }
-      // ...а затем остальные секции
       sections.forEach(section => {
         if (section.key !== this.currentCategory && section.content.trim() !== "") {
           html += `<h1 class="goods-element__category" id="for-${section.key}-from-index">${section.label}</h1>`;
@@ -117,7 +108,6 @@ class Goods {
         }
       });
     }
-
     rootGoods.innerHTML = html;
   }
 
@@ -130,6 +120,5 @@ class Goods {
   }
 }
 
-// Инициализируем страницу каталога
 const goodsPage = new Goods();
 goodsPage.render();

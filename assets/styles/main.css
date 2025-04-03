@@ -53,6 +53,12 @@ section:target, section [id]:target {
 [id]:not(section) {
   scroll-margin-top: 200px !important;
 }
+@media screen and (max-width: 440px) {
+  [id]:not(section) {
+    scroll-margin-top: 220px !important;
+  }
+}
+
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Bold.woff") format("woff");
@@ -2328,6 +2334,14 @@ body {
   justify-content: flex-start;
   font-size: 2rem;
   margin-bottom: 24px;
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+@media screen and (max-width: 768px) {
+  .goods-element__category {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
 }
 
 .view-details {

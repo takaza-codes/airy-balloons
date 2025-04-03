@@ -59,6 +59,11 @@
   justify-content: flex-start;
   font-size: 2rem;
   margin-bottom: 24px;
+  @include padding-1920;
+
+  @include tablets {
+    @include padding-768;
+  }
 }
 
 .view-details {
