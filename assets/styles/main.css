@@ -2423,6 +2423,7 @@ body {
   transition: background-color 0.3s;
   font-family: "Montserrat", sans-serif;
   flex: 0 0 auto;
+  color: rgb(30, 26, 26);
 }
 .category-pills .pill:hover {
   background-color: #f3f3f3;
