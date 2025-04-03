@@ -53,12 +53,6 @@ section:target, section [id]:target {
 [id]:not(section) {
   scroll-margin-top: 200px !important;
 }
-@media screen and (max-width: 440px) {
-  [id]:not(section) {
-    scroll-margin-top: 220px !important;
-  }
-}
-
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Bold.woff") format("woff");

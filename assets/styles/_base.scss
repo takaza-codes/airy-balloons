@@ -51,6 +51,6 @@ section:target, section [id]:target {
   scroll-margin-top: 200px !important;
   
   @include phones {
-    scroll-margin-top: 220px !important;
+    // scroll-margin-top: 220px !important;
   }
 }
