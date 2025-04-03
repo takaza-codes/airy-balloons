@@ -1,123 +1,135 @@
 const rootGoods = document.getElementById("page-catalog");
+
 class Goods {
   constructor() {
-    this.cartCountElement = document.getElementById("cart-count"); // Элемент для отображения количества товаров
+    this.cartCountElement = document.getElementById("cart-count");
+    // по умолчанию нет выбранной категории (показываются все)
+    this.currentCategory = "";
+    this.categoryPills = document.getElementById("category-pills");
+    // Если в URL есть хэш, пробуем определить выбранную категорию
+    this.initCategoryFromHash();
   }
-  render() {
-    let girlsCatalog = "";
-    let boysCatalog = "";
-    let newbornCatalog = "";
-    let genderPartyCatalog = "";
-    let womanCatalog = "";
-    let manCatalog = "";
-    let bacheloretteCatalog = "";
-    let valentinesCatalog = "";
 
+  initCategoryFromHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      // ожидаем формат "#for-{category}-from-index"
+      const match = hash.match(/for-([^-\s]+)-from-index/);
+      if (match && match[1]) {
+        this.currentCategory = match[1];
+      }
+    }
+  }
+
+  render() {
+    // Если блок с пилюлями существует – навешиваем обработчики кликов
+    if (this.categoryPills) {
+      this.categoryPills.querySelectorAll(".pill").forEach(pill => {
+        pill.addEventListener("click", () => {
+          // Устанавливаем выбранную категорию из data-атрибута
+          this.currentCategory = pill.getAttribute("data-category");
+          // Обновляем активное состояние всех кнопок
+          this.categoryPills.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          // Прокручиваем активную пилюлю влево, если она не видна
+          pill.scrollIntoView({
+            inline: "start",
+            behavior: "smooth"
+          });
+          // Перерисовываем каталог с учетом выбранной категории
+          this.renderCatalog();
+        });
+      });
+      // Если по хэшу определена категория, установим активное состояние соответствующей пилюли
+      if (this.currentCategory) {
+        const activePill = this.categoryPills.querySelector(`.pill[data-category="${this.currentCategory}"]`);
+        if (activePill) {
+          activePill.classList.add("active");
+          activePill.scrollIntoView({
+            inline: "start",
+            behavior: "smooth"
+          });
+        }
+      }
+    }
+    // Начальный рендер каталога и обновление счетчика корзины
+    this.renderCatalog();
+    this.updateCartCount();
+  }
+
+  renderCatalog() {
+    // Задаем фиксированный порядок категорий с заголовками
+    const sections = [
+      { key: "girl", label: "Для девочек", content: "" },
+      { key: "boy", label: "Для мальчиков", content: "" },
+      { key: "newborn", label: "Выписка из роддома", content: "" },
+      { key: "genderParty", label: "Гендер Пати", content: "" },
+      { key: "woman", label: "Девушкам", content: "" },
+      { key: "man", label: "Мужчинам", content: "" },
+      { key: "bachelorette", label: "Девичник", content: "" },
+      { key: "valentines", label: "14 февраля", content: "" }
+    ];
+
+    // Заполняем содержимое для каждой категории
     products.forEach(({ id, category, images, title, price }) => {
       const itemHTML = `
-          <li class="goods-element">
+        <li class="goods-element">
           <a href="product-page.html?id=${id}">
-            <img class="goods-element__img" src ="${images}"/>
+            <img class="goods-element__img" src="${images}" alt="${title}" />
           </a>
           <h2 class="goods-element__price">${price}₽</h2>
           <a href="product-page.html?id=${id}">
             <h3 class="goods-element__title">${title}</h3>
           </a>
           <div class="buttons">
-          <a class="view-details" href="product-page.html?id=${id}">Подробнее</a>
+            <a class="view-details" href="product-page.html?id=${id}">Подробнее</a>
           </div>
-        </li>`;
-
-      if (category === "girl") {
-        girlsCatalog += itemHTML;
-      } else if (category === "boy") {
-        boysCatalog += itemHTML;
-      } else if (category === "newborn") {
-        newbornCatalog += itemHTML;
-      } else if (category === "gender-party") {
-        genderPartyCatalog += itemHTML;
-      } else if (category === "woman") {
-        womanCatalog += itemHTML;
-      } else if (category === "man") {
-        manCatalog += itemHTML;
-      } else if (category === "bachelorette") {
-        bacheloretteCatalog += itemHTML;
-      } else if (category === "valentines") {
-        valentinesCatalog += itemHTML;
+        </li>
+      `;
+      const section = sections.find(sec => sec.key === category);
+      if (section) {
+        section.content += itemHTML;
       }
     });
 
-    rootGoods.innerHTML = `
-      <section class="goods-element__category" id="for-girl-from-index">Для девочек</section>
-      <ul class="goods-container">${girlsCatalog}</ul>
-      <section class="goods-element__category" id="for-boy-from-index">Для мальчиков</section>
-      <ul class="goods-container">${boysCatalog}</ul>
-      <section class="goods-element__category" id="for-newborn-from-index">Выписка из роддома</section>
-      <ul class="goods-container">${newbornCatalog}</ul>
-      <section class="goods-element__category" id="for-gender-party-from-index">Гендер Пати</section>
-      <ul class="goods-container">${genderPartyCatalog}</ul>
-      <section class="goods-element__category" id="for-woman-from-index">Девушкам</section>
-      <ul class="goods-container">${womanCatalog}</ul>
-      <section class="goods-element__category" id="for-man-from-index">Мужчинам</section>
-      <ul class="goods-container">${manCatalog}</ul>
-      <section class="goods-element__category" id="for-bachelorette-from-index">Девичник</section>
-      <ul class="goods-container">${bacheloretteCatalog}</ul>
-      <section class="goods-element__category" id="for-valentines-from-index">14 февраля</section>
-      <ul class="goods-container">${valentinesCatalog}</ul>
-    `;
-    this.updateCartCount();
-    this.addCartEventListeners();
-  }
-  addCartEventListeners() {
-    const addToCartButtons = document.querySelectorAll(".add-to-cart");
-    addToCartButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const productId = button.dataset.id;
-        const productTitle = button.dataset.title;
-        const productPrice = button.dataset.price;
-        const productImage = button
-          .closest(".goods-element")
-          .querySelector(".goods-element__img").src;
-        this.addToCart(productId, productTitle, productPrice, productImage);
+    let html = "";
+
+    // Если никакая категория не выбрана (пустая строка), выводим все секции
+    if (!this.currentCategory) {
+      sections.forEach(section => {
+        if (section.content.trim() !== "") {
+          html += `<h1 class="goods-element__category" id="for-${section.key}-from-index">${section.label}</h1>`;
+          html += `<ul class="goods-container">${section.content}</ul>`;
+        }
       });
-    });
-  }
-
-  addToCart(id, title, price, images) {
-    // Получаем текущую корзину из localStorage
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    // Проверяем, есть ли товар уже в корзине
-    const existingProductIndex = cart.findIndex((item) => item.id === id);
-
-    if (existingProductIndex > -1) {
-      // Если товар уже есть, увеличиваем его количество
-      cart[existingProductIndex].quantity++;
     } else {
-      // Если товара нет, добавляем его в корзину
-      cart.push({
-        id: id,
-        image: images, // Сохраняем изображение
-        title: title,
-        price: price,
-        quantity: 1,
+      // Если выбрана определенная категория – выводим сначала выбранную секцию...
+      const selectedSection = sections.find(sec => sec.key === this.currentCategory);
+      if (selectedSection && selectedSection.content.trim() !== "") {
+        html += `<h1 class="goods-element__category" id="for-${selectedSection.key}-from-index">${selectedSection.label}</h1>`;
+        html += `<ul class="goods-container">${selectedSection.content}</ul>`;
+      }
+      // ...а затем остальные секции
+      sections.forEach(section => {
+        if (section.key !== this.currentCategory && section.content.trim() !== "") {
+          html += `<h1 class="goods-element__category" id="for-${section.key}-from-index">${section.label}</h1>`;
+          html += `<ul class="goods-container">${section.content}</ul>`;
+        }
       });
     }
 
-    // Сохраняем обновленную корзину в localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${title} добавлен в корзину!`); // Уведомление о добавлении товара
-    this.updateCartCount(); // Обновляем счетчик после добавления товара
+    rootGoods.innerHTML = html;
   }
+
   updateCartCount() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-
     if (this.cartCountElement) {
-      this.cartCountElement.textContent = totalCount; // Обновляем текст элемента с количеством товаров
+      this.cartCountElement.textContent = totalCount;
     }
   }
 }
 
+// Инициализируем страницу каталога
 const goodsPage = new Goods();
 goodsPage.render();

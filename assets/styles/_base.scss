@@ -28,7 +28,8 @@ h6 {
 	margin: 0;
 }
 
-section, [id] {
+// Правило для section и элементов с id внутри section
+section, section [id] {
   scroll-margin-top: 140px;
 
   @include phones {
@@ -36,12 +37,20 @@ section, [id] {
   }
 }
 
-/* Когда элемент является целью (активным якорем),
-   сбрасываем отступ, чтобы при повторном переходе он не добавлялся повторно */
-   section:target, [id]:target {
-    scroll-margin-top: 140px;
+/* Правило для активного якоря внутри section */
+section:target, section [id]:target {
+  scroll-margin-top: 140px;
 
-    @include phones {
-      scroll-margin-top: 120px;
-    }
+  @include phones {
+    scroll-margin-top: 120px;
   }
+}
+
+/* Общее правило для элементов с id, которые не являются section */
+[id]:not(section) {
+  scroll-margin-top: 200px !important;
+  
+  @include phones {
+    scroll-margin-top: 220px !important;
+  }
+}

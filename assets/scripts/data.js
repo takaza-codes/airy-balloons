@@ -253,7 +253,7 @@ const products = [
   // ———————————————————————————
   {
     id: 16,
-    category: "gender-party",
+    category: "genderParty",
     title: "Шар на определение пола ребёнка №23",
     price: 2900,
     description: `Загадочный шар на определение пола ребёнка! Подарит незабываемый момент открытия для всей семьи.
@@ -269,7 +269,7 @@ const products = [
   },
   {
     id: 17,
-    category: "gender-party",
+    category: "genderParty",
     title: "Шар на определение пола ребёнка №24",
     price: 2500,
     description: `Компактный шар с наполнением для гендер-пати. Удивите близких радостным сюрпризом.
@@ -284,7 +284,7 @@ const products = [
   },
   {
     id: 18,
-    category: "gender-party",
+    category: "genderParty",
     title: "Набор воздушных шаров для гендер пати №25",
     price: 5150,
     description: `Большой шар и 2 связки шаров: идеальное решение для эффектного раскрытия пола малыша.

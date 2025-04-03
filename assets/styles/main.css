@@ -30,23 +30,32 @@ h6 {
   margin: 0;
 }
 
-section, [id] {
+section, section [id] {
   scroll-margin-top: 140px;
 }
 @media screen and (max-width: 440px) {
-  section, [id] {
+  section, section [id] {
     scroll-margin-top: 120px;
   }
 }
 
-/* Когда элемент является целью (активным якорем),
-   сбрасываем отступ, чтобы при повторном переходе он не добавлялся повторно */
-section:target, [id]:target {
+/* Правило для активного якоря внутри section */
+section:target, section [id]:target {
   scroll-margin-top: 140px;
 }
 @media screen and (max-width: 440px) {
-  section:target, [id]:target {
+  section:target, section [id]:target {
     scroll-margin-top: 120px;
+  }
+}
+
+/* Общее правило для элементов с id, которые не являются section */
+[id]:not(section) {
+  scroll-margin-top: 200px !important;
+}
+@media screen and (max-width: 440px) {
+  [id]:not(section) {
+    scroll-margin-top: 220px !important;
   }
 }
 
@@ -162,6 +171,38 @@ section:target, [id]:target {
 }
 .btn.btn--white-red:active {
   transform: scale(0.98);
+}
+
+.button-up {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(238, 27, 85);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+.button-up:hover {
+  transform: scale(1.2);
+}
+@media screen and (max-width: 440px) {
+  .button-up {
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+  .button-up:hover {
+    transform: scale(1.2);
+  }
 }
 
 /***************************
@@ -2231,4 +2272,214 @@ body {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
+}
+
+.catalog-main {
+  width: 100%;
+  margin-top: 64px;
+}
+
+.goods-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.goods-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.goods-element__img {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+
+.goods-element__price {
+  margin-bottom: auto;
+  font-family: "Montserrat";
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.goods-element__title {
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.goods-element__category {
+  margin-bottom: auto;
+  font-family: "Montserrat";
+  font-weight: bold;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.view-details {
+  font-family: "Montserrat";
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(238, 27, 85);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  width: 240px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.view-details:hover {
+  background-color: rgb(200, 20, 70);
+}
+.view-details:active {
+  transform: scale(0.95);
+}
+.view-details:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(238, 27, 85, 0.5);
+}
+.view-details:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 480px) {
+  .view-details,
+  .add-to-cart {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .goods-element__category {
+    font-size: 1.2rem;
+    margin-left: 5%;
+    margin-top: 2rem;
+    justify-content: center;
+    text-align: center;
+  }
+  .goods-element__title {
+    font-size: 14px;
+  }
+  .goods-element__price {
+    font-size: 16px;
+  }
+}
+.category-pills {
+  display: none;
+  gap: 10px;
+  padding: 10px 0;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.category-pills::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .category-pills {
+    display: flex;
+  }
+}
+.category-pills .pill {
+  border: 1px solid #999;
+  border-radius: 20px;
+  padding: 8px 16px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Montserrat", sans-serif;
+  flex: 0 0 auto;
+}
+.category-pills .pill:hover {
+  background-color: #f3f3f3;
+}
+.category-pills .pill.active {
+  background-color: #ee1b55;
+  color: #fff;
+  border-color: #ee1b55;
+}
+
+@media screen and (max-width: 768px) {
+  .category-pills {
+    display: flex !important; /* принудительно показываем пилюли */
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+  .category-pills .pill {
+    border: 1px solid #999;
+    border-radius: 20px;
+    padding: 8px 16px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Montserrat", sans-serif;
+    flex: 0 0 auto;
+  }
+  .category-pills .pill:hover {
+    background-color: #f3f3f3;
+  }
+  .category-pills .pill.active {
+    background-color: #ee1b55;
+    color: #fff;
+    border-color: #ee1b55;
+  }
+  .goods-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .product-card-mini .product-info h3 {
+    font-size: 16px;
+  }
+  .product-card-mini .product-info .product-price {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .page-catalog {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .category-pills {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .goods-container {
+    grid-template-columns: 1fr;
+  }
 }

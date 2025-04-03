@@ -81,3 +81,34 @@
     }
   }
 }
+
+.button-up {
+  @include Montserrat-300-base;
+  font-size: $font-size-regular; 
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $red;
+  color: $white;
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include phones {
+    width: 60px;
+    height: 60px;
+    font-size: 14px; 
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

@@ -7,7 +7,6 @@
     <title>Каталог товаров</title>
     <link rel="stylesheet" href="../assets/styles/normalize.css" />
     <link rel="stylesheet" href="../assets/styles/main.css" />
-    <link rel="stylesheet" href="../assets/styles/page-catalog.css" />
   </head>
   <body>
     <header class="header">
@@ -107,8 +106,27 @@
           <div id="results"></div>
       </div>
     </div>
+
     <!-- Основной контент страницы каталога -->
-    <div class="page-catalog" id="page-catalog"></div>
+    <main class="catalog-main">
+      <!-- Пилюли с категориями -->
+      <div class="category-pills" id="category-pills">
+        <button class="pill" data-category="girl">Девочке</button>
+        <button class="pill" data-category="boy">Мальчику</button>
+        <button class="pill" data-category="newborn">Выписка</button>
+        <button class="pill" data-category="genderParty">Гендер-пати</button>
+        <button class="pill" data-category="woman">Девушкам</button>
+        <button class="pill" data-category="man">Мужчине</button>
+        <button class="pill" data-category="bachelorette">Девичник</button>
+        <button class="pill" data-category="valentines">14 февраля</button>
+      </div>
+      <!-- Каталог товаров -->
+      <section class="page-catalog" id="page-catalog"></section>
+    </main>
+
+    <button class="button-up" id="scrollToTopButton" aria-label="Scroll to top">
+      Наверх
+    </button>
 
     <footer class="footer">
       <div class="footer__contacts">
@@ -160,5 +178,7 @@
 
     <!-- Скрипт для поиска -->
   <script src="../assets/scripts/search-box.js"></script>
+
+  <script src="../assets/scripts/button-up.js"></script>
   </body>
 </html>
