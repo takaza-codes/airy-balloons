@@ -9,6 +9,7 @@ exports.handler = async (event) => {
     };
   }
 
+  
   try {
     if (!event.body) {
       throw new Error("Отсутствует тело запроса");
