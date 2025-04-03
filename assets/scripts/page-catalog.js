@@ -48,21 +48,21 @@ class Goods {
     });
 
     rootGoods.innerHTML = `
-      <h1 class="goods-element__category" id="for-girl-from-index">Для девочек</h1>
+      <section class="goods-element__category" id="for-girl-from-index">Для девочек</section>
       <ul class="goods-container">${girlsCatalog}</ul>
-      <h1 class="goods-element__category" id="for-boy-from-index">Для мальчиков</h1>
+      <section class="goods-element__category" id="for-boy-from-index">Для мальчиков</section>
       <ul class="goods-container">${boysCatalog}</ul>
-      <h1 class="goods-element__category" id="for-newborn-from-index">Выписка из роддома</h1>
+      <section class="goods-element__category" id="for-newborn-from-index">Выписка из роддома</section>
       <ul class="goods-container">${newbornCatalog}</ul>
-      <h1 class="goods-element__category" id="for-gender-party-from-index">Гендер Пати</h1>
+      <section class="goods-element__category" id="for-gender-party-from-index">Гендер Пати</section>
       <ul class="goods-container">${genderPartyCatalog}</ul>
-      <h1 class="goods-element__category" id="for-woman-from-index">Девушкам</h1>
+      <section class="goods-element__category" id="for-woman-from-index">Девушкам</section>
       <ul class="goods-container">${womanCatalog}</ul>
-      <h1 class="goods-element__category" id="for-man-from-index">Мужчинам</h1>
+      <section class="goods-element__category" id="for-man-from-index">Мужчинам</section>
       <ul class="goods-container">${manCatalog}</ul>
-      <h1 class="goods-element__category" id="for-bachelorette-from-index">Девичник</h1>
+      <section class="goods-element__category" id="for-bachelorette-from-index">Девичник</section>
       <ul class="goods-container">${bacheloretteCatalog}</ul>
-      <h1 class="goods-element__category" id="for-valentines-from-index">14 февраля</h1>
+      <section class="goods-element__category" id="for-valentines-from-index">14 февраля</section>
       <ul class="goods-container">${valentinesCatalog}</ul>
     `;
     this.updateCartCount();
