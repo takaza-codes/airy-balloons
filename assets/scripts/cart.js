@@ -338,6 +338,7 @@ orderForm.addEventListener('submit', function(evt) {
         orderDetails.innerHTML = '';
         orderFinal.innerHTML = '';
         localStorage.removeItem('cart');
+        dispatchCartUpdate(); // Добавляем вызов обновления корзины
         successBtn();
         setTimeout(restoreBtn, 3000);
         orderForm.reset();
