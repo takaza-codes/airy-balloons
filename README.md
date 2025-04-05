@@ -12,6 +12,8 @@
 - [Особенности проекта](#особенности-проекта)
 - [Технологический стек](#технологический-стек)
 - [Netlify и деплой](#netlify-и-деплой)
+- [Ссылка на сайт](#ссылка-на-сайт)
+- [Команда](#команда)
 
 ---
 
@@ -46,6 +48,23 @@
 - Файл **netlify.toml** содержит конфигурацию сборки и указание на корневую директорию или папку сборки.
 - Папка **netlify/functions** содержит serverless-функции, которые автоматически разворачиваются как AWS Lambda.
 - При пуше изменений в основную ветку, Netlify автоматически деплоит обновленную версию сайта.
+
+---
+
+## Ссылка на сайт
+
+[airy-balloons](https://airy-balloons.netlify.app/)
+
+---
+
+## Команда
+
+- [takaza-codes](https://github.com/takaza-codes)
+- [KamDiaV](https://github.com/KamDiaV)
+- [AlyonaKI](https://github.com/AlyonaKI)
+- [ungalianta](https://github.com/ungalianta)
+- [o-kova](https://github.com/o-kova)
+- [KoraDraw](https://github.com/KoraDraw)
 
 ---
 
