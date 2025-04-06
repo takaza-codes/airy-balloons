@@ -1,0 +1,83 @@
+.contacts {
+  @include padding-1920;
+  margin-bottom: 4rem;
+
+  &__title {
+    @include h3;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__info {
+    flex: 0 0 30%;
+    margin-top: 32px;
+
+    p {
+      @include h5;
+      @include Montserrat-400-base;
+      color: $black;
+      margin-bottom: 16px;
+
+      a{
+        cursor: pointer; 
+        display: inline-flex;
+        align-items: center;
+        text-decoration: underline;
+      }
+      
+      a:hover {
+        color: $blue; 
+      }
+      
+    }
+
+    .address {
+      display: block;
+    }
+  }
+
+  &__map {
+    flex: 0 0 70%;
+    overflow: hidden;
+
+    iframe,
+    img {
+      width: 100%;
+      height: 300px;
+      display: block;
+    }
+  }
+
+  @include tablets {
+    @include padding-768;
+
+    &__wrapper {
+      flex-direction: column;
+    }
+
+    &__info,
+    &__map {
+      width: 100%;
+    }
+  }
+
+  @include phones {
+    @include padding-440;
+  }
+}
+
+.contacts__address {
+  @include Montserrat-400-base;
+  color: $black;
+  text-align: center;
+  margin-top: 8px;
+}

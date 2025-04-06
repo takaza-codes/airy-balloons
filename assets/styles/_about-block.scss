@@ -1,0 +1,59 @@
+.about {
+  margin-bottom: 4rem;
+  @include padding-1920;
+  @include tablets {
+    @include padding-768;
+  }
+  @include phones {
+    @include padding-440;
+  }
+
+  &__title {
+    @include h3;
+    margin-bottom: 2rem;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 40rem;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__description {
+    @include h5;
+    font-weight: 600;
+    font-size: large;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+}
+
+@include tablets {
+  .about {
+    &__title {
+      text-align: center;
+      font-size: 36px;
+    }
+    &__description {
+      font-size: 0.64rem;
+    }
+  }
+}
+@include phones {
+  .about {
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    &__description {
+      font-size: 0.8rem;
+    }
+  }
+}

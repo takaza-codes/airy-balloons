@@ -1,0 +1,36 @@
+// import files with variables, mixins, media, base
+@import "./variables";
+@import "./mixins";
+@import "./media";
+@import "./base";
+
+// link normalize
+@import "./normalize.css";
+
+// import fonts
+@import "../fonts/fonts";
+
+// common blocks
+@import "./button";
+@import "./header";
+@import "./cart-badge";
+@import "./footer";
+
+// link landing page
+@import "./contacts";
+
+// link cart page
+@import "./cart";
+
+// link product page
+@import "./product-page";
+
+//Блок с каталогом на главной странице
+@import "./catalog-block";
+@import "./popular-block";
+@import "./delivery-block";
+@import "./about-block";
+@import "./reviews-block";
+@import "./privacy-policy";
+
+@import "./page-catalog";

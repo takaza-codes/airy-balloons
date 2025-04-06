@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/logos/balloons.svg"
+      type="image/svg+xml"
+    />
+    <title>Корзина</title>
+    <link rel="stylesheet" href="../assets/styles/normalize.css" />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-fixed-wrapper">
+        <!-- Верхняя часть шапки -->
+        <div class="top-bar">
+          <div class="container top-bar__inner">
+            <!-- ЛОГОТИП -->
+            <div class="logo">
+              <a href="../index.html"><img
+                src="../assets/logos/logo-color.svg"
+                width="110"
+                alt="логотип"
+              /></a>
+            </div>
+            <!-- Поиск и кнопка "Каталог" -->
+            <div class="search">
+              <a href="./page-catalog.html">
+                <button class="cataloge_btn">Каталог</button>
+              </a>
+              <input id="searchInput" class="input_search" type="search" placeholder="Поиск" />
+            </div>
+
+            <!-- Блок с контактами -->
+            <div class="contact">
+              <a
+                href="https://wa.me/79272123524"
+                class="number_contact"
+                target="_blank"
+                >+7 927 212-35-24</a
+              >
+              <p class="reception">Прием заявок</p>
+              <p class="time">с 9:00 до 20:00</p>
+            </div>
+            <!-- Мессенджеры и корзина (справа) -->
+            <div class="header-right">
+              <div>
+                <img
+                  src="../assets/logos/search.svg"
+                  id="searchIcon"
+                  class="loupe"
+                />
+              </div>
+              <div class="messengers">
+                <a
+                  href="https://t.me/mary_zharkova"
+                  target="_blank"
+                  class="footer__social-link"
+                  title="Напишите в Telegram"
+                >
+                  <img
+                    class="telegram"
+                    src="../assets/messenger/telegram.svg"
+                    alt="Telegram"
+                  />
+                </a>
+                <a
+                  href="https://wa.me/79272123524"
+                  target="_blank"
+                  class="footer__social-link"
+                  title="Напишите в WhatsApp"
+                >
+                  <img
+                    class="whatsapp"
+                    src="../assets/messenger/whatsapp.svg"
+                    alt="Whatsapp"
+                  />
+                </a>
+              </div>
+              <div class="basket-wrap">
+                <a href="../pages/cart.html">
+                  <img
+                    class="basket"
+                    src="../assets/header/cart.svg"
+                    alt="Корзина"
+                  />
+                  <span class="cart-count" id="cart-count">0</span>
+                </a>
+              </div>
+              <!-- Гамбургер (по умолчанию скрыт, показываем на планшетах) -->
+              <div class="hamb" id="hamb">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Основное меню (для десктопа или при клике на гамбургер) -->
+        <nav class="main-nav">
+          <div class="container nav__inner">
+            <ul class="menu" id="menu">
+              <li><a href="../index.html">Главная</a></li>
+              <li><a href="../index.html#delivery">Доставка/Оплата</a></li>
+              <li><a href="cart.html#contacts">Контакты</a></li>
+              <li><a href="../index.html#about">О нас</a></li>
+              <li><a href="../index.html#reviews">Отзывы</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Контейнер для вывода результатов поиска -->
+      <div id="searchOverlay" class="search-overlay">
+        <div class="search-results-container">
+            <span id="closeSearch" class="close-btn">&times;</span>
+            <div class="mobile-input-container">
+            <input id="searchInputMobile" class="input_search" type="search" placeholder="Поиск" />
+          </div>
+            <div id="results"></div>
+        </div>
+      </div>
+
+      <div class="topContainer">
+        <h2>Корзина</h2>
+        <div id="goBack">
+          <a href="./page-catalog.html">Вернуться в каталог ></a>
+        </div>
+      </div>
+      <div class="cartItems">
+        <ul id="cartList"></ul>
+        <div class="orderDetails">
+          <h3>Детали заказа</h3>
+          <p>Количество</p>
+          <p id="totalItems"></p>
+          <p>Сумма</p>
+          <p id="totalSum"></p>
+        </div>
+      </div>
+      <form id="orderForm" name="orderForm" action="" novalidate>
+        <label for="clientName">Имя</label>
+        <input
+          type="text"
+          name="clientName"
+          id="clientName"
+          placeholder="Ваше имя"
+          required
+        />
+        <span class="validationError" id="errorName"></span>
+        <label for="clientTel">Номер телефона</label>
+        <input
+          type="tel"
+          name="clientTel"
+          id="clientTel"
+          placeholder="8"
+          required
+        />
+        <span class="validationError" id="errorTel"></span>
+        <div id="deliveryOptions">
+          Получение заказа
+          <label
+            ><input type="radio" name="deliveryOption" value="0" />Самовывоз
+            (Тольятти, пр. Степана Разина, д.2)</label
+          >
+          <label
+            ><input type="radio" name="deliveryOption" value="300" />Доставка по
+            городу в Автозаводской район 300 руб.</label
+          >
+          <label
+            ><input type="radio" name="deliveryOption" value="400" />Доставка по
+            городу в Центральный район 400 руб.</label
+          >
+          <label
+            ><input type="radio" name="deliveryOption" value="550" />Доставка по
+            городу в Комсомольский/Шлюзовой район 550 руб.</label
+          >
+          <label
+            ><input
+              type="radio"
+              name="deliveryOption"
+              value="Рассчитать"
+            />Рассчитать удаленную доставку</label
+          >
+          <span class="validationError" id="errorDelivery"></span>
+        </div>
+        <label for="deliveryAddress">Адрес доставки</label>
+        <input
+          type="text"
+          name="deliveryAddress"
+          id="deliveryAddress"
+          placeholder="Улица, дом, подъезд"
+          pattern="^[a-zA-Z0-9,\\.]+$"
+        />
+        <span class="validationError" id="errorAddress"></span>
+        <label for="deliveryDate">Дата и время доставки</label>
+        <input type="datetime-local" name="deliveryDate" id="deliveryDate" />
+        <span class="validationError" id="errorDate"></span>
+        <label for="orderComment">Комментарий к заказу</label>
+        <textarea
+          name="textarea"
+          name="orderComment"
+          id="orderComment"
+        ></textarea>
+        <div class="agreePolicy">
+          <input type="checkbox" name="policyCheckbox" id="policyCheckbox" />
+          <label for="policyCheckbox"
+            >Я даю согласие на обработку, сбор, хранение и передачу третьим
+            лицам представленной информации на условиях
+            <a href="./privacy-policy.html"
+              >Политики обработки персональных данных.</a
+            ></label
+          >
+        </div>
+        <div class="validationError" id="checkboxError"></div>
+        <div class="orderFinal">
+          <h3>Детали заказа</h3>
+          <p>Товары</p>
+          <p id="totalItemsSum"></p>
+          <p>Стоимость доставки</p>
+          <p id="deliveryPrice"></p>
+          <p>Итого</p>
+          <p id="totalOrderSum"></p>
+        </div>
+        <div class="formBtns">
+          <button type="submit" class="btn" id="makeOrderBtn" disabled>
+            Оформить заказ
+          </button>
+        </div>
+        <div id="popupContainer" class="popup">
+          <div class="popup-content">
+            <p id="popupMessage"></p>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <footer class="footer" id="contacts">
+      <div class="footer__contacts">
+        <h2 class="footer__title">Контакты</h2>
+        <a href="https://wa.me/79272123524" class="footer__phone" target="_blank">+7 927 212-35-24</a>
+        <div class="footer__socials">
+          <a href="https://t.me/mary_zharkova" target="_blank" class="footer__social-link" title="Напишите в Telegram">
+            <img src="../assets/messenger/telegram.svg" alt="Telegram" class="footer__social-icon"/>
+            <span class="footer__social-text">Telegram</span>
+          </a>
+          <a href="https://wa.me/79272123524" target="_blank" class="footer__social-link" title="Напишите в WhatsApp">
+            <img src="../assets/messenger/whatsapp.svg" alt="WhatsApp" class="footer__social-icon"/>
+            <span class="footer__social-text">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer__address">
+        <h2 class="footer__title">Адрес</h2>
+        <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank">
+          <p>г. Тольятти, </br> пр. Степана Рaзина, д. 2</p>
+        </a>
+        <p class="footer__work-label">Прием заявок</p>
+        <p class="footer__work-time">с 9:00 до 20:00</p>
+      </div>
+      <div class="footer__policy">
+        <a href="./privacy-policy.html"
+          class="footer__policy-link">Политика обработки персональных данных</a>
+      </div>
+      <div class="footer__tax-info">
+        <p>Жаркова Мария Юрьевна</p>
+        <p>ИНН 730208285547</p>
+      </div>
+    </footer>
+
+    <!-- Скрипт БД -->
+    <script src="../assets/scripts/data.js"></script>
+
+    <!-- Скрипт для корзины -->
+    <script src="../assets/scripts/cart.js"></script>
+
+    <!-- Скрипт для бургера -->
+    <script src="../assets/scripts/burger.js"></script>
+
+    <!-- Скрипт для бейджа корзины-->
+    <script src="../assets/scripts/cart-badge.js"></script>
+
+    <!-- Скрипт для уведомления всех частей приложения об изменениях в корзине-->
+    <script src="../assets/scripts/cart-events.js"></script>
+
+    <!-- Скрипт для поиска -->
+    <script src="../assets/scripts/search-box.js"></script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+.btn {
+  @include Montserrat-500-base;
+  font-size: $font-size-regular; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $red;
+  color: $white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  width: 240px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($red, 10%);
+    color: $white;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+  &:disabled,
+  &.disabled {
+    background-color: lighten($red, 20%);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  /* Модификатор для центрирования */
+  &.btn--center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Модификатор «ссылка» */
+  &.btn--link {
+    background-color: transparent;
+    color: $black;
+    border: 1px solid $black;
+
+    &:hover {
+      color: $red; // переопределяем белый цвет из .btn:hover
+      border: 1px solid $red;
+    }
+    &:active {
+      transform: none; 
+    }
+  }
+
+  &.btn--transparent {
+    display: block;  
+    width: 100%;     
+    box-sizing: border-box;
+    background-color: transparent;
+    color: $red;
+    border: 1px solid $red;
+    border-radius: 4px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+
+  &.btn--white-red {
+    background-color: $white;
+    color: $red;
+    border: 1px solid $red; 
+    /* Стили при наведении */
+    &:hover {
+      background-color: lighten($white, 10%);
+      color: darken($red, 10%);
+      border-color: darken($red, 10%);
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.button-up {
+  @include Montserrat-300-base;
+  font-size: $font-size-regular; 
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $red;
+  color: $white;
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include phones {
+    width: 60px;
+    height: 60px;
+    font-size: 14px; 
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

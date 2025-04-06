@@ -1,0 +1,106 @@
+// миксины для отступов
+@mixin padding-1920 {
+  padding-left: 5.2%;
+  padding-right: 5.2%;
+}
+
+@mixin padding-768 {
+  padding-left: 4%; //32px примерно
+  padding-right: 4%;
+}
+
+@mixin padding-440 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+@mixin padding-415 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+@mixin padding-375 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+// Базовый миксин для Montserrat
+@mixin Montserrat-base {
+  font-family: $font-Montserrat;
+  font-style: normal;
+}
+
+// Миксины с разными весами
+@mixin Montserrat-700-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-700;
+}
+
+@mixin Montserrat-600-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-600;
+}
+
+@mixin Montserrat-500-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-500;
+}
+
+@mixin Montserrat-400-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-400;
+}
+
+@mixin Montserrat-300-base {
+  @include Montserrat-base;
+  font-weight: $font-weight-300;
+}
+
+// Миксины для заголовков (h1–h6)
+@mixin h1 {
+  @include Montserrat-700-base;
+  font-size: $font-size-h1;
+}
+
+@mixin h2 {
+  @include Montserrat-600-base;
+  font-size: $font-size-h2;
+}
+
+@mixin h3 {
+  @include Montserrat-500-base;
+  font-size: $font-size-h3;
+}
+
+@mixin h4 {
+  @include Montserrat-400-base;
+  font-size: $font-size-h4;
+}
+
+@mixin h5 {
+  @include Montserrat-300-base;
+  font-size: $font-size-regular;
+}
+
+//Сброс отображения полей input по умолчанию: кастом фокус и стили автозаполнения
+@mixin custom-input-focus {
+  &:focus {
+    outline: 1.5px solid $yellow;
+    outline-offset: 2px;
+    background-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  &::-moz-selection {
+    background-color: transparent !important;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important; // Override background
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    background-color: transparent !important;
+    -webkit-text-fill-color: inherit !important; // Keep text color
+    transition: background-color 5000s ease-in-out 0s; // Hack to persist transparency
+  }
+}

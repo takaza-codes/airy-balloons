@@ -1,0 +1,162 @@
+.footer {
+  margin-top: 100px;
+  width: 100%;
+  flex-shrink: 0;
+  @include padding-440;
+  @include Montserrat-600-base;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "contacts"
+    "address"
+    "policy"
+    "tax-info";
+  row-gap: 0.2rem;
+  text-align: center;
+
+  &__contacts {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    @include Montserrat-600-base;
+  }
+
+  &__phone {
+    font-size: 31px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  &__address {
+    margin-bottom: 1rem;
+    a {
+      p {
+        font-size: 1.4rem;
+        margin: 8px 0;
+        display: block;
+      }
+    }
+    .footer__work-label {
+      @include Montserrat-500-base;
+      font-size: 10px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .footer__work-time {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  // Иконки соцсетей
+  &__socials {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.7rem;
+    margin-top: 10px;
+
+    @include phones {
+      justify-content: center;
+    }
+
+    &-link {
+      @include Montserrat-500-base;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      width: auto;
+    }
+
+    &-text {
+      font-size: 10px;
+      margin-top: 6px;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__social-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin: 0;
+
+    @include phones {
+      margin: 0 auto;
+    }
+  }
+
+  &__social-text {
+    font-weight: 500;
+    font-size: 10px;
+    margin-top: 6px;
+  }
+
+  &__policy {
+    grid-area: policy;
+    padding: 0;
+
+    &-link {
+      font-size: 0.7rem;
+      @include Montserrat-500-base;
+      color: $gray;
+    }
+  }
+
+  &__tax-info {
+    grid-area: tax-info;
+    margin-bottom: 10px;
+    font-size: 0.7rem;
+    @include Montserrat-500-base;
+    // Для мобильной – текст по центру
+    text-align: center;
+    color: $gray;
+  }
+
+  // Мобильная раскладка – всё уже выровнено по центру (базовые стили)
+
+  // ---------------------------
+  // Раскладка для планшетов и десктопов
+  // ---------------------------
+  @media (min-width: $tablets) {
+    @include padding-768;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // В первой строке: контакты (слева) и адрес (справа)
+    // Во второй строке: политика (слева) и Жаркова (справа)
+    grid-template-areas:
+      "contacts address"
+      "policy tax-info";
+    row-gap: 0.2rem;
+    column-gap: 20rem;
+
+    &__contacts {
+      justify-self: end;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    &__address {
+      justify-self: start;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    &__policy {
+      justify-self: end;
+      text-align: left;
+      align-self: start;
+    }
+
+    &__tax-info {
+      justify-self: start;
+      text-align: right;
+      align-self: center;
+    }
+  }
+}

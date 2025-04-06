@@ -1,11 +1,446 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIRY</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Главная страница</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/logos/balloons.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="./assets/styles/normalize.css" />
+    <link rel="stylesheet" href="./assets/styles/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-fixed-wrapper">
+        <!-- Верхняя часть шапки -->
+        <div class="top-bar">
+          <div class="container top-bar__inner">
+            <!-- ЛОГОТИП -->
+            <div class="logo">
+              <a href="index.html"><img
+                src="./assets/logos/logo-color.svg"
+                width="110"
+                alt="логотип"
+              /></a>
+            </div>
+            <!-- Поиск и кнопка "Каталог" -->
+            <div class="search">
+              <a href="./pages/page-catalog.html">
+                <button class="cataloge_btn">Каталог</button>
+              </a>
+              <input id="searchInput" class="input_search" type="search" placeholder="Поиск" />
+            </div>
+
+            <!-- Блок с контактами -->
+            <div class="contact">
+              <a href="https://wa.me/79272123524" class="number_contact" target="_blank">+7 927 212-35-24</a>
+              <p class="reception">Прием заявок</p>
+              <p class="time">с 9:00 до 20:00</p>
+            </div>
+            <!-- Мессенджеры и корзина (справа) -->
+            <div class="header-right">
+              <div>
+                <img
+                  src="../assets/logos/search.svg"
+                  id="searchIcon"
+                  class="loupe"
+                />
+              </div>
+              <div class="messengers">
+                <a href="https://t.me/mary_zharkova" target="_blank" class="footer__social-link" title="Напишите в Telegram">
+                  <img
+                    class="telegram"
+                    src="./assets/messenger/telegram.svg"
+                    alt="Telegram"
+                  />
+                </a>
+                <a href="https://wa.me/79272123524" target="_blank" class="footer__social-link" title="Напишите в WhatsApp">
+                  <img
+                    class="whatsapp"
+                    src="./assets/messenger/whatsapp.svg"
+                    alt="Whatsapp"
+                  />
+                </a>
+              </div>
+              <div class="basket-wrap">
+                <a href="./pages/cart.html">
+                  <img
+                    class="basket"
+                    src="./assets/header/cart.svg"
+                    alt="Корзина"
+                  />
+                  <span class="cart-count" id="cart-count">0</span>
+                </a>
+              </div>
+              <!-- Гамбургер (по умолчанию скрыт, показываем на планшетах) -->
+              <div class="hamb" id="hamb">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Основное меню (для десктопа или при клике на гамбургер) -->
+        <nav class="main-nav">
+          <div class="container nav__inner">
+            <ul class="menu" id="menu">
+              <li><a href="./index.html">Главная</a></li>
+              <li><a href="index.html#delivery">Доставка/Оплата</a></li>
+              <li><a href="index.html#contacts">Контакты</a></li>
+              <li><a href="index.html#about">О нас</a></li>
+              <li><a href="index.html#reviews">Отзывы</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!-- БОЛЬШОЙ БАННЕР -->
+      <div class="banner">
+        <div class="banner__content">
+          <!-- <h1 class="airy_banner">Оформление красивых событий</h1> -->
+          <h1 class="ballons_banner">Воздушные и гелиевые шары с доставкой</h1>
+        </div>
+      </div>
+    </header>
+    <main>
+    <!-- Контейнер для вывода результатов поиска -->
+    <div id="searchOverlay" class="search-overlay">
+      <div class="search-results-container">
+          <span id="closeSearch" class="close-btn">&times;</span>
+          <div class="mobile-input-container">
+          <input id="searchInputMobile" class="input_search" type="search" placeholder="Поиск" />
+        </div>
+          <div id="results"></div>
+      </div>
+    </div>
+
+    <section class="catalogue">
+      <div class="catalogue__title">
+        <h2 class="catalogue__heading">
+          <a href="./pages/page-catalog.html">Каталог</a>
+        </h2>
+      </div>
+
+      <div class="catalogue__row">
+        <!-- Для девочек -->
+        <div
+          class="catalogue__item catalogue__item--wide-1"
+          data-category="girl"
+        >
+          <div class="catalogue__image">
+            <a href="./pages/page-catalog.html#for-girl-from-index" rel="noopener noreferrer">
+              <img src="assets/photos/for-girl/for-girl-03.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-girls-from-index">Для девочек</a>
+          </div>
+        </div>
+
+        <!-- Для мальчиков -->
+        <div
+          class="catalogue__item catalogue__item--wide-2"
+          data-category="boy"
+        >
+          <div class="catalogue__image">
+            <a href="./pages/page-catalog.html#for-boy-from-index" rel="noopener noreferrer">
+              <img src="assets/photos/for-boy/for-boy-03.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-boys-from-index">Для мальчиков</a>
+          </div>
+        </div>
+
+        <!-- Выписка из роддома -->
+        <div class="catalogue__item" data-category="newborn">
+          <div class="catalogue__image">
+            <a href="./pages/page-catalog.html#for-newborn-from-index" rel="noopener noreferrer">
+              <img src="assets/photos/newborn/newborn-03.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-newborn-from-index">Выписка из роддома</a>
+          </div>
+        </div>
+
+        <!-- Гендер пати -->
+        <div class="catalogue__item" data-category="genderParty">
+          <div class="catalogue__image">
+            <a href="./pages/page-catalog.html#for-genderParty-from-index" rel="noopener noreferrer">
+              <img
+                src="assets/photos/gender-party/gender-party-03.jpeg"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-genderParty-from-index">Гендер Пати</a>
+          </div>
+        </div>
+
+        <!-- Для девушек -->
+        <div class="catalogue__item" data-category="woman">
+          <div class="catalogue__image" id="big_img2">
+            <a href="./pages/page-catalog.html#for-woman-from-index" rel="noopener noreferrer">
+              <img src="assets/photos/for-woman/for-woman-02.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-woman-from-index">Девушкам</a>
+          </div>
+        </div>
+
+        <!-- Для мужчин -->
+        <div class="catalogue__item" data-category="man">
+          <div class="catalogue__image">
+            <a href="./pages/page-catalog.html#for-man-from-index" rel="noopener noreferrer">
+              <img src="assets/photos/for-man/for-man-01.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-man-from-index">Мужчинам</a>
+          </div>
+        </div>
+
+        <!-- Девичник -->
+        <div class="catalogue__item" data-category="bachelorette">
+          <div class="catalogue__image">
+            <a href="./pages/page-catalog.html#for-bachelorette-from-index" rel="noopener noreferrer">
+              <img src="assets/photos/bachelorette/bachelorette-03.jpeg" alt="" />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-bachelorette-from-index">Девичник</a>
+          </div>
+        </div>
+
+        <!-- 14 февраля -->
+        <div
+          class="catalogue__item catalogue__item--wide-1"
+          data-category="valentines"
+        >
+          <div class="catalogue__image">
+            <a href="./pages/page-catalog.html#for-valentines-from-index" rel="noopener noreferrer">
+              <img
+                src="assets/photos/valentines-day/valentines-day-02.jpeg"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="catalogue__link">
+            <a href="./pages/page-catalog.html#for-valentines-from-index">14 февраля</a>
+          </div>
+      </div>
+      </div>
+    </section>
+    
+    <section class="popular">
+      <h2 class="popular__title">Популярные товары</h2>
+      <div class="popular__list" id="popular-list"></div>
+    </section>
+
+    <section class="delivery" id="delivery">
+      <h2 class="delivery__title">Доставка и оплата</h2>
+      <p class="delivery__description">
+        Работаем в формате мастерской по предварительным заказам.
+      </p>
+      <p class="delivery__description--time">
+        Время приёма заказов с 9:00 до 20:00
+      </p>
+      <p class="delivery__description--time">
+        Доставка осуществляется с 8:00 до 23:00.
+      </p>
+    </section>
+
+    <section class="about" id="about">
+      <h2 class="about__title">О нас</h2>
+      <div class="about__wrapper">
+        <div class="about__image-wrapper">
+          <img
+            class="about__image"
+            src="assets/photos/2025-03-20 23-00-00 1.jpg"
+            alt=""
+          />
+        </div>
+        <div class="about__text-wrapper">
+          <p class="about__description">
+            Привет! Меня зовут Мария, и я создаю не просто гелиевые шары, а
+            маленькие искринки счастья, которые делают ваш день особенным.
+          </p>
+          <p class="about__description">
+            Когда я начала заниматься этим делом, то поняла, как важно наполнять
+            каждый момент праздника радостью и светом. Вкладываю душу в каждую
+            работу, чтобы мои шары были не просто украшением, а настоящими
+            акцентами, которые создают атмосферу волшебства.
+          </p>
+          <p class="about__description">
+            Я люблю, когда мои шары становятся частью самых теплых и значимых
+            событий в жизни. Это могут быть дни рождения детей и взрослых,
+            выписка мамы и малыша из роддома или тот чудесный момент, когда
+            маленький человечек празднует свой первый годик. Я искренне верю,
+            что такие моменты заслуживают самого яркого и особенного оформления.
+          </p>
+          <p class="about__description">
+            Каждый заказ для меня это не просто работа, это возможность сделать
+            ваш день неповторимым, наполненным радостью и любовью. И я стараюсь,
+            чтобы все было идеально. В этом процессе я и менеджер, и креатор, и
+            закупщик, и, иногда, курьер. Я занимаюсь всеми этапами от создания
+            идеи до контроля доставки, чтобы все прошло как надо, и вы могли
+            наслаждаться своим праздником без лишних забот.
+          </p>
+          <p class="about__description">
+            В моём любимом деле часто помогает мой муж Алексей, спасибо ему за
+            это.
+          </p>
+          <p class="about__description">
+            Благодарю, что выбираете меня, чтобы стать частью таких невероятных
+            и трогательных событий. Я с радостью помогу сделать ваш праздник
+            по-настоящему волшебным.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <h2 class="reviews__title">Отзывы</h2>
+      <div class="reviews__wrapper">
+        <button class="reviews__arrow reviews__arrow--left" disabled>←</button>
+
+        <div class="reviews__track-wrapper">
+          <div class="reviews__track">
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-1.jpeg"
+                alt="Отзыв 1"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-2.jpeg"
+                alt="Отзыв 2"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-3.jpeg"
+                alt="Отзыв 3"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-4.jpeg"
+                alt="Отзыв 4"
+              />
+            </div>
+            <div class="reviews__card">
+              <img
+                src="assets/photos/сustomer-reviews/review-5.jpeg"
+                alt="Отзыв 5"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button class="reviews__arrow reviews__arrow--right">→</button>
+      </div>
+    </section>
+    
+    <section class="contacts" id="contacts">
+      <h2 class="contacts__title">Наши контакты</h2>
+      <div class="contacts__wrapper">
+        <div class="contacts__info">
+          <p>
+            Самовывоз по адресу:
+            <span class="address">г. Тольятти, пр. Степана Разина, д. 2</span>
+          </p>
+          <p>
+            <a
+              href="https://wa.me/79272123524"
+              target="_blank"
+              style="display: inline-flex; align-items: center"
+            >
+              <img
+                src="./assets/messenger/whatsapp.svg"
+                alt="WhatsApp"
+                width="20"
+                style="margin-right: 5px"
+              />
+              +7-927-212-35-24
+            </a>
+          </p>
+          <p>Прием заявок с 9:00 до 20:00</p>
+          <p>Доставка с 8:00 до 23:00</p>
+        </div>
+        <div class="contacts__map">
+          <div id="map" style="width: 100%; height: 300px"></div>
+          <p class="contacts__address">Проспект Степана Разина, 2</p>
+        </div>
+      </div>
+    </section>
+    </main>
+
+    <button class="button-up" id="scrollToTopButton" aria-label="Scroll to top">
+      Наверх
+    </button>
+
+    <footer class="footer">
+      <div class="footer__contacts">
+        <h2 class="footer__title">Контакты</h2>
+        <a href="https://wa.me/79272123524" class="footer__phone" target="_blank">+7 927 212-35-24</a>
+        <div class="footer__socials">
+          <a href="https://t.me/mary_zharkova" target="_blank" class="footer__social-link" title="Напишите в Telegram">
+            <img src="../assets/messenger/telegram.svg" alt="Telegram" class="footer__social-icon"/>
+            <span class="footer__social-text">Telegram</span>
+          </a>
+          <a href="https://wa.me/79272123524" target="_blank" class="footer__social-link" title="Напишите в WhatsApp">
+            <img src="../assets/messenger/whatsapp.svg" alt="WhatsApp" class="footer__social-icon"/>
+            <span class="footer__social-text">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer__address">
+        <h2 class="footer__title">Адрес</h2>
+        <a href="https://yandex.ru/maps/-/CHRKV-n9" target="_blank">
+          <p>г. Тольятти, </br> пр. Степана Рaзина, д. 2</p>
+        </a>
+        <p class="footer__work-label">Прием заявок</p>
+        <p class="footer__work-time">с 9:00 до 20:00</p>
+      </div>
+      <div class="footer__policy">
+        <a
+          href="./pages/privacy-policy.html"
+          class="footer__policy-link">Политика обработки персональных данных</a>
+      </div>
+      <div class="footer__tax-info">
+        <p>Жаркова Мария Юрьевна</p>
+        <p>ИНН 730208285547</p>
+      </div>
+    </footer>
+
+    <!-- Скрипт для бургера -->
+    <script src="./assets/scripts/burger.js"></script>
+
+    <!-- Скрипт для бейджа корзины-->
+    <script src="./assets/scripts/cart-badge.js"></script>
+
+    <!-- Скрипт для уведомления всех частей приложения об изменениях в корзине-->
+    <script src="./assets/scripts/cart-events.js"></script>
+
+    <!-- Скрипты для карты -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=bf2b88df-2d12-413e-97eb-ed69df7d6dc3" defer></script>
+    <script src="assets/scripts/maps-api.js" defer></script>
+
+    <script src="./assets/scripts/data.js"></script>
+    <script src="./assets/scripts/catalog-block.js"></script>
+    <script src="./assets/scripts/popular-block.js"></script>
+    <script src="./assets/scripts/reviews-block.js"></script>
+    <script src="./assets/scripts/search-box.js"></script>
+
+    <script src="./assets/scripts/button-up.js"></script>
+  </body>
 </html>

@@ -1,0 +1,42 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.policy-main {
+  margin-top: 140px;
+  flex: 1 0 auto;
+
+  @include phones {
+    margin-top: 120px;
+  }
+
+  .policy-title {
+    font-size: $font-size-h4;
+    @include Montserrat-500-base;
+    text-align: center;
+  }
+
+  .policy-text {
+    text-align: left;
+
+    h2 {
+      font-size: 1rem;
+      @include Montserrat-500-base;
+      padding: 1rem 0 0.5rem 0;
+    }
+
+    p {
+      padding: 0.1rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.go-back {
+  padding: 2rem 0;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,29 @@
+@mixin tablets {
+  @media screen and (max-width: $tablets) {
+    @content;
+  }  
+}
+
+@mixin tablets-1024 {
+  @media screen and (max-width: $tablets-1024) {
+    @content;
+  }  
+}
+
+@mixin phones {
+  @media screen and (max-width: $phones) {
+    @content;
+  }  
+}
+
+@mixin phones-415 {
+  @media screen and (max-width: $phones-415) {
+    @content;
+  }  
+}
+
+@mixin phones-375 {
+  @media screen and (max-width: $phones-375) {
+    @content;
+  }  
+}

@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  li {
+    list-style: none;
+  }
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+	font-weight: normal;
+	margin: 0;
+}
+
+// Правило для section и элементов с id внутри section
+section, section [id] {
+  scroll-margin-top: 140px;
+
+  @include phones {
+    scroll-margin-top: 120px;
+  }
+}
+
+/* Правило для активного якоря внутри section */
+section:target, section [id]:target {
+  scroll-margin-top: 140px;
+
+  @include phones {
+    scroll-margin-top: 120px;
+  }
+}
+
+/* Общее правило для элементов с id, которые не являются section */
+[id]:not(section) {
+  scroll-margin-top: 200px !important;
+  
+  @include phones {
+    scroll-margin-top: 220px !important;
+  }
+}
