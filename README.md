@@ -59,12 +59,7 @@
 
 ## Команда
 
-- [takaza-codes](https://github.com/takaza-codes)
-- [KamDiaV](https://github.com/KamDiaV)
-- [AlyonaKI](https://github.com/AlyonaKI)
-- [ungalianta](https://github.com/ungalianta)
-- [o-kova](https://github.com/o-kova)
-- [KoraDraw](https://github.com/KoraDraw)
+[![Contributors](https://contrib.rocks/image?repo=KamDiaV/airy-balloons)](https://github.com/KamDiaV/airy-balloons/graphs/contributors)
 
 ---
 
